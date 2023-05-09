@@ -67,7 +67,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         final keyboardOffset = MediaQuery.of(context).viewInsets.bottom;
-
         return StatefulBuilder(
           builder: (context, setState) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -82,14 +81,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 });
               }
             });
-
             return SingleChildScrollView(
               controller: _scrollController,
               padding: EdgeInsets.only(
                 bottom: keyboardOffset + MediaQuery.of(context).padding.bottom,
               ),
               child: Container(
-                height: deviceHeight * 0.7,
+                height: selectedIndex == 2 ? deviceHeight * 0.7 : deviceHeight * 0.55,
                 child: Column(
                   children: [
                     Container(
@@ -100,12 +98,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     const SizedBox(height: 20),
                     Expanded(
-                      child: JobInfoForm(
-                        selectDate: _selectDate,
-                        startEmployeeTime: startEmployeeTime,
-                        endEmployeeTime: endEmployeeTime,
-                        birthDate: _birthDate,
-                      ),
+                      child: selectedIndex == 2
+                          ? JobInfoForm(
+                              selectDate: _selectDate,
+                              startEmployeeTime: startEmployeeTime,
+                              endEmployeeTime: endEmployeeTime,
+                              birthDate: _birthDate,
+                            )
+                          : EducationInfoForm(
+                              selectDate: _selectDate,
+                              birthDate: _birthDate,
+                              startEmployeeTime: startEmployeeTime,
+                              endEmployeeTime: endEmployeeTime,
+                            ),
                     ),
                   ],
                 ),

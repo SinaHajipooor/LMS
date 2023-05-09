@@ -120,7 +120,7 @@ class JobInfoForm extends StatelessWidget {
             const SizedBox(height: 15),
             Row(
               children: [
-                Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'وضعیت استغال')),
+                Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'وضعیت اشتغال')),
                 Expanded(child: TextInput(value: '', placeholder: 'تلفن محل‌کار', onChanged: (value) {}, keyboardType: TextInputType.number)),
               ],
             ),
@@ -144,9 +144,6 @@ class JobInfoForm extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: ElevatedButton(
                     onPressed: () {},
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.green[500]!),
-                    ),
                     child: const Text('ذخیره'),
                   ),
                 )),
