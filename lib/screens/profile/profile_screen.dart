@@ -22,6 +22,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   List<String> dropdownValues = List.generate(14, (index) => "Option ${index + 1}");
   List<TextEditingController> inputControllers = List.generate(10, (index) => TextEditingController());
   int _selectedIndex = 1;
+  final _scrollController = ScrollController();
 
 // ------------- lifecycle -------------
   @override
@@ -54,23 +55,65 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
-  void _showJobinfoFormModal(BuildContext context, double deviceWidth) {
-    showDialog(
-      context: context,
-      builder: (context) => Dialog(
-        child: IntrinsicWidth(
-          child: Container(
-            width: deviceWidth,
-            height: 520,
-            child: JobInfoForm(
-              selectDate: _selectDate,
-              birthDate: _birthDate,
-              endEmployeeTime: endEmployeeTime,
-              startEmployeeTime: startEmployeeTime,
-            ),
-          ),
+  void _showJobinfoFormModal(BuildContext context, double deviceHeight, int selectedIndex) {
+    showModalBottomSheet(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
         ),
       ),
+      isScrollControlled: true,
+      context: context,
+      builder: (BuildContext context) {
+        final keyboardOffset = MediaQuery.of(context).viewInsets.bottom;
+
+        return StatefulBuilder(
+          builder: (context, setState) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              // Scroll the modal to the top when the keyboard is open
+              if (keyboardOffset > 0) {
+                setState(() {
+                  _scrollController.animateTo(
+                    _scrollController.position.minScrollExtent,
+                    duration: const Duration(milliseconds: 200),
+                    curve: Curves.easeOut,
+                  );
+                });
+              }
+            });
+
+            return SingleChildScrollView(
+              controller: _scrollController,
+              padding: EdgeInsets.only(
+                bottom: keyboardOffset + MediaQuery.of(context).padding.bottom,
+              ),
+              child: Container(
+                height: deviceHeight * 0.7,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 50, // adjust as needed
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      alignment: Alignment.center,
+                      child: Text(selectedIndex == 2 ? 'ایجاد اطلاعات شغلی' : 'ایجاد اطلاعات تحصیلی', style: const TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+                    ),
+                    const SizedBox(height: 20),
+                    Expanded(
+                      child: JobInfoForm(
+                        selectDate: _selectDate,
+                        startEmployeeTime: startEmployeeTime,
+                        endEmployeeTime: endEmployeeTime,
+                        birthDate: _birthDate,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 
@@ -107,7 +150,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       padding: const EdgeInsets.only(right: 8),
                       child: Row(
                         children: [
-                          ElevatedButton.icon(onPressed: () => _showJobinfoFormModal(context, deviceSize.width), icon: const Icon(Icons.add, size: 15), label: const Text('ایجاد', style: TextStyle(fontSize: 13))),
+                          ElevatedButton.icon(
+                              onPressed: () => _showJobinfoFormModal(
+                                    context,
+                                    deviceSize.height,
+                                    _selectedIndex,
+                                  ),
+                              icon: const Icon(Icons.add, size: 15),
+                              label: const Text('ایجاد', style: TextStyle(fontSize: 13))),
                         ],
                       ),
                     ),
@@ -118,7 +168,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       padding: const EdgeInsets.only(right: 8),
                       child: Row(
                         children: [
-                          ElevatedButton.icon(onPressed: () {}, icon: const Icon(Icons.add, size: 15), label: const Text('ایجاد', style: TextStyle(fontSize: 13))),
+                          ElevatedButton.icon(
+                              onPressed: () {
+                                _showJobinfoFormModal(context, deviceSize.height, _selectedIndex);
+                              },
+                              icon: const Icon(Icons.add, size: 15),
+                              label: const Text('ایجاد', style: TextStyle(fontSize: 13))),
                         ],
                       ),
                     ),

@@ -14,10 +14,10 @@ class JobInfoForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(0.0),
         child: Column(
           children: [
-            const SizedBox(height: 15),
+            // const SizedBox(height: 15),
             Row(
               children: [
                 Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'دستگاه اجرایی')),
@@ -25,70 +25,70 @@ class JobInfoForm extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 15),
-            // Row(
-            //   children: [
-            //     Expanded(
-            //       child: Card(
-            //         shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadius.circular(8),
-            //         ),
-            //         elevation: 1,
-            //         child: InkWell(
-            //           onTap: () {
-            //             // _selectDate(context);
-            //           },
-            //           child: Container(
-            //             width: double.infinity,
-            //             padding: const EdgeInsets.all(16),
-            //             decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(8),
-            //             ),
-            //             child: Row(
-            //               children: [
-            //                 const Icon(Icons.calendar_today, size: 20),
-            //                 const SizedBox(width: 16),
-            //                 Text(
-            //                   startEmployeeTime!,
-            //                   style: TextStyle(fontSize: startEmployeeTime != 'زمان استخدام' ? 13 : 11),
-            //                 ),
-            //               ],
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //     Expanded(
-            //       child: Card(
-            //         shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadius.circular(8),
-            //         ),
-            //         elevation: 1,
-            //         child: InkWell(
-            //           onTap: () {
-            //             // _selectDate(context);
-            //           },
-            //           child: Container(
-            //             width: double.infinity,
-            //             padding: const EdgeInsets.all(16),
-            //             decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(8),
-            //             ),
-            //             child: Row(
-            //               children: [
-            //                 const Icon(Icons.calendar_today, size: 20),
-            //                 const SizedBox(width: 16),
-            //                 Text(
-            //                   endEmployeeTime!,
-            //                   style: TextStyle(fontSize: endEmployeeTime != 'زمان پایان استخدام' ? 13 : 11),
-            //                 ),
-            //               ],
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
+            Row(
+              children: [
+                Expanded(
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    elevation: 1,
+                    child: InkWell(
+                      onTap: () {
+                        selectDate(context);
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.calendar_today, size: 20),
+                            const SizedBox(width: 16),
+                            Text(
+                              startEmployeeTime!,
+                              style: TextStyle(fontSize: startEmployeeTime != 'زمان استخدام' ? 13 : 11),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    elevation: 1,
+                    child: InkWell(
+                      onTap: () {
+                        selectDate(context);
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.calendar_today, size: 20),
+                            const SizedBox(width: 16),
+                            Text(
+                              endEmployeeTime!,
+                              style: TextStyle(fontSize: endEmployeeTime != 'زمان پایان استخدام' ? 13 : 11),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
             const SizedBox(height: 15),
             Row(
               children: [
@@ -126,12 +126,30 @@ class JobInfoForm extends StatelessWidget {
             ),
             const SizedBox(height: 15),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: ElevatedButton(onPressed: () {}, child: const Text('ذخیره')),
-                ),
+                Expanded(
+                    child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
+                      ),
+                      child: const Text('انصراف')),
+                )),
+                Expanded(
+                    child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.green[500]!),
+                    ),
+                    child: const Text('ذخیره'),
+                  ),
+                )),
               ],
             )
           ],

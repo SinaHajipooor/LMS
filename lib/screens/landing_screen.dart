@@ -85,7 +85,7 @@ class _LandingScreenState extends State<LandingScreen> {
           ],
         ),
         body: _isLoading
-            ? Center(child: Spinner(size: 40))
+            ? const Center(child: Spinner(size: 40))
             : SingleChildScrollView(
                 child: Column(
                   children: [
@@ -94,7 +94,7 @@ class _LandingScreenState extends State<LandingScreen> {
                     const SizedBox(height: 15),
                     AnnoucementSlider(landingProvider.announcements),
                     const SizedBox(height: 30),
-                    Container(height: 300, child: NewsList(newsList: landingProvider.news)),
+                    Container(height: 320, child: NewsList(newsList: landingProvider.news)),
                     const SizedBox(height: 10),
                     TmsSlider(landingProvider.tms),
                     const SizedBox(height: 20),

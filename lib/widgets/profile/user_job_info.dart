@@ -18,7 +18,7 @@ class _UserJobInfoState extends State<UserJobInfo> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Card(
-        elevation: 2,
+        elevation: 1,
         child: DataTable(
           dividerThickness: 0.5,
           horizontalMargin: 0,

@@ -101,7 +101,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: _isLoading
-            ? Center(child: Spinner(size: 40))
+            ? const Center(child: Spinner(size: 40))
             : Container(
                 decoration: const BoxDecoration(
                   image: DecorationImage(
@@ -162,7 +162,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                             Center(
                               child: Container(
                                 width: deviceSize.width - 50,
-                                height: 50,
+                                height: 45,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(8),
                                   child: ElevatedButton(onPressed: mobileConfirmLogin, child: const Text('ورود', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17))),
