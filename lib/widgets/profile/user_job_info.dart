@@ -71,7 +71,7 @@ class _UserJobInfoState extends State<UserJobInfo> {
                 DataCell(Center(child: Text(item['device']!, style: const TextStyle(fontSize: 12)))),
                 DataCell(
                   PopupMenuButton(
-                    icon: const Icon(Icons.more_vert),
+                    icon: const Icon(Icons.more_vert, size: 19),
                     elevation: 2,
                     onSelected: (value) {
                       print(value);

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import '../widgets/profile/user_information_card.dart';
+import '../../widgets/profile/user_information_card.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
-import '../widgets/profile/user_birth_certificate_form.dart';
-import '../widgets/profile/user_job_info.dart';
-import '../widgets/profile/user_education_info.dart';
+import '../../widgets/profile/user_birth_certificate_form.dart';
+import '../../widgets/profile/user_job_info.dart';
+import '../../widgets/profile/user_education_info.dart';
+import '../../widgets/profile/job_info_form.dart';
+import '../../widgets/profile/education_info_form.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -52,6 +54,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
+  void _showJobinfoFormModal(BuildContext context, double deviceWidth) {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        child: IntrinsicWidth(
+          child: Container(
+            width: deviceWidth,
+            height: 520,
+            child: JobInfoForm(
+              selectDate: _selectDate,
+              birthDate: _birthDate,
+              endEmployeeTime: endEmployeeTime,
+              startEmployeeTime: startEmployeeTime,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
 // --------------- UI -----------------
   @override
   Widget build(BuildContext context) {
@@ -79,6 +101,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               child: Column(
                 children: [
+                  Visibility(
+                    visible: _selectedIndex == 2,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: Row(
+                        children: [
+                          ElevatedButton.icon(onPressed: () => _showJobinfoFormModal(context, deviceSize.width), icon: const Icon(Icons.add, size: 15), label: const Text('ایجاد', style: TextStyle(fontSize: 13))),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Visibility(
+                    visible: _selectedIndex == 3,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: Row(
+                        children: [
+                          ElevatedButton.icon(onPressed: () {}, icon: const Icon(Icons.add, size: 15), label: const Text('ایجاد', style: TextStyle(fontSize: 13))),
+                        ],
+                      ),
+                    ),
+                  ),
                   Visibility(
                     visible: _selectedIndex == 1,
                     child: UserBirthCertificateForm(

@@ -72,7 +72,7 @@ class _ShoppingBasketScreenState extends State<ShoppingBasketScreen> {
         ),
       ),
       body: _isLoading
-          ? Center(child: Spinner(size: 40))
+          ? const Center(child: Spinner(size: 40))
           : SingleChildScrollView(
               child: Column(
                 children: [

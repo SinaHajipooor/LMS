@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../screens/dashbord_screen.dart';
 import '../screens/course/electronic_courses_screen.dart';
-import '../screens/profile_screen.dart';
+import '../screens/profile/profile_screen.dart';
 
 class AppBottomTabs extends StatefulWidget {
   const AppBottomTabs({super.key});
