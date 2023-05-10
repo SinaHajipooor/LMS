@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import '../../widgets/profile/user_information_card.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import '../../widgets/profile/user_birth_certificate_form.dart';
@@ -6,6 +7,7 @@ import '../../widgets/profile/user_job_info.dart';
 import '../../widgets/profile/user_education_info.dart';
 import '../../widgets/profile/job_info_form.dart';
 import '../../widgets/profile/education_info_form.dart';
+import '../../widgets/elements/custom_appbar.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -23,8 +25,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
   List<TextEditingController> inputControllers = List.generate(10, (index) => TextEditingController());
   int _selectedIndex = 1;
   final _scrollController = ScrollController();
-
+  bool _isFabVisible = true;
 // ------------- lifecycle -------------
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() {
+      if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
+        setState(() {
+          _isFabVisible = false;
+        });
+      } else if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
+        setState(() {
+          _isFabVisible = true;
+        });
+      }
+    });
+  }
+
   @override
   void dispose() {
     inputControllers.forEach((controller) => controller.dispose());
@@ -87,7 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 bottom: keyboardOffset + MediaQuery.of(context).padding.bottom,
               ),
               child: Container(
-                height: selectedIndex == 2 ? deviceHeight * 0.7 : deviceHeight * 0.55,
+                height: selectedIndex == 2 ? deviceHeight * 0.75 : deviceHeight * 0.55,
                 child: Column(
                   children: [
                     Container(
@@ -127,81 +145,83 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white.withOpacity(0),
-        automaticallyImplyLeading: false,
-        title: const Text('اطلاعات کاربری', style: TextStyle(color: Colors.black, fontSize: 13)),
-        actions: [
-          TextButton(onPressed: () {}, child: const Text('ذخیره تغییرات', style: TextStyle(fontSize: 12))),
-          const SizedBox(width: 16),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            UserInformationCard(onSelect: _onSelectInfo, selectedIndex: _selectedIndex),
-            Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(32), topRight: Radius.circular(32)),
-              ),
-              child: Column(
-                children: [
-                  Visibility(
-                    visible: _selectedIndex == 2,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: Row(
-                        children: [
-                          ElevatedButton.icon(
-                              onPressed: () => _showJobinfoFormModal(
-                                    context,
-                                    deviceSize.height,
-                                    _selectedIndex,
-                                  ),
-                              icon: const Icon(Icons.add, size: 15),
-                              label: const Text('ایجاد', style: TextStyle(fontSize: 13))),
-                        ],
+      body: CustomScrollView(
+        controller: _scrollController,
+        slivers: [
+          const CustomAppbar(title: 'اطلاعات کاربری'),
+          SliverList(
+              delegate: SliverChildListDelegate.fixed([
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                UserInformationCard(onSelect: _onSelectInfo, selectedIndex: _selectedIndex),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(32),
+                      topRight: Radius.circular(32),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Visibility(
+                        visible: _selectedIndex == 2,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: Row(
+                            children: [
+                              ElevatedButton.icon(
+                                onPressed: () => _showJobinfoFormModal(
+                                  context,
+                                  deviceSize.height,
+                                  _selectedIndex,
+                                ),
+                                icon: const Icon(Icons.add, size: 15),
+                                label: const Text('ایجاد', style: TextStyle(fontSize: 13)),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  Visibility(
-                    visible: _selectedIndex == 3,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: Row(
-                        children: [
-                          ElevatedButton.icon(
-                              onPressed: () {
-                                _showJobinfoFormModal(context, deviceSize.height, _selectedIndex);
-                              },
-                              icon: const Icon(Icons.add, size: 15),
-                              label: const Text('ایجاد', style: TextStyle(fontSize: 13))),
-                        ],
+                      Visibility(
+                        visible: _selectedIndex == 3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: Row(
+                            children: [
+                              ElevatedButton.icon(
+                                onPressed: () {
+                                  _showJobinfoFormModal(context, deviceSize.height, _selectedIndex);
+                                },
+                                icon: const Icon(Icons.add, size: 15),
+                                label: const Text('ایجاد', style: TextStyle(fontSize: 13)),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
+                      Visibility(
+                        visible: _selectedIndex == 1,
+                        child: UserBirthCertificateForm(
+                          birthDate: _birthDate,
+                          selectDate: _selectDate,
+                          startEmployeeTime: startEmployeeTime,
+                          endEmployeeTime: endEmployeeTime,
+                        ),
+                      ),
+                      Visibility(
+                        visible: _selectedIndex == 2,
+                        child: UserJobInfo(),
+                      ),
+                      Visibility(visible: _selectedIndex == 3, child: const UserEducationInfo())
+                    ],
                   ),
-                  Visibility(
-                    visible: _selectedIndex == 1,
-                    child: UserBirthCertificateForm(
-                      birthDate: _birthDate,
-                      selectDate: _selectDate,
-                      startEmployeeTime: startEmployeeTime,
-                      endEmployeeTime: endEmployeeTime,
-                    ),
-                  ),
-                  Visibility(
-                    visible: _selectedIndex == 2,
-                    child: UserJobInfo(),
-                  ),
-                  Visibility(visible: _selectedIndex == 3, child: const UserEducationInfo())
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ]))
+        ],
       ),
     );
   }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CourseDetailAppbar extends StatelessWidget {
-  const CourseDetailAppbar({super.key});
+class CustomAppbar extends StatelessWidget {
+  final String title;
+  const CustomAppbar({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +10,7 @@ class CourseDetailAppbar extends StatelessWidget {
       automaticallyImplyLeading: false,
       pinned: true,
       floating: true,
-      title: const Text('اطلاعات دوره', style: TextStyle(fontSize: 13, color: Colors.black)),
+      title: Text(title, style: const TextStyle(fontSize: 13, color: Colors.black)),
       backgroundColor: Colors.white,
       titleSpacing: 32,
       actions: [

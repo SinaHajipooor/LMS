@@ -4,7 +4,6 @@ import 'package:lms/widgets/course/course_price_card.dart';
 import '../../widgets/course/course_teachers_list.dart';
 import '../../widgets/course/course_image.dart';
 import '../../widgets/course/course_detail_text.dart';
-import '../../widgets/course/course_detail_appbar.dart';
 import '../../widgets/course/course_name.dart';
 import 'package:provider/provider.dart';
 import '../../providers/Course/CourseProvider.dart';
@@ -17,6 +16,7 @@ import '../../widgets/course/course_detail_cards.dart';
 import '../../widgets/course/course_comments_list.dart';
 import '../../widgets/course/course_resources_card.dart';
 import '../../widgets/course/course_assessment.dart';
+import '../../widgets/elements/custom_appbar.dart';
 
 class ElectronicCourseDetailScreen extends StatefulWidget {
   static const routeName = '/electronic-course-detail-screen';
@@ -109,7 +109,9 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                   CustomScrollView(
                     controller: _scrollController,
                     slivers: [
-                      const CourseDetailAppbar(),
+                      const CustomAppbar(
+                        title: 'اطلاعات دوره',
+                      ),
                       SliverList(
                         delegate: SliverChildListDelegate.fixed(
                           [
