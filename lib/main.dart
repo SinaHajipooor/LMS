@@ -14,6 +14,7 @@ import './screens/exam/exam_screen.dart';
 import './screens/course/course_assessment_screen.dart';
 import './screens/exam/exam_result_screen.dart';
 import './screens/course/electronic_course_detail_screen.dart';
+import './screens/course/simple_courses_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,6 +59,7 @@ class MyApp extends StatelessWidget {
             ExamResultScreen.routeName: (ctx) => const ExamResultScreen(),
             ElectronicCourseDetailScreen.routeName: (ctx) => const ElectronicCourseDetailScreen(),
             CourseAssessmentScreen.routeName: (ctx) => const CourseAssessmentScreen(),
+            SimpleCoursesScreen.routeName: (ctx) => const SimpleCoursesScreen(),
           },
         ),
       ),

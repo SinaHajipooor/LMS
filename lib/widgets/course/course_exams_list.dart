@@ -127,7 +127,7 @@ class _CourseExamsListState extends State<CourseExamsList> {
                                       ),
                                     ),
                               child: ListTile(
-                                title: Text('${widget.exams[i]['type']}', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
+                                title: Text('${widget.exams[i]['type']['name']}', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
                                 subtitle: Text('تعداد سوالات : ${widget.exams[i]['question_count']}    مدت آزمون : ${widget.exams[i]['duration']} دقیقه', style: const TextStyle(fontSize: 11)),
                                 trailing: IconButton(
                                   onPressed: () => _showAlert(context, widget.exams[i]['id']),

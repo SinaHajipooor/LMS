@@ -1,48 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../screens/landing_screen.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
-import '../providers/Auth/AuthProvider.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
 
-  //----------------- method ------------------
-  _showAlert(BuildContext context) {
-    Alert(
-            context: context,
-            type: AlertType.warning,
-            title: "خروج از حساب ",
-            desc: "آیا مطمعن هستید که از حساب خود خارج می‌شوید ؟",
-            style: AlertStyle(
-              titleStyle: const TextStyle(fontWeight: FontWeight.bold),
-              descStyle: const TextStyle(fontSize: 14),
-              overlayColor: Colors.black.withOpacity(0.6),
-              animationType: AnimationType.fromTop,
-              alertBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0), side: BorderSide.none),
-            ),
-            buttons: [
-              DialogButton(
-                onPressed: () {
-                  Provider.of<AuthProvider>(context, listen: false).logout();
-                  Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
-                },
-                width: 120,
-                color: Colors.green,
-                child: const Text("بله", style: TextStyle(color: Colors.white, fontSize: 20)),
-              ),
-              DialogButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                width: 120,
-                color: Colors.red[400],
-                child: const Text("خیر", style: TextStyle(color: Colors.white, fontSize: 20)),
-              ),
-            ],
-            closeIcon: const Icon(Icons.close, color: Colors.red))
-        .show();
-  }
   //----------------- UI ------------------
 
   @override
@@ -96,13 +57,6 @@ class AppDrawer extends StatelessWidget {
             'رابطین پژوهشی',
           ),
           onTap: () {},
-        ),
-        ListTile(
-          leading: const Icon(Icons.exit_to_app, color: Colors.red),
-          title: const Text(
-            'خروج از حساب کاربری',
-          ),
-          onTap: () => _showAlert(context),
         ),
       ]),
     );

@@ -74,14 +74,14 @@ class _LandingScreenState extends State<LandingScreen> {
                         onPressed: () {
                           Navigator.of(context).pushNamed(LoginScreen.routeName);
                         },
-                        child: const Text('ورود', style: TextStyle(fontSize: 14)))
+                        child: const Text('ورود', style: TextStyle(fontSize: 13)))
                     : TextButton(
                         onPressed: () {
                           Navigator.of(context).pushNamed(HomeScreen.routeName);
                         },
                         child: const Text(
                           'داشبورد',
-                          style: TextStyle(fontSize: 14),
+                          style: TextStyle(fontSize: 13),
                         ),
                       );
               },
@@ -97,19 +97,19 @@ class _LandingScreenState extends State<LandingScreen> {
                     NormalSlider(landingProvider.slides),
                     const SizedBox(height: 15),
                     AnnoucementSlider(landingProvider.announcements),
-                    const SizedBox(height: 30),
-                    SizedBox(height: 320, child: NewsList(newsList: landingProvider.news)),
+                    const SizedBox(height: 45),
+                    SizedBox(height: 280, child: NewsList(newsList: landingProvider.news)),
                     const SizedBox(height: 10),
                     TmsSlider(landingProvider.tms),
-                    const SizedBox(height: 20),
-                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                    const SizedBox(height: 55),
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       Container(
                         margin: const EdgeInsets.only(right: 12),
                         child: const Text('مدرسین مجرب سازمان', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
                       ),
                     ]),
-                    const SizedBox(height: 15),
-                    TeachersList(),
+                    const SizedBox(height: 30),
+                    const TeachersList(),
                     const SizedBox(height: 20),
                   ],
                 ),

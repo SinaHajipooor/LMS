@@ -95,7 +95,7 @@ class _UserJobInfoState extends State<UserJobInfo> {
                                 ),
                                 PopupMenuItem(
                                   value: 'detail',
-                                  child: Icon(Icons.remove_red_eye_sharp, color: Colors.blue, size: 20),
+                                  child: Icon(Icons.file_copy_outlined, color: Colors.blue, size: 20),
                                 ),
                               ],
                             ),

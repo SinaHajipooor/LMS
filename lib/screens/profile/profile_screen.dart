@@ -74,6 +74,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void _showJobinfoFormModal(BuildContext context, double deviceHeight, int selectedIndex) {
+    ScrollController _scrollController = ScrollController();
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -85,6 +86,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         final keyboardOffset = MediaQuery.of(context).viewInsets.bottom;
+
+        _scrollController = ScrollController();
+
         return StatefulBuilder(
           builder: (context, setState) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -98,20 +102,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 });
               }
             });
+
             return SingleChildScrollView(
               controller: _scrollController,
               padding: EdgeInsets.only(
                 bottom: keyboardOffset + MediaQuery.of(context).padding.bottom,
               ),
               child: Container(
-                height: selectedIndex == 2 ? deviceHeight * 0.75 : deviceHeight * 0.55,
+                height: selectedIndex == 2 ? deviceHeight * 0.6 : deviceHeight * 0.55,
                 child: Column(
                   children: [
                     Container(
                       height: 50, // adjust as needed
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       alignment: Alignment.center,
-                      child: Text(selectedIndex == 2 ? 'ایجاد اطلاعات شغلی' : 'ایجاد اطلاعات تحصیلی', style: const TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+                      child: Text(
+                        selectedIndex == 2 ? 'ایجاد اطلاعات شغلی' : 'ایجاد اطلاعات تحصیلی',
+                        style: const TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                      ),
                     ),
                     const SizedBox(height: 20),
                     Expanded(
@@ -164,56 +172,81 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   child: Column(
                     children: [
-                      Visibility(
-                        visible: _selectedIndex == 2,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 8),
-                          child: Row(
-                            children: [
-                              ElevatedButton.icon(
-                                onPressed: () => _showJobinfoFormModal(
-                                  context,
-                                  deviceSize.height,
-                                  _selectedIndex,
+                      AnimatedOpacity(
+                        opacity: _selectedIndex == 2 ? 1.0 : 0.0,
+                        duration: const Duration(milliseconds: 700),
+                        curve: Curves.easeInOut,
+                        child: Visibility(
+                          visible: _selectedIndex == 2,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: Row(
+                              children: [
+                                ElevatedButton.icon(
+                                  onPressed: () => _showJobinfoFormModal(
+                                    context,
+                                    deviceSize.height,
+                                    _selectedIndex,
+                                  ),
+                                  icon: const Icon(Icons.add, size: 15),
+                                  label: const Text('ایجاد', style: TextStyle(fontSize: 13)),
                                 ),
-                                icon: const Icon(Icons.add, size: 15),
-                                label: const Text('ایجاد', style: TextStyle(fontSize: 13)),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                      Visibility(
-                        visible: _selectedIndex == 3,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 8),
-                          child: Row(
-                            children: [
-                              ElevatedButton.icon(
-                                onPressed: () {
-                                  _showJobinfoFormModal(context, deviceSize.height, _selectedIndex);
-                                },
-                                icon: const Icon(Icons.add, size: 15),
-                                label: const Text('ایجاد', style: TextStyle(fontSize: 13)),
-                              ),
-                            ],
+                      AnimatedOpacity(
+                        opacity: _selectedIndex == 3 ? 1.0 : 0.0,
+                        duration: const Duration(milliseconds: 700),
+                        curve: Curves.easeInOut,
+                        child: Visibility(
+                          visible: _selectedIndex == 3,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: Row(
+                              children: [
+                                ElevatedButton.icon(
+                                  onPressed: () {
+                                    _showJobinfoFormModal(context, deviceSize.height, _selectedIndex);
+                                  },
+                                  icon: const Icon(Icons.add, size: 15),
+                                  label: const Text('ایجاد', style: TextStyle(fontSize: 13)),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                      Visibility(
-                        visible: _selectedIndex == 1,
-                        child: UserBirthCertificateForm(
-                          birthDate: _birthDate,
-                          selectDate: _selectDate,
-                          startEmployeeTime: startEmployeeTime,
-                          endEmployeeTime: endEmployeeTime,
+                      AnimatedOpacity(
+                        opacity: _selectedIndex == 1 ? 1.0 : 0.0,
+                        duration: const Duration(milliseconds: 700),
+                        curve: Curves.easeInOut,
+                        child: Visibility(
+                          visible: _selectedIndex == 1,
+                          child: UserBirthCertificateForm(
+                            birthDate: _birthDate,
+                            selectDate: _selectDate,
+                            startEmployeeTime: startEmployeeTime,
+                            endEmployeeTime: endEmployeeTime,
+                          ),
                         ),
                       ),
-                      Visibility(
-                        visible: _selectedIndex == 2,
-                        child: UserJobInfo(),
+                      AnimatedOpacity(
+                        opacity: _selectedIndex == 2 ? 1.0 : 0.0,
+                        duration: const Duration(milliseconds: 700),
+                        curve: Curves.easeInOut,
+                        child: Visibility(
+                          visible: _selectedIndex == 2,
+                          child: UserJobInfo(),
+                        ),
                       ),
-                      Visibility(visible: _selectedIndex == 3, child: const UserEducationInfo())
+                      AnimatedOpacity(
+                        opacity: _selectedIndex == 3 ? 1.0 : 0.0,
+                        duration: const Duration(milliseconds: 700),
+                        curve: Curves.easeInOut,
+                        child: Visibility(visible: _selectedIndex == 3, child: const UserEducationInfo()),
+                      )
                     ],
                   ),
                 ),

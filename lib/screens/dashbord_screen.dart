@@ -77,13 +77,13 @@ class _DashbordScreenState extends State<DashbordScreen> {
               showMenu(
                 elevation: 1,
                 context: context,
-                position: RelativeRect.fromLTRB(0.0, 80.0, 1000.0, 0.0),
+                position: const RelativeRect.fromLTRB(0.0, 80.0, 1000.0, 0.0),
                 items: [
                   PopupMenuItem(
                     child: Stack(
                       children: [
                         const ListTile(
-                          contentPadding: EdgeInsets.symmetric(horizontal: 3.75, vertical: 0),
+                          contentPadding: EdgeInsets.symmetric(horizontal: 1.5, vertical: 0),
                           leading: CircleAvatar(
                             backgroundImage: AssetImage('assets/images/avatar.png'),
                             radius: 16,
@@ -127,7 +127,7 @@ class _DashbordScreenState extends State<DashbordScreen> {
                       child: const ListTile(
                         contentPadding: EdgeInsets.zero,
                         leading: Icon(Icons.logout, size: 20, color: Colors.red),
-                        title: Text('خروج', style: TextStyle(fontSize: 14, color: Colors.red)),
+                        title: Text('خروج', style: TextStyle(fontSize: 14)),
                       ),
                     ),
                   ),

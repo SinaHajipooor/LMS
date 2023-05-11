@@ -48,7 +48,7 @@ class NewsList extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: AspectRatio(
-              aspectRatio: 2 / 1.5,
+              aspectRatio: 2 / 1.25,
               child: Image.network(
                 newsItem['main_image'],
                 fit: BoxFit.cover,

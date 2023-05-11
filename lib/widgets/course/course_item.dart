@@ -47,9 +47,20 @@ class CourseItem extends StatelessWidget {
                   height: 120,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Image.network(
-                      courseImage,
-                      fit: BoxFit.cover,
+                    child: TweenAnimationBuilder<double>(
+                      duration: const Duration(milliseconds: 600),
+                      tween: Tween<double>(begin: 0, end: 1),
+                      builder: (context, value, child) {
+                        return Opacity(
+                          opacity: value,
+                          child: child,
+                        );
+                      },
+                      child: FadeInImage.assetNetwork(
+                        placeholder: 'assets/images/placeholder.png',
+                        image: courseImage,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
