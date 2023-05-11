@@ -88,7 +88,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         return StatefulBuilder(
           builder: (context, setState) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              // Scroll the modal to the top when the keyboard is open
               if (keyboardOffset > 0) {
                 setState(() {
                   _scrollController.animateTo(

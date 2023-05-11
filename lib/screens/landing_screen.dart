@@ -79,7 +79,11 @@ class _LandingScreenState extends State<LandingScreen> {
                         onPressed: () {
                           Navigator.of(context).pushNamed(HomeScreen.routeName);
                         },
-                        child: const Text('داشبورد', style: TextStyle(fontSize: 14)));
+                        child: const Text(
+                          'داشبورد',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      );
               },
             ),
           ],
@@ -94,7 +98,7 @@ class _LandingScreenState extends State<LandingScreen> {
                     const SizedBox(height: 15),
                     AnnoucementSlider(landingProvider.announcements),
                     const SizedBox(height: 30),
-                    Container(height: 320, child: NewsList(newsList: landingProvider.news)),
+                    SizedBox(height: 320, child: NewsList(newsList: landingProvider.news)),
                     const SizedBox(height: 10),
                     TmsSlider(landingProvider.tms),
                     const SizedBox(height: 20),

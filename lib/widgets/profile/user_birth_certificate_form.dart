@@ -20,18 +20,21 @@ class UserBirthCertificateForm extends StatelessWidget {
             Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'دین')),
           ],
         ),
+        const SizedBox(height: 10),
         Row(
           children: [
             Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'شهرمحل تولد')),
             Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'وضعیت پایان خدمت')),
           ],
         ),
+        const SizedBox(height: 10),
         Row(
           children: [
             Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'شهر صادرکننده')),
             Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'شهر')),
           ],
         ),
+        const SizedBox(height: 10),
         Row(
           children: [
             Expanded(
@@ -96,42 +99,49 @@ class UserBirthCertificateForm extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(height: 10),
         Row(
           children: [
             Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'آخرین شغل')),
             Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'وضعیت استخدام')),
           ],
         ),
+        const SizedBox(height: 10),
         Row(
           children: [
             Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'آخرین مدرک آموزشی')),
             Expanded(child: TextInput(value: '', placeholder: 'تلفن', onChanged: (value) {}, keyboardType: TextInputType.number)),
           ],
         ),
+        const SizedBox(height: 10),
         Row(
           children: [
             Expanded(child: TextInput(value: '', placeholder: 'نام لاتین', onChanged: (value) {})),
             Expanded(child: TextInput(value: '', placeholder: 'تلفن محل‌کار', onChanged: (value) {}, keyboardType: TextInputType.number)),
           ],
         ),
+        const SizedBox(height: 10),
         Row(
           children: [
             Expanded(child: TextInput(value: '', placeholder: 'شماره شناسنامه', onChanged: (value) {}, keyboardType: TextInputType.number)),
             Expanded(child: TextInput(value: '', placeholder: 'نام پدر', onChanged: (value) {})),
           ],
         ),
+        const SizedBox(height: 10),
         Row(
           children: [
             Expanded(child: TextInput(value: '', placeholder: 'سری شناسنامه', onChanged: (value) {})),
             Expanded(child: TextInput(value: '', placeholder: 'سریال‌شناسنامه', onChanged: (value) {})),
           ],
         ),
+        const SizedBox(height: 10),
         Row(
           children: [
             Expanded(child: TextInput(value: '', placeholder: 'شماره‌شبا', onChanged: (value) {}, keyboardType: TextInputType.number)),
             Expanded(child: TextInput(value: '', placeholder: 'کد‌پستی', onChanged: (value) {}, keyboardType: TextInputType.number)),
           ],
         ),
+        const SizedBox(height: 10),
         Row(
           children: [
             Expanded(child: TextInput(value: '', placeholder: 'آدرس', onChanged: (value) {})),
@@ -167,6 +177,7 @@ class UserBirthCertificateForm extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(height: 10),
       ],
     );
   }
