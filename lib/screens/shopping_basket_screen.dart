@@ -35,26 +35,35 @@ class _ShoppingBasketScreenState extends State<ShoppingBasketScreen> {
 
 // ------------------ methods -----------------
   Future<void> fetchCourseShippingDetails(int courseId) async {
-    setState(() {
-      _isLoading = true;
-    });
+    if (mounted) {
+      setState(() {
+        _isLoading = true;
+      });
+    }
+
     await Provider.of<CourseProvider>(context, listen: false).fetchCourseShippingDetails(courseId);
-    setState(() {
-      courseInfo = Provider.of<CourseProvider>(context, listen: false).courseShippingDetails;
-      _isLoading = false;
-    });
+    if (mounted) {
+      setState(() {
+        courseInfo = Provider.of<CourseProvider>(context, listen: false).courseShippingDetails;
+        _isLoading = false;
+      });
+    }
   }
 
   void setSelectedPaymentApproach(int paymentApproach) {
-    setState(() {
-      selectedPaymentApproach = paymentApproach;
-    });
+    if (mounted) {
+      setState(() {
+        selectedPaymentApproach = paymentApproach;
+      });
+    }
   }
 
   void setSelectedPaymentGateways(int paymentGateways) {
-    setState(() {
-      selectedPaymentGateway = paymentGateways;
-    });
+    if (mounted) {
+      setState(() {
+        selectedPaymentGateway = paymentGateways;
+      });
+    }
   }
 
 // ------------------ UI ---------------------
@@ -129,26 +138,35 @@ class _ShoppingBasketScreenState extends State<ShoppingBasketScreen> {
                                   selectedPaymentGateway: selectedPaymentGateway,
                                   paymentGateways: Provider.of<CourseProvider>(context).coursePaymentGateways,
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 5, left: 15),
+                                const SizedBox(height: 25),
+                                Container(
+                                  height: 45,
+                                  width: double.infinity,
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.stretch,
                                     children: [
-                                      Container(
-                                        width: 80,
-                                        height: 40,
-                                        decoration: BoxDecoration(
-                                          color: Colors.green,
-                                          borderRadius: BorderRadius.circular(5),
+                                      Expanded(
+                                          child: Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 2),
+                                        child: ElevatedButton(
+                                          onPressed: () => Navigator.of(context).pop(),
+                                          style: ButtonStyle(
+                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
+                                          ),
+                                          child: const Text('انصراف'),
                                         ),
-                                        child: FloatingActionButton(
+                                      )),
+                                      Expanded(
+                                          child: Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 2),
+                                        child: ElevatedButton(
                                           onPressed: () {},
-                                          elevation: 0,
-                                          backgroundColor: Colors.transparent,
-                                          foregroundColor: Colors.white,
+                                          style: ButtonStyle(
+                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                                          ),
                                           child: const Text('پرداخت'),
                                         ),
-                                      ),
+                                      )),
                                     ],
                                   ),
                                 ),
@@ -158,7 +176,7 @@ class _ShoppingBasketScreenState extends State<ShoppingBasketScreen> {
                         ),
                         Visibility(
                           visible: selectedPaymentApproach == 2,
-                          child: BankPaymentApproach(),
+                          child: const BankPaymentApproach(),
                         )
                       ],
                     ),

@@ -9,7 +9,6 @@ class CourseProvider with ChangeNotifier {
   static const _baseUrl = 'http://45.149.77.156:8082/api/course/electronic';
   static const _courseDetailUrl = 'http://45.149.77.156:8082/api/course/electronic/show';
   static const _courseShippingUrl = 'http://45.149.77.156:8082/api/course/electronic/shipping';
-
   List _courses = [];
   Map<String, dynamic>? _courseDetails;
   Map<String, dynamic>? _courseShippingDetails;
