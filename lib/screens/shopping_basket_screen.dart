@@ -104,79 +104,94 @@ class _ShoppingBasketScreenState extends State<ShoppingBasketScreen> {
                           selectedPaymentApproach: selectedPaymentApproach,
                           finalAmount: courseInfo?['final_amount'],
                         ),
-                        Visibility(
-                          visible: selectedPaymentApproach == 0,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Container(
-                                width: 80,
-                                height: 40,
-                                decoration: BoxDecoration(
-                                  color: Colors.green,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: FloatingActionButton(
-                                  onPressed: () {},
-                                  elevation: 0,
-                                  backgroundColor: Colors.transparent,
-                                  foregroundColor: Colors.white,
-                                  child: const Text('تایید'),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Visibility(
-                          visible: selectedPaymentApproach == 1,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                            child: Column(
+                        AnimatedOpacity(
+                          opacity: selectedPaymentApproach == 0 ? 1.0 : 0.0,
+                          duration: const Duration(milliseconds: 700),
+                          curve: Curves.easeInOut,
+                          child: Visibility(
+                            visible: selectedPaymentApproach == 0,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                PaymentGatewaysSelector(
-                                  onSelectPaymentGateway: setSelectedPaymentGateways,
-                                  selectedPaymentGateway: selectedPaymentGateway,
-                                  paymentGateways: Provider.of<CourseProvider>(context).coursePaymentGateways,
-                                ),
-                                const SizedBox(height: 25),
                                 Container(
-                                  height: 45,
-                                  width: double.infinity,
-                                  child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                                    children: [
-                                      Expanded(
-                                          child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 2),
-                                        child: ElevatedButton(
-                                          onPressed: () => Navigator.of(context).pop(),
-                                          style: ButtonStyle(
-                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
-                                          ),
-                                          child: const Text('انصراف'),
-                                        ),
-                                      )),
-                                      Expanded(
-                                          child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 2),
-                                        child: ElevatedButton(
-                                          onPressed: () {},
-                                          style: ButtonStyle(
-                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-                                          ),
-                                          child: const Text('پرداخت'),
-                                        ),
-                                      )),
-                                    ],
+                                  width: 80,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: FloatingActionButton(
+                                    onPressed: () {},
+                                    elevation: 0,
+                                    backgroundColor: Colors.transparent,
+                                    foregroundColor: Colors.white,
+                                    child: const Text('تایید'),
                                   ),
                                 ),
                               ],
                             ),
                           ),
                         ),
-                        Visibility(
-                          visible: selectedPaymentApproach == 2,
-                          child: const BankPaymentApproach(),
+                        AnimatedOpacity(
+                          opacity: selectedPaymentApproach == 1 ? 1.0 : 0.0,
+                          duration: const Duration(milliseconds: 700),
+                          curve: Curves.easeInOut,
+                          child: Visibility(
+                            visible: selectedPaymentApproach == 1,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                              child: Column(
+                                children: [
+                                  PaymentGatewaysSelector(
+                                    onSelectPaymentGateway: setSelectedPaymentGateways,
+                                    selectedPaymentGateway: selectedPaymentGateway,
+                                    paymentGateways: Provider.of<CourseProvider>(context).coursePaymentGateways,
+                                  ),
+                                  const SizedBox(height: 25),
+                                  Container(
+                                    height: 45,
+                                    width: double.infinity,
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                                      children: [
+                                        Expanded(
+                                            child: Padding(
+                                          padding: const EdgeInsets.symmetric(horizontal: 2),
+                                          child: ElevatedButton(
+                                            onPressed: () => Navigator.of(context).pop(),
+                                            style: ButtonStyle(
+                                              backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
+                                            ),
+                                            child: const Text('انصراف'),
+                                          ),
+                                        )),
+                                        Expanded(
+                                            child: Padding(
+                                          padding: const EdgeInsets.symmetric(horizontal: 2),
+                                          child: ElevatedButton(
+                                            onPressed: () {},
+                                            style: ButtonStyle(
+                                              backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                                            ),
+                                            child: const Text('پرداخت'),
+                                          ),
+                                        )),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        AnimatedOpacity(
+                          opacity: selectedPaymentApproach == 2 ? 1.0 : 0.0,
+                          duration: const Duration(milliseconds: 700),
+                          curve: Curves.easeInOut,
+                          child: Visibility(
+                            visible: selectedPaymentApproach == 2,
+                            child: const BankPaymentApproach(),
+                          ),
                         )
                       ],
                     ),

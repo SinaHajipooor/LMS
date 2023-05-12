@@ -20,9 +20,13 @@ class CourseShippingDetails extends StatelessWidget {
                   height: 80,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    image: DecorationImage(
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: FadeInImage.assetNetwork(
+                      placeholder: 'assets/images/placeholder.png',
+                      image: courseInfo['main_image'],
                       fit: BoxFit.cover,
-                      image: NetworkImage(courseInfo['main_image']),
                     ),
                   ),
                 ),
