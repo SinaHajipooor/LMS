@@ -92,7 +92,7 @@ class CourseShippingDetails extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Row(
-                    children: [const Text('قیمت نهایی : '), Text(courseInfo['final_amount'], style: const TextStyle(fontSize: 18, color: Colors.blue))],
+                    children: [const Text('قیمت نهایی : '), Text(courseInfo['final_amount'], style: const TextStyle(fontSize: 18, color: Colors.blue)), const Text(' تومان', style: TextStyle(fontSize: 16, color: Colors.blue))],
                   ),
                 ),
                 const SizedBox(height: 20),

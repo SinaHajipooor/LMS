@@ -65,11 +65,10 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
         return Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 10, right: 5),
+              padding: const EdgeInsets.only(top: 20, right: 5),
               child: Row(
                 children: [
-                  Container(
-                    width: deviceSize.width / 2.25,
+                  Expanded(
                     child: Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -100,8 +99,7 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
                       ),
                     ),
                   ),
-                  Container(
-                    width: deviceSize.width / 2,
+                  Expanded(
                     child: Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -156,13 +154,35 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
                 ),
               ),
             ),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.only(left: 5, bottom: 5),
+            const SizedBox(height: 40),
+            Container(
+              height: 42,
+              width: double.infinity,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  ElevatedButton(onPressed: () {}, child: const Text('تایید')),
+                  Expanded(
+                      child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 2),
+                    child: ElevatedButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
+                      ),
+                      child: const Text('انصراف'),
+                    ),
+                  )),
+                  Expanded(
+                      child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 2),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                      ),
+                      child: const Text('ثبت'),
+                    ),
+                  )),
                 ],
               ),
             ),
