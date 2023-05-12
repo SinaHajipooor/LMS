@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/screens/landing_screen.dart';
 import 'package:provider/provider.dart';
 import '../../providers/Course/CourseProvider.dart';
 import '../../widgets/course/courses_list.dart';
@@ -47,50 +48,56 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 10,
-      child: Scaffold(
-        appBar: AppBar(
-          elevation: 1,
-          toolbarHeight: 12,
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
-          leading: null,
-          bottom: const TabBar(
-            unselectedLabelColor: Colors.black,
-            unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal, fontFamily: 'YekanBakh', fontSize: 12),
-            labelStyle: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'YekanBakh', fontSize: 14),
-            isScrollable: true,
-            labelColor: Colors.blue,
-            labelPadding: EdgeInsets.symmetric(horizontal: 25),
-            tabs: [
-              Tab(text: 'فرهنگی'),
-              Tab(text: 'ورزشی'),
-              Tab(text: 'فنی و مهندسی'),
-              Tab(text: 'هنر'),
-              Tab(text: 'پزشکی'),
-              Tab(text: 'فلسفه و عرفان'),
-              Tab(text: 'حقوق'),
-              Tab(text: 'حقوق'),
-              Tab(text: 'حقوق'),
-              Tab(text: 'حقوق'),
-            ],
+      child: WillPopScope(
+        onWillPop: () async {
+          Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
+          return false;
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            elevation: 1,
+            toolbarHeight: 12,
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.white,
+            leading: null,
+            bottom: const TabBar(
+              unselectedLabelColor: Colors.black,
+              unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal, fontFamily: 'YekanBakh', fontSize: 12),
+              labelStyle: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'YekanBakh', fontSize: 14),
+              isScrollable: true,
+              labelColor: Colors.blue,
+              labelPadding: EdgeInsets.symmetric(horizontal: 25),
+              tabs: [
+                Tab(text: 'فرهنگی'),
+                Tab(text: 'ورزشی'),
+                Tab(text: 'فنی و مهندسی'),
+                Tab(text: 'هنر'),
+                Tab(text: 'پزشکی'),
+                Tab(text: 'فلسفه و عرفان'),
+                Tab(text: 'حقوق'),
+                Tab(text: 'حقوق'),
+                Tab(text: 'حقوق'),
+                Tab(text: 'حقوق'),
+              ],
+            ),
           ),
+          body: _isLoading
+              ? const Center(child: Spinner(size: 40))
+              : TabBarView(
+                  children: [
+                    CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
+                    CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
+                    CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
+                    CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
+                    CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
+                    CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
+                    CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
+                    CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
+                    CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
+                    CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
+                  ],
+                ),
         ),
-        body: _isLoading
-            ? const Center(child: Spinner(size: 40))
-            : TabBarView(
-                children: [
-                  CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                  CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                  CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                  CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                  CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                  CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                  CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                  CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                  CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                  CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                ],
-              ),
       ),
     );
   }

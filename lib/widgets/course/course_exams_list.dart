@@ -66,7 +66,7 @@ class _CourseExamsListState extends State<CourseExamsList> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 680),
           curve: Curves.easeInOut,
-          height: _isExpanded ? 190 : 55,
+          height: _isExpanded ? 200 : 55,
           child: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
               return GestureDetector(
@@ -77,7 +77,7 @@ class _CourseExamsListState extends State<CourseExamsList> {
                 },
                 child: Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+                  padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 1),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,7 +107,7 @@ class _CourseExamsListState extends State<CourseExamsList> {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 12.0),
+                      const SizedBox(height: 1.0),
                       Expanded(
                         child: AnimatedOpacity(
                           duration: const Duration(milliseconds: 500),
