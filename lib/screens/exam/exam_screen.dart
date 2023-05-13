@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lms/widgets/exam/image_preview.dart';
-
 import '../../widgets/exam/exam_header.dart';
 import '../../widgets/exam/questions_list.dart';
 import '../../widgets/exam/answers_list.dart';
@@ -32,7 +30,7 @@ class _ExamScreenState extends State<ExamScreen> {
     "Question 1: What is Flutter?",
     "Question 1: What is Flutter?",
     "Question 1: What is Flutter?",
-    "Question 1: What is Flutter?" "Question 2: What is Dart?, Question 1: What is Flutter?" "Question 2: What is Dart?Question 1: What is Flutter?" "Question 2: What is Dart?",
+    "Question 1: What is Flutter?" "Question 2: What is Dart?, Question 1: What is Flutter?" "Question 2: What is Dart?Question 1: What is Flutter?" "Question 2: What dfgdngdf gjdfhgjdhfgdhjghgd hgjdfhg dfgjhfdjg dfj gfdjghd fghdf gjhdfhjfdhgdfjgdhfjgdfhg ghjdfhg dfjhgjdf ghjdf gjhdfjhfdg jhgdjf ityryryryryryryryrytrryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyys Dart?",
     "Question 3: What is a widget?",
     "Question 4: What is hot reload?",
   ];
@@ -164,6 +162,7 @@ class _ExamScreenState extends State<ExamScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Visibility(
+                              visible: selectedQuestionIndex != 0,
                               child: Padding(
                                 padding: const EdgeInsets.only(right: 10),
                                 child: ElevatedButton(
