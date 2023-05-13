@@ -44,7 +44,7 @@ class CircularTimer extends StatelessWidget {
           onStart();
         },
         onComplete: () {
-          onComplete();
+          onComplete(context);
         },
       ),
     );

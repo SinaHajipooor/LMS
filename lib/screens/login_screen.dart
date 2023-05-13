@@ -72,8 +72,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                child: Center(
-                  child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: Center(
                     child: isMobileLogin
                         ? Card(
                             elevation: 4,

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import '../elements/circular_timer.dart';
 
 class ExamHeader extends StatelessWidget {
-  const ExamHeader({super.key});
+  final Function finishExam;
+  const ExamHeader({super.key, required this.finishExam});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class ExamHeader extends StatelessWidget {
                       ),
                     ],
                   ),
-                  CircularTimer(duration: 90, onStart: () {}, onComplete: () {})
+                  CircularTimer(duration: 90, onStart: () {}, onComplete: finishExam)
                 ],
               ),
             ],

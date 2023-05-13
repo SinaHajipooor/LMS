@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:lms/screens/profile/profile_screen.dart';
 import 'package:provider/provider.dart';
 import 'providers/Landing/LandingProvider.dart';
 import './providers/Course/CourseProvider.dart';
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
             ElectronicCourseDetailScreen.routeName: (ctx) => const ElectronicCourseDetailScreen(),
             CourseAssessmentScreen.routeName: (ctx) => const CourseAssessmentScreen(),
             SimpleCoursesScreen.routeName: (ctx) => const SimpleCoursesScreen(),
+            ProfileScreen.routeName: (ctx) => const ProfileScreen(),
           },
         ),
       ),

@@ -11,6 +11,7 @@ import '../../widgets/profile/education_info_form.dart';
 import '../../widgets/elements/custom_appbar.dart';
 
 class ProfileScreen extends StatefulWidget {
+  static const routeName = '/profile-screen';
   const ProfileScreen({super.key});
 
   @override

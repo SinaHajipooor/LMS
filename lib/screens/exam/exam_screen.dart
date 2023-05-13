@@ -121,7 +121,7 @@ class _ExamScreenState extends State<ExamScreen> {
           padding: const EdgeInsets.only(top: 10),
           child: Column(
             children: [
-              const ExamHeader(),
+              ExamHeader(finishExam: _showAlert),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
