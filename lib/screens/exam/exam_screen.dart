@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/widgets/exam/image_preview.dart';
 
 import '../../widgets/exam/exam_header.dart';
 import '../../widgets/exam/questions_list.dart';
@@ -120,7 +121,7 @@ class _ExamScreenState extends State<ExamScreen> {
           padding: const EdgeInsets.only(top: 10),
           child: Column(
             children: [
-              ExamHeader(),
+              const ExamHeader(),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -163,16 +164,19 @@ class _ExamScreenState extends State<ExamScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Visibility(
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  if (selectedQuestionIndex > 0) {
-                                    _pageController.previousPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
-                                    setState(() {
-                                      selectedQuestionIndex--;
-                                    });
-                                  }
-                                },
-                                child: const Text('قبلی'),
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 10),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    if (selectedQuestionIndex > 0) {
+                                      _pageController.previousPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+                                      setState(() {
+                                        selectedQuestionIndex--;
+                                      });
+                                    }
+                                  },
+                                  child: const Text('قبلی'),
+                                ),
                               ),
                             ),
                             DropdownButton(
@@ -200,18 +204,21 @@ class _ExamScreenState extends State<ExamScreen> {
                                 );
                               },
                             ),
-                            ElevatedButton(
-                              onPressed: selectedQuestionIndex == _questions.length - 1
-                                  ? () => _showAlert(context)
-                                  : () {
-                                      if (selectedQuestionIndex < _questions.length - 1) {
-                                        _pageController.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
-                                        setState(() {
-                                          selectedQuestionIndex++;
-                                        });
-                                      }
-                                    },
-                              child: Text(selectedQuestionIndex == _questions.length - 1 ? 'پایان' : 'بعدی'),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: ElevatedButton(
+                                onPressed: selectedQuestionIndex == _questions.length - 1
+                                    ? () => _showAlert(context)
+                                    : () {
+                                        if (selectedQuestionIndex < _questions.length - 1) {
+                                          _pageController.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+                                          setState(() {
+                                            selectedQuestionIndex++;
+                                          });
+                                        }
+                                      },
+                                child: Text(selectedQuestionIndex == _questions.length - 1 ? 'پایان' : 'بعدی'),
+                              ),
                             )
                           ],
                         )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/widgets/exam/image_preview.dart';
 
 class Question extends StatelessWidget {
   final int index;
@@ -23,7 +24,19 @@ class Question extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(child: Text(text, style: const TextStyle(fontSize: 15))),
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                text,
+                style: const TextStyle(fontSize: 16),
+              ),
+              const SizedBox(width: 20),
+              ImagePreview(imagePath: 'http://45.149.77.156:8080/portal-assets/img/team/team-1.jpg'),
+            ],
+          ),
+        ),
       ],
     );
   }

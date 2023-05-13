@@ -25,7 +25,7 @@ class AnswersList extends StatelessWidget {
           return Answer(
             answerText: answers[answerIndex][answerIndex],
             answerId: answerIndex,
-            onSelect: (id) => onSelectAnswer,
+            onSelect: onSelectAnswer,
             selectedAnswerId: selectedAnswerId,
           );
         },
