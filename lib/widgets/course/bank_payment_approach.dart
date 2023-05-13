@@ -61,119 +61,118 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return Builder(builder: (context) {
-      return Builder(builder: (context) {
-        return Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20, right: 5),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      elevation: 1,
-                      child: InkWell(
-                        onTap: () => _selectFile(),
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            children: [
-                              const Icon(Icons.attach_file),
-                              const SizedBox(width: 16),
-                              Expanded(
-                                child: Text(
-                                  _selectedFile != null ? 'فایل انتخاب شد' : 'فایل سند',
-                                  style: const TextStyle(fontSize: 11),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
+      return Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 20, right: 5),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    elevation: 1,
+                    child: InkWell(
+                      onTap: () => _selectFile(),
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.attach_file),
+                            const SizedBox(width: 16),
+                            Expanded(
+                              child: Text(
+                                _selectedFile != null ? 'فایل انتخاب شد' : 'فایل سند',
+                                style: const TextStyle(fontSize: 11),
+                                overflow: TextOverflow.ellipsis,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      elevation: 1,
-                      child: InkWell(
-                        onTap: () {
-                          _selectDate(context);
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            children: [
-                              const Icon(Icons.calendar_today),
-                              const SizedBox(width: 16),
-                              Text(
-                                _selectedDate != null ? _selectedDate! : 'زمان سند را وارد کنید',
-                                style: TextStyle(fontSize: _selectedDate != null ? 13 : 10),
-                              ),
-                            ],
-                          ),
+                ),
+                Expanded(
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    elevation: 1,
+                    child: InkWell(
+                      onTap: () {
+                        _selectDate(context);
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.calendar_today),
+                            const SizedBox(width: 16),
+                            Text(
+                              _selectedDate != null ? _selectedDate! : 'زمان سند را وارد کنید',
+                              style: TextStyle(fontSize: _selectedDate != null ? 13 : 10),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            const SizedBox(height: 5),
-            Padding(
-              padding: const EdgeInsets.only(right: 5, left: 5),
-              child: Container(
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  elevation: 1,
-                  child: TextFormField(
-                    keyboardType: TextInputType.number,
-                    controller: _textEditingController,
-                    decoration: const InputDecoration(
-                      labelText: 'کد پیگیری را وارد کنید',
-                      labelStyle: TextStyle(fontSize: 12),
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    ),
+          ),
+          const SizedBox(height: 25),
+          Padding(
+            padding: const EdgeInsets.only(right: 5, left: 5),
+            child: Container(
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                elevation: 1,
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  controller: _textEditingController,
+                  decoration: const InputDecoration(
+                    labelText: 'کد پیگیری را وارد کنید',
+                    labelStyle: TextStyle(fontSize: 12),
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 40),
-            Container(
-              height: 42,
-              width: double.infinity,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Expanded(
-                      child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2),
-                    child: ElevatedButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
-                      ),
-                      child: const Text('انصراف'),
+          ),
+          const SizedBox(height: 50),
+          SizedBox(
+            height: 42,
+            width: double.infinity,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                    child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 2),
+                  child: ElevatedButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
                     ),
-                  )),
-                  Expanded(
-                      child: Padding(
+                    child: const Text('انصراف'),
+                  ),
+                )),
+                Expanded(
+                  child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 2),
                     child: ElevatedButton(
                       onPressed: () {},
@@ -182,13 +181,13 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
                       ),
                       child: const Text('ثبت'),
                     ),
-                  )),
-                ],
-              ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        );
-      });
+          ),
+        ],
+      );
     });
   }
 }
