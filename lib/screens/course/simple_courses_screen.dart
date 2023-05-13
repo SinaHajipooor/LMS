@@ -3,7 +3,6 @@ import 'package:lms/screens/landing_screen.dart';
 import 'package:provider/provider.dart';
 import '../../providers/Course/CourseProvider.dart';
 import '../../widgets/course/courses_list.dart';
-import '../../widgets/course/course_item.dart';
 import '../../widgets/elements/spinner.dart';
 
 class SimpleCoursesScreen extends StatefulWidget {
