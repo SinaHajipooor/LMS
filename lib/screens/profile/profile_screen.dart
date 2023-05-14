@@ -28,6 +28,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   int _selectedIndex = 1;
   final _scrollController = ScrollController();
   bool _isFabVisible = true;
+  double _bottomMargin = 0;
+
 // ------------- lifecycle -------------
   @override
   void initState() {
@@ -42,6 +44,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           _isFabVisible = true;
         });
       }
+      _scrollController.addListener(_handleScroll);
     });
   }
 
@@ -73,6 +76,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       _selectedIndex = value;
     });
+  }
+
+  void _handleScroll() {
+    if (_scrollController.position.atEdge) {
+      if (_scrollController.position.pixels == 0) {
+        // scrolled to top
+      } else {
+        // scrolled to bottom
+        setState(() {
+          _bottomMargin = 16;
+        });
+      }
+    } else {
+      setState(() {
+        _bottomMargin = 0;
+      });
+    }
   }
 
   void _showJobinfoFormModal(BuildContext context, double deviceHeight, int selectedIndex) {
@@ -153,133 +173,145 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    final margin = MediaQuery.of(context).size.width * .200;
     return WillPopScope(
       onWillPop: () async {
         Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
         return false;
       },
-      child: Scaffold(
-        body: Stack(
-          children: [
-            CustomScrollView(
-              controller: _scrollController,
-              slivers: [
-                const CustomAppbar(title: 'اطلاعات کاربری'),
-                SliverList(
-                  delegate: SliverChildListDelegate.fixed(
-                    [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: deviceSize.height / 2.5,
-                            child: UserInformationCard(onSelect: _onSelectInfo, selectedIndex: _selectedIndex),
-                          ),
-                          Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(32),
-                                topRight: Radius.circular(32),
+      child: NotificationListener(
+        onNotification: (notification) {
+          setState(() {
+            _bottomMargin = margin;
+          });
+          return true;
+        },
+        child: Scaffold(
+          body: Stack(
+            children: [
+              CustomScrollView(
+                controller: _scrollController,
+                slivers: [
+                  const CustomAppbar(title: 'اطلاعات کاربری'),
+                  SliverList(
+                    delegate: SliverChildListDelegate.fixed(
+                      [
+                        Container(
+                          margin: EdgeInsets.only(bottom: margin),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: deviceSize.height / 2.5,
+                                child: UserInformationCard(onSelect: _onSelectInfo, selectedIndex: _selectedIndex),
                               ),
-                            ),
-                            child: Column(
-                              children: [
-                                AnimatedOpacity(
-                                  opacity: _selectedIndex == 2 ? 1.0 : 0.0,
-                                  duration: const Duration(milliseconds: 700),
-                                  curve: Curves.easeInOut,
-                                  child: Visibility(
-                                    visible: _selectedIndex == 2,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 8),
-                                      child: Row(
-                                        children: [
-                                          ElevatedButton.icon(
-                                            onPressed: () => _showJobinfoFormModal(
-                                              context,
-                                              deviceSize.height,
-                                              _selectedIndex,
-                                            ),
-                                            icon: const Icon(Icons.add, size: 15),
-                                            label: const Text('ایجاد', style: TextStyle(fontSize: 13)),
+                              Container(
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(32),
+                                    topRight: Radius.circular(32),
+                                  ),
+                                ),
+                                child: Column(
+                                  children: [
+                                    AnimatedOpacity(
+                                      opacity: _selectedIndex == 2 ? 1.0 : 0.0,
+                                      duration: const Duration(milliseconds: 700),
+                                      curve: Curves.easeInOut,
+                                      child: Visibility(
+                                        visible: _selectedIndex == 2,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(right: 8),
+                                          child: Row(
+                                            children: [
+                                              ElevatedButton.icon(
+                                                onPressed: () => _showJobinfoFormModal(
+                                                  context,
+                                                  deviceSize.height,
+                                                  _selectedIndex,
+                                                ),
+                                                icon: const Icon(Icons.add, size: 15),
+                                                label: const Text('ایجاد', style: TextStyle(fontSize: 13)),
+                                              ),
+                                            ],
                                           ),
-                                        ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                                AnimatedOpacity(
-                                  opacity: _selectedIndex == 3 ? 1.0 : 0.0,
-                                  duration: const Duration(milliseconds: 700),
-                                  curve: Curves.easeInOut,
-                                  child: Visibility(
-                                    visible: _selectedIndex == 3,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 8),
-                                      child: Row(
-                                        children: [
-                                          ElevatedButton.icon(
-                                            onPressed: () {
-                                              _showJobinfoFormModal(context, deviceSize.height, _selectedIndex);
-                                            },
-                                            icon: const Icon(Icons.add, size: 15),
-                                            label: const Text('ایجاد', style: TextStyle(fontSize: 13)),
+                                    AnimatedOpacity(
+                                      opacity: _selectedIndex == 3 ? 1.0 : 0.0,
+                                      duration: const Duration(milliseconds: 700),
+                                      curve: Curves.easeInOut,
+                                      child: Visibility(
+                                        visible: _selectedIndex == 3,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(right: 8),
+                                          child: Row(
+                                            children: [
+                                              ElevatedButton.icon(
+                                                onPressed: () {
+                                                  _showJobinfoFormModal(context, deviceSize.height, _selectedIndex);
+                                                },
+                                                icon: const Icon(Icons.add, size: 15),
+                                                label: const Text('ایجاد', style: TextStyle(fontSize: 13)),
+                                              ),
+                                            ],
                                           ),
-                                        ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                                AnimatedOpacity(
-                                  opacity: _selectedIndex == 1 ? 1.0 : 0.0,
-                                  duration: const Duration(milliseconds: 700),
-                                  curve: Curves.easeInOut,
-                                  child: Visibility(
-                                    visible: _selectedIndex == 1,
-                                    child: UserBirthCertificateForm(
-                                      birthDate: _birthDate,
-                                      selectDate: _selectDate,
-                                      startEmployeeTime: startEmployeeTime,
-                                      endEmployeeTime: endEmployeeTime,
+                                    AnimatedOpacity(
+                                      opacity: _selectedIndex == 1 ? 1.0 : 0.0,
+                                      duration: const Duration(milliseconds: 700),
+                                      curve: Curves.easeInOut,
+                                      child: Visibility(
+                                        visible: _selectedIndex == 1,
+                                        child: UserBirthCertificateForm(
+                                          birthDate: _birthDate,
+                                          selectDate: _selectDate,
+                                          startEmployeeTime: startEmployeeTime,
+                                          endEmployeeTime: endEmployeeTime,
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 0,
-              child: Stack(
-                children: [
-                  AnimatedOpacity(
-                    opacity: _selectedIndex == 2 ? 1.0 : 0.0,
-                    duration: const Duration(milliseconds: 700),
-                    curve: Curves.easeInOut,
-                    child: Visibility(
-                      visible: _selectedIndex == 2,
-                      child: UserJobInfo(),
+                        ),
+                      ],
                     ),
-                  ),
-                  AnimatedOpacity(
-                    opacity: _selectedIndex == 3 ? 1.0 : 0.0,
-                    duration: const Duration(milliseconds: 700),
-                    curve: Curves.easeInOut,
-                    child: Visibility(visible: _selectedIndex == 3, child: const UserEducationInfo()),
-                  ),
+                  )
                 ],
               ),
-            ),
-          ],
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: Stack(
+                  children: [
+                    AnimatedOpacity(
+                      opacity: _selectedIndex == 2 ? 1.0 : 0.0,
+                      duration: const Duration(milliseconds: 700),
+                      curve: Curves.easeInOut,
+                      child: Visibility(
+                        visible: _selectedIndex == 2,
+                        child: UserJobInfo(),
+                      ),
+                    ),
+                    AnimatedOpacity(
+                      opacity: _selectedIndex == 3 ? 1.0 : 0.0,
+                      duration: const Duration(milliseconds: 700),
+                      curve: Curves.easeInOut,
+                      child: Visibility(visible: _selectedIndex == 3, child: const UserEducationInfo()),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

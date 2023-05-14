@@ -20,6 +20,7 @@ class _UserJobInfoState extends State<UserJobInfo> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Card(
+        margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.width * .200),
         elevation: 1,
         child: DataTable(
           dividerThickness: 0.5,

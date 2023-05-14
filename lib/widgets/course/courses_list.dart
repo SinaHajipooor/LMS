@@ -4,17 +4,17 @@ import './course_list_item.dart';
 
 class CoursesList extends StatelessWidget {
   // -------------- feilds ----------------
-  bool? showItems;
+  final bool showItems;
   final List<dynamic> electronicCourses;
-  CoursesList({super.key, this.showItems, required this.electronicCourses});
+  CoursesList({super.key, required this.showItems, required this.electronicCourses});
   // -------------- UI ----------------
   @override
   Widget build(BuildContext context) {
-    return showItems!
+    return showItems
         ? Padding(
             padding: const EdgeInsets.only(top: 10, bottom: 10),
             child: ListView.builder(
-              itemCount: 15,
+              itemCount: 8,
               itemBuilder: (context, index) => const CourseListItem(),
             ),
           )

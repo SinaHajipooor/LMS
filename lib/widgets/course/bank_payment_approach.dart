@@ -20,11 +20,6 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
   String? _selectedDate;
 
 //------------------- lifecycle -------------------
-  // @override
-  // void dispose() {
-  //   _textEditingController.dispose();
-  //   super.dispose();
-  // }
 
   // ------------------- methods --------------------
   Future<void> _selectFile() async {
