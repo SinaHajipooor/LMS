@@ -13,7 +13,7 @@ class BottomTabs extends StatefulWidget {
 }
 
 class _BottomTabsState extends State<BottomTabs> {
-  var _currentIndex = 0;
+  var _currentIndex = 2;
 
   final List<Widget> _screens = [
     const ElectronicCoursesScreen(),

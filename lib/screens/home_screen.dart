@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lms/navigation/bottom_tabas.dart';
 import 'package:lms/screens/landing_screen.dart';
-import '../navigation/app_bottom_tabs.dart';
 
 class HomeScreen extends StatelessWidget {
   // --------------- feilds -----------------
