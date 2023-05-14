@@ -120,7 +120,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Container(height: 85, width: 85, child: Image.asset('assets/images/favagostar-logo.png')),
+                            SizedBox(height: 85, width: 85, child: Image.asset('assets/images/favagostar-logo.png')),
                             const SizedBox(height: 16),
                             const Text('سازمان مرکز آموزش مدیریت دولتی', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                             const SizedBox(height: 38),
@@ -160,7 +160,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                                 : Center(child: Text('زمان باقی مانده : $remaining', style: TextStyle(fontSize: 14.0, color: Colors.grey.shade800))),
                             const SizedBox(height: 25),
                             Center(
-                              child: Container(
+                              child: SizedBox(
                                 width: deviceSize.width - 50,
                                 height: 45,
                                 child: ClipRRect(

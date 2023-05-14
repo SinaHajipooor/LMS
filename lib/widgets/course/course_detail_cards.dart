@@ -28,7 +28,7 @@ class CourseDetailCards extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
+            SizedBox(
               width: deviceSize.width / 5,
               child: Card(
                 elevation: 1,
@@ -38,7 +38,7 @@ class CourseDetailCards extends StatelessWidget {
                 ]),
               ),
             ),
-            Container(
+            SizedBox(
               width: deviceSize.width / 5,
               child: Card(
                 elevation: 1,
@@ -48,7 +48,7 @@ class CourseDetailCards extends StatelessWidget {
                 ]),
               ),
             ),
-            Container(
+            SizedBox(
               width: deviceSize.width / 5,
               child: Card(
                 elevation: 1,
@@ -58,7 +58,7 @@ class CourseDetailCards extends StatelessWidget {
                 ]),
               ),
             ),
-            Container(
+            SizedBox(
               width: deviceSize.width / 5,
               child: Card(
                 elevation: 1,
@@ -68,7 +68,7 @@ class CourseDetailCards extends StatelessWidget {
                 ]),
               ),
             ),
-            Container(
+            SizedBox(
               width: deviceSize.width / 5,
               child: Card(
                 elevation: 1,

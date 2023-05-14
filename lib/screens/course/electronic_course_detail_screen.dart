@@ -134,7 +134,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                             CourseDetailText(description: courseDetails?['description']),
                             CourseDetailCards(seasonsCount: courseDetails?['seasons_count'], sessionCount: courseDetails?['sessions_count'], time: courseDetails?['time'], studentsCount: courseDetails?['students_count'], lessonName: courseDetails?['lesson_id']),
                             const SizedBox(height: 15),
-                            Container(
+                            SizedBox(
                               width: deviceSize.width,
                               child: Row(
                                 children: [

@@ -50,7 +50,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                 width: double.infinity,
                 child: Row(
                   children: [
-                    Container(
+                    SizedBox(
                       height: 80,
                       width: deviceSize.width / 3,
                       child: Card(
@@ -64,7 +64,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: 80,
                       width: deviceSize.width / 3,
                       child: Card(
@@ -81,7 +81,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: 80,
                       width: deviceSize.width / 3,
                       child: Card(
@@ -101,7 +101,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 width: double.infinity,
                 child: Card(
                   elevation: 1,
@@ -116,7 +116,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                         ],
                       ),
                       const SizedBox(height: 30),
-                      Container(
+                      SizedBox(
                         width: double.infinity,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -165,7 +165,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: 60,
                 width: double.infinity,
                 child: Card(

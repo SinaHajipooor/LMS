@@ -85,7 +85,7 @@ class _ShoppingBasketScreenState extends State<ShoppingBasketScreen> {
           ? const Center(child: Spinner(size: 40))
           : Stack(
               children: [
-                Container(
+                SizedBox(
                   height: deviceSize.height,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -97,7 +97,7 @@ class _ShoppingBasketScreenState extends State<ShoppingBasketScreen> {
                       ),
                       const SizedBox(height: 20),
                       Expanded(
-                        child: Container(
+                        child: SizedBox(
                           child: Column(
                             children: [
                               PaymentApproachSelector(
@@ -166,7 +166,7 @@ class _ShoppingBasketScreenState extends State<ShoppingBasketScreen> {
                               paymentGateways: Provider.of<CourseProvider>(context).coursePaymentGateways,
                             ),
                             const SizedBox(height: 50),
-                            Container(
+                            SizedBox(
                               height: 45,
                               width: double.infinity,
                               child: Row(

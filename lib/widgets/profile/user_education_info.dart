@@ -84,7 +84,7 @@ class _UserEducationInfoState extends State<UserEducationInfo> {
                     },
                     itemBuilder: (BuildContext context) => [
                       PopupMenuItem(
-                        child: Container(
+                        child: SizedBox(
                           width: 110,
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,

@@ -123,7 +123,7 @@ class _ExamScreenState extends State<ExamScreen> {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
+                  child: SizedBox(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,

@@ -44,7 +44,7 @@ class CourseAssessment extends StatelessWidget {
     final deviceSize = MediaQuery.of(context).size;
     return InkWell(
       onTap: () => _showAlert(context, courseId),
-      child: Container(
+      child: SizedBox(
         width: deviceSize.width / 2,
         child: Card(
           elevation: 1,

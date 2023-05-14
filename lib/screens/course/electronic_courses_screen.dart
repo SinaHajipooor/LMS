@@ -85,7 +85,7 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
             ),
           ),
           body: _isLoading
-              ? Center(child: Spinner(size: 40))
+              ? const Center(child: Spinner(size: 40))
               : TabBarView(
                   children: [
                     CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),

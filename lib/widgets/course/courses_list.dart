@@ -15,7 +15,7 @@ class CoursesList extends StatelessWidget {
             padding: const EdgeInsets.only(top: 10, bottom: 10),
             child: ListView.builder(
               itemCount: 15,
-              itemBuilder: (context, index) => CourseListItem(),
+              itemBuilder: (context, index) => const CourseListItem(),
             ),
           )
         : ListView.builder(

@@ -42,7 +42,7 @@ class CourseItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             child: Row(
               children: [
-                Container(
+                SizedBox(
                   width: 130,
                   height: 120,
                   child: ClipRRect(

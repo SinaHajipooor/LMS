@@ -78,7 +78,7 @@ class _UserJobInfoState extends State<UserJobInfo> {
                     },
                     itemBuilder: (BuildContext context) => [
                       PopupMenuItem(
-                        child: Container(
+                        child: SizedBox(
                           width: 110,
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,

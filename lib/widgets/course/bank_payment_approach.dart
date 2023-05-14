@@ -59,7 +59,6 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
   // ------------------- UI --------------------
   @override
   Widget build(BuildContext context) {
-    final deviceSize = MediaQuery.of(context).size;
     return Builder(builder: (context) {
       return Column(
         children: [
@@ -134,7 +133,7 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
           const SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.only(right: 5, left: 5),
-            child: Container(
+            child: SizedBox(
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),

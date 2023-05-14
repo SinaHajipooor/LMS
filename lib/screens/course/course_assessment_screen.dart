@@ -97,7 +97,7 @@ class _CourseAssessmentScreenState extends State<CourseAssessmentScreen> {
         actions: [IconButton(onPressed: () => _showAlert(context), icon: const Icon(Icons.save_alt, color: Colors.green))],
       ),
       body: _isLoading
-          ? Center(child: Spinner(size: 35))
+          ? const Center(child: Spinner(size: 35))
           : ListView.builder(
               itemCount: _questions.length,
               itemBuilder: (ctx, i) {
@@ -105,7 +105,7 @@ class _CourseAssessmentScreenState extends State<CourseAssessmentScreen> {
                 int questionId = _questions[i]['id'];
                 return Column(
                   children: [
-                    Container(
+                    SizedBox(
                       width: double.infinity,
                       child: Card(
                         elevation: 1,

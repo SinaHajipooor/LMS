@@ -110,7 +110,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               padding: EdgeInsets.only(
                 bottom: keyboardOffset + MediaQuery.of(context).padding.bottom,
               ),
-              child: Container(
+              child: SizedBox(
                 height: selectedIndex == 2 ? deviceHeight * 0.6 : deviceHeight * 0.50,
                 child: Column(
                   children: [

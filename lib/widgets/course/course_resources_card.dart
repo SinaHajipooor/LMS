@@ -23,7 +23,7 @@ class CourseResourcesCard extends StatelessWidget {
           ),
         );
       },
-      child: Container(
+      child: SizedBox(
         width: deviceSize.width / 2,
         child: Card(
           elevation: 1,
