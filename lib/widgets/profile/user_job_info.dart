@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class UserJobInfo extends StatefulWidget {
+  const UserJobInfo({super.key});
+
   @override
   State<UserJobInfo> createState() => _UserJobInfoState();
 }

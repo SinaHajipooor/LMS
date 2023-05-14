@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
-import './user_info_selector.dart';
 
 class UserInformationCard extends StatefulWidget {
   int selectedIndex;

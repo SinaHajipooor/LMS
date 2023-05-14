@@ -4,7 +4,7 @@ import '../spinner.dart';
 class NewsList extends StatelessWidget {
   //----------------- fields -------------------
   final List<dynamic> newsList;
-  NewsList({required this.newsList});
+  const NewsList({super.key, required this.newsList});
   //----------------- UI -------------------
   @override
   Widget build(BuildContext context) {

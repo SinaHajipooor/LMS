@@ -5,7 +5,7 @@ class Question extends StatelessWidget {
   final int index;
   final String text;
 
-  const Question({required this.index, required this.text});
+  const Question({super.key, required this.index, required this.text});
 
   @override
   Widget build(BuildContext context) {
