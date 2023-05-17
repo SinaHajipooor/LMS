@@ -11,6 +11,7 @@ class ExamHeader extends StatelessWidget {
       margin: const EdgeInsets.only(top: 15),
       child: Card(
         elevation: 1,
+        shadowColor: Colors.blue,
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Column(

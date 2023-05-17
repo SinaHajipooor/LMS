@@ -40,55 +40,57 @@ class _UserInformationCardState extends State<UserInformationCard> {
               BoxShadow(blurRadius: 20, color: Colors.blue.withOpacity(0.1)),
             ],
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(24),
-                child: Row(
-                  children: [
-                    Stack(
-                      children: [
-                        ClipRRect(borderRadius: BorderRadius.circular(12), child: _imageFile != null ? Image.file(_imageFile!, width: 80, height: 80, fit: BoxFit.cover) : Image.network('http://45.149.77.156:8080/portal-assets/img/team/team-1.jpg', width: 80, height: 80, fit: BoxFit.cover)),
-                        Positioned(
-                          bottom: 0,
-                          left: 0,
-                          child: GestureDetector(
-                            onTap: _selectImage,
-                            child: Container(
-                              width: 20,
-                              height: 20,
-                              decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(12)),
-                              child: const Icon(Icons.add, size: 16, color: Colors.white),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Row(
+                    children: [
+                      Stack(
+                        children: [
+                          ClipRRect(borderRadius: BorderRadius.circular(12), child: _imageFile != null ? Image.file(_imageFile!, width: 80, height: 80, fit: BoxFit.cover) : Image.network('http://45.149.77.156:8080/portal-assets/img/team/team-1.jpg', width: 80, height: 80, fit: BoxFit.cover)),
+                          Positioned(
+                            bottom: 0,
+                            left: 0,
+                            child: GestureDetector(
+                              onTap: _selectImage,
+                              child: Container(
+                                width: 20,
+                                height: 20,
+                                decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(12)),
+                                child: const Icon(Icons.add, size: 16, color: Colors.white),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text('سیناحاجی‌پور', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                          SizedBox(height: 5),
-                          Text('فراگیر', style: TextStyle(fontSize: 11, color: Colors.blue)),
                         ],
                       ),
-                    )
-                  ],
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text('سیناحاجی‌پور', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                            SizedBox(height: 5),
+                            Text('فراگیر', style: TextStyle(fontSize: 11, color: Colors.blue)),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(32, 0, 32, 0),
-                child: Text('درباره من', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-              ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(32, 4, 32, 32),
-                child: Text('لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است', style: TextStyle(fontSize: 11)),
-              ),
-              const SizedBox(height: 24),
-            ],
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(32, 0, 32, 0),
+                  child: Text('درباره من', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+                ),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(32, 4, 32, 32),
+                  child: Text('لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است', style: TextStyle(fontSize: 11)),
+                ),
+                const SizedBox(height: 24),
+              ],
+            ),
           ),
         ),
         Positioned(

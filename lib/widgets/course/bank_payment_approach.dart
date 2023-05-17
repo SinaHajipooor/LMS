@@ -125,7 +125,7 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
               ],
             ),
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 5),
           Padding(
             padding: const EdgeInsets.only(right: 5, left: 5),
             child: SizedBox(
@@ -147,7 +147,7 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
               ),
             ),
           ),
-          const SizedBox(height: 50),
+          const SizedBox(height: 30),
           SizedBox(
             height: 42,
             width: double.infinity,
