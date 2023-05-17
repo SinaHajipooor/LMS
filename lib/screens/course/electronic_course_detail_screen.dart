@@ -33,7 +33,10 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
   Map<String, dynamic>? courseDetails;
   final _scrollController = ScrollController();
   bool _isFabVisible = true;
+  List<TextEditingController> inputControllers = List.generate(1, (index) => TextEditingController());
+
   // ---------------  lifecycle  ---------------
+
   @override
   void initState() {
     super.initState();
@@ -55,6 +58,12 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
     int courseId = ModalRoute.of(context)!.settings.arguments as int;
     fetchElectronicCourseDetails(courseId);
     super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    inputControllers.forEach((controller) => controller.dispose());
+    super.dispose();
   }
 
   // ---------------  methods ---------------
@@ -150,7 +159,9 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                             const SizedBox(height: 15),
                             CoursePriceCard(amount: courseDetails?['amount'], discount: courseDetails?['discount'], finalAmount: courseDetails?['final_amount']),
                             const SizedBox(height: 20),
-                            const CourseCommentsList(),
+                            Builder(builder: (context) {
+                              return const CourseCommentsList();
+                            }),
                           ],
                         ),
                       ),
