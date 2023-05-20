@@ -27,7 +27,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   List<TextEditingController> inputControllers = List.generate(10, (index) => TextEditingController());
   int _selectedIndex = 1;
   final _scrollController = ScrollController();
+  // ignore: unused_field
   bool _isFabVisible = true;
+  // ignore: unused_field
   double _bottomMargin = 0;
 
 // ------------- lifecycle -------------
