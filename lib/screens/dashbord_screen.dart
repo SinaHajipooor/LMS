@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/screens/profile/profile_screen.dart';
+import 'package:lms/widgets/dashbord/calender.dart';
 import '../navigation/app_drawer.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import '../providers/Auth/AuthProvider.dart';
@@ -156,6 +156,7 @@ class _DashbordScreenState extends State<DashbordScreen> {
         ],
       ),
       drawer: AppDrawer(),
+      body: FullCalendar(),
     );
   }
 }
