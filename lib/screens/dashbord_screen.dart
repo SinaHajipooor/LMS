@@ -155,8 +155,8 @@ class _DashbordScreenState extends State<DashbordScreen> {
           ),
         ],
       ),
-      drawer: AppDrawer(),
-      body: FullCalendar(),
+      drawer: const AppDrawer(),
+      body: EventCalendar(),
     );
   }
 }

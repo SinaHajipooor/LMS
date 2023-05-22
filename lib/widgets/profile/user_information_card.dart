@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 
+// ignore: must_be_immutable
 class UserInformationCard extends StatefulWidget {
   int selectedIndex;
   Function(int) onSelect; // final int selectedIndex

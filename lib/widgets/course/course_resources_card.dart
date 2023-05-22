@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
+
 import '../../screens/course/course_resources_screen.dart';
 
 class CourseResourcesCard extends StatelessWidget {

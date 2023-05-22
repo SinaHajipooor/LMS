@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../models/course/payment_gateways.dart';
 
 class PaymentGatewaysSelector extends StatelessWidget {
 //----------------- feilds -----------------

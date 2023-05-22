@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../widgets/elements/text_input.dart';
 import '../../widgets/elements/custom_dropdown.dart';
 
+// ignore: must_be_immutable
 class JobInfoForm extends StatelessWidget {
   String? birthDate;
   String? startEmployeeTime;

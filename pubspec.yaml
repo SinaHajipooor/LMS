@@ -50,7 +50,7 @@ dependencies:
   shared_preferences: ^2.1.0
   fl_chart: ^0.62.0
   circular_countdown_timer: ^0.2.3
-  table_calendar: ^3.0.9
+  syncfusion_flutter_calendar: ^21.2.5
 
 dev_dependencies:
   flutter_test:
