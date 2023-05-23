@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
       ],
       child: Consumer<AuthProvider>(
         builder: (ctx, auth, _) => MaterialApp(
+          locale: const Locale('fa', 'IR'),
           localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
           ],
           supportedLocales: const [
             Locale('fa'),
+            Locale('en', 'US'),
           ],
           title: 'LMS',
           debugShowCheckedModeBanner: false,

@@ -51,6 +51,9 @@ dependencies:
   fl_chart: ^0.62.0
   circular_countdown_timer: ^0.2.3
   syncfusion_flutter_calendar: ^21.2.5
+  shamsi_date: ^1.0.1
+  table_calendar: ^3.0.9
+  jdate: ^0.9.0
 
 dev_dependencies:
   flutter_test:
