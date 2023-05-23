@@ -133,7 +133,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 bottom: keyboardOffset + MediaQuery.of(context).padding.bottom,
               ),
               child: SizedBox(
-                height: selectedIndex == 2 ? deviceHeight * 0.6 : deviceHeight * 0.50,
+                height: selectedIndex == 2 ? deviceHeight * 0.65 : deviceHeight * 0.5,
                 child: Column(
                   children: [
                     Container(
@@ -218,52 +218,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 child: Column(
                                   children: [
                                     AnimatedOpacity(
-                                      opacity: _selectedIndex == 2 ? 1.0 : 0.0,
-                                      duration: const Duration(milliseconds: 700),
-                                      curve: Curves.easeInOut,
-                                      child: Visibility(
-                                        visible: _selectedIndex == 2,
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(right: 8),
-                                          child: Row(
-                                            children: [
-                                              ElevatedButton.icon(
-                                                onPressed: () => _showJobinfoFormModal(
-                                                  context,
-                                                  deviceSize.height,
-                                                  _selectedIndex,
-                                                ),
-                                                icon: const Icon(Icons.add, size: 15),
-                                                label: const Text('ایجاد', style: TextStyle(fontSize: 13)),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    AnimatedOpacity(
-                                      opacity: _selectedIndex == 3 ? 1.0 : 0.0,
-                                      duration: const Duration(milliseconds: 700),
-                                      curve: Curves.easeInOut,
-                                      child: Visibility(
-                                        visible: _selectedIndex == 3,
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(right: 8),
-                                          child: Row(
-                                            children: [
-                                              ElevatedButton.icon(
-                                                onPressed: () {
-                                                  _showJobinfoFormModal(context, deviceSize.height, _selectedIndex);
-                                                },
-                                                icon: const Icon(Icons.add, size: 15),
-                                                label: const Text('ایجاد', style: TextStyle(fontSize: 13)),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    AnimatedOpacity(
                                       opacity: _selectedIndex == 1 ? 1.0 : 0.0,
                                       duration: const Duration(milliseconds: 700),
                                       curve: Curves.easeInOut,
@@ -277,6 +231,58 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         ),
                                       ),
                                     ),
+                                    AnimatedOpacity(
+                                      opacity: _selectedIndex == 2 ? 1.0 : 0.0,
+                                      duration: const Duration(milliseconds: 700),
+                                      curve: Curves.easeInOut,
+                                      child: Visibility(
+                                        visible: _selectedIndex == 2,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(top: 5),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.symmetric(horizontal: 8),
+                                                child: ElevatedButton.icon(
+                                                  onPressed: () => _showJobinfoFormModal(
+                                                    context,
+                                                    deviceSize.height,
+                                                    _selectedIndex,
+                                                  ),
+                                                  icon: const Icon(Icons.add, size: 15),
+                                                  label: const Text('ایجاد', style: TextStyle(fontSize: 13)),
+                                                ),
+                                              ),
+                                              UserJobInfo(),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    AnimatedOpacity(
+                                      opacity: _selectedIndex == 3 ? 1.0 : 0.0,
+                                      duration: const Duration(milliseconds: 700),
+                                      curve: Curves.easeInOut,
+                                      child: Visibility(
+                                          visible: _selectedIndex == 3,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.symmetric(horizontal: 8),
+                                                child: ElevatedButton.icon(
+                                                  onPressed: () {
+                                                    _showJobinfoFormModal(context, deviceSize.height, _selectedIndex);
+                                                  },
+                                                  icon: const Icon(Icons.add, size: 15),
+                                                  label: const Text('ایجاد', style: TextStyle(fontSize: 13)),
+                                                ),
+                                              ),
+                                              UserEducationInfo(),
+                                            ],
+                                          )),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -287,30 +293,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   )
                 ],
-              ),
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: Stack(
-                  children: [
-                    AnimatedOpacity(
-                      opacity: _selectedIndex == 2 ? 1.0 : 0.0,
-                      duration: const Duration(milliseconds: 700),
-                      curve: Curves.easeInOut,
-                      child: Visibility(
-                        visible: _selectedIndex == 2,
-                        child: UserJobInfo(),
-                      ),
-                    ),
-                    AnimatedOpacity(
-                      opacity: _selectedIndex == 3 ? 1.0 : 0.0,
-                      duration: const Duration(milliseconds: 700),
-                      curve: Curves.easeInOut,
-                      child: Visibility(visible: _selectedIndex == 3, child: const UserEducationInfo()),
-                    ),
-                  ],
-                ),
               ),
             ],
           ),

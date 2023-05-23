@@ -29,7 +29,7 @@ class _DashbordScreenState extends State<DashbordScreen> {
               titleStyle: const TextStyle(fontWeight: FontWeight.bold),
               descStyle: const TextStyle(fontSize: 14),
               overlayColor: Colors.black.withOpacity(0.6),
-              animationType: AnimationType.fromTop,
+              animationType: AnimationType.grow,
               alertBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0), side: BorderSide.none),
             ),
             buttons: [

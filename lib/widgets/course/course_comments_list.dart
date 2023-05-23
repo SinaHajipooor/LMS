@@ -15,12 +15,12 @@ class CourseCommentsList extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text('نظرات‌کاربران', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
+                padding: EdgeInsets.only(top: 10),
+                child: Text('نظرات فراگیران', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
               ),
             ],
           ),
-          const Divider(),
+          // const Divider(),
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),

@@ -68,10 +68,10 @@ class _UserInformationCardState extends State<UserInformationCard> {
                         ],
                       ),
                       const SizedBox(width: 16),
-                      Expanded(
+                      const Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             Text('سیناحاجی‌پور', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                             SizedBox(height: 5),
                             Text('فراگیر', style: TextStyle(fontSize: 11, color: Colors.blue)),
@@ -106,7 +106,7 @@ class _UserInformationCardState extends State<UserInformationCard> {
           ),
         ),
         Positioned(
-          bottom: 32,
+          bottom: 34,
           left: 64,
           right: 64,
           child: Container(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:jdate/jdate.dart';
 
 class PersianFullCalendar extends StatefulWidget {
   const PersianFullCalendar({super.key});
@@ -57,7 +58,7 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
   }
 
   // Function to convert the Gregorian date to Persian (Solar) date
-  String _formatDate(DateTime date) {
+  String formatDate(DateTime date) {
     final jalali = Jalali.fromDateTime(date);
     final String formattedDate = '${jalali.year}/${jalali.month}/${jalali.day}';
     return formattedDate;
@@ -65,13 +66,23 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    DateTime now = DateTime.now();
+    Jalali jalaliDate = Jalali.fromDateTime(now);
+    String formattedDate = '${jalaliDate.formatter.mN} ${jalaliDate.formatter.yyyy}';
+    return Container(
+      margin: const EdgeInsets.only(top: 10),
       height: MediaQuery.of(context).size.height / 1.35,
       child: SfCalendar(
+        onTap: calendarOnTap,
         controller: _calendarController,
         dataSource: EventDataSource(_appointments),
         view: CalendarView.month,
         monthViewSettings: const MonthViewSettings(showAgenda: true),
+        headerDateFormat: formattedDate,
+        firstDayOfWeek: DateTime.saturday,
+        headerStyle: const CalendarHeaderStyle(
+          textStyle: TextStyle(locale: Locale('fa'), fontSize: 18, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
@@ -79,15 +90,17 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
   void calendarOnTap(CalendarTapDetails details) {
     if (details.targetElement == CalendarElement.calendarCell) {
       final selectedDate = details.date!;
-
-      // Convert Gregorian date to Shamsi date
       final shamsiDate = Jalali.fromDateTime(selectedDate);
       final formattedShamsiDate = '${shamsiDate.year}/${shamsiDate.month}/${shamsiDate.day}';
-
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("تاریخ انتخاب شده : $formattedShamsiDate"),
+          backgroundColor: Colors.blue,
+          content: Text(
+            "تاریخ انتخاب شده: $formattedShamsiDate",
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          ),
           duration: const Duration(seconds: 2),
+          behavior: SnackBarBehavior.fixed,
         ),
       );
     }

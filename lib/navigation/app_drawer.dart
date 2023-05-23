@@ -13,7 +13,7 @@ class AppDrawer extends StatelessWidget {
         AppBar(
           elevation: 1,
           backgroundColor: Colors.white,
-          title: const Text('فاواگستر سپهر', style: TextStyle(color: Colors.black)),
+          title: const Text('مرکز آموزش مدیریت دولتی', style: TextStyle(color: Colors.black, fontSize: 16)),
           automaticallyImplyLeading: false,
         ),
         const SizedBox(height: 10),
@@ -33,16 +33,6 @@ class AppDrawer extends StatelessWidget {
         ListTile(
           leading: const Icon(Icons.person),
           title: const Text('مدرسین'),
-          onTap: () {},
-        ),
-        ListTile(
-          leading: const Icon(Icons.person),
-          title: const Text('رابطین آموزشی'),
-          onTap: () {},
-        ),
-        ListTile(
-          leading: const Icon(Icons.question_answer, color: Colors.orange),
-          title: const Text('رابطین پژوهشی'),
           onTap: () {},
         ),
       ]),

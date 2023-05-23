@@ -122,7 +122,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                           children: [
                             SizedBox(height: 85, width: 85, child: Image.asset('assets/images/favagostar-logo.png')),
                             const SizedBox(height: 16),
-                            const Text('سازمان مرکز آموزش مدیریت دولتی', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                            const Text('سیستم یادگیری الکترونیک', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                             const SizedBox(height: 38),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
