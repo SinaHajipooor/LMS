@@ -21,38 +21,38 @@ class _DashbordScreenState extends State<DashbordScreen> {
 // --------------- methods -----------------
   _showAlert(BuildContext context) {
     Alert(
-            context: context,
-            type: AlertType.warning,
-            title: "خروج از حساب ",
-            desc: "آیا مطمعن هستید که از حساب خود خارج می‌شوید ؟",
-            style: AlertStyle(
-              titleStyle: const TextStyle(fontWeight: FontWeight.bold),
-              descStyle: const TextStyle(fontSize: 14),
-              overlayColor: Colors.black.withOpacity(0.6),
-              animationType: AnimationType.grow,
-              alertBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0), side: BorderSide.none),
-            ),
-            buttons: [
-              DialogButton(
-                onPressed: () {
-                  Provider.of<AuthProvider>(context, listen: false).logout();
-                  Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
-                },
-                width: 120,
-                color: Colors.green,
-                child: const Text("بله", style: TextStyle(color: Colors.white, fontSize: 20)),
-              ),
-              DialogButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                width: 120,
-                color: Colors.red[400],
-                child: const Text("خیر", style: TextStyle(color: Colors.white, fontSize: 20)),
-              ),
-            ],
-            closeIcon: const Icon(Icons.close, color: Colors.red))
-        .show();
+      context: context,
+      type: AlertType.warning,
+      title: "خروج از حساب ",
+      desc: "آیا مطمعن هستید که از حساب خود خارج می‌شوید ؟",
+      style: AlertStyle(
+        titleStyle: const TextStyle(fontWeight: FontWeight.bold),
+        descStyle: const TextStyle(fontSize: 14),
+        overlayColor: Colors.black.withOpacity(0.6),
+        animationType: AnimationType.grow,
+        alertBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0), side: BorderSide.none),
+      ),
+      buttons: [
+        DialogButton(
+          onPressed: () {
+            Provider.of<AuthProvider>(context, listen: false).logout();
+            Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
+          },
+          width: 120,
+          color: Colors.green,
+          child: const Text("بله", style: TextStyle(color: Colors.white, fontSize: 20)),
+        ),
+        DialogButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          width: 120,
+          color: Colors.red[400],
+          child: const Text("خیر", style: TextStyle(color: Colors.white, fontSize: 20)),
+        ),
+      ],
+      closeIcon: const Icon(Icons.close, color: Colors.red),
+    ).show();
   }
 
 // --------------- UI -----------------

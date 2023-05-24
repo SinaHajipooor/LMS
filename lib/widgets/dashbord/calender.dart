@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:jdate/jdate.dart';
 
 class PersianFullCalendar extends StatefulWidget {
   const PersianFullCalendar({super.key});
