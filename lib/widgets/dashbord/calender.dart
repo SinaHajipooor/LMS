@@ -3,7 +3,7 @@ import 'package:shamsi_date/shamsi_date.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class PersianFullCalendar extends StatefulWidget {
-  const PersianFullCalendar({super.key});
+  const PersianFullCalendar({Key? key}) : super(key: key);
 
   @override
   _PersianFullCalendarState createState() => _PersianFullCalendarState();
@@ -11,63 +11,52 @@ class PersianFullCalendar extends StatefulWidget {
 
 class _PersianFullCalendarState extends State<PersianFullCalendar> {
   late CalendarController _calendarController;
+  String? _headerDateFormat;
   List<Appointment> _appointments = <Appointment>[
     Appointment(
-      startTime: DateTime.now().add(const Duration(days: 1)),
-      endTime: DateTime.now().add(const Duration(days: 1)),
-      subject: 'Meeting',
-      color: Colors.blue,
-    ),
-    Appointment(
-      startTime: DateTime.now().add(const Duration(days: 2)),
-      endTime: DateTime.now().add(const Duration(days: 2)),
-      subject: 'Lunch',
-      color: Colors.green,
-    ),
-    Appointment(
-      startTime: DateTime.now().add(const Duration(days: 3)),
-      endTime: DateTime.now().add(const Duration(days: 3)),
-      subject: 'Conference',
-      color: Colors.purple,
-    ),
-    Appointment(
-      startTime: DateTime.now(),
-      endTime: DateTime.now(),
+      startTime: Jalali.now().toDateTime(), // Use Jalali.now() to get the current time as a Persian solar farsi date object
+      endTime: Jalali.now().toDateTime(),
       subject: 'Task 1',
       color: Colors.orange,
     ),
     Appointment(
-      startTime: DateTime.now(),
-      endTime: DateTime.now(),
-      subject: 'Task 2',
-      color: Colors.red,
+      startTime: Jalali.fromDateTime(DateTime.now().add(const Duration(days: 1))).toDateTime(), // Use Jalali.fromDateTime() to convert DateTime objects to Persian solar farsi date objects
+      endTime: Jalali.fromDateTime(DateTime.now().add(const Duration(days: 1))).toDateTime(),
+      subject: 'Meeting',
+      color: Colors.blue,
+    ),
+    Appointment(
+      startTime: Jalali.fromDateTime(DateTime.now().add(const Duration(days: 2))).toDateTime(),
+      endTime: Jalali.fromDateTime(DateTime.now().add(const Duration(days: 2))).toDateTime(),
+      subject: 'Lunch',
+      color: Colors.green,
+    ),
+    Appointment(
+      startTime: Jalali.fromDateTime(DateTime.now().add(const Duration(days: 3))).toDateTime(),
+      endTime: Jalali.fromDateTime(DateTime.now().add(const Duration(days: 3))).toDateTime(),
+      subject: 'Conference',
+      color: Colors.purple,
     ),
   ];
+
+  _PersianFullCalendarState() {
+    final now = DateTime.now();
+    final jalaliDate = Jalali.fromDateTime(now);
+    _headerDateFormat = '${jalaliDate.formatter.wN}، ${jalaliDate.formatter.d} ${jalaliDate.formatter.mN} ${jalaliDate.formatter.yyyy}';
+    _calendarController = CalendarController();
+  }
 
   @override
   void initState() {
     super.initState();
     _calendarController = CalendarController();
-  }
-
-  @override
-  void dispose() {
-    _calendarController.dispose();
-    super.dispose();
-  }
-
-  // Function to convert the Gregorian date to Persian (Solar) date
-  String formatDate(DateTime date) {
-    final jalali = Jalali.fromDateTime(date);
-    final String formattedDate = '${jalali.year}/${jalali.month}/${jalali.day}';
-    return formattedDate;
+    final now = DateTime.now();
+    final jalaliDate = Jalali.fromDateTime(now);
+    _headerDateFormat = '${jalaliDate.formatter.wN}، ${jalaliDate.formatter.d} ${jalaliDate.formatter.mN} ${jalaliDate.formatter.yyyy}';
   }
 
   @override
   Widget build(BuildContext context) {
-    DateTime now = DateTime.now();
-    Jalali jalaliDate = Jalali.fromDateTime(now);
-    String formattedDate = '${jalaliDate.formatter.mN} ${jalaliDate.formatter.yyyy}';
     return Container(
       margin: const EdgeInsets.only(top: 10),
       height: MediaQuery.of(context).size.height / 1.35,
@@ -77,11 +66,33 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
         dataSource: EventDataSource(_appointments),
         view: CalendarView.month,
         monthViewSettings: const MonthViewSettings(showAgenda: true),
-        headerDateFormat: formattedDate,
+        monthCellBuilder: (BuildContext context, MonthCellDetails details) {
+          final jalaliDate = Jalali.fromDateTime(details.date);
+          return Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey.shade300),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(jalaliDate.formatter.d),
+              ],
+            ),
+          );
+        },
+        headerDateFormat: _headerDateFormat,
         firstDayOfWeek: DateTime.saturday,
         headerStyle: const CalendarHeaderStyle(
           textStyle: TextStyle(locale: Locale('fa'), fontSize: 18, fontWeight: FontWeight.bold),
         ),
+        onViewChanged: (viewChangedDetails) {
+          final jalaliDate = Jalali.fromDateTime(_calendarController.displayDate ?? DateTime.now());
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            setState(() {
+              _headerDateFormat = '${jalaliDate.formatter.wN}، ${jalaliDate.formatter.d} ${jalaliDate.formatter.mN} ${jalaliDate.formatter.yyyy}';
+            });
+          });
+        },
       ),
     );
   }
@@ -91,17 +102,25 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
       final selectedDate = details.date!;
       final shamsiDate = Jalali.fromDateTime(selectedDate);
       final formattedShamsiDate = '${shamsiDate.year}/${shamsiDate.month}/${shamsiDate.day}';
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.blue,
-          content: Text(
-            "تاریخ انتخاب شده: $formattedShamsiDate",
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+
+      setState(() {
+        _headerDateFormat = '${shamsiDate.formatter.wN}، ${shamsiDate.formatter.d} ${shamsiDate.formatter.mN} ${shamsiDate.formatter.yyyy}';
+      });
+
+      // Schedule the snackbar to be shown after the current frame has been built
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.blue,
+            content: Text(
+              "تاریخ انتخاب شده: $formattedShamsiDate",
+              style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 14),
+            ),
+            duration: const Duration(seconds: 1),
+            behavior: SnackBarBehavior.fixed,
           ),
-          duration: const Duration(seconds: 2),
-          behavior: SnackBarBehavior.fixed,
-        ),
-      );
+        );
+      });
     }
   }
 }
@@ -129,5 +148,16 @@ class EventDataSource extends CalendarDataSource {
   @override
   Color getColor(int index) {
     return appointments![index].color ?? Colors.blue;
+  }
+
+  @override
+  String getLocation(int index) {
+    final startTime = appointments![index].startTime!;
+    final endTime = appointments![index].endTime!;
+    final startJalaliDate = Jalali.fromDateTime(startTime);
+    final endJalaliDate = Jalali.fromDateTime(endTime);
+    final formattedStartJalaliDate = '${startJalaliDate.formatter.yyyy}/${startJalaliDate.formatter.mm}/${startJalaliDate.formatter.dd}';
+    final formattedEndJalaliDate = '${endJalaliDate.formatter.yyyy}/${endJalaliDate.formatter.mm}/${endJalaliDate.formatter.dd}';
+    return 'تاریخ: $formattedStartJalaliDate - $formattedEndJalaliDate';
   }
 }

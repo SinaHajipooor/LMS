@@ -64,7 +64,7 @@ class _LandingScreenState extends State<LandingScreen> {
         appBar: AppBar(
           elevation: 1,
           automaticallyImplyLeading: false,
-          title: const Text('مرکز آموزش مدیریت دولتی', style: TextStyle(color: Colors.black, fontSize: 17)),
+          title: const Text('سیستم یادگیری الکترونیک', style: TextStyle(color: Colors.black, fontSize: 17)),
           backgroundColor: Colors.white,
           actions: [
             Consumer<AuthProvider>(

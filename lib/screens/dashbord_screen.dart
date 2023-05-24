@@ -156,7 +156,9 @@ class _DashbordScreenState extends State<DashbordScreen> {
         ],
       ),
       drawer: const AppDrawer(),
-      body: PersianFullCalendar(),
+      body: PersianFullCalendar(
+        key: UniqueKey(),
+      ),
     );
   }
 }
