@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  awesome_dialog:
+    dependency: "direct main"
+    description:
+      name: awesome_dialog
+      sha256: "7da175ea284fa5da0a4d0cbdfe835c5b71d30c7b38c1770c0f27f48272ff5a08"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -165,6 +173,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  graphs:
+    dependency: transitive
+    description:
+      name: graphs
+      sha256: aedc5a15e78fc65a6e23bcd927f24c64dd995062bcd1ca6eda65a3cff92a4d19
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.1"
   http:
     dependency: "direct main"
     description:
@@ -333,14 +349,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.5"
-  rflutter_alert:
-    dependency: "direct main"
+  rive:
+    dependency: transitive
     description:
-      name: rflutter_alert
-      sha256: a6ab258293eefede4326d0de08929b38a0182b57c7dd94af37d3c39d85612c4e
+      name: rive
+      sha256: "8bf4cd46f625a6b9816210145ba1201a23cf95ba1ae53dad3aa3e0ad193e6b4a"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.6"
+    version: "0.11.1"
+  rive_common:
+    dependency: transitive
+    description:
+      name: rive_common
+      sha256: "7153f296a9d58d1b02aaffaad938f65a92d820f8420c6c69134ecb2ed710f638"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.7"
   shamsi_date:
     dependency: "direct main"
     description:

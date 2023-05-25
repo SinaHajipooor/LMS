@@ -12,7 +12,7 @@ class PersianFullCalendar extends StatefulWidget {
 class _PersianFullCalendarState extends State<PersianFullCalendar> {
   late CalendarController _calendarController;
   String? _headerDateFormat;
-  List<Appointment> _appointments = <Appointment>[
+  final List<Appointment> _appointments = <Appointment>[
     Appointment(
       startTime: Jalali.now().toDateTime(), // Use Jalali.now() to get the current time as a Persian solar farsi date object
       endTime: Jalali.now().toDateTime(),
@@ -74,9 +74,7 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(jalaliDate.formatter.d),
-              ],
+              children: [Text(jalaliDate.formatter.d)],
             ),
           );
         },

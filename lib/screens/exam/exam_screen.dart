@@ -1,8 +1,8 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/exam/exam_header.dart';
 import '../../widgets/exam/questions_list.dart';
 import '../../widgets/exam/answers_list.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 import './exam_result_screen.dart';
 
 class ExamScreen extends StatefulWidget {
@@ -76,35 +76,25 @@ class _ExamScreenState extends State<ExamScreen> {
     });
   }
 
-  _showAlert(BuildContext context) {
-    Alert(
-            context: context,
-            type: AlertType.warning,
-            title: "پایان آزمون",
-            desc: "آیا از اتمام آزمون خود اطمینان دارید ؟",
-            style: AlertStyle(
-              titleStyle: const TextStyle(fontWeight: FontWeight.bold),
-              descStyle: const TextStyle(fontSize: 14),
-              overlayColor: Colors.black.withOpacity(0.6),
-              animationType: AnimationType.fromTop,
-              alertBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0), side: BorderSide.none),
-            ),
-            buttons: [
-              DialogButton(
-                onPressed: () => Navigator.of(context).pushReplacementNamed(ExamResultScreen.routeName, arguments: courseId),
-                width: 120,
-                color: Colors.green,
-                child: const Text("بله", style: TextStyle(color: Colors.white, fontSize: 20)),
-              ),
-              DialogButton(
-                onPressed: () => Navigator.of(context).pop(),
-                width: 120,
-                color: Colors.red[400],
-                child: const Text("خیر", style: TextStyle(color: Colors.white, fontSize: 20)),
-              ),
-            ],
-            closeIcon: const Icon(Icons.close, color: Colors.red))
-        .show();
+  void _showConfirmationAlert(BuildContext context, int courseId) {
+    AwesomeDialog(
+      context: context,
+      dialogType: DialogType.warning,
+      title: 'پایان آزمون',
+      titleTextStyle: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 17),
+      desc: 'آیا از اتمام آزمون خود اطمینان دارید ؟',
+      descTextStyle: const TextStyle(fontSize: 13),
+      btnCancelColor: Colors.red,
+      btnOkColor: const Color.fromARGB(255, 99, 223, 103),
+      btnOkText: 'بله',
+      buttonsBorderRadius: BorderRadius.circular(9),
+      btnCancelText: 'لغو',
+      buttonsTextStyle: const TextStyle(fontSize: 15),
+      btnCancelOnPress: () => Navigator.of(context).pop(),
+      btnOkOnPress: () {
+        Navigator.of(context).pushReplacementNamed(ExamResultScreen.routeName, arguments: courseId);
+      },
+    ).show();
   }
 
   // ------------------- UI -------------------
@@ -119,7 +109,7 @@ class _ExamScreenState extends State<ExamScreen> {
           padding: const EdgeInsets.only(top: 10),
           child: Column(
             children: [
-              ExamHeader(finishExam: _showAlert),
+              ExamHeader(finishExam: _showConfirmationAlert),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -207,7 +197,9 @@ class _ExamScreenState extends State<ExamScreen> {
                               padding: const EdgeInsets.only(left: 10),
                               child: ElevatedButton(
                                 onPressed: selectedQuestionIndex == _questions.length - 1
-                                    ? () => _showAlert(context)
+                                    ? () {
+                                        _showConfirmationAlert(context, courseId!);
+                                      }
                                     : () {
                                         if (selectedQuestionIndex < _questions.length - 1) {
                                           _pageController.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
