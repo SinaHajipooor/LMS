@@ -15,8 +15,19 @@ class UserInformationCard extends StatefulWidget {
 
 class _UserInformationCardState extends State<UserInformationCard> {
   //---------------- state -------------------
-
   File? _imageFile;
+  TextEditingController nationalIdController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
+
+  bool isEditing = true;
+  @override
+  void initState() {
+    super.initState();
+
+    nationalIdController.text = "1234567890"; // replace with actual data
+    phoneNumberController.text = "09123456789"; // replace with actual data
+  }
+
   //---------------- methods -------------------
   Future<void> _selectImage() async {
     final result = await FilePicker.platform.pickFiles(type: FileType.image);
