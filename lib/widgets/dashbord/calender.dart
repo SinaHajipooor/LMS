@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:syncfusion_flutter_core/core.dart';
 
 class PersianFullCalendar extends StatefulWidget {
   const PersianFullCalendar({Key? key}) : super(key: key);
@@ -64,6 +65,9 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
         onTap: calendarOnTap,
         controller: _calendarController,
         dataSource: EventDataSource(_appointments),
+        initialDisplayDate: Jalali.fromDateTime(DateTime.now()).toDateTime(),
+        initialSelectedDate: Jalali.fromDateTime(DateTime.now()).toDateTime(),
+        showNavigationArrow: true,
         view: CalendarView.month,
         monthViewSettings: const MonthViewSettings(showAgenda: true),
         monthCellBuilder: (BuildContext context, MonthCellDetails details) {
@@ -74,7 +78,9 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text(jalaliDate.formatter.d)],
+              children: [
+                Text(jalaliDate.formatter.d),
+              ],
             ),
           );
         },
@@ -99,25 +105,9 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
     if (details.targetElement == CalendarElement.calendarCell) {
       final selectedDate = details.date!;
       final shamsiDate = Jalali.fromDateTime(selectedDate);
-      final formattedShamsiDate = '${shamsiDate.year}/${shamsiDate.month}/${shamsiDate.day}';
-
+      // final formattedShamsiDate = '${shamsiDate.year}/${shamsiDate.month}/${shamsiDate.day}';
       setState(() {
         _headerDateFormat = '${shamsiDate.formatter.wN}، ${shamsiDate.formatter.d} ${shamsiDate.formatter.mN} ${shamsiDate.formatter.yyyy}';
-      });
-
-      // Schedule the snackbar to be shown after the current frame has been built
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            backgroundColor: Colors.blue,
-            content: Text(
-              "تاریخ انتخاب شده: $formattedShamsiDate",
-              style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 14),
-            ),
-            duration: const Duration(seconds: 1),
-            behavior: SnackBarBehavior.fixed,
-          ),
-        );
       });
     }
   }
