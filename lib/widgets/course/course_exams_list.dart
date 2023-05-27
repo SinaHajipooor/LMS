@@ -18,37 +18,6 @@ class _CourseExamsListState extends State<CourseExamsList> {
   bool _isExpanded = false;
 // --------------- methods ----------------
 
-  // _showAlert(BuildContext context, int examId) {
-  //   Map<String, dynamic> arguments = {'examId': examId, 'courseId': widget.courseId};
-  //   Alert(
-  //     context: context,
-  //     type: AlertType.warning,
-  //     title: "شروع آزمون",
-  //     desc: "آیا مطمعن هستید که آزمون را شروع می کنید ؟",
-  //     style: AlertStyle(
-  //       titleStyle: const TextStyle(fontWeight: FontWeight.bold),
-  //       descStyle: const TextStyle(fontSize: 14),
-  //       overlayColor: Colors.black.withOpacity(0.6),
-  //       animationType: AnimationType.fromTop,
-  //       alertBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0), side: BorderSide.none),
-  //     ),
-  //     buttons: [
-  //       DialogButton(
-  //         onPressed: () => Navigator.of(context).pushReplacementNamed(ExamScreen.routeName, arguments: arguments),
-  //         width: 120,
-  //         color: Colors.green,
-  //         child: const Text("بله", style: TextStyle(color: Colors.white, fontSize: 20)),
-  //       ),
-  //       DialogButton(
-  //         onPressed: () => Navigator.pop(context),
-  //         width: 120,
-  //         color: Colors.red[400],
-  //         child: const Text("خیر", style: TextStyle(color: Colors.white, fontSize: 20)),
-  //       ),
-  //     ],
-  //     closeIcon: const Icon(Icons.close, color: Colors.red),
-  //   ).show();
-  // }
   void _showConfirmationAlert(BuildContext context, int examId) {
     Map<String, dynamic> arguments = {'examId': examId, 'courseId': widget.courseId};
 

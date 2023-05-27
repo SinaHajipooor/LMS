@@ -11,9 +11,9 @@ class CourseCommentsList extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Text('نظرات فراگیران', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),

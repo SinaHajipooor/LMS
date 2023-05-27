@@ -16,17 +16,6 @@ class UserInformationCard extends StatefulWidget {
 class _UserInformationCardState extends State<UserInformationCard> {
   //---------------- state -------------------
   File? _imageFile;
-  TextEditingController nationalIdController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
-
-  bool isEditing = true;
-  @override
-  void initState() {
-    super.initState();
-
-    nationalIdController.text = "1234567890"; // replace with actual data
-    phoneNumberController.text = "09123456789"; // replace with actual data
-  }
 
   //---------------- methods -------------------
   Future<void> _selectImage() async {
@@ -137,9 +126,9 @@ class _UserInformationCardState extends State<UserInformationCard> {
                         color: widget.selectedIndex == 1 ? const Color.fromARGB(255, 43, 99, 241) : Colors.blue,
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [Text('اطلاعات\n شناسنامه‌ای', style: TextStyle(fontSize: 12, color: Colors.white), textAlign: TextAlign.center)],
+                        children: [Text('اطلاعات\n شناسنامه‌ای', style: TextStyle(fontSize: 12, color: Colors.white), textAlign: TextAlign.center)],
                       ),
                     ),
                   ),
@@ -156,9 +145,9 @@ class _UserInformationCardState extends State<UserInformationCard> {
                         color: widget.selectedIndex == 2 ? const Color.fromARGB(255, 43, 99, 241) : Colors.blue,
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [Text('اطلاعات \n شغلی', style: TextStyle(fontSize: 12, color: Colors.white), textAlign: TextAlign.center)],
+                        children: [Text('اطلاعات \n شغلی', style: TextStyle(fontSize: 12, color: Colors.white), textAlign: TextAlign.center)],
                       ),
                     ),
                   ),
@@ -175,9 +164,9 @@ class _UserInformationCardState extends State<UserInformationCard> {
                         color: widget.selectedIndex == 3 ? const Color.fromARGB(255, 43, 99, 241) : Colors.blue,
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [Text('اطلاعات \n تحصیلی', style: TextStyle(fontSize: 12, color: Colors.white), textAlign: TextAlign.center)],
+                        children: [Text('اطلاعات \n تحصیلی', style: TextStyle(fontSize: 12, color: Colors.white), textAlign: TextAlign.center)],
                       ),
                     ),
                   ),
