@@ -30,12 +30,11 @@ class ElectronicCourseDetailScreen extends StatefulWidget {
 
 class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScreen> {
   // ---------------  state  --------------
-  bool _isLoading = false;
+  bool _isLoading = true;
   Map<String, dynamic>? courseDetails;
   final _scrollController = ScrollController();
   bool _isFabVisible = true;
-  List<TextEditingController> inputControllers = List.generate(1, (index) => TextEditingController());
-
+  TextEditingController inputControllers = TextEditingController();
   // ---------------  lifecycle  ---------------
 
   @override
@@ -57,21 +56,20 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
   @override
   void didChangeDependencies() {
     int courseId = ModalRoute.of(context)!.settings.arguments as int;
+
     fetchElectronicCourseDetails(courseId);
+
     super.didChangeDependencies();
   }
 
   @override
   void dispose() {
-    inputControllers.forEach((controller) => controller.dispose());
+    inputControllers.dispose();
     super.dispose();
   }
 
   // ---------------  methods ---------------
   Future<void> fetchElectronicCourseDetails(int courseId) async {
-    setState(() {
-      _isLoading = true;
-    });
     await Provider.of<CourseProvider>(context, listen: false).fetchCourseDetails(courseId);
     setState(() {
       courseDetails = Provider.of<CourseProvider>(context, listen: false).courseDetails;
@@ -92,29 +90,29 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
         Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
         return false;
       },
-      child: _isLoading
-          ? const Center(child: Spinner(size: 40))
-          : Scaffold(
-              floatingActionButton: AnimatedOpacity(
-                opacity: _isFabVisible ? 1 : 0,
-                duration: const Duration(milliseconds: 200),
-                child: InkWell(
-                  onTap: () => submitCourse(),
-                  child: Container(
-                    width: 100,
-                    height: 48,
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(blurRadius: 20, color: Colors.blue.withOpacity(0.5)),
-                      ],
-                    ),
-                    child: const Center(child: Text('ثبت‌نام در دوره', style: TextStyle(color: Colors.white, fontSize: 13))),
-                  ),
-                ),
+      child: Scaffold(
+        floatingActionButton: AnimatedOpacity(
+          opacity: _isFabVisible ? 1 : 0,
+          duration: const Duration(milliseconds: 200),
+          child: InkWell(
+            onTap: () => submitCourse(),
+            child: Container(
+              width: 100,
+              height: 48,
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(blurRadius: 20, color: Colors.blue.withOpacity(0.5)),
+                ],
               ),
-              body: Stack(
+              child: const Center(child: Text('ثبت‌نام در دوره', style: TextStyle(color: Colors.white, fontSize: 13))),
+            ),
+          ),
+        ),
+        body: _isLoading
+            ? const Center(child: Spinner(size: 35))
+            : Stack(
                 children: [
                   CustomScrollView(
                     controller: _scrollController,
@@ -125,15 +123,15 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                       SliverList(
                         delegate: SliverChildListDelegate.fixed(
                           [
-                            CourseName(
-                              courseName: courseDetails?['title'],
-                            ),
+                            Consumer<CourseProvider>(builder: (context, myProvider, child) {
+                              return CourseName(courseName: myProvider.courseDetails['title']);
+                            }),
                             const SizedBox(height: 25),
                             const CourseTeachersList(),
                             const SizedBox(height: 35),
-                            CourseImage(
-                              imageUrl: courseDetails?['main_image'],
-                            ),
+                            Consumer<CourseProvider>(builder: (context, myProvider, child) {
+                              return CourseImage(imageUrl: myProvider.courseDetails['main_image']);
+                            }),
                             const Padding(
                               padding: EdgeInsets.fromLTRB(32, 20, 32, 16),
                               child: Text(
@@ -141,24 +139,38 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                                 style: TextStyle(fontSize: 18, color: Colors.blue, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            CourseDetailText(description: courseDetails?['description']),
-                            CourseDetailCards(seasonsCount: courseDetails?['seasons_count'], sessionCount: courseDetails?['sessions_count'], time: courseDetails?['time'], studentsCount: courseDetails?['students_count'], lessonName: courseDetails?['lesson_id']),
+                            Consumer<CourseProvider>(builder: (context, myProvider, child) {
+                              return CourseDetailText(description: myProvider.courseDetails['description']);
+                            }),
+                            Consumer<CourseProvider>(builder: (context, myProvider, child) {
+                              return CourseDetailCards(seasonsCount: myProvider.courseDetails['seasons_count'], sessionCount: myProvider.courseDetails['sessions_count'], time: myProvider.courseDetails['time'], studentsCount: myProvider.courseDetails['students_count'], lessonName: myProvider.courseDetails['lesson_id']);
+                            }),
                             const SizedBox(height: 15),
                             SizedBox(
                               width: deviceSize.width,
                               child: Row(
                                 children: [
-                                  CourseResourcesCard(seasons: courseDetails?['seasons'], courseId: courseDetails?['id']),
-                                  CourseAssessment(courseId: courseDetails?['id']),
+                                  Consumer<CourseProvider>(builder: (context, myProvider, child) {
+                                    return CourseResourcesCard(seasons: myProvider.courseDetails['seasons'], courseId: myProvider.courseDetails['id']);
+                                  }),
+                                  Consumer<CourseProvider>(builder: (context, myProvider, child) {
+                                    return CourseAssessment(courseId: myProvider.courseDetails['id']);
+                                  }),
                                 ],
                               ),
                             ),
                             const SizedBox(height: 20),
-                            CourseExamsList(title: 'آزمون‌ها', exams: courseDetails?['exams'], courseId: courseDetails?['id']),
+                            Consumer<CourseProvider>(builder: (context, myProvider, child) {
+                              return CourseExamsList(title: 'آزمون‌ها', exams: myProvider.courseDetails['exams'], courseId: myProvider.courseDetails['id']);
+                            }),
                             const SizedBox(height: 20),
-                            CourseDescription(title: 'گواهینامه', description: courseDetails?['description']),
+                            Consumer<CourseProvider>(builder: (context, myProvider, child) {
+                              return CourseDescription(title: 'گواهینامه', description: myProvider.courseDetails['description']);
+                            }),
                             const SizedBox(height: 15),
-                            CoursePriceCard(amount: courseDetails?['amount'], discount: courseDetails?['discount'], finalAmount: courseDetails?['final_amount']),
+                            Consumer<CourseProvider>(builder: (context, myProvider, child) {
+                              return CoursePriceCard(amount: myProvider.courseDetails['amount'], discount: myProvider.courseDetails['discount'], finalAmount: myProvider.courseDetails['final_amount']);
+                            }),
                             const SizedBox(height: 20),
                             const CourseCommentsList(),
                             const FeedbackWidget(),
@@ -186,7 +198,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                   ),
                 ],
               ),
-            ),
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/widgets/elements/spinner.dart';
 
 class CourseImage extends StatelessWidget {
   final String imageUrl;
@@ -13,12 +14,25 @@ class CourseImage extends StatelessWidget {
         topLeft: Radius.circular(32),
         topRight: Radius.circular(32),
       ),
-      child: FadeInImage.assetNetwork(
-        placeholder: 'assets/images/placeholder.png',
-        image: imageUrl,
+      child: Image.network(
+        imageUrl,
         height: deviceSize.height / 2.8,
         width: double.infinity,
         fit: BoxFit.cover,
+        errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) => Image.asset(
+          'assets/images/placeholder.png',
+          height: deviceSize.height / 2.8,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
+        loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+          if (loadingProgress == null) return child;
+          return const Center(
+            child: Spinner(
+              size: 25,
+            ),
+          );
+        },
       ),
     );
   }

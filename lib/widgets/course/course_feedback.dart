@@ -53,8 +53,11 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: TextField(
               controller: _textController,
+              onChanged: (values) {
+                print(values);
+              },
               maxLines: 3,
-              decoration: InputDecoration.collapsed(
+              decoration: const InputDecoration.collapsed(
                 hintText: 'لطفا متن نظر خود را اینجا وارد کنید',
                 hintStyle: TextStyle(color: Colors.grey, fontSize: 10),
               ),
