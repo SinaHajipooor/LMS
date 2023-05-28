@@ -12,7 +12,10 @@ class RatesAverageCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(padding: EdgeInsets.only(right: 8, top: 8), child: Text('میانگین امتیازات', style: TextStyle(color: Colors.black))),
+          const Padding(
+            padding: EdgeInsets.only(right: 8, top: 8),
+            child: Text('میانگین امتیازات', style: TextStyle(color: Colors.black)),
+          ),
           const SizedBox(height: 5),
           Center(
             child: RatingBarIndicator(

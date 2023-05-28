@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:syncfusion_flutter_core/core.dart';
 
 class PersianFullCalendar extends StatefulWidget {
   const PersianFullCalendar({Key? key}) : super(key: key);
@@ -64,9 +63,9 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
       child: SfCalendar(
         onTap: calendarOnTap,
         controller: _calendarController,
+        initialDisplayDate: Jalali.now().toDateTime(),
         dataSource: EventDataSource(_appointments),
-        initialDisplayDate: Jalali.fromDateTime(DateTime.now()).toDateTime(),
-        initialSelectedDate: Jalali.fromDateTime(DateTime.now()).toDateTime(),
+        initialSelectedDate: Jalali.now().toDateTime(),
         showNavigationArrow: true,
         view: CalendarView.month,
         monthViewSettings: const MonthViewSettings(showAgenda: true),

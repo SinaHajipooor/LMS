@@ -1,7 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-// import 'package:rflutter_alert/rflutter_alert.dart';
 import '../../widgets/exam/question.dart';
 import '../../widgets/course/course_assessment_answer.dart';
 import '../../providers/Course/CourseProvider.dart';
@@ -55,36 +54,7 @@ class _CourseAssessmentScreenState extends State<CourseAssessmentScreen> {
     });
   }
 
-  // _showAlert(BuildContext context) {
-  //   Alert(
-  //           context: context,
-  //           type: AlertType.warning,
-  //           title: "اتمام ارزشیابی",
-  //           desc: "همه‌ی پاسخ ها را ثبت می‌کنید ؟",
-  //           style: AlertStyle(
-  //             titleStyle: const TextStyle(fontWeight: FontWeight.bold),
-  //             descStyle: const TextStyle(fontSize: 14),
-  //             overlayColor: Colors.black.withOpacity(0.6),
-  //             animationType: AnimationType.grow,
-  //             alertBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0), side: BorderSide.none),
-  //           ),
-  //           buttons: [
-  //             DialogButton(
-  //               onPressed: () => Navigator.of(context).pushReplacementNamed(ElectronicCourseDetailScreen.routeName, arguments: courseId),
-  //               width: 120,
-  //               color: const Color.fromRGBO(0, 179, 134, 1.0),
-  //               child: const Text("بله", style: TextStyle(color: Colors.white, fontSize: 20)),
-  //             ),
-  //             DialogButton(
-  //               onPressed: () => Navigator.pop(context),
-  //               width: 120,
-  //               color: Colors.red,
-  //               child: const Text("خیر", style: TextStyle(color: Colors.white, fontSize: 20)),
-  //             ),
-  //           ],
-  //           closeIcon: const Icon(Icons.close, color: Colors.red))
-  //       .show();
-  // }
+
 
   void _showConfirmationAlert(BuildContext context) {
     AwesomeDialog(
