@@ -56,9 +56,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
   @override
   void didChangeDependencies() {
     int courseId = ModalRoute.of(context)!.settings.arguments as int;
-
     fetchElectronicCourseDetails(courseId);
-
     super.didChangeDependencies();
   }
 

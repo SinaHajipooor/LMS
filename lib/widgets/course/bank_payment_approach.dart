@@ -58,7 +58,7 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
       return Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 20, right: 5),
+            padding: const EdgeInsets.only(top: 30, right: 5),
             child: Row(
               children: [
                 Expanded(
@@ -125,7 +125,7 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
               ],
             ),
           ),
-          const SizedBox(height: 5),
+          const SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.only(right: 5, left: 5),
             child: SizedBox(
@@ -148,38 +148,6 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
             ),
           ),
           const SizedBox(height: 30),
-          SizedBox(
-            height: 42,
-            width: double.infinity,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Expanded(
-                    child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 2),
-                  child: ElevatedButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
-                    ),
-                    child: const Text('انصراف'),
-                  ),
-                )),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-                      ),
-                      child: const Text('ثبت'),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
         ],
       );
     });
