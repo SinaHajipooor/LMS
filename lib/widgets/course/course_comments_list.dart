@@ -41,19 +41,19 @@ class CourseCommentsList extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 12.0),
-                    Expanded(
+                    const Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
+                            children: [
                               Text('سینا‌حاجی‌پور', style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold)),
                               Text('11 بهمن', style: TextStyle(fontSize: 10.0, color: Colors.grey)),
                             ],
                           ),
-                          const SizedBox(height: 5.0),
-                          const Text(
+                          SizedBox(height: 5.0),
+                          Text(
                             'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است',
                             style: TextStyle(fontSize: 11.0),
                           ),
@@ -65,51 +65,7 @@ class CourseCommentsList extends StatelessWidget {
               );
             },
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(right: 12, top: 18),
-                child: Text('نظر خود را وارد کنید', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-              ),
-              RatingBarIndicator(
-                rating: 2.5,
-                itemBuilder: (context, _) => const Icon(Icons.star, color: Colors.amber),
-                itemSize: 20,
-              ),
-            ],
-          ),
-          Container(
-            height: 130,
-            margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.grey,
-                width: 0.5,
-              ),
-              borderRadius: BorderRadius.circular(3.0),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12.0),
-              child: TextField(
-                maxLines: 3,
-                decoration: InputDecoration.collapsed(
-                  hintText: 'لطفا متن نظر خود را اینجا وارد کنید',
-                  hintStyle: TextStyle(color: Colors.grey, fontSize: 10),
-                ),
-              ),
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TextButton(
-                onPressed: () {},
-                child: const Text('ثبت نظر', style: TextStyle(fontSize: 14)),
-              )
-            ],
-          )
+          const SizedBox(height: 15),
         ],
       ),
     );

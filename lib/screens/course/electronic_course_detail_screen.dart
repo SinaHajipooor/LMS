@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:lms/widgets/course/course_feedback.dart';
 import 'package:lms/widgets/course/course_price_card.dart';
 import '../../widgets/course/course_teachers_list.dart';
 import '../../widgets/course/course_image.dart';
@@ -159,9 +160,8 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                             const SizedBox(height: 15),
                             CoursePriceCard(amount: courseDetails?['amount'], discount: courseDetails?['discount'], finalAmount: courseDetails?['final_amount']),
                             const SizedBox(height: 20),
-                            Builder(builder: (context) {
-                              return const CourseCommentsList();
-                            }),
+                            const CourseCommentsList(),
+                            const FeedbackWidget(),
                           ],
                         ),
                       ),
