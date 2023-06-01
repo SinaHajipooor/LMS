@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/screens/landing_screen.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/course/courses_list.dart';
 import '../../widgets/elements/spinner.dart';
+import '../../providers/Course/SimpleCourseProvider.dart';
 
 class SimpleCoursesScreen extends StatefulWidget {
   static const routeName = '/simple-courses-screen';
@@ -23,6 +23,7 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
   @override
   void initState() {
     // getAllSimpleCourses();
+    getAllCourseGroups();
     super.initState();
   }
 
@@ -55,7 +56,6 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
   @override
   Widget build(BuildContext context) {
     final margin = MediaQuery.of(context).size.width * .200;
-// final deviceSize
     return DefaultTabController(
       length: _courseGroups.length,
       child: WillPopScope(
