@@ -10,13 +10,11 @@ class SimpleCourseProvider with ChangeNotifier {
   static const _courseDetailUrl = 'http://45.149.77.156:8082/api/course/simple/show';
   static const _courseShippingUrl = 'http://45.149.77.156:8082/api/course/simple/shipping';
   List _allSimpleCourses = [];
-  List _simpleCourses = [];
   List _courseGroup = [];
   Map<String, dynamic>? _courseDetails;
   Map<String, dynamic>? _courseShippingDetails;
   //------------ getter --------------
   List get allSimpleCourses => _allSimpleCourses;
-  List get simpleCourses => _simpleCourses;
   List get courseGroups => _courseGroup;
   Map<String, dynamic> get courseDetails => _courseDetails!;
   Map<String, dynamic> get courseShippingDetails => _courseShippingDetails!;
@@ -87,7 +85,7 @@ class SimpleCourseProvider with ChangeNotifier {
     }
   }
 
-  Future<void> fetchSimpleCoursesByGroupId(int groupId) async {
+  Future<List<dynamic>> fetchSimpleCoursesByGroupId(int groupId) async {
     try {
       final response = await http.get(
         Uri.parse(_basUrl + '?group_id=$groupId'),
@@ -95,8 +93,8 @@ class SimpleCourseProvider with ChangeNotifier {
       );
       if (response.statusCode != 200) throw Exception('failed to fetch the simple courses by group');
       final Map<String, dynamic>? responseData = jsonDecode(response.body) as Map<String, dynamic>?;
-      _simpleCourses = responseData?['result']['courses']['data'];
       notifyListeners();
+      return responseData?['result']['courses']['data'];
     } catch (error) {
       print(error);
       rethrow;

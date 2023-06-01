@@ -27,7 +27,7 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
   @override
   void initState() {
     getAllCourseGroups();
-    getAllElectronicCourses();
+    // getAllElectronicCourses();
     super.initState();
   }
 
@@ -37,14 +37,14 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
   }
 
 // --------------- methods -----------------
-  Future<void> getAllElectronicCourses() async {
-    await Provider.of<CourseProvider>(context, listen: false).fetchAllCourses();
-    if (mounted) {
-      setState(() {
-        _isLoading = false;
-      });
-    }
-  }
+  // Future<void> getAllElectronicCourses() async {
+  //   await Provider.of<CourseProvider>(context, listen: false).fetchAllCourses();
+  //   if (mounted) {
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+  //   }
+  // }
 
   Future<void> getAllCourseGroups() async {
     await Provider.of<CourseProvider>(context, listen: false).fetchElectronicCourseGroups();
