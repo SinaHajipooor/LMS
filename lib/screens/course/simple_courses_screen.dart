@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lms/screens/landing_screen.dart';
-import 'package:provider/provider.dart';
-import '../../providers/Course/CourseProvider.dart';
-import '../../widgets/course/courses_list.dart';
-import '../../widgets/elements/spinner.dart';
+// import 'package:provider/provider.dart';
+// import '../../providers/Course/CourseProvider.dart';
+// import '../../widgets/course/courses_list.dart';
+// import '../../widgets/elements/spinner.dart';
 
 class SimpleCoursesScreen extends StatefulWidget {
   static const routeName = '/simple-courses-screen';
@@ -15,16 +15,16 @@ class SimpleCoursesScreen extends StatefulWidget {
 
 class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
   // --------------- state --------------
-  var _showItems = false;
-  var _isLoading = false;
-  var _bottomPadding = 0.0;
+  // var _showItems = false;
+  // var _isLoading = false;
+  // var _bottomPadding = 0.0;
 
 // --------------- lifecycle -----------------
-  @override
-  void initState() {
-    getAllElectronicCourses();
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   getAllElectronicCourses();
+  //   super.initState();
+  // }
 
   @override
   void dispose() {
@@ -32,22 +32,22 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
   }
 
 // --------------- methods -----------------
-  Future<void> getAllElectronicCourses() async {
-    setState(() {
-      _isLoading = true;
-    });
-    await Provider.of<CourseProvider>(context, listen: false).fetchAllCourses();
-    if (mounted) {
-      setState(() {
-        _isLoading = false;
-      });
-    }
-  }
+  // Future<void> getAllElectronicCourses() async {
+  //   setState(() {
+  //     _isLoading = true;
+  //   });
+  //   await Provider.of<CourseProvider>(context, listen: false).fetchAllCourses();
+  //   if (mounted) {
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+  //   }
+  // }
 
 // --------------- UI -----------------
   @override
   Widget build(BuildContext context) {
-    final margin = MediaQuery.of(context).size.width * .200;
+    // final margin = MediaQuery.of(context).size.width * .200;
 
     return DefaultTabController(
       length: 8,
@@ -82,116 +82,116 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
               ],
             ),
           ),
-          body: _isLoading
-              ? const Center(child: Spinner(size: 40))
-              : TabBarView(
-                  children: [
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).courses, showItems: _showItems),
-                      ),
-                    ),
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).courses, showItems: _showItems),
-                      ),
-                    ),
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).courses, showItems: _showItems),
-                      ),
-                    ),
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).courses, showItems: _showItems),
-                      ),
-                    ),
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).courses, showItems: _showItems),
-                      ),
-                    ),
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).courses, showItems: _showItems),
-                      ),
-                    ),
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).courses, showItems: _showItems),
-                      ),
-                    ),
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).courses, showItems: _showItems),
-                      ),
-                    ),
-                  ],
-                ),
+          // body: _isLoading
+          //     ? const Center(child: Spinner(size: 40))
+          //     : TabBarView(
+          //         children: [
+          //           NotificationListener<ScrollEndNotification>(
+          //             onNotification: (notification) {
+          //               setState(() {
+          //                 // Add bottom margin if user reached end of scrollable area
+          //                 _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
+          //               });
+          //               return true;
+          //             },
+          //             child: Padding(
+          //               padding: EdgeInsets.only(bottom: _bottomPadding),
+          //               child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).allCourses, showItems: _showItems),
+          //             ),
+          //           ),
+          //           NotificationListener<ScrollEndNotification>(
+          //             onNotification: (notification) {
+          //               setState(() {
+          //                 // Add bottom margin if user reached end of scrollable area
+          //                 _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
+          //               });
+          //               return true;
+          //             },
+          //             child: Padding(
+          //               padding: EdgeInsets.only(bottom: _bottomPadding),
+          //               child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).allCourses, showItems: _showItems),
+          //             ),
+          //           ),
+          //           NotificationListener<ScrollEndNotification>(
+          //             onNotification: (notification) {
+          //               setState(() {
+          //                 // Add bottom margin if user reached end of scrollable area
+          //                 _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
+          //               });
+          //               return true;
+          //             },
+          //             child: Padding(
+          //               padding: EdgeInsets.only(bottom: _bottomPadding),
+          //               child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).allCourses, showItems: _showItems),
+          //             ),
+          //           ),
+          //           NotificationListener<ScrollEndNotification>(
+          //             onNotification: (notification) {
+          //               setState(() {
+          //                 // Add bottom margin if user reached end of scrollable area
+          //                 _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
+          //               });
+          //               return true;
+          //             },
+          //             child: Padding(
+          //               padding: EdgeInsets.only(bottom: _bottomPadding),
+          //               child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).allCourses, showItems: _showItems),
+          //             ),
+          //           ),
+          //           NotificationListener<ScrollEndNotification>(
+          //             onNotification: (notification) {
+          //               setState(() {
+          //                 // Add bottom margin if user reached end of scrollable area
+          //                 _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
+          //               });
+          //               return true;
+          //             },
+          //             child: Padding(
+          //               padding: EdgeInsets.only(bottom: _bottomPadding),
+          //               child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).allCourses, showItems: _showItems),
+          //             ),
+          //           ),
+          //           NotificationListener<ScrollEndNotification>(
+          //             onNotification: (notification) {
+          //               setState(() {
+          //                 // Add bottom margin if user reached end of scrollable area
+          //                 _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
+          //               });
+          //               return true;
+          //             },
+          //             child: Padding(
+          //               padding: EdgeInsets.only(bottom: _bottomPadding),
+          //               child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).allCourses, showItems: _showItems),
+          //             ),
+          //           ),
+          //           NotificationListener<ScrollEndNotification>(
+          //             onNotification: (notification) {
+          //               setState(() {
+          //                 // Add bottom margin if user reached end of scrollable area
+          //                 _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
+          //               });
+          //               return true;
+          //             },
+          //             child: Padding(
+          //               padding: EdgeInsets.only(bottom: _bottomPadding),
+          //               child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).allCourses, showItems: _showItems),
+          //             ),
+          //           ),
+          //           NotificationListener<ScrollEndNotification>(
+          //             onNotification: (notification) {
+          //               setState(() {
+          //                 // Add bottom margin if user reached end of scrollable area
+          //                 _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
+          //               });
+          //               return true;
+          //             },
+          //             child: Padding(
+          //               padding: EdgeInsets.only(bottom: _bottomPadding),
+          //               child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context, listen: false).allCourses, showItems: _showItems),
+          //             ),
+          //           ),
+          //         ],
+          //       ),
         ),
       ),
     );

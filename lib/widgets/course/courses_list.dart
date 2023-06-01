@@ -1,20 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:lms/providers/Course/CourseProvider.dart';
+import 'package:provider/provider.dart';
 import './course_item.dart';
 import './course_list_item.dart';
 
-class CoursesList extends StatelessWidget {
+class CoursesList extends StatefulWidget {
   // -------------- feilds ----------------
   final bool showItems;
-  final List<dynamic> electronicCourses;
-  CoursesList({super.key, required this.showItems, required this.electronicCourses});
-  // -------------- UI ----------------
+  final int groupId;
+  CoursesList({super.key, required this.showItems, required this.groupId});
+
+  @override
+  State<CoursesList> createState() => _CoursesListState();
+}
+
+class _CoursesListState extends State<CoursesList> {
+//------------------ state -------------------
+  List<dynamic> electronicCourses = [];
+//------------------ lifecycle -------------------
+
+  @override
+  void initState() {
+    fetchElectronicCourseById();
+    super.initState();
+  }
+
+//------------------ methods -------------------
+  Future<void> fetchElectronicCourseById() async {
+    electronicCourses = await Provider.of<CourseProvider>(context, listen: false).fetchElectronicCoursesByGroupId(widget.groupId);
+    setState(() {});
+  }
+
+//------------------ UI -------------------
   @override
   Widget build(BuildContext context) {
-    return showItems
+    return widget.showItems
         ? Padding(
             padding: const EdgeInsets.only(top: 10, bottom: 10),
             child: ListView.builder(
-              itemCount: 8,
+              itemCount: electronicCourses.length,
               itemBuilder: (context, index) => const CourseListItem(),
             ),
           )

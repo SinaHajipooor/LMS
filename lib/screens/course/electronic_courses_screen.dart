@@ -20,11 +20,13 @@ class ElectronicCoursesScreen extends StatefulWidget {
 class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
 // --------------- state --------------
   var _showItems = false;
-  var _isLoading = false;
+  var _isLoading = true;
   var _bottomPadding = 0.0;
+  List<dynamic> _courseGroups = [];
 // --------------- lifecycle -----------------
   @override
   void initState() {
+    getAllCourseGroups();
     getAllElectronicCourses();
     super.initState();
   }
@@ -36,12 +38,19 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
 
 // --------------- methods -----------------
   Future<void> getAllElectronicCourses() async {
-    setState(() {
-      _isLoading = true;
-    });
     await Provider.of<CourseProvider>(context, listen: false).fetchAllCourses();
     if (mounted) {
       setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
+  Future<void> getAllCourseGroups() async {
+    await Provider.of<CourseProvider>(context, listen: false).fetchElectronicCourseGroups();
+    if (mounted) {
+      setState(() {
+        _courseGroups = Provider.of<CourseProvider>(context, listen: false).courseGroups;
         _isLoading = false;
       });
     }
@@ -52,7 +61,7 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
   Widget build(BuildContext context) {
     final margin = MediaQuery.of(context).size.width * .200;
     return DefaultTabController(
-      length: 8,
+      length: _courseGroups.length,
       child: WillPopScope(
         onWillPop: () async {
           Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
@@ -65,134 +74,46 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
             automaticallyImplyLeading: false,
             backgroundColor: Colors.white,
             leading: null,
-            bottom: const TabBar(
+            bottom: TabBar(
               unselectedLabelColor: Colors.black,
-              unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal, fontFamily: 'YekanBakh', fontSize: 12),
-              labelStyle: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'YekanBakh', fontSize: 14),
+              unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal, fontFamily: 'YekanBakh', fontSize: 12),
+              labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'YekanBakh', fontSize: 14),
               isScrollable: true,
               labelColor: Colors.blue,
-              labelPadding: EdgeInsets.symmetric(horizontal: 25),
-              tabs: [
-                Tab(text: 'فرهنگی'),
-                Tab(text: 'ورزشی'),
-                Tab(text: 'فنی و مهندسی'),
-                Tab(text: 'پزشکی'),
-                Tab(text: 'حقوق'),
-                Tab(text: 'معارف'),
-                Tab(text: 'مهندسی'),
-                Tab(text: 'ادبیات'),
-              ],
+              labelPadding: const EdgeInsets.symmetric(horizontal: 25),
+              tabs: List.generate(
+                _courseGroups.length,
+                (index) => Tab(
+                  text: _courseGroups[index]['name'],
+                ),
+              ),
             ),
           ),
           body: _isLoading
               ? const Center(child: Spinner(size: 40))
               : TabBarView(
-                  children: [
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                      ),
-                    ),
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                      ),
-                    ),
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                      ),
-                    ),
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                      ),
-                    ),
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                      ),
-                    ),
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                      ),
-                    ),
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                      ),
-                    ),
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        setState(() {
-                          // Add bottom margin if user reached end of scrollable area
-                          _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
-                        });
-                        return true;
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: _bottomPadding),
-                        child: CoursesList(electronicCourses: Provider.of<CourseProvider>(context).courses, showItems: _showItems),
-                      ),
-                    ),
-                  ],
+                  children: List.generate(
+                    _courseGroups.length,
+                    (index) {
+                      final group = _courseGroups[index];
+                      return NotificationListener<ScrollEndNotification>(
+                        onNotification: (notification) {
+                          setState(() {
+                            // Add bottom margin if user reached end of scrollable area
+                            _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
+                          });
+                          return true;
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(bottom: _bottomPadding),
+                          child: CoursesList(
+                            groupId: group['id'],
+                            showItems: _showItems,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
         ),
       ),

@@ -9,7 +9,8 @@ class CourseProvider with ChangeNotifier {
   static const _baseUrl = 'http://45.149.77.156:8082/api/course/electronic';
   static const _courseDetailUrl = 'http://45.149.77.156:8082/api/course/electronic/show';
   static const _courseShippingUrl = 'http://45.149.77.156:8082/api/course/electronic/shipping';
-  List _courses = [];
+  List _allCourses = [];
+  List _courseGroups = [];
   Map<String, dynamic>? _courseDetails;
   Map<String, dynamic>? _courseShippingDetails;
   List _coursePaymentGateways = [];
@@ -18,7 +19,8 @@ class CourseProvider with ChangeNotifier {
 
   // ------------------- getter --------------------
 
-  List get courses => _courses;
+  List get allCourses => _allCourses;
+  List get courseGroups => _courseGroups;
   Map<String, dynamic> get courseDetails => _courseDetails!;
   Map<String, dynamic> get courseShippingDetails => _courseShippingDetails!;
   List get coursePaymentGateways => _coursePaymentGateways;
@@ -34,7 +36,7 @@ class CourseProvider with ChangeNotifier {
       );
       if (response.statusCode != 200) throw Exception('Failed to fetch all courses');
       final Map<String, dynamic>? responseData = jsonDecode(response.body) as Map<String, dynamic>?;
-      _courses = responseData?['result']['courses']['data'];
+      _allCourses = responseData?['result']['courses']['data'];
       notifyListeners();
     } catch (error) {
       print(error);
@@ -52,6 +54,38 @@ class CourseProvider with ChangeNotifier {
       final Map<String, dynamic>? responseData = jsonDecode(response.body) as Map<String, dynamic>?;
       _courseDetails = responseData?['result']?['course'];
       notifyListeners();
+    } catch (error) {
+      print(error);
+      rethrow;
+    }
+  }
+
+  Future<void> fetchElectronicCourseGroups() async {
+    try {
+      final response = await http.get(
+        Uri.parse(_baseUrl),
+        headers: <String, String>{'Content-Type': 'application/json'},
+      );
+      if (response.statusCode != 200) throw Exception('failed to fetch the electronic course groups');
+      final Map<String, dynamic>? responseData = jsonDecode(response.body) as Map<String, dynamic>?;
+      _courseGroups = responseData?['result']['course_groups'];
+      notifyListeners();
+    } catch (error) {
+      print(error);
+      rethrow;
+    }
+  }
+
+  Future<List<dynamic>> fetchElectronicCoursesByGroupId(int groupId) async {
+    try {
+      final response = await http.get(
+        Uri.parse(_baseUrl + '?group_id=$groupId'),
+        headers: <String, String>{'Content-Type': 'application/json'},
+      );
+      if (response.statusCode != 200) throw Exception('failed to fetch electronic courses by group id');
+      final Map<String, dynamic>? responseData = jsonDecode(response.body) as Map<String, dynamic>?;
+      notifyListeners();
+      return responseData?['result']['courses']['data'];
     } catch (error) {
       print(error);
       rethrow;
