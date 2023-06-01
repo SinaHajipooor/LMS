@@ -25,6 +25,11 @@ class _CoursesListState extends State<CoursesList> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
 //------------------ methods -------------------
   Future<void> fetchElectronicCourseById() async {
     electronicCourses = await Provider.of<CourseProvider>(context, listen: false).fetchElectronicCoursesByGroupId(widget.groupId);
