@@ -17,6 +17,7 @@ class CoursesList extends StatefulWidget {
 class _CoursesListState extends State<CoursesList> {
 //------------------ state -------------------
   List<dynamic> electronicCourses = [];
+  List<dynamic> simpleCourses = [];
 //------------------ lifecycle -------------------
 
   @override
