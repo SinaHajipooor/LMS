@@ -55,7 +55,7 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
   @override
   Widget build(BuildContext context) {
     final margin = MediaQuery.of(context).size.width * .200;
-
+// final deviceSize
     return DefaultTabController(
       length: _courseGroups.length,
       child: WillPopScope(
