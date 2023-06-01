@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/widgets/elements/spinner.dart';
 
 class CourseShippingDetails extends StatelessWidget {
   // ------------------ feilds ----------------------
@@ -20,9 +21,28 @@ class CourseShippingDetails extends StatelessWidget {
                   height: 80,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    image: DecorationImage(
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.network(
+                      courseInfo['main_image'],
+                      // height: deviceSize.height / 2.8,
+                      // width: double.infinity,
                       fit: BoxFit.cover,
-                      image: NetworkImage(courseInfo['main_image']),
+                      errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) => Image.asset(
+                        'assets/images/placeholder.png',
+                        // height: deviceSize.height / 2.8,
+                        // width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
+                      loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return const Center(
+                          child: Spinner(
+                            size: 25,
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
@@ -88,7 +108,7 @@ class CourseShippingDetails extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Row(
-                    children: [const Text('قیمت نهایی : '), Text(courseInfo['final_amount'], style: const TextStyle(fontSize: 18, color: Colors.blue))],
+                    children: [const Text('قیمت نهایی : '), Text(courseInfo['final_amount'], style: const TextStyle(fontSize: 18, color: Colors.blue)), const Text(' تومان', style: TextStyle(fontSize: 16, color: Colors.blue))],
                   ),
                 ),
                 const SizedBox(height: 20),

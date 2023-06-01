@@ -23,6 +23,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
     });
     super.didChangeDependencies();
   }
+
   //------------------- UI -----------------------
 
   @override
@@ -49,7 +50,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                 width: double.infinity,
                 child: Row(
                   children: [
-                    Container(
+                    SizedBox(
                       height: 80,
                       width: deviceSize.width / 3,
                       child: Card(
@@ -63,7 +64,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: 80,
                       width: deviceSize.width / 3,
                       child: Card(
@@ -80,7 +81,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: 80,
                       width: deviceSize.width / 3,
                       child: Card(
@@ -88,7 +89,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            const Text(
                               'پاسخ داده نشده',
                               style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.orange),
                             ),
@@ -100,7 +101,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 width: double.infinity,
                 child: Card(
                   elevation: 1,
@@ -115,7 +116,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                         ],
                       ),
                       const SizedBox(height: 30),
-                      Container(
+                      SizedBox(
                         width: double.infinity,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -164,7 +165,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: 60,
                 width: double.infinity,
                 child: Card(
@@ -175,13 +176,19 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                       Padding(
                         padding: const EdgeInsets.only(right: 10),
                         child: Row(
-                          children: [Text('نمره آزمون : '), Text('25', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))],
+                          children: const [
+                            Text('نمره آزمون : '),
+                            Text('25', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                          ],
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 10),
                         child: Row(
-                          children: [Text('وضعیت قبولی : '), Text('قبول', style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold))],
+                          children: const [
+                            Text('وضعیت قبولی : '),
+                            Text('قبول', style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold)),
+                          ],
                         ),
                       )
                     ],
@@ -190,7 +197,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
               ),
               const SizedBox(height: 15),
               Padding(
-                padding: const EdgeInsets.only(left: 10),
+                padding: const EdgeInsets.only(left: 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

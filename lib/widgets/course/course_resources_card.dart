@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
+
 import '../../screens/course/course_resources_screen.dart';
 
 class CourseResourcesCard extends StatelessWidget {
@@ -23,7 +23,7 @@ class CourseResourcesCard extends StatelessWidget {
           ),
         );
       },
-      child: Container(
+      child: SizedBox(
         width: deviceSize.width / 2,
         child: Card(
           elevation: 1,

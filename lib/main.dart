@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:lms/screens/profile/profile_screen.dart';
 import 'package:provider/provider.dart';
 import 'providers/Landing/LandingProvider.dart';
 import './providers/Course/CourseProvider.dart';
@@ -14,8 +16,11 @@ import './screens/exam/exam_screen.dart';
 import './screens/course/course_assessment_screen.dart';
 import './screens/exam/exam_result_screen.dart';
 import './screens/course/electronic_course_detail_screen.dart';
+import './screens/course/simple_courses_screen.dart';
 
-void main() {
+void main() async {
+  // ignore: unused_local_variable
+  final config = await initializeDateFormatting('fa_IR', null);
   runApp(const MyApp());
 }
 
@@ -32,6 +37,7 @@ class MyApp extends StatelessWidget {
       ],
       child: Consumer<AuthProvider>(
         builder: (ctx, auth, _) => MaterialApp(
+          locale: const Locale('fa', 'IR'),
           localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
@@ -39,6 +45,7 @@ class MyApp extends StatelessWidget {
           ],
           supportedLocales: const [
             Locale('fa'),
+            Locale('en', 'US'),
           ],
           title: 'LMS',
           debugShowCheckedModeBanner: false,
@@ -58,6 +65,8 @@ class MyApp extends StatelessWidget {
             ExamResultScreen.routeName: (ctx) => const ExamResultScreen(),
             ElectronicCourseDetailScreen.routeName: (ctx) => const ElectronicCourseDetailScreen(),
             CourseAssessmentScreen.routeName: (ctx) => const CourseAssessmentScreen(),
+            SimpleCoursesScreen.routeName: (ctx) => const SimpleCoursesScreen(),
+            ProfileScreen.routeName: (ctx) => const ProfileScreen(),
           },
         ),
       ),

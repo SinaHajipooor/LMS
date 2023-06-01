@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+// import 'package:intl/intl.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
@@ -20,11 +20,6 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
   String? _selectedDate;
 
 //------------------- lifecycle -------------------
-  // @override
-  // void dispose() {
-  //   _textEditingController.dispose();
-  //   super.dispose();
-  // }
 
   // ------------------- methods --------------------
   Future<void> _selectFile() async {
@@ -59,116 +54,102 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
   // ------------------- UI --------------------
   @override
   Widget build(BuildContext context) {
-    final deviceSize = MediaQuery.of(context).size;
     return Builder(builder: (context) {
-      return Builder(builder: (context) {
-        return Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 10, right: 5),
-              child: Row(
-                children: [
-                  Container(
-                    width: deviceSize.width / 2.25,
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      elevation: 1,
-                      child: InkWell(
-                        onTap: () => _selectFile(),
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            children: [
-                              const Icon(Icons.attach_file),
-                              const SizedBox(width: 16),
-                              Expanded(
-                                child: Text(
-                                  _selectedFile != null ? 'فایل انتخاب شد' : 'فایل سند',
-                                  style: const TextStyle(fontSize: 11),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
+      return Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 30, right: 5),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    elevation: 1,
+                    child: InkWell(
+                      onTap: () => _selectFile(),
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.attach_file),
+                            const SizedBox(width: 16),
+                            Expanded(
+                              child: Text(
+                                _selectedFile != null ? 'فایل انتخاب شد' : 'فایل سند',
+                                style: const TextStyle(fontSize: 11),
+                                overflow: TextOverflow.ellipsis,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
-                  Container(
-                    width: deviceSize.width / 2,
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      elevation: 1,
-                      child: InkWell(
-                        onTap: () {
-                          _selectDate(context);
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            children: [
-                              const Icon(Icons.calendar_today),
-                              const SizedBox(width: 16),
-                              Text(
-                                _selectedDate != null ? _selectedDate! : 'زمان سند را وارد کنید',
-                                style: TextStyle(fontSize: _selectedDate != null ? 13 : 10),
-                              ),
-                            ],
-                          ),
+                ),
+                Expanded(
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    elevation: 1,
+                    child: InkWell(
+                      onTap: () {
+                        _selectDate(context);
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.calendar_today),
+                            const SizedBox(width: 16),
+                            Text(
+                              _selectedDate != null ? _selectedDate! : 'زمان سند را وارد کنید',
+                              style: TextStyle(fontSize: _selectedDate != null ? 13 : 10),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            const SizedBox(height: 5),
-            Padding(
-              padding: const EdgeInsets.only(right: 5, left: 5),
-              child: Container(
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  elevation: 1,
-                  child: TextFormField(
-                    keyboardType: TextInputType.number,
-                    controller: _textEditingController,
-                    decoration: const InputDecoration(
-                      labelText: 'کد پیگیری را وارد کنید',
-                      labelStyle: TextStyle(fontSize: 12),
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    ),
+          ),
+          const SizedBox(height: 25),
+          Padding(
+            padding: const EdgeInsets.only(right: 5, left: 5),
+            child: SizedBox(
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                elevation: 1,
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  controller: _textEditingController,
+                  decoration: const InputDecoration(
+                    labelText: 'کد پیگیری را وارد کنید',
+                    labelStyle: TextStyle(fontSize: 12),
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.only(left: 5, bottom: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  ElevatedButton(onPressed: () {}, child: const Text('تایید')),
-                ],
-              ),
-            ),
-          ],
-        );
-      });
+          ),
+          const SizedBox(height: 30),
+        ],
+      );
     });
   }
 }

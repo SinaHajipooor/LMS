@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './answer.dart';
 
+// ignore: must_be_immutable
 class AnswersList extends StatelessWidget {
   // -------------- feilds ----------------
   int selectedAnswerId;
@@ -25,7 +26,7 @@ class AnswersList extends StatelessWidget {
           return Answer(
             answerText: answers[answerIndex][answerIndex],
             answerId: answerIndex,
-            onSelect: (id) => onSelectAnswer,
+            onSelect: onSelectAnswer,
             selectedAnswerId: selectedAnswerId,
           );
         },

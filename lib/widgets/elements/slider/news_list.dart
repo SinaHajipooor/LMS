@@ -1,34 +1,69 @@
 import 'package:flutter/material.dart';
 import '../spinner.dart';
 
-class NewsList extends StatelessWidget {
+class NewsList extends StatefulWidget {
   //----------------- fields -------------------
   final List<dynamic> newsList;
-  NewsList({required this.newsList});
+  const NewsList({required this.newsList});
+
+  @override
+  _NewsListState createState() => _NewsListState();
+}
+
+class _NewsListState extends State<NewsList> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
+    _animation = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(_controller);
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   //----------------- UI -------------------
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<dynamic>>(
-      future: Future.delayed(const Duration(seconds: 2), () => newsList),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (BuildContext context, Widget? child) {
+        if (_animation.value == 0) {
           return const Spinner(size: 25);
-        } else if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}');
         } else {
           return Column(
             children: [
-              Row(
-                children: [
-                  Expanded(child: _buildNewsItem(snapshot.data![0])),
-                  Expanded(child: _buildNewsItem(snapshot.data![1])),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
+                child: Row(
+                  children: [
+                    Expanded(child: _buildNewsItem(widget.newsList[0])),
+                    const SizedBox(width: 5),
+                    Expanded(child: _buildNewsItem(widget.newsList[1])),
+                  ],
+                ),
               ),
-              Row(
-                children: [
-                  Expanded(child: _buildNewsItem(snapshot.data![2])),
-                  Expanded(child: _buildNewsItem(snapshot.data![3])),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
+                child: Row(
+                  children: [
+                    Expanded(child: _buildNewsItem(widget.newsList[2])),
+                    const SizedBox(width: 5),
+                    Expanded(child: _buildNewsItem(widget.newsList[3])),
+                  ],
+                ),
               ),
             ],
           );
@@ -38,42 +73,50 @@ class NewsList extends StatelessWidget {
   }
 
   Widget _buildNewsItem(dynamic newsItem) {
-    return Container(
-      margin: const EdgeInsets.all(3),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: AspectRatio(
-              aspectRatio: 2 / 1.5,
-              child: Image.network(
-                newsItem['main_image'],
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            right: 0,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.4),
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10),
+    return FadeTransition(
+      opacity: _animation,
+      child: Container(
+        margin: const EdgeInsets.all(3),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: AspectRatio(
+                aspectRatio: 2 / 1.25,
+                child: FadeInImage.assetNetwork(
+                  placeholder: 'assets/images/placeholder.png',
+                  image: newsItem['main_image'],
+                  fit: BoxFit.cover,
                 ),
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              child: Text(
-                newsItem['name'],
-                style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            Positioned(
+              bottom: 7,
+              right: 7,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.4),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10),
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                child: Text(
+                  newsItem['name'],
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

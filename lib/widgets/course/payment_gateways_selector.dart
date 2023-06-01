@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../models/course/payment_gateways.dart';
 
 class PaymentGatewaysSelector extends StatelessWidget {
 //----------------- feilds -----------------
@@ -17,7 +16,7 @@ class PaymentGatewaysSelector extends StatelessWidget {
   }) {
     return InkWell(
       onTap: () => onSelectPaymentGateway(value),
-      child: Container(
+      child: SizedBox(
         height: 80,
         // width: 230,
         child: Card(

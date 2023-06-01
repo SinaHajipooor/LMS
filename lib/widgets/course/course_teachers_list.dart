@@ -27,11 +27,11 @@ class CourseTeachersList extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             Text('سیناحاجی‌پور', style: TextStyle(fontSize: 11)),
                             Text(
                               'مدرس',

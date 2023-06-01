@@ -20,7 +20,8 @@ class _UserEducationInfoState extends State<UserEducationInfo> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Card(
-        elevation: 2,
+        margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.width * .200),
+        elevation: 1,
         child: DataTable(
           dividerThickness: 0.5,
           horizontalMargin: 0,
@@ -77,14 +78,14 @@ class _UserEducationInfoState extends State<UserEducationInfo> {
                 DataCell(Center(child: Text(item['device']!, style: const TextStyle(fontSize: 12)))),
                 DataCell(
                   PopupMenuButton(
-                    icon: const Icon(Icons.more_vert),
+                    icon: const Icon(Icons.more_vert, size: 19),
                     elevation: 2,
                     onSelected: (value) {
                       print(value);
                     },
                     itemBuilder: (BuildContext context) => [
                       PopupMenuItem(
-                        child: Container(
+                        child: SizedBox(
                           width: 110,
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
@@ -101,7 +102,7 @@ class _UserEducationInfoState extends State<UserEducationInfo> {
                                 ),
                                 PopupMenuItem(
                                   value: 'detail',
-                                  child: Icon(Icons.remove_red_eye_sharp, color: Colors.blue, size: 20),
+                                  child: Icon(Icons.file_copy_outlined, color: Colors.blue, size: 20),
                                 ),
                               ],
                             ),

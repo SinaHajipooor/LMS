@@ -17,14 +17,14 @@ class CoursePriceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
-    return Container(
+    return SizedBox(
       height: 70,
       width: deviceSize.width,
       child: Card(
         elevation: 0.5,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
-          child: Container(
+          child: SizedBox(
             width: deviceSize.width,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,

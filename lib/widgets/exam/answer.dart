@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/widgets/exam/image_preview.dart';
 
 class Answer extends StatelessWidget {
   // --------------- feilds ---------------
@@ -28,17 +29,26 @@ class Answer extends StatelessWidget {
             value: answerId,
             groupValue: selectedAnswerId,
             activeColor: Colors.blue,
-            onChanged: (value) => onSelect,
+            onChanged: (value) {
+              onSelect(value);
+              print(value);
+            },
           ),
           Expanded(
-            child: Text(
-              answerText,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 12,
-              ),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 4,
+            child: Row(
+              children: [
+                Text(
+                  answerText,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 4,
+                ),
+                const SizedBox(width: 15),
+                ImagePreview(imagePath: 'http://45.149.77.156:8080/portal-assets/img/team/team-1.jpg')
+              ],
             ),
           ),
         ],

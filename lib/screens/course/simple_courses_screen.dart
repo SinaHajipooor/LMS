@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/screens/landing_screen.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/course/courses_list.dart';
-import '../../providers/Course/CourseProvider.dart';
 import '../../widgets/elements/spinner.dart';
 
-enum FilterOptions { List, Item }
-
-class ElectronicCoursesScreen extends StatefulWidget {
-// --------------- feilds -----------------
-  static const routeName = '/electronic-courses-screen';
-
-  const ElectronicCoursesScreen({super.key});
+class SimpleCoursesScreen extends StatefulWidget {
+  static const routeName = '/simple-courses-screen';
+  const SimpleCoursesScreen({super.key});
 
   @override
-  State<ElectronicCoursesScreen> createState() => _ElectronicCoursesScreenState();
+  State<SimpleCoursesScreen> createState() => _SimpleCoursesScreenState();
 }
 
-class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
-// --------------- state --------------
+class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
+  // --------------- state --------------
   var _showItems = false;
   var _isLoading = true;
   var _bottomPadding = 0.0;
@@ -26,8 +22,7 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
 // --------------- lifecycle -----------------
   @override
   void initState() {
-    getAllCourseGroups();
-    // getAllElectronicCourses();
+    // getAllSimpleCourses();
     super.initState();
   }
 
@@ -37,7 +32,7 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
   }
 
 // --------------- methods -----------------
-  // Future<void> getAllElectronicCourses() async {
+  // Future<void> getAllSimpleCourses() async {
   //   await Provider.of<CourseProvider>(context, listen: false).fetchAllCourses();
   //   if (mounted) {
   //     setState(() {
@@ -47,10 +42,10 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
   // }
 
   Future<void> getAllCourseGroups() async {
-    await Provider.of<CourseProvider>(context, listen: false).fetchElectronicCourseGroups();
+    await Provider.of<SimpleCourseProvider>(context, listen: false).fetchSimpleCourseGroups();
     if (mounted) {
       setState(() {
-        _courseGroups = Provider.of<CourseProvider>(context, listen: false).courseGroups;
+        _courseGroups = Provider.of<SimpleCourseProvider>(context, listen: false).courseGroups;
         _isLoading = false;
       });
     }
@@ -60,6 +55,7 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
   @override
   Widget build(BuildContext context) {
     final margin = MediaQuery.of(context).size.width * .200;
+
     return DefaultTabController(
       length: _courseGroups.length,
       child: WillPopScope(

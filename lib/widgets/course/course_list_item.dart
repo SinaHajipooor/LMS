@@ -29,6 +29,5 @@ class CourseListItem extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

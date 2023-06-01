@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: _isLoading
-            ? Center(child: Spinner(size: 40))
+            ? const Center(child: Spinner(size: 40))
             : Container(
                 decoration: const BoxDecoration(
                   image: DecorationImage(
@@ -71,8 +71,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                child: Center(
-                  child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: Center(
                     child: isMobileLogin
                         ? Card(
                             elevation: 4,
@@ -83,9 +84,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Container(height: 85, width: 85, child: Image.asset('assets/images/favagostar-logo.png')),
+                                  SizedBox(height: 85, width: 85, child: Image.asset('assets/images/favagostar-logo.png')),
                                   const SizedBox(height: 16),
-                                  const Text('سازمان مرکز آموزش مدیریت دولتی', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                                  const Text('سیستم یادگیری الکترونیک', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                                   const SizedBox(height: 38),
                                   Form(
                                     key: _formKey,
@@ -172,9 +173,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Container(height: 85, width: 85, child: Image.asset('assets/images/favagostar-logo.png')),
+                                  SizedBox(height: 85, width: 85, child: Image.asset('assets/images/favagostar-logo.png')),
                                   const SizedBox(height: 16),
-                                  const Text('سازمان مرکز آموزش مدیریت دولتی', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                                  const Text('سیستم یادگیری الکترونیک', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                                   const SizedBox(height: 38),
                                   Form(
                                     key: _formKey,

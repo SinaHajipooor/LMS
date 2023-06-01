@@ -14,7 +14,7 @@ class PaymentApproachSelector extends StatelessWidget {
   }) {
     return InkWell(
       onTap: () => onSelectPAymentApproach(value),
-      child: Container(
+      child: SizedBox(
         width: 140,
         child: Card(
           shadowColor: selectedPaymentApproach == value ? Colors.blue : Colors.black,
@@ -59,7 +59,7 @@ class PaymentApproachSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 110,
       width: double.infinity,
       child: SingleChildScrollView(
