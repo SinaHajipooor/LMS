@@ -34,7 +34,9 @@ class _CoursesListState extends State<CoursesList> {
 //------------------ methods -------------------
   Future<void> fetchElectronicCourseById() async {
     electronicCourses = await Provider.of<CourseProvider>(context, listen: false).fetchElectronicCoursesByGroupId(widget.groupId);
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
 //------------------ UI -------------------
