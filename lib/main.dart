@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/screens/profile/profile_screen.dart';
 import 'package:provider/provider.dart';
 import 'providers/Landing/LandingProvider.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (ctx) => AuthProvider()),
         ChangeNotifierProvider(create: (ctx) => LandingProvider()),
         ChangeNotifierProvider(create: (ctx) => CourseProvider()),
+        ChangeNotifierProvider(create: (ctx) => SimpleCourseProvider()),
       ],
       child: Consumer<AuthProvider>(
         builder: (ctx, auth, _) => MaterialApp(
