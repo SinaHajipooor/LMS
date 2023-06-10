@@ -6,21 +6,33 @@ import 'package:lms/screens/dashbord_screen.dart';
 import 'package:lms/screens/profile/profile_screen.dart';
 
 class BottomTabs extends StatefulWidget {
-  const BottomTabs({Key? key});
-
+  final int defaultPageIndex;
+  BottomTabs({required this.defaultPageIndex});
   @override
   State createState() => _BottomTabsState();
 }
 
 class _BottomTabsState extends State<BottomTabs> {
-  var _currentIndex = 2;
-
+  // ----------------- state ------------------
+  int? _currentIndex;
   final List<Widget> _screens = [
     const ElectronicCoursesScreen(),
     const SimpleCoursesScreen(),
     DashbordScreen(),
     const ProfileScreen(),
   ];
+  // ----------------- lifecycle ------------------
+  // @override
+  // void didChangeDependencies() {
+  //   _currentIndex = widget.defaultPageIndex;
+  //   super.didChangeDependencies();
+  // }
+  @override
+  void initState() {
+    _currentIndex = widget.defaultPageIndex;
+    super.initState();
+  }
+  // ----------------- UI ------------------
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +41,7 @@ class _BottomTabsState extends State<BottomTabs> {
       body: Stack(
         children: [
           Positioned.fill(
-            child: _screens[_currentIndex],
+            child: _screens[_currentIndex!],
           ),
           Align(
             alignment: Alignment.bottomCenter,
