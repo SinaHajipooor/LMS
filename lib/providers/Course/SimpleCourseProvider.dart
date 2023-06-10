@@ -13,7 +13,7 @@ class SimpleCourseProvider with ChangeNotifier {
   List _courseGroup = [];
   Map<String, dynamic>? _courseDetails;
   Map<String, dynamic>? _courseShippingDetails;
-  //------------ getter --------------
+  //------------ getter ---------------
   List get allSimpleCourses => _allSimpleCourses;
   List get courseGroups => _courseGroup;
   Map<String, dynamic> get courseDetails => _courseDetails!;
