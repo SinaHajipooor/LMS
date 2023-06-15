@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lms/screens/profile/profile_screen.dart';
 import 'package:lms/widgets/dashbord/calender.dart';
 import '../navigation/app_drawer.dart';
-import '../navigation/bottom_tabas.dart';
 
 class DashbordScreen extends StatefulWidget {
 // ---------------- feilds -----------------
@@ -61,14 +61,7 @@ class _DashbordScreenState extends State<DashbordScreen> {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pushReplacement(
-                PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) => BottomTabs(defaultPageIndex: 3),
-                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                    return FadeTransition(opacity: animation, child: child);
-                  },
-                ),
-              );
+              Navigator.of(context).pushReplacementNamed(ProfileScreen.routeName);
             },
           ),
         ],
