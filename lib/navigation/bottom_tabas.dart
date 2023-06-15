@@ -3,11 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:lms/screens/course/electronic_courses_screen.dart';
 import 'package:lms/screens/course/simple_courses_screen.dart';
 import 'package:lms/screens/dashbord_screen.dart';
-import 'package:lms/screens/profile/profile_screen.dart';
+import 'package:lms/screens/educational_document_screen.dart';
 
 class BottomTabs extends StatefulWidget {
   final int defaultPageIndex;
-  BottomTabs({required this.defaultPageIndex});
+  const BottomTabs({super.key, required this.defaultPageIndex});
   @override
   State createState() => _BottomTabsState();
 }
@@ -19,14 +19,10 @@ class _BottomTabsState extends State<BottomTabs> {
     const ElectronicCoursesScreen(),
     const SimpleCoursesScreen(),
     DashbordScreen(),
-    const ProfileScreen(),
+    const EducationalDocumentScreen(),
   ];
   // ----------------- lifecycle ------------------
-  // @override
-  // void didChangeDependencies() {
-  //   _currentIndex = widget.defaultPageIndex;
-  //   super.didChangeDependencies();
-  // }
+
   @override
   void initState() {
     _currentIndex = widget.defaultPageIndex;
@@ -105,7 +101,7 @@ class _BottomTabsState extends State<BottomTabs> {
                                     AnimatedContainer(
                                       duration: const Duration(seconds: 1),
                                       curve: Curves.fastLinearToSlowEaseIn,
-                                      width: index == _currentIndex ? displayWidth * .13 : 0,
+                                      width: index == _currentIndex ? displayWidth * .10 : 0,
                                     ),
                                     AnimatedOpacity(
                                       opacity: index == _currentIndex ? 1 : 0,
@@ -116,7 +112,7 @@ class _BottomTabsState extends State<BottomTabs> {
                                         style: const TextStyle(
                                           color: Colors.blueAccent,
                                           fontWeight: FontWeight.w600,
-                                          fontSize: 14,
+                                          fontSize: 13,
                                         ),
                                       ),
                                     ),
@@ -131,7 +127,7 @@ class _BottomTabsState extends State<BottomTabs> {
                                     ),
                                     Icon(
                                       listOfIcons[index],
-                                      size: displayWidth * .076,
+                                      size: displayWidth * .055,
                                       color: index == _currentIndex ? Colors.blueAccent : Colors.black26,
                                     ),
                                   ],
@@ -156,13 +152,13 @@ class _BottomTabsState extends State<BottomTabs> {
     Icons.computer,
     Icons.people_alt,
     Icons.home,
-    Icons.person_rounded,
+    Icons.collections_bookmark_sharp,
   ];
 
   List listOfStrings = [
     'الکترونیک',
     'حضوری',
     'داشبورد',
-    'پروفایل',
+    'آموزشی',
   ];
 }

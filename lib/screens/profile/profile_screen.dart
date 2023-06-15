@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:lms/navigation/bottom_tabas.dart';
+import 'package:lms/screens/dashbord_screen.dart';
 import 'package:lms/screens/landing_screen.dart';
 import '../../widgets/profile/user_information_card.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
@@ -202,7 +204,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final margin = MediaQuery.of(context).size.width * .200;
     return WillPopScope(
       onWillPop: () async {
-        Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const BottomTabs(defaultPageIndex: 2)));
         return false;
       },
       child: NotificationListener(
