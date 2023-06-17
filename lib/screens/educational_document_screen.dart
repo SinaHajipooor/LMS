@@ -15,6 +15,7 @@ class _EducationalDocumentScreenState extends State<EducationalDocumentScreen> {
   // ----------------- state ----------------------
   bool _isLoading = false;
   final _scrollController = ScrollController();
+  // ignore: unused_field
   bool _isFabVisible = true;
 
   // ----------------- lifecycle ----------------------
