@@ -20,7 +20,7 @@ class _UserJobInfoState extends State<UserJobInfo> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Card(
-        margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.width * .200),
+        // margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.width * .200),
         elevation: 1,
         child: DataTable(
           dividerThickness: 0.5,
@@ -80,13 +80,13 @@ class _UserJobInfoState extends State<UserJobInfo> {
                       print(value);
                     },
                     itemBuilder: (BuildContext context) => [
-                      PopupMenuItem(
+                      const PopupMenuItem(
                         child: SizedBox(
                           width: 110,
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(
-                              children: const [
+                              children: [
                                 PopupMenuItem(
                                   value: 'edit',
                                   child: Icon(Icons.edit, color: Colors.orange, size: 20),
