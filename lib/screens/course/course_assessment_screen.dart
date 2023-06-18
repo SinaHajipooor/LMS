@@ -54,8 +54,6 @@ class _CourseAssessmentScreenState extends State<CourseAssessmentScreen> {
     });
   }
 
-
-
   void _showConfirmationAlert(BuildContext context) {
     AwesomeDialog(
       context: context,
@@ -106,7 +104,7 @@ class _CourseAssessmentScreenState extends State<CourseAssessmentScreen> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(8),
-                              child: Question(index: i + 1, text: questionText),
+                              child: Question(index: i + 1, text: questionText, usecase: 2),
                             ),
                             SingleChildScrollView(
                               scrollDirection: Axis.horizontal,

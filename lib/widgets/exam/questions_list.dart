@@ -9,8 +9,10 @@ class QuestionsList extends StatelessWidget {
   PageController pageController;
   List<String> questions;
   int selectedQuestionIndex;
+  int usecase;
   QuestionsList({
     super.key,
+    required this.usecase,
     required this.onChangePage,
     required this.pageController,
     required this.questions,
@@ -28,6 +30,7 @@ class QuestionsList extends StatelessWidget {
           return Container(
             margin: const EdgeInsets.only(top: 30, right: 6),
             child: Question(
+              usecase: usecase,
               index: index + 1,
               text: questions[index],
             ),

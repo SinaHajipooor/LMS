@@ -4,8 +4,10 @@ import 'package:lms/widgets/exam/image_preview.dart';
 class Question extends StatelessWidget {
   final int index;
   final String text;
+  // define this variable to decide to show the image preview next to the question text or not ( 1 is for the exam questions and 2 is for assessment questions )
+  final int usecase;
 
-  const Question({super.key, required this.index, required this.text});
+  const Question({super.key, required this.index, required this.text, required this.usecase});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,10 @@ class Question extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 10),
-              ImagePreview(imagePath: 'http://45.149.77.156:8080/portal-assets/img/team/team-1.jpg'),
+              Visibility(
+                visible: usecase == 1,
+                child: ImagePreview(imagePath: 'http://45.149.77.156:8080/portal-assets/img/team/team-1.jpg'),
+              ),
             ],
           ),
         ),
