@@ -119,6 +119,7 @@ class _ExamScreenState extends State<ExamScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         QuestionsList(
+                          usecase: 1,
                           onChangePage: _onChangePage,
                           pageController: _pageController,
                           questions: _questions,
