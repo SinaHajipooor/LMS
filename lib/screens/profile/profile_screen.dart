@@ -30,7 +30,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool _isFabVisible = true;
   // ignore: unused_field
   double _bottomMargin = 0;
-
 // ------------- lifecycle -------------
   @override
   void initState() {
