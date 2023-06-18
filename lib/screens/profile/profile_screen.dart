@@ -132,6 +132,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   delegate: SliverChildListDelegate.fixed(
                     [
                       Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(

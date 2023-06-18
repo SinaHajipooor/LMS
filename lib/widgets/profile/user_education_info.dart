@@ -20,7 +20,6 @@ class _UserEducationInfoState extends State<UserEducationInfo> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Card(
-        // margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.width * .200),
         elevation: 1,
         child: DataTable(
           dividerThickness: 0.5,
