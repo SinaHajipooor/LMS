@@ -6,7 +6,6 @@ class CourseDetailCards extends StatelessWidget {
   final int sessionCount;
   final String time;
   final int studentsCount;
-  final String lessonName;
 
   const CourseDetailCards({
     super.key,
@@ -14,7 +13,6 @@ class CourseDetailCards extends StatelessWidget {
     required this.sessionCount,
     required this.time,
     required this.studentsCount,
-    required this.lessonName,
   });
   //---------------- UI ------------------
   @override
@@ -29,7 +27,7 @@ class CourseDetailCards extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(
-              width: deviceSize.width / 5,
+              width: deviceSize.width / 4,
               child: Card(
                 elevation: 1,
                 child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -39,7 +37,7 @@ class CourseDetailCards extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: deviceSize.width / 5,
+              width: deviceSize.width / 4,
               child: Card(
                 elevation: 1,
                 child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -49,7 +47,7 @@ class CourseDetailCards extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: deviceSize.width / 5,
+              width: deviceSize.width / 4,
               child: Card(
                 elevation: 1,
                 child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -59,7 +57,7 @@ class CourseDetailCards extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: deviceSize.width / 5,
+              width: deviceSize.width / 4,
               child: Card(
                 elevation: 1,
                 child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -68,16 +66,16 @@ class CourseDetailCards extends StatelessWidget {
                 ]),
               ),
             ),
-            SizedBox(
-              width: deviceSize.width / 5,
-              child: Card(
-                elevation: 1,
-                child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  const Text('نام درس', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
-                  Text(lessonName, style: const TextStyle(fontSize: 11)),
-                ]),
-              ),
-            ),
+            // SizedBox(
+            //   width: deviceSize.width / 5,
+            //   child: Card(
+            //     elevation: 1,
+            //     child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            //       const Text('نام درس', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+            //       Text(lessonName, style: const TextStyle(fontSize: 11)),
+            //     ]),
+            //   ),
+            // ),
           ],
         ),
       ),

@@ -124,6 +124,15 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                             Consumer<CourseProvider>(builder: (context, myProvider, child) {
                               return CourseName(courseName: myProvider.courseDetails['title']);
                             }),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10, bottom: 10),
+                              child: Consumer<CourseProvider>(builder: (context, myprovider, child) {
+                                return Text(
+                                  myprovider.courseDetails['lesson_id'],
+                                  style: const TextStyle(fontSize: 11),
+                                );
+                              }),
+                            ),
                             const SizedBox(height: 25),
                             const CourseTeachersList(),
                             const SizedBox(height: 35),
@@ -141,7 +150,12 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                               return CourseDetailText(description: myProvider.courseDetails['description']);
                             }),
                             Consumer<CourseProvider>(builder: (context, myProvider, child) {
-                              return CourseDetailCards(seasonsCount: myProvider.courseDetails['seasons_count'], sessionCount: myProvider.courseDetails['sessions_count'], time: myProvider.courseDetails['time'], studentsCount: myProvider.courseDetails['students_count'], lessonName: myProvider.courseDetails['lesson_id']);
+                              return CourseDetailCards(
+                                seasonsCount: myProvider.courseDetails['seasons_count'],
+                                sessionCount: myProvider.courseDetails['sessions_count'],
+                                time: myProvider.courseDetails['time'],
+                                studentsCount: myProvider.courseDetails['students_count'],
+                              );
                             }),
                             const SizedBox(height: 15),
                             SizedBox(
