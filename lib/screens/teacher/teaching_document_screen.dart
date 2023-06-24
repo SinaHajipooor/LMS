@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lms/navigation/bottom_tabas.dart';
-import 'package:lms/widgets/dashbord/dashbord_info_cards.dart';
 import 'package:lms/widgets/elements/custom_appbar.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 
-class EducationalDocumentScreen extends StatefulWidget {
-  const EducationalDocumentScreen({super.key});
+class TeachingDocumentScreen extends StatefulWidget {
+  const TeachingDocumentScreen({super.key});
 
   @override
-  State<EducationalDocumentScreen> createState() => _EducationalDocumentScreenState();
+  State<TeachingDocumentScreen> createState() => _TeachingDocumentScreenState();
 }
 
-class _EducationalDocumentScreenState extends State<EducationalDocumentScreen> {
-  // ----------------- state ----------------------
+class _TeachingDocumentScreenState extends State<TeachingDocumentScreen> {
+  //----------------------- state -----------------------
   bool _isLoading = false;
   final _scrollController = ScrollController();
   // ignore: unused_field
   bool _isFabVisible = true;
-  // ----------------- lifecycle ----------------------
+  //----------------------- lifecycle -----------------------
 
   @override
   void initState() {
@@ -35,7 +34,7 @@ class _EducationalDocumentScreenState extends State<EducationalDocumentScreen> {
       }
     });
   }
-  // ----------------- UI ----------------------
+  //----------------------- UI -----------------------
 
   @override
   Widget build(BuildContext context) {
@@ -46,21 +45,15 @@ class _EducationalDocumentScreenState extends State<EducationalDocumentScreen> {
       },
       child: Scaffold(
         body: _isLoading
-            ? const Center(
-                child: Spinner(size: 40),
-              )
+            ? const Center(child: Spinner(size: 35))
             : Stack(
                 children: [
                   CustomScrollView(
                     controller: _scrollController,
                     slivers: const [
-                      CustomAppbar(title: 'پرونده آموزشی'),
+                      CustomAppbar(title: 'پرونده تدریس'),
                       SliverList(
-                        delegate: SliverChildListDelegate.fixed(
-                          [
-                            DashbordInfoCards(),
-                          ],
-                        ),
+                        delegate: SliverChildListDelegate.fixed([]),
                       ),
                     ],
                   )

@@ -18,7 +18,7 @@ class CourseDetailCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
-    return Container(
+    return SizedBox(
       height: 70,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
@@ -66,16 +66,6 @@ class CourseDetailCards extends StatelessWidget {
                 ]),
               ),
             ),
-            // SizedBox(
-            //   width: deviceSize.width / 5,
-            //   child: Card(
-            //     elevation: 1,
-            //     child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            //       const Text('نام درس', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
-            //       Text(lessonName, style: const TextStyle(fontSize: 11)),
-            //     ]),
-            //   ),
-            // ),
           ],
         ),
       ),

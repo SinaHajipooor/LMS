@@ -1,18 +1,18 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/navigation/teacher_bottom_tabs.dart';
+import 'package:lms/navigation/bottom_tabas.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:provider/provider.dart';
 import '../screens/landing_screen.dart';
 
-class AppDrawer extends StatefulWidget {
-  const AppDrawer({super.key});
+class TeacherPanelDrawer extends StatefulWidget {
+  const TeacherPanelDrawer({super.key});
 
   @override
-  State<AppDrawer> createState() => _AppDrawerState();
+  State<TeacherPanelDrawer> createState() => _TeacherPanelDrawerState();
 }
 
-class _AppDrawerState extends State<AppDrawer> {
+class _TeacherPanelDrawerState extends State<TeacherPanelDrawer> {
   int _selectedPage = 1;
 
   void _showConfirmationAlert(BuildContext context) {
@@ -46,7 +46,7 @@ class _AppDrawerState extends State<AppDrawer> {
           AppBar(
             elevation: 1,
             backgroundColor: Colors.white,
-            title: const Text('یادگیری الکترونیک', style: TextStyle(color: Colors.blue, fontSize: 16)),
+            title: const Text('یادگیری الکترونیک', style: TextStyle(color: Colors.orange, fontSize: 16)),
             automaticallyImplyLeading: false,
           ),
           const SizedBox(height: 10),
@@ -55,13 +55,13 @@ class _AppDrawerState extends State<AppDrawer> {
               Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
             },
             child: const ListTile(
-              leading: Icon(Icons.home_outlined, color: Colors.blue),
+              leading: Icon(Icons.home_outlined, color: Colors.orange),
               title: Text('صفحه‌اصلی'),
             ),
           ),
           InkWell(
             onTap: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const TeacherBottomTabs(defaultPageIndex: 0)));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const BottomTabs(defaultPageIndex: 2)));
               setState(() {
                 _selectedPage = 2;
               });
@@ -69,8 +69,8 @@ class _AppDrawerState extends State<AppDrawer> {
             child: Container(
               color: _selectedPage == 2 ? Colors.grey[200] : null,
               child: const ListTile(
-                leading: Icon(Icons.person, color: Colors.blue),
-                title: Text('پنل مدرسان'),
+                leading: Icon(Icons.person, color: Colors.orange),
+                title: Text('پنل فراگیر'),
               ),
             ),
           ),
@@ -79,7 +79,7 @@ class _AppDrawerState extends State<AppDrawer> {
               _showConfirmationAlert(context);
             },
             child: const ListTile(
-              leading: Icon(Icons.logout, size: 20, color: Colors.blue),
+              leading: Icon(Icons.logout, size: 20, color: Colors.orange),
               title: Text('خروج', style: TextStyle(fontSize: 14)),
             ),
           ),
