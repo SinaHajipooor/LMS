@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:lms/navigation/app_drawer.dart';
 import 'package:lms/navigation/bottom_tabas.dart';
 import 'package:lms/navigation/teacher_panel_drawer.dart';
 import 'package:lms/screens/profile/profile_screen.dart';
