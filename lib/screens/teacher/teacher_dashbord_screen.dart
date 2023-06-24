@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:http/http.dart';
 import 'package:lms/navigation/bottom_tabas.dart';
 import 'package:lms/widgets/dashbord/dashbord_info_cards.dart';
 import 'package:lms/widgets/elements/custom_appbar.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 
-class EducationalDocumentScreen extends StatefulWidget {
-  const EducationalDocumentScreen({super.key});
+class TeacherDashbordScreen extends StatefulWidget {
+  const TeacherDashbordScreen({super.key});
 
   @override
-  State<EducationalDocumentScreen> createState() => _EducationalDocumentScreenState();
+  State<TeacherDashbordScreen> createState() => _TeacherDashbordScreenState();
 }
 
-class _EducationalDocumentScreenState extends State<EducationalDocumentScreen> {
-  // ----------------- state ----------------------
+class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
+  //----------------- state --------------------
   bool _isLoading = false;
   final _scrollController = ScrollController();
   // ignore: unused_field
   bool _isFabVisible = true;
-  // ----------------- lifecycle ----------------------
-
+  //----------------- lifecycle --------------------
   @override
   void initState() {
     super.initState();
@@ -35,27 +35,26 @@ class _EducationalDocumentScreenState extends State<EducationalDocumentScreen> {
       }
     });
   }
-  // ----------------- UI ----------------------
+
+  //----------------- UI --------------------
 
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () async {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const BottomTabs(defaultPageIndex: 2)));
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const BottomTabs(defaultPageIndex: 1)));
         return false;
       },
       child: Scaffold(
         body: _isLoading
-            ? const Center(
-                child: Spinner(size: 40),
-              )
+            ? const Center(child: Spinner(size: 40))
             : Stack(
                 children: [
                   CustomScrollView(
                     controller: _scrollController,
                     slivers: const [
-                      CustomAppbar(title: 'پرونده آموزشی'),
+                      CustomAppbar(title: 'داشبورد'),
                       SliverList(
                         delegate: SliverChildListDelegate.fixed(
                           [
