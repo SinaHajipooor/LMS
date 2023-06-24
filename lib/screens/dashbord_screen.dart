@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lms/screens/profile/profile_screen.dart';
 import 'package:lms/widgets/dashbord/calender.dart';
+import 'package:lms/widgets/dashbord/dashbord_info_cards.dart';
 import '../navigation/app_drawer.dart';
 
 class DashbordScreen extends StatefulWidget {
@@ -67,8 +68,16 @@ class _DashbordScreenState extends State<DashbordScreen> {
         ],
       ),
       drawer: const AppDrawer(),
-      body: PersianFullCalendar(
-        key: UniqueKey(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const DashbordInfoCards(),
+            const SizedBox(height: 20),
+            PersianFullCalendar(
+              key: UniqueKey(),
+            ),
+          ],
+        ),
       ),
     );
   }
