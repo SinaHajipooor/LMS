@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lms/navigation/app_drawer.dart';
 import 'package:lms/navigation/bottom_tabas.dart';
+import 'package:lms/navigation/teacher_panel_drawer.dart';
 import 'package:lms/screens/profile/profile_screen.dart';
+import 'package:lms/widgets/dashbord/calender.dart';
+import 'package:lms/widgets/dashbord/dashbord_info_cards.dart';
 
 class TeacherDashbordScreen extends StatefulWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -89,7 +92,16 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
             ),
           ],
         ),
-        drawer: const AppDrawer(),
+        drawer: const TeacherPanelDrawer(),
+        body: const SingleChildScrollView(
+          child: Column(
+            children: [
+              DashbordInfoCards(),
+              SizedBox(height: 20),
+              PersianFullCalendar(),
+            ],
+          ),
+        ),
       ),
     );
   }
