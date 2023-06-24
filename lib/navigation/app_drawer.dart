@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/navigation/teacher_bottom_tabs.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:provider/provider.dart';
 import '../screens/landing_screen.dart';
@@ -45,7 +46,7 @@ class _AppDrawerState extends State<AppDrawer> {
           AppBar(
             elevation: 1,
             backgroundColor: Colors.white,
-            title: const Text('پنل فراگیران', style: TextStyle(color: Colors.black, fontSize: 16)),
+            title: const Text('یادگیری الکترونیک', style: TextStyle(color: Colors.blue, fontSize: 16)),
             automaticallyImplyLeading: false,
           ),
           const SizedBox(height: 10),
@@ -60,6 +61,7 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           InkWell(
             onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const TeacherBottomTabs(defaultPageIndex: 0)));
               setState(() {
                 _selectedPage = 2;
               });
