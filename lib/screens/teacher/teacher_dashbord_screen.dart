@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lms/navigation/bottom_tabas.dart';
+import 'package:lms/widgets/dashbord/calender.dart';
 import 'package:lms/widgets/dashbord/dashbord_info_cards.dart';
 import 'package:lms/widgets/elements/custom_appbar.dart';
 import 'package:lms/widgets/elements/spinner.dart';
@@ -51,12 +52,18 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
                 children: [
                   CustomScrollView(
                     controller: _scrollController,
-                    slivers: const [
-                      CustomAppbar(title: 'داشبورد'),
+                    slivers: [
+                      const CustomAppbar(title: 'داشبورد'),
                       SliverList(
                         delegate: SliverChildListDelegate.fixed(
                           [
-                            DashbordInfoCards(),
+                            const DashbordInfoCards(),
+                            const SizedBox(height: 15),
+                            const Divider(),
+                            const SizedBox(height: 10),
+                            PersianFullCalendar(
+                              key: UniqueKey(),
+                            )
                           ],
                         ),
                       ),

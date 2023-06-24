@@ -9,22 +9,12 @@ class DashbordInfoCards extends StatelessWidget {
     return Container(
       width: deviceSize.width,
       margin: const EdgeInsets.only(top: 15),
-      child: Column(
+      child: Row(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildCard(context, 'مدیر', '2', Colors.green),
-              _buildCard(context, 'رابط آموزشی', '23', Colors.orange),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildCard(context, 'مدرس', '7', Colors.red),
-              _buildCard(context, 'فراگیر', '10', Colors.blue),
-            ],
-          ),
+          _buildCard(context, 'مدیر', '2', Colors.green),
+          _buildCard(context, 'رابط آموزشی', '23', Colors.orange),
+          _buildCard(context, 'مدرس', '7', Colors.red),
+          _buildCard(context, 'فراگیر', '10', Colors.blue),
         ],
       ),
     );
@@ -35,7 +25,7 @@ Widget _buildCard(BuildContext context, String title, String count, Color color)
   final deviceSize = MediaQuery.of(context).size;
   return SizedBox(
     height: 80,
-    width: deviceSize.width / 2.2,
+    width: deviceSize.width / 4,
     child: Card(
       elevation: 2,
       child: InkWell(
