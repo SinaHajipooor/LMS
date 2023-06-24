@@ -6,7 +6,6 @@ class CourseDetailCards extends StatelessWidget {
   final int sessionCount;
   final String time;
   final int studentsCount;
-  final String lessonName;
 
   const CourseDetailCards({
     super.key,
@@ -14,7 +13,6 @@ class CourseDetailCards extends StatelessWidget {
     required this.sessionCount,
     required this.time,
     required this.studentsCount,
-    required this.lessonName,
   });
   //---------------- UI ------------------
   @override
