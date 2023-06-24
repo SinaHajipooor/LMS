@@ -128,7 +128,10 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                             const CourseTeachersList(),
                             const SizedBox(height: 35),
                             Consumer<CourseProvider>(builder: (context, myProvider, child) {
-                              return CourseImage(imageUrl: myProvider.courseDetails['main_image']);
+                              return CourseImage(
+                                imageUrl: myProvider.courseDetails['main_image'],
+                                lessonName: myProvider.courseDetails['lesson_id'],
+                              );
                             }),
                             const Padding(
                               padding: EdgeInsets.fromLTRB(32, 20, 32, 16),

@@ -45,7 +45,7 @@ class _AppDrawerState extends State<AppDrawer> {
           AppBar(
             elevation: 1,
             backgroundColor: Colors.white,
-            title: Text(_selectedPage == 1 ? 'پنل فراگیران' : 'پنل مدرسان', style: const TextStyle(color: Colors.black, fontSize: 16)),
+            title: const Text('پنل فراگیران', style: TextStyle(color: Colors.black, fontSize: 16)),
             automaticallyImplyLeading: false,
           ),
           const SizedBox(height: 10),
