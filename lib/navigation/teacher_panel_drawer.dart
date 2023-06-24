@@ -46,7 +46,7 @@ class _TeacherPanelDrawerState extends State<TeacherPanelDrawer> {
           AppBar(
             elevation: 1,
             backgroundColor: Colors.white,
-            title: const Text('یادگیری الکترونیک', style: TextStyle(color: Colors.blue, fontSize: 16)),
+            title: const Text('یادگیری الکترونیک', style: TextStyle(color: Colors.orange, fontSize: 16)),
             automaticallyImplyLeading: false,
           ),
           const SizedBox(height: 10),
@@ -55,7 +55,7 @@ class _TeacherPanelDrawerState extends State<TeacherPanelDrawer> {
               Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
             },
             child: const ListTile(
-              leading: Icon(Icons.home_outlined, color: Colors.blue),
+              leading: Icon(Icons.home_outlined, color: Colors.orange),
               title: Text('صفحه‌اصلی'),
             ),
           ),
@@ -69,7 +69,7 @@ class _TeacherPanelDrawerState extends State<TeacherPanelDrawer> {
             child: Container(
               color: _selectedPage == 2 ? Colors.grey[200] : null,
               child: const ListTile(
-                leading: Icon(Icons.person, color: Colors.blue),
+                leading: Icon(Icons.person, color: Colors.orange),
                 title: Text('پنل فراگیر'),
               ),
             ),
@@ -79,7 +79,7 @@ class _TeacherPanelDrawerState extends State<TeacherPanelDrawer> {
               _showConfirmationAlert(context);
             },
             child: const ListTile(
-              leading: Icon(Icons.logout, size: 20, color: Colors.red),
+              leading: Icon(Icons.logout, size: 20, color: Colors.orange),
               title: Text('خروج', style: TextStyle(fontSize: 14)),
             ),
           ),

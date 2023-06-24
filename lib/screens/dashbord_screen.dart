@@ -19,7 +19,6 @@ class _DashbordScreenState extends State<DashbordScreen> {
 // --------------- methods -----------------
 
 // --------------- UI -----------------
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +29,7 @@ class _DashbordScreenState extends State<DashbordScreen> {
         leading: Row(
           children: [
             IconButton(
-              icon: const Icon(Icons.menu, color: Colors.black),
+              icon: const Icon(Icons.menu, color: Colors.blue),
               onPressed: () => widget._scaffoldKey.currentState?.openDrawer(),
             ),
           ],

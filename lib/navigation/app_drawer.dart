@@ -69,7 +69,7 @@ class _AppDrawerState extends State<AppDrawer> {
             child: Container(
               color: _selectedPage == 2 ? Colors.grey[200] : null,
               child: const ListTile(
-                leading: Icon(Icons.person, color: Colors.orange),
+                leading: Icon(Icons.person, color: Colors.blue),
                 title: Text('پنل مدرسان'),
               ),
             ),
@@ -79,7 +79,7 @@ class _AppDrawerState extends State<AppDrawer> {
               _showConfirmationAlert(context);
             },
             child: const ListTile(
-              leading: Icon(Icons.logout, size: 20, color: Colors.red),
+              leading: Icon(Icons.logout, size: 20, color: Colors.blue),
               title: Text('خروج', style: TextStyle(fontSize: 14)),
             ),
           ),
