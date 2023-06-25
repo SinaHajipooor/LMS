@@ -20,7 +20,7 @@ class ElectronicCoursesScreen extends StatefulWidget {
 class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
 // --------------- state --------------
   var _showItems = false;
-  var _isLoading = true;
+  bool _isLoading = true;
   var _bottomPadding = 0.0;
   List<dynamic> _courseGroups = [];
 // --------------- lifecycle -----------------
