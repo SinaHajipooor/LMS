@@ -7,13 +7,14 @@ class PersianFullCalendar extends StatefulWidget {
   const PersianFullCalendar({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _PersianFullCalendarState createState() => _PersianFullCalendarState();
 }
 
 class _PersianFullCalendarState extends State<PersianFullCalendar> {
   late CalendarController _calendarController;
   String? _headerDateFormat;
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
 
   final List<Appointment> _appointments = <Appointment>[
     Appointment(
@@ -235,47 +236,3 @@ class EventDataSource extends CalendarDataSource {
     return 'تاریخ: $formattedStartJalaliDate - $formattedEndJalaliDate';
   }
 }
-
-          // return SizedBox(
-          //   height: MediaQuery.of(context).size.height * 0.65,
-          //   child: Column(
-          //     mainAxisAlignment: MainAxisAlignment.end,
-          //     children: [
-          //       Padding(
-          //         padding: const EdgeInsets.all(8.0),
-          //         child: Row(
-          //           mainAxisAlignment: MainAxisAlignment.center,
-          //           children: [Text('مشاهده رویداد')],
-          //         ),
-          //       ),
-          //       CalendarModal(),
-          //       Row(
-          //         children: [
-          //           Expanded(
-          //             child: Padding(
-          //               padding: const EdgeInsets.symmetric(horizontal: 5),
-          //               child: ElevatedButton(
-          //                 onPressed: () {
-          //                   Navigator.of(context).pop();
-          //                 },
-          //                 style: ButtonStyle(
-          //                   backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
-          //                 ),
-          //                 child: const Text('برگشت'),
-          //               ),
-          //             ),
-          //           ),
-          //           Expanded(
-          //             child: Padding(
-          //               padding: const EdgeInsets.symmetric(horizontal: 5),
-          //               child: ElevatedButton(
-          //                 onPressed: () {},
-          //                 child: const Text('لیست حضور غیاب'),
-          //               ),
-          //             ),
-          //           ),
-          //         ],
-          //       ),
-          //     ],
-          //   ),
-          // );
