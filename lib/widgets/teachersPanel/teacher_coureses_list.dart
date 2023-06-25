@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lms/widgets/course/course_item.dart';
 
-class CurrentCoursesList extends StatelessWidget {
+class TeacherCoursesList extends StatelessWidget {
   // ---------------- feilds ------------------
   final List<dynamic> teacherCurrentCourses;
-  const CurrentCoursesList({super.key, required this.teacherCurrentCourses});
+  const TeacherCoursesList({super.key, required this.teacherCurrentCourses});
   // ---------------- feilds ------------------
   @override
   Widget build(BuildContext context) {

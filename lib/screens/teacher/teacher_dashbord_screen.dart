@@ -7,6 +7,7 @@ import 'package:lms/screens/profile/profile_screen.dart';
 import 'package:lms/widgets/dashbord/calender.dart';
 import 'package:lms/widgets/dashbord/dashbord_info_cards.dart';
 import 'package:lms/widgets/elements/spinner.dart';
+// import 'package:lms/widgets/teachersPanel/teacher_coureses_list.dart';
 import 'package:provider/provider.dart';
 
 class TeacherDashbordScreen extends StatefulWidget {
@@ -27,11 +28,11 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
   // ignore: unused_field
   List<dynamic> _teacherCurrentCourses = [];
   //----------------- lifecycle --------------------
-  @override
-  void didChangeDependencies() {
-    _fetchTeacherCurrentCourses();
-    super.didChangeDependencies();
-  }
+  // @override
+  // void didChangeDependencies() {
+  //   _fetchTeacherCurrentCourses();
+  //   super.didChangeDependencies();
+  // }
 
   @override
   void initState() {
@@ -113,22 +114,23 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
         drawer: const TeacherPanelDrawer(),
         body: _isLoading
             ? const Center(child: Spinner(size: 35))
-            : const SingleChildScrollView(
+            : SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    PersianFullCalendar(
+                    const PersianFullCalendar(
                       calendarUsecase: 2,
                     ),
-                    SizedBox(height: 10),
-                    DashbordInfoCards(),
-                    Padding(
+                    const SizedBox(height: 10),
+                    const DashbordInfoCards(),
+                    const Padding(
                       padding: EdgeInsets.only(top: 35, right: 15),
                       child: Text(
                         'دوره های جاری',
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                     ),
+                    // TeacherCoursesList(teacherCurrentCourses: _teacherCurrentCourses)
                   ],
                 ),
               ),
