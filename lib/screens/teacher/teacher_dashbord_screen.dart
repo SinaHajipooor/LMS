@@ -76,10 +76,7 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
                       child: Container(
                         width: 11,
                         height: 11,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color.fromARGB(255, 109, 223, 113),
-                        ),
+                        decoration: const BoxDecoration(shape: BoxShape.circle, color: Color.fromARGB(255, 109, 223, 113)),
                       ),
                     ),
                   ],
@@ -94,10 +91,17 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
         drawer: const TeacherPanelDrawer(),
         body: const SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              PersianFullCalendar(
+                calendarUsecase: 2,
+              ),
+              SizedBox(height: 10),
               DashbordInfoCards(),
-              SizedBox(height: 20),
-              PersianFullCalendar(),
+              Padding(
+                padding: EdgeInsets.only(top: 35, right: 15),
+                child: Text('دوره های جاری', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              ),
             ],
           ),
         ),

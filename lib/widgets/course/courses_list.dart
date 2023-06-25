@@ -8,7 +8,7 @@ class CoursesList extends StatefulWidget {
   // -------------- feilds ----------------
   final bool showItems;
   final int groupId;
-  CoursesList({super.key, required this.showItems, required this.groupId});
+  const CoursesList({super.key, required this.showItems, required this.groupId});
 
   @override
   State<CoursesList> createState() => _CoursesListState();

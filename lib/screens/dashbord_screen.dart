@@ -71,8 +71,9 @@ class _DashbordScreenState extends State<DashbordScreen> {
         child: Column(
           children: [
             const DashbordInfoCards(),
-            const SizedBox(height: 20),
+            const SizedBox(height: 15),
             PersianFullCalendar(
+              calendarUsecase: 1,
               key: UniqueKey(),
             ),
           ],
