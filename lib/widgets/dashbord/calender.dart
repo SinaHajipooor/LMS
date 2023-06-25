@@ -4,8 +4,9 @@ import 'package:shamsi_date/shamsi_date.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class PersianFullCalendar extends StatefulWidget {
-  const PersianFullCalendar({Key? key}) : super(key: key);
-
+  // 1 for student 2 for teacher
+  final int calendarUsecase;
+  const PersianFullCalendar({super.key, required this.calendarUsecase});
   @override
   // ignore: library_private_types_in_public_api
   _PersianFullCalendarState createState() => _PersianFullCalendarState();
@@ -110,11 +111,9 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
     if (details.targetElement == CalendarElement.calendarCell) {
       final selectedDate = details.date!;
       final shamsiDate = Jalali.fromDateTime(selectedDate);
-      // final formattedShamsiDate = '${shamsiDate.year}/${shamsiDate.month}/${shamsiDate.day}';
       setState(() {
         _headerDateFormat = '${shamsiDate.formatter.wN}، ${shamsiDate.formatter.d} ${shamsiDate.formatter.mN} ${shamsiDate.formatter.yyyy}';
       });
-
       showModalBottomSheet(
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -133,7 +132,7 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
                   setState(() {
                     _scrollController.animateTo(
                       _scrollController.position.minScrollExtent,
-                      duration: const Duration(milliseconds: 200),
+                      duration: const Duration(milliseconds: 300),
                       curve: Curves.easeOut,
                     );
                   });
@@ -145,7 +144,7 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
                   bottom: keyboardOffset + MediaQuery.of(context).padding.bottom,
                 ),
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.7,
+                  height: widget.calendarUsecase == 2 ? MediaQuery.of(context).size.height * 0.7 : MediaQuery.of(context).size.height * 0.65,
                   child: Column(
                     children: [
                       Container(
@@ -154,38 +153,41 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
                         alignment: Alignment.center,
                         child: Text(
                           'مشاهده رویداد',
-                          style: TextStyle(color: Colors.orange[600], fontWeight: FontWeight.bold),
+                          style: TextStyle(color: widget.calendarUsecase == 2 ? Colors.orange[600] : Colors.blue, fontWeight: FontWeight.bold),
                         ),
                       ),
                       const SizedBox(height: 20),
                       const Expanded(child: CalendarModal()),
-                      const SizedBox(height: 15),
-                      SizedBox(
-                        height: 55,
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 5),
-                              child: SizedBox(
-                                width: MediaQuery.of(context).size.width / 3,
-                                child: ElevatedButton(
-                                  onPressed: () => Navigator.of(context).pop(),
-                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!)),
-                                  child: const Text('برگشت'),
+                      Visibility(visible: widget.calendarUsecase == 2, child: const SizedBox(height: 15)),
+                      Visibility(
+                        visible: widget.calendarUsecase == 2,
+                        child: SizedBox(
+                          height: 55,
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: SizedBox(
+                                  width: MediaQuery.of(context).size.width / 3,
+                                  child: ElevatedButton(
+                                    onPressed: () => Navigator.of(context).pop(),
+                                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!)),
+                                    child: const Text('برگشت'),
+                                  ),
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 5),
-                                child: ElevatedButton(
-                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.orange[400]!)),
-                                  onPressed: () {},
-                                  child: const Text('لیست حضور غیاب'),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                                  child: ElevatedButton(
+                                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.orange[400]!)),
+                                    onPressed: () {},
+                                    child: const Text('لیست حضور غیاب'),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],
