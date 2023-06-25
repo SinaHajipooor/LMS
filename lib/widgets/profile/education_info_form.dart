@@ -94,13 +94,13 @@ class EducationInfoForm extends StatelessWidget {
             Row(
               children: [
                 Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'نوع دانشگاه مدرک')),
-                Expanded(child: TextInput(value: '', placeholder: 'دانشگاه اخذ مدرک', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                Expanded(child: TextInput(value: '', label: 'دانشگاه اخذ مدرک', onChanged: (value) {}, keyboardType: TextInputType.number)),
               ],
             ),
             const SizedBox(height: 15),
             Row(
               children: [
-                Expanded(child: TextInput(value: '', placeholder: ' معدل', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                Expanded(child: TextInput(value: '', label: ' معدل', onChanged: (value) {}, keyboardType: TextInputType.number)),
                 Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'رشته شغلی')),
               ],
             ),

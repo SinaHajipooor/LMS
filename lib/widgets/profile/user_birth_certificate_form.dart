@@ -111,41 +111,41 @@ class UserBirthCertificateForm extends StatelessWidget {
         Row(
           children: [
             Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'آخرین مدرک آموزشی')),
-            Expanded(child: TextInput(value: '', placeholder: 'تلفن', onChanged: (value) {}, keyboardType: TextInputType.number)),
+            Expanded(child: TextInput(value: '', label: 'تلفن', onChanged: (value) {}, keyboardType: TextInputType.number)),
           ],
         ),
         const SizedBox(height: 10),
         Row(
           children: [
-            Expanded(child: TextInput(value: '', placeholder: 'نام لاتین', onChanged: (value) {})),
-            Expanded(child: TextInput(value: '', placeholder: 'تلفن محل‌کار', onChanged: (value) {}, keyboardType: TextInputType.number)),
+            Expanded(child: TextInput(value: '', label: 'نام لاتین', onChanged: (value) {})),
+            Expanded(child: TextInput(value: '', label: 'تلفن محل‌کار', onChanged: (value) {}, keyboardType: TextInputType.number)),
           ],
         ),
         const SizedBox(height: 10),
         Row(
           children: [
-            Expanded(child: TextInput(value: '', placeholder: 'شماره شناسنامه', onChanged: (value) {}, keyboardType: TextInputType.number)),
-            Expanded(child: TextInput(value: '', placeholder: 'نام پدر', onChanged: (value) {})),
+            Expanded(child: TextInput(value: '', label: 'شماره شناسنامه', onChanged: (value) {}, keyboardType: TextInputType.number)),
+            Expanded(child: TextInput(value: '', label: 'نام پدر', onChanged: (value) {})),
           ],
         ),
         const SizedBox(height: 10),
         Row(
           children: [
-            Expanded(child: TextInput(value: '', placeholder: 'سری شناسنامه', onChanged: (value) {})),
-            Expanded(child: TextInput(value: '', placeholder: 'سریال‌شناسنامه', onChanged: (value) {})),
+            Expanded(child: TextInput(value: '', label: 'سری شناسنامه', onChanged: (value) {})),
+            Expanded(child: TextInput(value: '', label: 'سریال‌شناسنامه', onChanged: (value) {})),
           ],
         ),
         const SizedBox(height: 10),
         Row(
           children: [
-            Expanded(child: TextInput(value: '', placeholder: 'شماره‌شبا', onChanged: (value) {}, keyboardType: TextInputType.number)),
-            Expanded(child: TextInput(value: '', placeholder: 'کد‌پستی', onChanged: (value) {}, keyboardType: TextInputType.number)),
+            Expanded(child: TextInput(value: '', label: 'شماره‌شبا', onChanged: (value) {}, keyboardType: TextInputType.number)),
+            Expanded(child: TextInput(value: '', label: 'کد‌پستی', onChanged: (value) {}, keyboardType: TextInputType.number)),
           ],
         ),
         const SizedBox(height: 10),
         Row(
           children: [
-            Expanded(child: TextInput(value: '', placeholder: 'آدرس', onChanged: (value) {})),
+            Expanded(child: TextInput(value: '', label: 'آدرس', onChanged: (value) {})),
             Expanded(
               child: Card(
                 shape: RoundedRectangleBorder(
