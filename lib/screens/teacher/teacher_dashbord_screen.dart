@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lms/navigation/bottom_tabas.dart';
 import 'package:lms/navigation/teacher_panel_drawer.dart';
+import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
 import 'package:lms/screens/profile/profile_screen.dart';
 import 'package:lms/widgets/dashbord/calender.dart';
 import 'package:lms/widgets/dashbord/dashbord_info_cards.dart';
+import 'package:lms/widgets/elements/spinner.dart';
+import 'package:provider/provider.dart';
 
 class TeacherDashbordScreen extends StatefulWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -20,7 +23,16 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
   final _scrollController = ScrollController();
   // ignore: unused_field
   bool _isFabVisible = true;
+  bool _isLoading = false;
+  // ignore: unused_field
+  List<dynamic> _teacherCurrentCourses = [];
   //----------------- lifecycle --------------------
+  @override
+  void didChangeDependencies() {
+    _fetchTeacherCurrentCourses();
+    super.didChangeDependencies();
+  }
+
   @override
   void initState() {
     super.initState();
@@ -37,8 +49,18 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
     });
   }
 
-  //----------------- UI --------------------
+  //----------------- methods --------------------
+  Future<void> _fetchTeacherCurrentCourses() async {
+    await Provider.of<TeachersPanelProvider>(context, listen: false).fetchAllTeacherCurrentCourses();
+    if (mounted) {
+      setState(() {
+        _teacherCurrentCourses = Provider.of<TeachersPanelProvider>(context, listen: false).teacherCurrentCourses;
+        _isLoading = false;
+      });
+    }
+  }
 
+  //----------------- UI --------------------
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -89,22 +111,27 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
           ],
         ),
         drawer: const TeacherPanelDrawer(),
-        body: const SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              PersianFullCalendar(
-                calendarUsecase: 2,
+        body: _isLoading
+            ? const Center(child: Spinner(size: 35))
+            : const SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    PersianFullCalendar(
+                      calendarUsecase: 2,
+                    ),
+                    SizedBox(height: 10),
+                    DashbordInfoCards(),
+                    Padding(
+                      padding: EdgeInsets.only(top: 35, right: 15),
+                      child: Text(
+                        'دوره های جاری',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(height: 10),
-              DashbordInfoCards(),
-              Padding(
-                padding: EdgeInsets.only(top: 35, right: 15),
-                child: Text('دوره های جاری', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }
