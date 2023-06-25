@@ -168,7 +168,7 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
                               child: SizedBox(
                                 width: MediaQuery.of(context).size.width / 3,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () => Navigator.of(context).pop(),
                                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!)),
                                   child: const Text('برگشت'),
                                 ),
