@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
         Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
         return false;
       },
-      child: BottomTabs(defaultPageIndex: 2),
+      child: const BottomTabs(defaultPageIndex: 2),
     );
   }
 }

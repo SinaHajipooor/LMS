@@ -68,6 +68,7 @@ class _DashbordScreenState extends State<DashbordScreen> {
       ),
       drawer: const AppDrawer(),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             const DashbordInfoCards(),

@@ -111,6 +111,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                 ),
                 child: Center(
                   child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
                     child: Card(
                       elevation: 4,
                       margin: const EdgeInsets.symmetric(horizontal: 13),

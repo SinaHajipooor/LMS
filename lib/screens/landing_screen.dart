@@ -84,6 +84,7 @@ class _LandingScreenState extends State<LandingScreen> {
         body: _isLoading
             ? const Center(child: Spinner(size: 40))
             : SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
                     const SizedBox(height: 15),

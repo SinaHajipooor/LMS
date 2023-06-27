@@ -115,6 +115,7 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
         body: _isLoading
             ? const Center(child: Spinner(size: 35))
             : const SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

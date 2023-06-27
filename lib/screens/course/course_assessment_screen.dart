@@ -107,6 +107,7 @@ class _CourseAssessmentScreenState extends State<CourseAssessmentScreen> {
                               child: Question(index: i + 1, text: questionText, usecase: 2),
                             ),
                             SingleChildScrollView(
+                              physics: const BouncingScrollPhysics(),
                               scrollDirection: Axis.horizontal,
                               child: Row(
                                 children: _answers
