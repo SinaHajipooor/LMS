@@ -2,11 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TeachersPanelProvider with ChangeNotifier {
   // --------------- feilds ------------------
-  // static const _baseUrl = '';
-  static const _teacherCurrentCoursesUrl = '';
+  static const _baseUrl = 'http://45.149.77.156:8081/api';
+  static const _teacherCurrentCoursesUrl = _baseUrl + '/lms/teacher/courses?teacher_id=';
   static const _allTeacherCoursesUrl = '';
   List _teacherCurrentCourses = [];
   List _allTeacherCourses = [];
@@ -15,14 +16,16 @@ class TeachersPanelProvider with ChangeNotifier {
   List get allTeacherCourses => _allTeacherCourses;
   // --------------- methods ------------------
   Future<void> fetchAllTeacherCurrentCourses() async {
+    final prefs = await SharedPreferences.getInstance();
+    final teacherId = prefs.getString('userId');
     try {
       final response = await http.get(
-        Uri.parse(_teacherCurrentCoursesUrl),
+        Uri.parse(_teacherCurrentCoursesUrl + '$teacherId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('Failed to fetch all teacher current courses ');
       final Map<String, dynamic>? responseData = jsonDecode(response.body) as Map<String, dynamic>?;
-      _teacherCurrentCourses = responseData?['result']['courses']['data'];
+      _teacherCurrentCourses = responseData?['result']['courses']['simples'];
       notifyListeners();
     } catch (error) {
       print(error);

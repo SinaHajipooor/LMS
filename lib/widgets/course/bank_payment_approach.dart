@@ -19,8 +19,6 @@ class _BankPaymentApproachState extends State<BankPaymentApproach> {
   File? _selectedFile;
   String? _selectedDate;
 
-//------------------- lifecycle -------------------
-
   // ------------------- methods --------------------
   Future<void> _selectFile() async {
     final result = await FilePicker.platform.pickFiles(
