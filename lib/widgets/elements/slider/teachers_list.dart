@@ -14,7 +14,7 @@ class TeachersList extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: teachers.length,
-        padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
+        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         itemBuilder: (context, index) {
           final teacher = teachers[index];
           return TeacherItem(teacher: teacher);
