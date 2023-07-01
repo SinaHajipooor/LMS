@@ -38,10 +38,10 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Stack(
         children: [
           Positioned.fill(
-            child: Image.asset('assets/images/login-background.png', fit: BoxFit.cover),
+            child: Image.asset('assets/images/splash.png', fit: BoxFit.cover),
           ),
           Center(
-            child: Image.asset('assets/images/favagostar-logo.png'),
+            child: Image.asset('assets/images/avatar-edu.png'),
           )
         ],
       ),

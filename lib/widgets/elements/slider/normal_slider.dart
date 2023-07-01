@@ -11,7 +11,7 @@ class NormalSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
-        height: 180,
+        height: 200,
         enlargeCenterPage: true,
         autoPlay: true,
         aspectRatio: 16 / 9,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import '../spinner.dart';
+import 'package:lms/widgets/elements/spinner.dart';
 
 class TmsSlider extends StatefulWidget {
   // feilds
@@ -28,17 +28,18 @@ class _TmsSliderState extends State<TmsSlider> {
               child: const Text('مراکز آموزشی', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
             ),
             IconButton(
-                onPressed: () {
-                  _controller.nextPage();
-                },
-                icon: const Icon(Icons.arrow_forward_rounded)),
+              onPressed: () {
+                _controller.nextPage();
+              },
+              icon: const Icon(Icons.arrow_forward_rounded),
+            ),
           ],
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 30),
         CarouselSlider(
           carouselController: _controller,
           options: CarouselOptions(
-            height: 175,
+            height: 165,
             autoPlay: false,
             aspectRatio: 16 / 9,
             autoPlayCurve: Curves.fastOutSlowIn,
@@ -67,7 +68,7 @@ class _TmsSliderState extends State<TmsSlider> {
                               fit: BoxFit.cover,
                               loadingBuilder: (context, child, progress) {
                                 if (progress == null) return child;
-                                return Center(
+                                return const Center(
                                   child: Spinner(size: 30),
                                 );
                               },
@@ -77,16 +78,14 @@ class _TmsSliderState extends State<TmsSlider> {
                       ),
                     ),
                     const SizedBox(height: 8.0),
-                    Container(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-                        child: Text(
-                          item['name'],
-                          style: const TextStyle(fontSize: 11.0, color: Colors.black),
-                          maxLines: 2,
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                      child: Text(
+                        item['name'],
+                        style: const TextStyle(fontSize: 11.0, color: Colors.black),
+                        maxLines: 2,
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ],

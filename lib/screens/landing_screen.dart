@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lms/widgets/elements/slider/amazing_courses_list.dart';
 import 'package:provider/provider.dart';
 import '../screens/login_screen.dart';
 import '../widgets/elements/slider/annoucement_slider.dart';
@@ -90,21 +91,36 @@ class _LandingScreenState extends State<LandingScreen> {
                     const SizedBox(height: 15),
                     NormalSlider(landingProvider.slides),
                     const SizedBox(height: 15),
-                    AnnoucementSlider(landingProvider.announcements),
-                    const SizedBox(height: 45),
-                    SizedBox(height: 280, child: NewsList(newsList: landingProvider.news)),
-                    const SizedBox(height: 10),
                     TmsSlider(landingProvider.tms),
-                    const SizedBox(height: 55),
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    const SizedBox(height: 50),
+                    Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                       Container(
                         margin: const EdgeInsets.only(right: 12),
-                        child: const Text('مدرسین مجرب سازمان', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+                        child: const Text('مدرسان مجرب سازمان', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
                       ),
                     ]),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 15),
                     const TeachersList(),
+                    const SizedBox(height: 30),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 15, bottom: 15),
+                      child: Text('اخبار اخیر', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+                    ),
+                    SizedBox(height: 280, child: NewsList(newsList: landingProvider.news)),
                     const SizedBox(height: 20),
+                    AnnoucementSlider(landingProvider.announcements),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(right: 12, bottom: 15),
+                          child: const Text('دوره های شگفت‌انگیز', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+                        ),
+                      ],
+                    ),
+                    const AmazingCoursesList(),
+                    const SizedBox(height: 15),
                   ],
                 ),
               ),
