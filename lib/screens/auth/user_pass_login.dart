@@ -113,7 +113,7 @@ class _UserPassLoginState extends State<UserPassLogin> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 58),
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {

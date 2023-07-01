@@ -10,8 +10,6 @@ import 'package:provider/provider.dart';
 import 'providers/Landing/LandingProvider.dart';
 import './providers/Course/CourseProvider.dart';
 import './screens/landing_screen.dart';
-import './screens/login_screen.dart';
-import './screens/authenticate_screen.dart';
 import './screens/dashbord_screen.dart';
 import './screens/home_screen.dart';
 import './providers/Auth/AuthProvider.dart';
@@ -63,8 +61,6 @@ class MyApp extends StatelessWidget {
           routes: {
             SplashScreen.routeName: (ctx) => const SplashScreen(),
             LandingScreen.routeName: (ctx) => const LandingScreen(),
-            LoginScreen.routeName: (ctx) => const LoginScreen(),
-            AuthenticateScreen.routeName: (ctx) => const AuthenticateScreen(),
             HomeScreen.routeName: (ctx) => const HomeScreen(),
             DashbordScreen.routeName: (ctx) => DashbordScreen(),
             ShoppingBasketScreen.routeName: (ctx) => const ShoppingBasketScreen(),

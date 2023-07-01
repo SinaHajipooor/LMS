@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lms/screens/auth/auth_screen.dart';
-import 'package:lms/widgets/elements/slider/amazing_courses_list.dart';
+import 'package:lms/widgets/landing/amazing_courses_list.dart';
 import 'package:provider/provider.dart';
 import '../widgets/elements/slider/annoucement_slider.dart';
 import '../widgets/elements/slider/normal_slider.dart';
