@@ -23,7 +23,11 @@ class _AuthScreenState extends State<AuthScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 15, top: 15),
-              child: Image.asset('assets/images/favagostar-logo.png'),
+              child: Image.asset(
+                'assets/images/avatar-edu.png',
+                width: 130,
+                height: 130,
+              ),
             ),
             Expanded(
               child: Container(

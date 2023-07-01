@@ -52,6 +52,7 @@ class _EducationalDocumentScreenState extends State<EducationalDocumentScreen> {
             : Stack(
                 children: [
                   CustomScrollView(
+                    physics: const BouncingScrollPhysics(),
                     controller: _scrollController,
                     slivers: const [
                       CustomAppbar(title: 'پرونده آموزشی'),

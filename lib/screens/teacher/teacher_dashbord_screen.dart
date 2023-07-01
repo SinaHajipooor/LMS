@@ -114,16 +114,17 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
         drawer: const TeacherPanelDrawer(),
         body: _isLoading
             ? const Center(child: Spinner(size: 35))
-            : SingleChildScrollView(
+            : const SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const PersianFullCalendar(
+                    PersianFullCalendar(
                       calendarUsecase: 2,
                     ),
-                    const SizedBox(height: 10),
-                    const DashbordInfoCards(),
-                    const Padding(
+                    SizedBox(height: 10),
+                    DashbordInfoCards(),
+                    Padding(
                       padding: EdgeInsets.only(top: 35, right: 15),
                       child: Text(
                         'دوره های جاری',
