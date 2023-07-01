@@ -89,11 +89,11 @@ class _LandingScreenState extends State<LandingScreen> {
                     const SizedBox(height: 15),
                     NormalSlider(landingProvider.slides),
                     const SizedBox(height: 15),
-                    AnnoucementSlider(landingProvider.announcements),
+                    TmsSlider(landingProvider.tms),
                     const SizedBox(height: 45),
                     SizedBox(height: 280, child: NewsList(newsList: landingProvider.news)),
                     const SizedBox(height: 10),
-                    TmsSlider(landingProvider.tms),
+                    AnnoucementSlider(landingProvider.announcements),
                     const SizedBox(height: 55),
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       Container(
