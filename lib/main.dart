@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
+import 'package:lms/screens/auth/auth_screen.dart';
 import 'package:lms/screens/profile/profile_screen.dart';
 import 'package:lms/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
@@ -73,6 +74,7 @@ class MyApp extends StatelessWidget {
             CourseAssessmentScreen.routeName: (ctx) => const CourseAssessmentScreen(),
             SimpleCoursesScreen.routeName: (ctx) => const SimpleCoursesScreen(),
             ProfileScreen.routeName: (ctx) => const ProfileScreen(),
+            AuthScreen.routeName: (ctx) => const AuthScreen(),
           },
         ),
       ),
