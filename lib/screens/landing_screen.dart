@@ -84,6 +84,7 @@ class _LandingScreenState extends State<LandingScreen> {
         body: _isLoading
             ? const Center(child: Spinner(size: 40))
             : SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
                     const SizedBox(height: 15),
@@ -91,18 +92,22 @@ class _LandingScreenState extends State<LandingScreen> {
                     const SizedBox(height: 15),
                     TmsSlider(landingProvider.tms),
                     const SizedBox(height: 45),
-                    SizedBox(height: 280, child: NewsList(newsList: landingProvider.news)),
-                    const SizedBox(height: 10),
-                    AnnoucementSlider(landingProvider.announcements),
-                    const SizedBox(height: 55),
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                       Container(
                         margin: const EdgeInsets.only(right: 12),
-                        child: const Text('مدرسین مجرب سازمان', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+                        child: const Text('مدرسان مجرب سازمان', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
                       ),
                     ]),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 20),
                     const TeachersList(),
+                    const SizedBox(height: 30),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 15, bottom: 15),
+                      child: Text('اخبار اخیر', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+                    ),
+                    SizedBox(height: 280, child: NewsList(newsList: landingProvider.news)),
+                    const SizedBox(height: 20),
+                    AnnoucementSlider(landingProvider.announcements),
                     const SizedBox(height: 20),
                   ],
                 ),

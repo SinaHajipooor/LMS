@@ -25,7 +25,7 @@ class _AnnoucementSliderState extends State<AnnoucementSlider> {
           children: [
             Container(
               margin: const EdgeInsets.only(right: 12),
-              child: const Text('اطلاعیه ها', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+              child: const Text('اطلاعیه های اخیر', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
             ),
             IconButton(
                 onPressed: () {
