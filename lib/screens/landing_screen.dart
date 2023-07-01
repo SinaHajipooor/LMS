@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lms/widgets/elements/slider/amazing_courses_list.dart';
 import 'package:provider/provider.dart';
 import '../screens/login_screen.dart';
 import '../widgets/elements/slider/annoucement_slider.dart';
@@ -109,6 +110,14 @@ class _LandingScreenState extends State<LandingScreen> {
                     const SizedBox(height: 20),
                     AnnoucementSlider(landingProvider.announcements),
                     const SizedBox(height: 20),
+                    Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                      Container(
+                        margin: const EdgeInsets.only(right: 12, bottom: 15),
+                        child: const Text('دوره های شگفت‌انگیز', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+                      ),
+                    ]),
+                    const AmazingCoursesList(),
+                    const SizedBox(height: 25),
                   ],
                 ),
               ),
