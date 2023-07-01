@@ -138,12 +138,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ),
                                       ),
                                       TextButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              isMobileLogin = false;
-                                            });
-                                          },
-                                          child: const Text('ورود با نام‌کاربری', style: TextStyle(fontSize: 12))),
+                                        onPressed: () {
+                                          setState(() {
+                                            isMobileLogin = false;
+                                          });
+                                        },
+                                        child: const Text('ورود با نام‌کاربری', style: TextStyle(fontSize: 12)),
+                                      ),
                                     ],
                                   ),
                                   const SizedBox(height: 10),
