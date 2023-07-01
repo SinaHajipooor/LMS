@@ -44,14 +44,15 @@ class AmazingCourseItem extends StatelessWidget {
                     style: const TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 14,
-                      color: Color(
-                        0xff376AED,
-                      ),
+                      color: Color(0xff376AED),
                     ),
                   ),
                   const SizedBox(width: 8),
-                  Text(amazingCourse.title),
-                  const SizedBox(height: 16),
+                  Text(
+                    amazingCourse.title,
+                    style: const TextStyle(fontSize: 13),
+                  ),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [

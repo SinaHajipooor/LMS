@@ -92,14 +92,14 @@ class _LandingScreenState extends State<LandingScreen> {
                     NormalSlider(landingProvider.slides),
                     const SizedBox(height: 15),
                     TmsSlider(landingProvider.tms),
-                    const SizedBox(height: 45),
+                    const SizedBox(height: 50),
                     Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                       Container(
                         margin: const EdgeInsets.only(right: 12),
                         child: const Text('مدرسان مجرب سازمان', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
                       ),
                     ]),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 15),
                     const TeachersList(),
                     const SizedBox(height: 30),
                     const Padding(
@@ -110,14 +110,17 @@ class _LandingScreenState extends State<LandingScreen> {
                     const SizedBox(height: 20),
                     AnnoucementSlider(landingProvider.announcements),
                     const SizedBox(height: 20),
-                    Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                      Container(
-                        margin: const EdgeInsets.only(right: 12, bottom: 15),
-                        child: const Text('دوره های شگفت‌انگیز', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
-                      ),
-                    ]),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(right: 12, bottom: 15),
+                          child: const Text('دوره های شگفت‌انگیز', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+                        ),
+                      ],
+                    ),
                     const AmazingCoursesList(),
-                    const SizedBox(height: 25),
+                    const SizedBox(height: 15),
                   ],
                 ),
               ),
