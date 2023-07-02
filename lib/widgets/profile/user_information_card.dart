@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:lms/widgets/elements/text_input.dart';
 import 'package:lms/widgets/elements/user_information_input.dart';
 
 // ignore: must_be_immutable
