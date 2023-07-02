@@ -4,9 +4,10 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
 import 'package:lms/screens/auth/auth_screen.dart';
+import 'package:lms/screens/profile/user_education_screen.dart';
 import 'package:lms/screens/profile/user_profile_screen.dart';
 import 'package:lms/screens/splash_screen.dart';
-import 'package:lms/widgets/profile/user_birth_certificate_form.dart';
+import 'package:lms/screens/profile/user_birth_certificate_screen.dart';
 import 'package:provider/provider.dart';
 import 'providers/Landing/LandingProvider.dart';
 import './providers/Course/CourseProvider.dart';
@@ -71,7 +72,8 @@ class MyApp extends StatelessWidget {
             CourseAssessmentScreen.routeName: (ctx) => const CourseAssessmentScreen(),
             SimpleCoursesScreen.routeName: (ctx) => const SimpleCoursesScreen(),
             UserProfileScreen.routeName: (ctx) => const UserProfileScreen(),
-            UserBirthCertificateScreen.routeName: (ctx) => UserBirthCertificateScreen(),
+            UserBirthCertificateScreen.routeName: (ctx) => const UserBirthCertificateScreen(),
+            UserEducationScreen.routeName: (ctx) => const UserEducationScreen(),
             AuthScreen.routeName: (ctx) => const AuthScreen(),
           },
         ),

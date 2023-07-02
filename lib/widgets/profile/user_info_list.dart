@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:lms/navigation/bottom_tabas.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/landing_screen.dart';
-import 'package:lms/widgets/profile/user_birth_certificate_form.dart';
+import 'package:lms/screens/profile/user_birth_certificate_screen.dart';
+import 'package:lms/screens/profile/user_education_screen.dart';
 import 'package:provider/provider.dart';
 
 class UserInfoList extends StatefulWidget {
@@ -30,7 +31,7 @@ class _UserInfoListState extends State<UserInfoList> {
       buttonsBorderRadius: BorderRadius.circular(9),
       btnCancelText: 'لغو',
       buttonsTextStyle: const TextStyle(fontSize: 15),
-      btnCancelOnPress: () => Navigator.of(context).pop(),
+      btnCancelOnPress: () {},
       btnOkOnPress: () {
         Provider.of<AuthProvider>(context, listen: false).logout();
         Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
@@ -94,7 +95,7 @@ class _UserInfoListState extends State<UserInfoList> {
                 image: AssetImage('assets/images/icons/university.png'),
               ),
             ),
-            onTap: () {},
+            onTap: () => Navigator.of(context).pushNamed(UserEducationScreen.routeName),
             title: const Text(
               'اطلاعات تحصیلی',
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
