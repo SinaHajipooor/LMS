@@ -113,6 +113,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
             : Stack(
                 children: [
                   CustomScrollView(
+                    physics: const BouncingScrollPhysics(),
                     controller: _scrollController,
                     slivers: [
                       const CustomAppbar(

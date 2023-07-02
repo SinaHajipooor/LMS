@@ -40,7 +40,7 @@ class _TmsSliderState extends State<TmsSlider> {
           carouselController: _controller,
           options: CarouselOptions(
             height: 165,
-            autoPlay: false,
+            autoPlay: true,
             aspectRatio: 16 / 9,
             autoPlayCurve: Curves.fastOutSlowIn,
             enableInfiniteScroll: true,

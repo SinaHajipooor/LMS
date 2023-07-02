@@ -51,6 +51,7 @@ class _CoursesListState extends State<CoursesList> {
             ),
           )
         : ListView.builder(
+            physics: const BouncingScrollPhysics(),
             itemCount: electronicCourses.length,
             itemBuilder: (ctx, i) => CourseItem(
               courseId: electronicCourses[i]['id'],

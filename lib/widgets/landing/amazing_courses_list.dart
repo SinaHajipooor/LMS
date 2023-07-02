@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lms/data/data.dart';
-import 'package:lms/widgets/elements/slider/amazing_course_item.dart';
+import 'package:lms/widgets/landing/amazing_course_item.dart';
 
 class AmazingCoursesList extends StatelessWidget {
   const AmazingCoursesList({super.key});

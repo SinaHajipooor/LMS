@@ -3,21 +3,21 @@ import 'package:lms/widgets/profile/education_info_form.dart';
 import 'package:lms/widgets/profile/job_info_form.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
-class JobInfoFormModal extends StatefulWidget {
+class UserInfoFormModal extends StatefulWidget {
   final double deviceHeight;
   final int selectedIndex;
 
-  const JobInfoFormModal({
+  const UserInfoFormModal({
     required this.deviceHeight,
     required this.selectedIndex,
     Key? key,
   }) : super(key: key);
 
   @override
-  _JobInfoFormModalState createState() => _JobInfoFormModalState();
+  _UserInfoFormModalState createState() => _UserInfoFormModalState();
 }
 
-class _JobInfoFormModalState extends State<JobInfoFormModal> {
+class _UserInfoFormModalState extends State<UserInfoFormModal> {
   ScrollController _scrollController = ScrollController();
 
   String _birthDate = 'تاریخ تولد';

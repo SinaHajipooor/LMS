@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/screens/profile/profile_screen.dart';
+import 'package:lms/screens/profile/user_profile_screen.dart';
 import 'package:lms/widgets/dashbord/calender.dart';
 import 'package:lms/widgets/dashbord/dashbord_info_cards.dart';
 import '../navigation/app_drawer.dart';
@@ -61,7 +61,7 @@ class _DashbordScreenState extends State<DashbordScreen> {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pushReplacementNamed(ProfileScreen.routeName);
+              Navigator.of(context).pushReplacementNamed(UserProfileScreen.routeName);
             },
           ),
         ],
