@@ -9,6 +9,7 @@ class CourseTeachersList extends StatelessWidget {
       children: [
         Expanded(
           child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             child: Row(
               children: List.generate(

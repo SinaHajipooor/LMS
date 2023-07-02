@@ -3,14 +3,16 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
-import 'package:lms/screens/profile/profile_screen.dart';
+import 'package:lms/screens/auth/auth_screen.dart';
+import 'package:lms/screens/profile/user_education_screen.dart';
+import 'package:lms/screens/profile/user_job_info_screen.dart';
+import 'package:lms/screens/profile/user_profile_screen.dart';
 import 'package:lms/screens/splash_screen.dart';
+import 'package:lms/screens/profile/user_birth_certificate_screen.dart';
 import 'package:provider/provider.dart';
 import 'providers/Landing/LandingProvider.dart';
 import './providers/Course/CourseProvider.dart';
 import './screens/landing_screen.dart';
-import './screens/login_screen.dart';
-import './screens/authenticate_screen.dart';
 import './screens/dashbord_screen.dart';
 import './screens/home_screen.dart';
 import './providers/Auth/AuthProvider.dart';
@@ -62,8 +64,6 @@ class MyApp extends StatelessWidget {
           routes: {
             SplashScreen.routeName: (ctx) => const SplashScreen(),
             LandingScreen.routeName: (ctx) => const LandingScreen(),
-            LoginScreen.routeName: (ctx) => const LoginScreen(),
-            AuthenticateScreen.routeName: (ctx) => const AuthenticateScreen(),
             HomeScreen.routeName: (ctx) => const HomeScreen(),
             DashbordScreen.routeName: (ctx) => DashbordScreen(),
             ShoppingBasketScreen.routeName: (ctx) => const ShoppingBasketScreen(),
@@ -72,7 +72,11 @@ class MyApp extends StatelessWidget {
             ElectronicCourseDetailScreen.routeName: (ctx) => const ElectronicCourseDetailScreen(),
             CourseAssessmentScreen.routeName: (ctx) => const CourseAssessmentScreen(),
             SimpleCoursesScreen.routeName: (ctx) => const SimpleCoursesScreen(),
-            ProfileScreen.routeName: (ctx) => const ProfileScreen(),
+            UserProfileScreen.routeName: (ctx) => const UserProfileScreen(),
+            UserBirthCertificateScreen.routeName: (ctx) => const UserBirthCertificateScreen(),
+            UserEducationScreen.routeName: (ctx) => const UserEducationScreen(),
+            UserJobInfoScreen.routeName: (ctx) => const UserJobInfoScreen(),
+            AuthScreen.routeName: (ctx) => const AuthScreen(),
           },
         ),
       ),

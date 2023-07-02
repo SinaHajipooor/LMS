@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class TextInput extends StatelessWidget {
+class UserInformationInput extends StatelessWidget {
   final String value;
   final String label;
   final Function(String) onChanged;
   final TextInputType keyboardType;
 
-  const TextInput({
+  const UserInformationInput({
     Key? key,
     required this.value,
     required this.label,
@@ -32,11 +32,13 @@ class TextInput extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: TextFormField(
               decoration: const InputDecoration(
+                contentPadding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 7.0),
                 border: InputBorder.none, // Hide default border
               ),
+              style: const TextStyle(fontSize: 13.0, fontWeight: FontWeight.bold),
               onChanged: onChanged,
               controller: TextEditingController(text: value),
               keyboardType: keyboardType,

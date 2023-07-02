@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lms/widgets/elements/slider/amazing_courses_list.dart';
+import 'package:lms/screens/auth/auth_screen.dart';
+import 'package:lms/widgets/landing/amazing_courses_list.dart';
 import 'package:provider/provider.dart';
-import '../screens/login_screen.dart';
 import '../widgets/elements/slider/annoucement_slider.dart';
 import '../widgets/elements/slider/normal_slider.dart';
 import '../providers/Landing/LandingProvider.dart';
@@ -73,7 +73,7 @@ class _LandingScreenState extends State<LandingScreen> {
           builder: (context, authProvider, _) {
             return FloatingActionButton.extended(
               onPressed: () {
-                authProvider.token == null ? Navigator.of(context).pushNamed(LoginScreen.routeName) : Navigator.of(context).pushNamed(HomeScreen.routeName);
+                authProvider.token == null ? Navigator.of(context).pushNamed(AuthScreen.routeName) : Navigator.of(context).pushNamed(HomeScreen.routeName);
               },
               label: Text(authProvider.token == null ? 'ورود' : 'داشبورد', style: const TextStyle(fontSize: 13)),
               icon: Icon(authProvider.token == null ? Icons.login : Icons.dashboard),

@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:lms/navigation/bottom_tabas.dart';
 import 'package:lms/navigation/teacher_panel_drawer.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
-import 'package:lms/screens/profile/profile_screen.dart';
+import 'package:lms/screens/profile/user_profile_screen.dart';
 import 'package:lms/widgets/dashbord/calender.dart';
 import 'package:lms/widgets/dashbord/dashbord_info_cards.dart';
 import 'package:lms/widgets/elements/spinner.dart';
@@ -106,7 +106,7 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
                 ),
               ),
               onTap: () {
-                Navigator.of(context).pushReplacementNamed(ProfileScreen.routeName);
+                Navigator.of(context).pushReplacementNamed(UserProfileScreen.routeName);
               },
             ),
           ],

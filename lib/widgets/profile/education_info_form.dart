@@ -14,6 +14,7 @@ class EducationInfoForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Padding(
         padding: const EdgeInsets.all(0.0),
         child: Column(
@@ -94,14 +95,14 @@ class EducationInfoForm extends StatelessWidget {
             Row(
               children: [
                 Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'نوع دانشگاه مدرک')),
-                Expanded(child: TextInput(value: '', label: 'دانشگاه اخذ مدرک', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'رشته شغلی')),
               ],
             ),
             const SizedBox(height: 15),
             Row(
               children: [
                 Expanded(child: TextInput(value: '', label: ' معدل', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'رشته شغلی')),
+                Expanded(child: TextInput(value: '', label: 'دانشگاه اخذ مدرک', onChanged: (value) {}, keyboardType: TextInputType.number)),
               ],
             ),
             const SizedBox(height: 15),

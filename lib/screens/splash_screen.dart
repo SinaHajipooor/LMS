@@ -18,10 +18,10 @@ class _SplashScreenState extends State<SplashScreen> {
           transitionDuration: const Duration(milliseconds: 1000),
           pageBuilder: (_, __, ___) => const LandingScreen(),
           transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-            return SlideTransition(
-              position: Tween<Offset>(
-                begin: const Offset(1.0, 0.0), // Define the initial position of the child widget
-                end: Offset.zero, // Define the final position of the child widget
+            return FadeTransition(
+              opacity: Tween<double>(
+                begin: 0.0, // Define the initial opacity of the child widget
+                end: 1.0, // Define the final opacity of the child widget
               ).animate(animation),
               child: child,
             );
