@@ -1,7 +1,59 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/widgets/elements/user_information_input.dart';
 
-class UserInfoCard extends StatelessWidget {
+class UserInfoCard extends StatefulWidget {
   const UserInfoCard({super.key});
+
+  @override
+  State<UserInfoCard> createState() => _UserInfoCardState();
+}
+
+class _UserInfoCardState extends State<UserInfoCard> {
+  void showInputDialog() {
+    AwesomeDialog(
+      context: context,
+      dialogType: DialogType.info,
+      animType: AnimType.scale,
+      title: 'Input Dialog',
+      desc: 'Please enter the required information:',
+      body: Column(
+        children: [
+          const SizedBox(height: 15),
+          Row(
+            children: [
+              Expanded(child: UserInformationInput(value: 'سینا', label: 'نام', onChanged: (value) {})),
+              Expanded(child: UserInformationInput(value: 'حاجی‌پور', label: 'نام خانوادگی', onChanged: (value) {})),
+            ],
+          ),
+          const SizedBox(height: 15),
+          Row(
+            children: [
+              Expanded(child: UserInformationInput(value: '0640821324', label: 'کدملی', onChanged: (value) {})),
+              Expanded(child: UserInformationInput(value: '09155613393', label: 'شماره موبایل', onChanged: (value) {})),
+            ],
+          ),
+          const SizedBox(height: 15),
+        ],
+      ),
+      btnOk: ElevatedButton(
+        onPressed: () {},
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+        ),
+        child: const Text('ذخیره'),
+      ),
+      btnCancel: ElevatedButton(
+        onPressed: () {
+          Navigator.of(context).pop(); // Close the dialog when cancel button is pressed
+        },
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+        ),
+        child: const Text('لغو'),
+      ),
+    ).show();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +89,7 @@ class UserInfoCard extends StatelessWidget {
               top: 20,
               right: 20,
               child: InkWell(
+                onTap: () => showInputDialog(),
                 child: Image.asset('assets/images/icons/edit.png', width: 20, height: 20),
               ),
             ),
