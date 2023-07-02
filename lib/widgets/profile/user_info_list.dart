@@ -5,6 +5,7 @@ import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/landing_screen.dart';
 import 'package:lms/screens/profile/user_birth_certificate_screen.dart';
 import 'package:lms/screens/profile/user_education_screen.dart';
+import 'package:lms/screens/profile/user_job_info_screen.dart';
 import 'package:provider/provider.dart';
 
 class UserInfoList extends StatefulWidget {
@@ -110,7 +111,7 @@ class _UserInfoListState extends State<UserInfoList> {
                 image: AssetImage('assets/images/icons/job.png'),
               ),
             ),
-            onTap: () {},
+            onTap: () => Navigator.of(context).pushNamed(UserJobInfoScreen.routeName),
             title: const Text(
               'اطلاعات شغلی',
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
