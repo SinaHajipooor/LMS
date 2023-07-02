@@ -7,7 +7,6 @@ import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import '../../widgets/profile/user_birth_certificate_form.dart';
 import '../../widgets/profile/user_job_info.dart';
 import '../../widgets/profile/user_education_info.dart';
-import '../../widgets/elements/custom_appbar.dart';
 
 class ProfileScreen extends StatefulWidget {
   static const routeName = '/profile-screen';
@@ -28,8 +27,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final _scrollController = ScrollController();
   // ignore: unused_field
   bool _isFabVisible = true;
-  // ignore: unused_field
-  double _bottomMargin = 0;
+
 // ------------- lifecycle -------------
   @override
   void initState() {
@@ -44,7 +42,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           _isFabVisible = true;
         });
       }
-      _scrollController.addListener(_handleScroll);
     });
   }
 
@@ -78,23 +75,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
-  void _handleScroll() {
-    if (_scrollController.position.atEdge) {
-      if (_scrollController.position.pixels == 0) {
-        // scrolled to top
-      } else {
-        // scrolled to bottom
-        setState(() {
-          _bottomMargin = 16;
-        });
-      }
-    } else {
-      setState(() {
-        _bottomMargin = 0;
-      });
-    }
-  }
-
   _showJobinfoFormModal(BuildContext context, double deviceHeight, int selectedIndex) {
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
@@ -124,9 +104,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
         body: Stack(
           children: [
             CustomScrollView(
+              physics: const BouncingScrollPhysics(),
               controller: _scrollController,
               slivers: [
-                const CustomAppbar(title: 'اطلاعات کاربری'),
+                SliverAppBar(
+                  automaticallyImplyLeading: false,
+                  pinned: true,
+                  floating: true,
+                  title: const Text('اطلاعات کاربری', style: TextStyle(fontSize: 13, color: Colors.black)),
+                  backgroundColor: Colors.white,
+                  titleSpacing: 32,
+                  actions: [
+                    TextButton.icon(
+                      onPressed: () {},
+                      label: const Text('ذخیره تغییرات', style: TextStyle(fontSize: 13)),
+                      icon: const Icon(Icons.save_alt_outlined, size: 17),
+                    ),
+                    const SizedBox(width: 16),
+                  ],
+                ),
                 SliverList(
                   delegate: SliverChildListDelegate.fixed(
                     [
@@ -135,7 +131,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            height: deviceSize.height / 2.5,
+                            height: deviceSize.height / 2.2,
                             child: UserInformationCard(onSelect: _onSelectInfo, selectedIndex: _selectedIndex),
                           ),
                           Container(

@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:lms/widgets/elements/text_input.dart';
+import 'package:lms/widgets/elements/user_information_input.dart';
 
 // ignore: must_be_immutable
 class UserInformationCard extends StatefulWidget {
@@ -42,6 +44,7 @@ class _UserInformationCardState extends State<UserInformationCard> {
             ],
           ),
           child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -77,19 +80,25 @@ class _UserInformationCardState extends State<UserInformationCard> {
                             Text('فراگیر', style: TextStyle(fontSize: 11, color: Colors.blue)),
                           ],
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(32, 0, 32, 0),
-                  child: Text('درباره من', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 5),
+                Row(
+                  children: [
+                    Expanded(child: UserInformationInput(value: 'سینا', label: 'نام', onChanged: (value) {})),
+                    Expanded(child: UserInformationInput(value: 'حاجی پور', label: 'نام خانوادگی', onChanged: (value) {})),
+                  ],
                 ),
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(32, 4, 32, 32),
-                  child: Text('لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است', style: TextStyle(fontSize: 11)),
+                const SizedBox(height: 15),
+                Row(
+                  children: [
+                    Expanded(child: UserInformationInput(value: '0640821324', label: 'کد ملی', onChanged: (value) {})),
+                    Expanded(child: UserInformationInput(value: '09155613393', label: 'شماره موبایل', onChanged: (value) {})),
+                  ],
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 5),
               ],
             ),
           ),

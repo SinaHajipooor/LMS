@@ -5,6 +5,7 @@ import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
 import 'package:lms/screens/auth/auth_screen.dart';
 import 'package:lms/screens/profile/profile_screen.dart';
+import 'package:lms/screens/profile/user_profile_screen.dart';
 import 'package:lms/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'providers/Landing/LandingProvider.dart';
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'YekanBakh', scaffoldBackgroundColor: Colors.white),
           home: const Directionality(
             textDirection: TextDirection.rtl,
-            child: SplashScreen(),
+            child: UserProfileScreen(),
           ),
           routes: {
             SplashScreen.routeName: (ctx) => const SplashScreen(),

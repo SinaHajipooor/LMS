@@ -23,7 +23,7 @@ class JobInfoForm extends StatelessWidget {
               Row(
                 children: [
                   Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'دستگاه اجرایی')),
-                  Expanded(child: TextInput(value: '', label: 'شماره پرسنلی', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'وضعیت اشتغال')),
                 ],
               ),
               const SizedBox(height: 15),
@@ -122,8 +122,8 @@ class JobInfoForm extends StatelessWidget {
               const SizedBox(height: 15),
               Row(
                 children: [
-                  Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'وضعیت اشتغال')),
                   Expanded(child: TextInput(value: '', label: 'تلفن محل‌کار', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(value: '', label: 'شماره پرسنلی', onChanged: (value) {}, keyboardType: TextInputType.number)),
                 ],
               ),
               const SizedBox(height: 15),
