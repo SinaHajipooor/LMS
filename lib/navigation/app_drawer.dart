@@ -46,7 +46,7 @@ class _AppDrawerState extends State<AppDrawer> {
           AppBar(
             elevation: 1,
             backgroundColor: Colors.white,
-            title: const Text('یادگیری الکترونیک', style: TextStyle(color: Colors.blue, fontSize: 16)),
+            title: const Text('یادگیری الکترونیک', style: TextStyle(color: Colors.black, fontSize: 16)),
             automaticallyImplyLeading: false,
           ),
           const SizedBox(height: 10),
