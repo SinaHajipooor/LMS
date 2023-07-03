@@ -89,25 +89,27 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
         return false;
       },
       child: Scaffold(
-        floatingActionButton: AnimatedOpacity(
-          opacity: _isFabVisible ? 1 : 0,
-          duration: const Duration(milliseconds: 200),
-          child: InkWell(
-            onTap: () => submitCourse(),
-            child: Container(
-              width: 100,
-              height: 48,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(blurRadius: 20, color: Colors.blue.withOpacity(0.5)),
-                ],
+        floatingActionButton: _isLoading
+            ? null
+            : AnimatedOpacity(
+                opacity: _isFabVisible ? 1 : 0,
+                duration: const Duration(milliseconds: 200),
+                child: InkWell(
+                  onTap: () => submitCourse(),
+                  child: Container(
+                    width: 100,
+                    height: 48,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(blurRadius: 20, color: Colors.blue.withOpacity(0.5)),
+                      ],
+                    ),
+                    child: const Center(child: Text('ثبت‌نام در دوره', style: TextStyle(color: Colors.white, fontSize: 13))),
+                  ),
+                ),
               ),
-              child: const Center(child: Text('ثبت‌نام در دوره', style: TextStyle(color: Colors.white, fontSize: 13))),
-            ),
-          ),
-        ),
         body: _isLoading
             ? const Center(child: Spinner(size: 35))
             : Stack(
