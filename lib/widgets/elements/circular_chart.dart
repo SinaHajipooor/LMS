@@ -24,7 +24,7 @@ class CircularChartWidget extends StatelessWidget {
 class MyCircularChart extends StatelessWidget {
   final List<PieChartSectionData> pieChartData;
 
-  MyCircularChart(List<CircularData> data) : pieChartData = CircularDataToPieChartSectionData.convert(data);
+  MyCircularChart(List<CircularData> data, {super.key}) : pieChartData = CircularDataToPieChartSectionData.convert(data);
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class CircularDataToPieChartSectionData {
         // title: '${circularData.label}\n${circularData.value}',
         titleStyle: const TextStyle(fontSize: 14, color: Colors.white),
         color: circularData.color,
-        radius: 100,
+        radius: 80,
       );
     }).toList();
   }
