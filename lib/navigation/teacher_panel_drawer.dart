@@ -54,9 +54,9 @@ class _TeacherPanelDrawerState extends State<TeacherPanelDrawer> {
             onTap: () {
               Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
             },
-            child: const ListTile(
-              leading: Icon(Icons.home_outlined, color: Colors.orange),
-              title: Text('صفحه‌اصلی'),
+            child: ListTile(
+              leading: Image.asset('assets/images/icons/home.png', width: 25, height: 25, color: Colors.orange),
+              title: const Text('صفحه‌اصلی'),
             ),
           ),
           InkWell(
@@ -68,9 +68,9 @@ class _TeacherPanelDrawerState extends State<TeacherPanelDrawer> {
             },
             child: Container(
               color: _selectedPage == 2 ? Colors.grey[200] : null,
-              child: const ListTile(
-                leading: Icon(Icons.person, color: Colors.orange),
-                title: Text('پنل فراگیر'),
+              child: ListTile(
+                leading: Image.asset('assets/images/icons/person.png', width: 25, height: 25, color: Colors.orange),
+                title: const Text('پنل فراگیر'),
               ),
             ),
           ),
@@ -78,9 +78,9 @@ class _TeacherPanelDrawerState extends State<TeacherPanelDrawer> {
             onTap: () {
               _showConfirmationAlert(context);
             },
-            child: const ListTile(
-              leading: Icon(Icons.logout, size: 20, color: Colors.orange),
-              title: Text('خروج', style: TextStyle(fontSize: 14)),
+            child: ListTile(
+              leading: Image.asset('assets/images/icons/exit.png', width: 24, height: 24, color: Colors.orange),
+              title: const Text('خروج', style: TextStyle(fontSize: 14)),
             ),
           ),
         ]),

@@ -5,6 +5,7 @@ import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
 import 'package:lms/screens/auth/auth_screen.dart';
 import 'package:lms/screens/course/course_purchase_screen1.dart';
+import 'package:lms/screens/exam/exam_result_screen.dart';
 import 'package:lms/screens/profile/user_birth_certificate_form.dart';
 import 'package:lms/screens/profile/user_education_screen.dart';
 import 'package:lms/screens/profile/user_job_info_screen.dart';
@@ -19,7 +20,7 @@ import './screens/home_screen.dart';
 import './providers/Auth/AuthProvider.dart';
 import './screens/exam/exam_screen.dart';
 import './screens/course/course_assessment_screen.dart';
-import './screens/exam/exam_result_screen.dart';
+import 'screens/exam/exam_result_screen1.dart';
 import './screens/course/electronic_course_detail_screen.dart';
 import './screens/course/simple_courses_screen.dart';
 
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'YekanBakh', scaffoldBackgroundColor: Colors.white),
           home: const Directionality(
             textDirection: TextDirection.rtl,
-            child: SplashScreen(),
+            child: NewExamResultScreen(),
           ),
           routes: {
             SplashScreen.routeName: (ctx) => const SplashScreen(),

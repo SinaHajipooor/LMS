@@ -1,125 +1,53 @@
 import 'package:flutter/material.dart';
-import '../../widgets/elements/circular_chart.dart';
-import '../course/electronic_course_detail_screen.dart';
+import 'package:lms/widgets/elements/circular_chart.dart';
 
-class ExamResultScreen extends StatefulWidget {
-  static const routeName = '/exam-result-screen';
-  const ExamResultScreen({Key? key}) : super(key: key);
+class NewExamResultScreen extends StatefulWidget {
+  const NewExamResultScreen({super.key});
 
   @override
-  State<ExamResultScreen> createState() => _ExamResultScreenState();
+  _NewExamResultScreenState createState() => _NewExamResultScreenState();
 }
 
-class _ExamResultScreenState extends State<ExamResultScreen> {
-  //------------------- state -----------------------
-  int? courseId;
-  //------------------- method -----------------------
-
-  //------------------- lifecycle -----------------------
-  @override
-  void didChangeDependencies() {
-    setState(() {
-      courseId = ModalRoute.of(context)!.settings.arguments as int;
-    });
-    super.didChangeDependencies();
-  }
-
-  //------------------- UI -----------------------
-
+class _NewExamResultScreenState extends State<NewExamResultScreen> {
   @override
   Widget build(BuildContext context) {
-    final deviceSize = MediaQuery.of(context).size;
-    return WillPopScope(
-      onWillPop: () async {
-        Navigator.of(context).pushReplacementNamed(ElectronicCourseDetailScreen.routeName, arguments: courseId);
-        return false;
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('نتیجه آزمون', style: TextStyle(color: Colors.black, fontSize: 16)),
-          centerTitle: true,
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
-          elevation: 1,
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 5),
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    SizedBox(
-                      height: 80,
-                      width: deviceSize.width / 3,
-                      child: Card(
-                        elevation: 1,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text('پاسخ های صحیح', style: TextStyle(fontSize: 13, color: Colors.green, fontWeight: FontWeight.bold)),
-                            Text('25', style: TextStyle(fontSize: 17, color: Colors.green[300])),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 80,
-                      width: deviceSize.width / 3,
-                      child: Card(
-                        elevation: 1,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text('پاسخ های غلط', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.red)),
-                            Text(
-                              '5',
-                              style: TextStyle(fontSize: 17, color: Colors.red[300]),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 80,
-                      width: deviceSize.width / 3,
-                      child: Card(
-                        elevation: 1,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text(
-                              'پاسخ داده نشده',
-                              style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.orange),
-                            ),
-                            Text('10', style: TextStyle(fontSize: 17, color: Colors.orange[300])),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: double.infinity,
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: const Text('نتیجه آزمون', style: TextStyle(fontSize: 16, color: Colors.black)),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.28,
                 child: Card(
-                  elevation: 1,
-                  child: Column(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+                  elevation: 3,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const SizedBox(height: 20),
-                      CircularChartWidget(
-                        data: [
-                          CircularData('پاسخ های غلط', 5, Colors.red),
-                          CircularData('بدون پاسخ', 10, Colors.orange),
-                          CircularData('پاسخ های صحیح', 25, Colors.green),
-                        ],
+                      Expanded(
+                        flex: 1,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 55),
+                          child: CircularChartWidget(
+                            data: [
+                              CircularData('پاسخ های غلط', 5, Colors.red),
+                              CircularData('بدون پاسخ', 10, Colors.orange),
+                              CircularData('پاسخ های صحیح', 25, Colors.green),
+                            ],
+                          ),
+                        ),
                       ),
-                      const SizedBox(height: 30),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      Expanded(
+                        flex: 2,
+                        child: Column(
                           children: [
                             Row(
                               children: [
@@ -160,59 +88,12 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
               ),
-              SizedBox(
-                height: 60,
-                width: double.infinity,
-                child: Card(
-                  elevation: 1,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: Row(
-                          children: const [
-                            Text('نمره آزمون : '),
-                            Text('25', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Row(
-                          children: const [
-                            Text('وضعیت قبولی : '),
-                            Text('قبول', style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 15),
-              Padding(
-                padding: const EdgeInsets.only(left: 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () => Navigator.of(context).pushReplacementNamed(ElectronicCourseDetailScreen.routeName, arguments: courseId),
-                      child: const Text(
-                        'بازگشت به دوره',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
