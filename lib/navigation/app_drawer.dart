@@ -56,7 +56,7 @@ class _AppDrawerState extends State<AppDrawer> {
               Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/home.png', width: 25, height: 25),
+              leading: Image.asset('assets/images/icons/home.png', width: 25, height: 25, color: Colors.blue),
               title: const Text('صفحه‌اصلی'),
             ),
           ),
@@ -82,7 +82,12 @@ class _AppDrawerState extends State<AppDrawer> {
             child: Container(
               color: _selectedPage == 2 ? Colors.grey[200] : null,
               child: ListTile(
-                leading: Image.asset('assets/images/icons/teacher.png', width: 24, height: 24),
+                leading: Image.asset(
+                  'assets/images/icons/teacher.png',
+                  width: 24,
+                  height: 24,
+                  color: Colors.blue,
+                ),
                 title: const Text('پنل مدرسان'),
               ),
             ),
