@@ -17,7 +17,6 @@ import './screens/landing_screen.dart';
 import './screens/dashbord_screen.dart';
 import './screens/home_screen.dart';
 import './providers/Auth/AuthProvider.dart';
-import 'screens/course/course_purchase_screen.dart';
 import './screens/exam/exam_screen.dart';
 import './screens/course/course_assessment_screen.dart';
 import './screens/exam/exam_result_screen.dart';

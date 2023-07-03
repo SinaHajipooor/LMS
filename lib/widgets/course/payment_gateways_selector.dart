@@ -59,7 +59,7 @@ class PaymentGatewaysSelector extends StatelessWidget {
       height: 150,
       width: double.infinity,
       child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
+        // scrollDirection: Axis.horizontal,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: paymentGateways.map((paymentApproach) {

@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:lms/widgets/shipping/payment_by_gateway.dart';
 
-class CoursePaymentApproachs extends StatelessWidget {
-  const CoursePaymentApproachs({super.key});
+class CoursePaymentApproachs extends StatefulWidget {
+  final List paymentGateways;
+
+  const CoursePaymentApproachs({super.key, required this.paymentGateways});
+  @override
+  State<CoursePaymentApproachs> createState() => _CoursePaymentApproachsState();
+}
+
+class _CoursePaymentApproachsState extends State<CoursePaymentApproachs> {
+// -------------------- state ------------------------
+
+// -------------------- methods ------------------------
+
+// -------------------- UI ------------------------
 
   @override
   Widget build(BuildContext context) {
@@ -29,24 +42,7 @@ class CoursePaymentApproachs extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 15),
-          ListTile(
-            leading: const CircleAvatar(
-              child: Image(
-                width: 24,
-                height: 24,
-                image: AssetImage('assets/images/icons/person.png'),
-              ),
-            ),
-            onTap: () {},
-            title: const Text(
-              'پرداخت توسط فراگیر',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-            ),
-            subtitle: const Text(
-              'درگاه پرداخت',
-              style: TextStyle(fontSize: 13),
-            ),
-          ),
+          PaymentByGateway(paymentGateways: widget.paymentGateways),
           const SizedBox(height: 15),
           ListTile(
             leading: const CircleAvatar(

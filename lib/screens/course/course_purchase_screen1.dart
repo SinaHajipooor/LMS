@@ -66,7 +66,7 @@ class _CourseShippingScreenState extends State<CourseShippingScreen> {
                       courseName: courseInfo?['title'],
                       courseTotalAmount: courseInfo?['final_amount'],
                     ),
-                    CoursePaymentApproachs(),
+                    CoursePaymentApproachs(paymentGateways: Provider.of<CourseProvider>(context).coursePaymentGateways),
                   ],
                 ),
               ),
