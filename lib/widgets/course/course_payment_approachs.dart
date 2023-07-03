@@ -34,7 +34,7 @@ class _CoursePaymentApproachsState extends State<CoursePaymentApproachs> {
           const SizedBox(height: 15),
           const PaymentByBankDocument(),
           const SizedBox(height: 15),
-          // const PaymentByOrganization(),
+          const PaymentByOrganization(),
         ],
       ),
     );
