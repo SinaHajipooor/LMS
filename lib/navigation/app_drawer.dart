@@ -2,6 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/navigation/teacher_bottom_tabs.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
+import 'package:lms/screens/profile/user_profile_screen.dart';
 import 'package:provider/provider.dart';
 import '../screens/landing_screen.dart';
 
@@ -54,9 +55,21 @@ class _AppDrawerState extends State<AppDrawer> {
             onTap: () {
               Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
             },
-            child: const ListTile(
-              leading: Icon(Icons.home_outlined, color: Colors.blue),
-              title: Text('صفحه‌اصلی'),
+            child: ListTile(
+              leading: Image.asset('assets/images/icons/home.png', width: 25, height: 25),
+              title: const Text('صفحه‌اصلی'),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed(UserProfileScreen.routeName);
+            },
+            child: Container(
+              color: _selectedPage == 2 ? Colors.grey[200] : null,
+              child: ListTile(
+                leading: Image.asset('assets/images/icons/person.png', width: 25, height: 25, color: Colors.blue),
+                title: const Text('پروفایل'),
+              ),
             ),
           ),
           InkWell(
@@ -68,9 +81,9 @@ class _AppDrawerState extends State<AppDrawer> {
             },
             child: Container(
               color: _selectedPage == 2 ? Colors.grey[200] : null,
-              child: const ListTile(
-                leading: Icon(Icons.person, color: Colors.blue),
-                title: Text('پنل مدرسان'),
+              child: ListTile(
+                leading: Image.asset('assets/images/icons/teacher.png', width: 24, height: 24),
+                title: const Text('پنل مدرسان'),
               ),
             ),
           ),
@@ -78,9 +91,14 @@ class _AppDrawerState extends State<AppDrawer> {
             onTap: () {
               _showConfirmationAlert(context);
             },
-            child: const ListTile(
-              leading: Icon(Icons.logout, size: 20, color: Colors.blue),
-              title: Text('خروج', style: TextStyle(fontSize: 14)),
+            child: ListTile(
+              leading: Image.asset(
+                'assets/images/icons/exit.png',
+                width: 24,
+                height: 24,
+                color: Colors.blue,
+              ),
+              title: const Text('خروج', style: TextStyle(fontSize: 14)),
             ),
           ),
         ]),
