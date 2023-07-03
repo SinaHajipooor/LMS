@@ -26,13 +26,9 @@ class CourseShippingDetails extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                     child: Image.network(
                       courseInfo['main_image'],
-                      // height: deviceSize.height / 2.8,
-                      // width: double.infinity,
                       fit: BoxFit.cover,
                       errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) => Image.asset(
                         'assets/images/placeholder.png',
-                        // height: deviceSize.height / 2.8,
-                        // width: double.infinity,
                         fit: BoxFit.cover,
                       ),
                       loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {

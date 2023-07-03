@@ -8,7 +8,7 @@ import '../../widgets/course/course_detail_text.dart';
 import '../../widgets/course/course_name.dart';
 import 'package:provider/provider.dart';
 import '../../providers/Course/CourseProvider.dart';
-import '../shopping_basket_screen.dart';
+import 'course_purchase_screen.dart';
 import '../home_screen.dart';
 import '../../widgets/elements/spinner.dart';
 import '../../widgets/course/course_exams_list.dart';
@@ -76,7 +76,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
   }
 
   Future<void> submitCourse() async {
-    Navigator.of(context).pushNamed(ShoppingBasketScreen.routeName, arguments: courseDetails?['id']);
+    Navigator.of(context).pushNamed(CoursePurchaseScreen.routeName, arguments: courseDetails?['id']);
   }
   //---------------- UI ------------------
 

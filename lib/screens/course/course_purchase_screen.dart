@@ -1,24 +1,24 @@
 // import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../widgets/elements/spinner.dart';
-import '../providers/Course/CourseProvider.dart';
-import '../widgets/course/payment_approach_selector.dart';
-import '../widgets/course/bank_payment_approach.dart';
-import '../widgets/course/payment_gateways_selector.dart';
-import '../widgets/course/course_shipping_details.dart';
+import '../../widgets/elements/spinner.dart';
+import '../../providers/Course/CourseProvider.dart';
+import '../../widgets/course/payment_approach_selector.dart';
+import '../../widgets/course/bank_payment_approach.dart';
+import '../../widgets/course/payment_gateways_selector.dart';
+import '../../widgets/course/course_shipping_details.dart';
 
-class ShoppingBasketScreen extends StatefulWidget {
+class CoursePurchaseScreen extends StatefulWidget {
 // ------------------ feilds ---------------------
   static const routeName = '/shopping-basket-screen';
 
-  const ShoppingBasketScreen({super.key});
+  const CoursePurchaseScreen({super.key});
 
   @override
-  State<ShoppingBasketScreen> createState() => _ShoppingBasketScreenState();
+  State<CoursePurchaseScreen> createState() => _CoursePurchaseScreenState();
 }
 
-class _ShoppingBasketScreenState extends State<ShoppingBasketScreen> {
+class _CoursePurchaseScreenState extends State<CoursePurchaseScreen> {
 // ------------------ state ---------------------
   int selectedPaymentApproach = 1;
   Map<String, dynamic>? courseInfo;
