@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/widgets/course/payment_gateways_list.dart';
+import 'package:lms/widgets/shipping/payment_gateways_list.dart';
 
 class PaymentByGateway extends StatefulWidget {
   final List paymentGateways;
