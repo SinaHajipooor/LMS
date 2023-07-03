@@ -4,6 +4,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
 import 'package:lms/screens/auth/auth_screen.dart';
+import 'package:lms/screens/course/course_purchase_screen1.dart';
 import 'package:lms/screens/profile/user_birth_certificate_form.dart';
 import 'package:lms/screens/profile/user_education_screen.dart';
 import 'package:lms/screens/profile/user_job_info_screen.dart';
@@ -16,7 +17,6 @@ import './screens/landing_screen.dart';
 import './screens/dashbord_screen.dart';
 import './screens/home_screen.dart';
 import './providers/Auth/AuthProvider.dart';
-import './screens/shopping_basket_screen.dart';
 import './screens/exam/exam_screen.dart';
 import './screens/course/course_assessment_screen.dart';
 import './screens/exam/exam_result_screen.dart';
@@ -66,13 +66,13 @@ class MyApp extends StatelessWidget {
             LandingScreen.routeName: (ctx) => const LandingScreen(),
             HomeScreen.routeName: (ctx) => const HomeScreen(),
             DashbordScreen.routeName: (ctx) => DashbordScreen(),
-            ShoppingBasketScreen.routeName: (ctx) => const ShoppingBasketScreen(),
             ExamScreen.routeName: (ctx) => const ExamScreen(),
             ExamResultScreen.routeName: (ctx) => const ExamResultScreen(),
             ElectronicCourseDetailScreen.routeName: (ctx) => const ElectronicCourseDetailScreen(),
             CourseAssessmentScreen.routeName: (ctx) => const CourseAssessmentScreen(),
             SimpleCoursesScreen.routeName: (ctx) => const SimpleCoursesScreen(),
             UserProfileScreen.routeName: (ctx) => const UserProfileScreen(),
+            CourseShippingScreen.routeName: (ctx) => const CourseShippingScreen(),
             UserBirthCertificateScreen.routeName: (ctx) => const UserBirthCertificateScreen(),
             UserEducationScreen.routeName: (ctx) => const UserEducationScreen(),
             UserJobInfoScreen.routeName: (ctx) => const UserJobInfoScreen(),

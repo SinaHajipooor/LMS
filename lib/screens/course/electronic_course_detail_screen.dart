@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:lms/screens/course/course_purchase_screen1.dart';
 import 'package:lms/widgets/course/course_feedback.dart';
 import 'package:lms/widgets/course/course_price_card.dart';
 import '../../widgets/course/course_teachers_list.dart';
@@ -8,7 +9,6 @@ import '../../widgets/course/course_detail_text.dart';
 import '../../widgets/course/course_name.dart';
 import 'package:provider/provider.dart';
 import '../../providers/Course/CourseProvider.dart';
-import '../shopping_basket_screen.dart';
 import '../home_screen.dart';
 import '../../widgets/elements/spinner.dart';
 import '../../widgets/course/course_exams_list.dart';
@@ -76,7 +76,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
   }
 
   Future<void> submitCourse() async {
-    Navigator.of(context).pushNamed(ShoppingBasketScreen.routeName, arguments: courseDetails?['id']);
+    Navigator.of(context).pushNamed(CourseShippingScreen.routeName, arguments: courseDetails?['id']);
   }
   //---------------- UI ------------------
 
@@ -89,25 +89,27 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
         return false;
       },
       child: Scaffold(
-        floatingActionButton: AnimatedOpacity(
-          opacity: _isFabVisible ? 1 : 0,
-          duration: const Duration(milliseconds: 200),
-          child: InkWell(
-            onTap: () => submitCourse(),
-            child: Container(
-              width: 100,
-              height: 48,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(blurRadius: 20, color: Colors.blue.withOpacity(0.5)),
-                ],
+        floatingActionButton: _isLoading
+            ? null
+            : AnimatedOpacity(
+                opacity: _isFabVisible ? 1 : 0,
+                duration: const Duration(milliseconds: 200),
+                child: InkWell(
+                  onTap: () => submitCourse(),
+                  child: Container(
+                    width: 100,
+                    height: 48,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(blurRadius: 20, color: Colors.blue.withOpacity(0.5)),
+                      ],
+                    ),
+                    child: const Center(child: Text('ثبت‌نام در دوره', style: TextStyle(color: Colors.white, fontSize: 13))),
+                  ),
+                ),
               ),
-              child: const Center(child: Text('ثبت‌نام در دوره', style: TextStyle(color: Colors.white, fontSize: 13))),
-            ),
-          ),
-        ),
         body: _isLoading
             ? const Center(child: Spinner(size: 35))
             : Stack(
