@@ -6,7 +6,7 @@ import 'package:lms/widgets/course/payment_gateways_list.dart';
 class PaymentByGateway extends StatefulWidget {
   final List paymentGateways;
 
-  PaymentByGateway({required this.paymentGateways});
+  const PaymentByGateway({super.key, required this.paymentGateways});
   @override
   State<PaymentByGateway> createState() => _PaymentByGatewayState();
 }
