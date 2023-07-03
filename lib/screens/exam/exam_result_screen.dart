@@ -30,17 +30,8 @@ class _NewExamResultScreenState extends State<NewExamResultScreen> {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
                   elevation: 3,
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Expanded(
-                        flex: 2,
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            'Your text goes here',
-                            textAlign: TextAlign.right,
-                          ),
-                        ),
-                      ),
                       Expanded(
                         flex: 1,
                         child: Padding(
@@ -52,6 +43,49 @@ class _NewExamResultScreenState extends State<NewExamResultScreen> {
                               CircularData('پاسخ های صحیح', 25, Colors.green),
                             ],
                           ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  width: 18,
+                                  height: 18,
+                                  decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(5)),
+                                ),
+                                const SizedBox(width: 2),
+                                const Text(
+                                  'پاسخ های صحیح',
+                                  style: TextStyle(fontSize: 12),
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  width: 18,
+                                  height: 18,
+                                  decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(5)),
+                                ),
+                                const SizedBox(width: 2),
+                                const Text('پاسخ های غلط', style: TextStyle(fontSize: 12)),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  width: 18,
+                                  height: 18,
+                                  decoration: BoxDecoration(color: Colors.orange, borderRadius: BorderRadius.circular(5)),
+                                ),
+                                const SizedBox(width: 2),
+                                const Text('بدون پاسخ', style: TextStyle(fontSize: 12)),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     ],

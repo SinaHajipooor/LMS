@@ -53,7 +53,6 @@ class CircularDataToPieChartSectionData {
     return data.map((circularData) {
       return PieChartSectionData(
         value: circularData.value,
-        // title: '${circularData.label}\n${circularData.value}',
         titleStyle: const TextStyle(fontSize: 14, color: Colors.white),
         color: circularData.color,
         radius: 80,
