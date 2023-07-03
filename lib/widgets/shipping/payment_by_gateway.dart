@@ -1,5 +1,4 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/widgets/shipping/payment_gateways_list.dart';
 
@@ -29,8 +28,6 @@ class _PaymentByGatewayState extends State<PaymentByGateway> {
             SizedBox(
               height: 185,
               child: PaymentGatewaysList(
-                onSelectPaymentGateway: setSelectedPaymentGateways,
-                selectedPaymentGateway: selectedPaymentGateway,
                 paymentGateways: widget.paymentGateways,
               ),
             ),
