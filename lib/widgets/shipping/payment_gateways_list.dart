@@ -1,24 +1,33 @@
 import 'package:flutter/material.dart';
 
-class PaymentGatewaysList extends StatelessWidget {
-  final Function(int) onSelectPaymentGateway;
-  final int selectedPaymentGateway;
+class PaymentGatewaysList extends StatefulWidget {
   final List paymentGateways;
   const PaymentGatewaysList({
     Key? key,
-    required this.onSelectPaymentGateway,
-    required this.selectedPaymentGateway,
     required this.paymentGateways,
   }) : super(key: key);
+
+  @override
+  State<PaymentGatewaysList> createState() => _PaymentGatewaysListState();
+}
+
+class _PaymentGatewaysListState extends State<PaymentGatewaysList> {
+  int selectedPaymentGateway = 1;
+  void setSelectedPaymentGateways(int paymentGateways) {
+    setState(() {
+      selectedPaymentGateway = paymentGateways;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
-      itemCount: paymentGateways.length,
+      itemCount: widget.paymentGateways.length,
       itemBuilder: (context, index) {
-        final paymentGateway = paymentGateways[index];
+        final paymentGateway = widget.paymentGateways[index];
         return InkWell(
-          onTap: () => onSelectPaymentGateway(paymentGateway['id']),
+          onTap: () => setSelectedPaymentGateways(paymentGateway['id']),
           child: ListTile(
             title: Text(
               paymentGateway['type'],
@@ -37,7 +46,7 @@ class PaymentGatewaysList extends StatelessWidget {
               value: paymentGateway['id'],
               groupValue: selectedPaymentGateway,
               onChanged: (value) {
-                onSelectPaymentGateway(value);
+                setSelectedPaymentGateways(value);
               },
             ),
           ),
