@@ -1,9 +1,9 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/screens/exam/exam_result_screen.dart';
 import '../../widgets/exam/exam_header.dart';
 import '../../widgets/exam/questions_list.dart';
 import '../../widgets/exam/answers_list.dart';
-import 'exam_result_screen1.dart';
 
 class ExamScreen extends StatefulWidget {
   // ------------------- feilds -------------------
