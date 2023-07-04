@@ -18,14 +18,14 @@ class ThreeLineInput extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(right: 10),
+          padding: const EdgeInsets.only(right: 15),
           child: Text(
             label,
             style: const TextStyle(fontSize: 12),
           ),
         ),
         Card(
-          elevation: 0.5,
+          elevation: 1,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
@@ -35,7 +35,6 @@ class ThreeLineInput extends StatelessWidget {
               style: const TextStyle(fontSize: 11),
               decoration: const InputDecoration(
                 border: InputBorder.none,
-                hintText: 'Line 1',
               ),
               onChanged: (value) => onChanged('$value\n${value.split('\n')[1]}\n${value.split('\n')[2]}'),
               controller: TextEditingController(text: value.split('\n').length == 3 ? value : '$value\n\n'),

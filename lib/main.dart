@@ -4,7 +4,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
 import 'package:lms/screens/auth/auth_screen.dart';
-import 'package:lms/screens/course/course_purchase_screen1.dart';
+import 'package:lms/screens/course/course_shipping_screen.dart';
 import 'package:lms/screens/course/simple_course_detail_screen.dart';
 import 'package:lms/screens/exam/exam_result_screen.dart';
 import 'package:lms/screens/profile/user_birth_certificate_form.dart';
