@@ -66,6 +66,7 @@ class _CourseSeasonCardState extends State<CourseSeasonCard> {
                           duration: const Duration(milliseconds: 500),
                           opacity: _isExpanded ? 1.0 : 0.0,
                           child: ListView.builder(
+                            physics: const BouncingScrollPhysics(),
                             itemCount: widget.sessions.length,
                             itemBuilder: (ctx, i) => Container(
                               decoration: widget.sessions.length == i + 1

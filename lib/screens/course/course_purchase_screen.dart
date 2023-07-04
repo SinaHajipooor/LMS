@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/elements/spinner.dart';
 import '../../providers/Course/CourseProvider.dart';
-import '../../widgets/course/payment_approach_selector.dart';
-import '../../widgets/course/bank_payment_approach.dart';
-import '../../widgets/course/payment_gateways_selector.dart';
-import '../../widgets/course/course_shipping_details.dart';
+import '../../widgets/course/shipping/payment_approach_selector.dart';
+import '../../widgets/course/shipping/bank_payment_approach.dart';
+import '../../widgets/course/shipping/payment_gateways_selector.dart';
+import '../../widgets/course/shipping/course_shipping_details.dart';
 
 class CoursePurchaseScreen extends StatefulWidget {
 // ------------------ feilds ---------------------

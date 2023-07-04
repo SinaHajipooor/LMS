@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lms/screens/landing_screen.dart';
 import 'package:provider/provider.dart';
-import '../../widgets/course/courses_list.dart';
+import '../../widgets/course/electronic/electronic_courses_list.dart';
 import '../../providers/Course/CourseProvider.dart';
 import '../../widgets/elements/spinner.dart';
 
@@ -19,7 +19,7 @@ class ElectronicCoursesScreen extends StatefulWidget {
 
 class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
 // --------------- state --------------
-  var _showItems = false;
+
   bool _isLoading = true;
   var _bottomPadding = 0.0;
   List<dynamic> _courseGroups = [];
@@ -27,7 +27,6 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
   @override
   void initState() {
     getAllCourseGroups();
-    // getAllElectronicCourses();
     super.initState();
   }
 
@@ -106,9 +105,8 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
                         },
                         child: Padding(
                           padding: EdgeInsets.only(bottom: _bottomPadding),
-                          child: CoursesList(
+                          child: ElectronicCoursesList(
                             groupId: group['id'],
-                            showItems: _showItems,
                           ),
                         ),
                       );
