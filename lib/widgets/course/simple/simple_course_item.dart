@@ -102,10 +102,7 @@ class SimpleCourseItem extends StatelessWidget {
                                       Text('$meetings جلسه', style: const TextStyle(fontSize: 10)),
                                     ],
                                   ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(left: 10),
-                                    child: Icon(Icons.bookmark_border, size: 17),
-                                  )
+                                  const SizedBox(),
                                 ],
                               ),
                             ),

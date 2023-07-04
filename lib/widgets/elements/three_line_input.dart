@@ -32,7 +32,7 @@ class ThreeLineInput extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: TextFormField(
-              style: const TextStyle(fontSize: 11),
+              style: const TextStyle(fontSize: 13),
               decoration: const InputDecoration(
                 border: InputBorder.none,
               ),

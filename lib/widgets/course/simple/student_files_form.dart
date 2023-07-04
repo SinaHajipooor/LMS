@@ -33,8 +33,9 @@ class _StudentFilesFormState extends State<StudentFilesForm> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text('فایل مورد نظر را بارگذاری کنید', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
         const SizedBox(height: 10),
+        const Text('فایل مورد نظر را بارگذاری کنید', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+        const SizedBox(height: 20),
         Padding(
           padding: const EdgeInsets.only(right: 5, left: 5),
           child: SizedBox(

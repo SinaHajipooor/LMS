@@ -11,6 +11,7 @@ import 'package:lms/widgets/course/detail/course_image.dart';
 import 'package:lms/widgets/course/detail/course_name.dart';
 import 'package:lms/widgets/course/detail/course_teachers_list.dart';
 import 'package:lms/widgets/course/simple/course_files_drawer.dart';
+import 'package:lms/widgets/course/simple/simple_course_meetings.dart';
 import 'package:lms/widgets/elements/custom_appbar.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:provider/provider.dart';
@@ -158,6 +159,11 @@ class _SimpleCourseDetailScreenState extends State<SimpleCourseDetailScreen> {
                             }),
                             const SizedBox(height: 15),
                             const CourseFilesDrawer(),
+                            const SizedBox(height: 20),
+                            Consumer<SimpleCourseProvider>(builder: (context, myprovider, child) {
+                              return SimpleCourseMeetings(meetings: myprovider.courseDetails['meetings']);
+                            }),
+                            const SizedBox(height: 15),
                             const CourseCommentsList(),
                             const FeedbackWidget(),
                           ],
