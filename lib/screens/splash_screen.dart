@@ -35,15 +35,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Image.asset('assets/images/splash.png', fit: BoxFit.cover),
-          ),
-          Center(
-            child: Image.asset('assets/images/avatar-edu.png'),
-          )
-        ],
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Image.asset('assets/images/splash-background.jpg', fit: BoxFit.cover),
+            ),
+            Center(
+              child: Image.asset('assets/images/avatar-edu.png'),
+            )
+          ],
+        ),
       ),
     );
   }
