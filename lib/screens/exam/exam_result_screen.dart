@@ -62,17 +62,14 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                     height: 120,
                     width: deviceSize.width / 3.25,
                     child: Card(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                      elevation: 2,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      elevation: 1,
                       child: Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Image.asset('assets/images/icons/checked.png', width: 35, height: 35),
-                            Text(
-                              '25',
-                              style: TextStyle(fontSize: 20),
-                            ),
+                            const Text('25', style: TextStyle(fontSize: 20)),
                           ],
                         ),
                       ),
@@ -82,17 +79,14 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                     height: 120,
                     width: deviceSize.width / 3.25,
                     child: Card(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                      elevation: 2,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      elevation: 1,
                       child: Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Image.asset('assets/images/icons/eye.png', width: 35, height: 35),
-                            Text(
-                              '10',
-                              style: TextStyle(fontSize: 20),
-                            ),
+                            const Text('10', style: TextStyle(fontSize: 20)),
                           ],
                         ),
                       ),
@@ -102,14 +96,14 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                     height: 120,
                     width: deviceSize.width / 3.25,
                     child: Card(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                      elevation: 2,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      elevation: 1,
                       child: Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Image.asset('assets/images/icons/close.png', width: 35, height: 35),
-                            Text('5', style: TextStyle(fontSize: 20)),
+                            const Text('5', style: TextStyle(fontSize: 20)),
                           ],
                         ),
                       ),
@@ -123,8 +117,8 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
               child: SizedBox(
                 height: 220,
                 child: Card(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  elevation: 2,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  elevation: 1,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -197,8 +191,8 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Card(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  elevation: 2,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  elevation: 1,
                   child: const Padding(
                     padding: EdgeInsets.only(right: 10),
                     child: Row(
@@ -218,21 +212,21 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Card(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  elevation: 2,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  elevation: 1,
                   child: Padding(
-                    padding: EdgeInsets.only(right: 10),
+                    padding: const EdgeInsets.only(right: 10),
                     child: Row(
                       children: [
-                        Text('وضعیت قبولی : ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                        SizedBox(width: 5),
+                        const Text('وضعیت قبولی : ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        const SizedBox(width: 5),
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               'قبول',
                               style: TextStyle(fontSize: 16),
                             ),
-                            SizedBox(width: 5),
+                            const SizedBox(width: 5),
                             Image.asset('assets/images/icons/checked.png', width: 19, height: 19)
                           ],
                         )
