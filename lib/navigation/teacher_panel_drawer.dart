@@ -69,7 +69,7 @@ class _TeacherPanelDrawerState extends State<TeacherPanelDrawer> {
             child: Container(
               color: _selectedPage == 2 ? Colors.grey[200] : null,
               child: ListTile(
-                leading: Image.asset('assets/images/icons/student.png', color: Colors.orange, width: 24, height: 24),
+                leading: Image.asset('assets/images/icons/person.png', width: 25, height: 25, color: Colors.orange),
                 title: const Text('پنل فراگیر'),
               ),
             ),
@@ -79,7 +79,7 @@ class _TeacherPanelDrawerState extends State<TeacherPanelDrawer> {
               _showConfirmationAlert(context);
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/exit.png', color: Colors.orange, width: 24, height: 24),
+              leading: Image.asset('assets/images/icons/exit.png', width: 24, height: 24, color: Colors.orange),
               title: const Text('خروج', style: TextStyle(fontSize: 14)),
             ),
           ),

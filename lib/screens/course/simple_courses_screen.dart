@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lms/screens/landing_screen.dart';
+import 'package:lms/widgets/course/simple/simple_courses_list.dart';
 import 'package:provider/provider.dart';
-import '../../widgets/course/courses_list.dart';
 import '../../widgets/elements/spinner.dart';
 import '../../providers/Course/SimpleCourseProvider.dart';
 
@@ -15,14 +15,13 @@ class SimpleCoursesScreen extends StatefulWidget {
 
 class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
   // --------------- state --------------
-  var _showItems = false;
+
   var _isLoading = true;
   var _bottomPadding = 0.0;
   List<dynamic> _courseGroups = [];
 // --------------- lifecycle -----------------
   @override
   void initState() {
-    // getAllSimpleCourses();
     getAllCourseGroups();
     super.initState();
   }
@@ -33,14 +32,6 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
   }
 
 // --------------- methods -----------------
-  // Future<void> getAllSimpleCourses() async {
-  //   await Provider.of<CourseProvider>(context, listen: false).fetchAllCourses();
-  //   if (mounted) {
-  //     setState(() {
-  //       _isLoading = false;
-  //     });
-  //   }
-  // }
 
   Future<void> getAllCourseGroups() async {
     await Provider.of<SimpleCourseProvider>(context, listen: false).fetchSimpleCourseGroups();
@@ -102,9 +93,8 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
                         },
                         child: Padding(
                           padding: EdgeInsets.only(bottom: _bottomPadding),
-                          child: CoursesList(
+                          child: SimpleCoursesList(
                             groupId: group['id'],
-                            showItems: _showItems,
                           ),
                         ),
                       );

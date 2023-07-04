@@ -1,6 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import '../../screens/course/course_assessment_screen.dart';
+import '../../../screens/course/course_assessment_screen.dart';
 
 class CourseAssessment extends StatelessWidget {
   // --------------- feilds -----------------

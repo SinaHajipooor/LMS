@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../screens/course/electronic_course_detail_screen.dart';
+import 'package:lms/screens/course/simple_course_detail_screen.dart';
 
-class CourseItem extends StatelessWidget {
+class SimpleCourseItem extends StatelessWidget {
   //---------------- feilds -----------------
   final int courseId;
   final int eduId;
@@ -11,8 +11,8 @@ class CourseItem extends StatelessWidget {
   final String courseImage;
   final String teacherAvatar;
   final String teacherName;
-  final int courseSessions;
-  const CourseItem({
+  final int meetings;
+  const SimpleCourseItem({
     super.key,
     required this.courseId,
     required this.eduId,
@@ -22,7 +22,7 @@ class CourseItem extends StatelessWidget {
     required this.courseImage,
     required this.teacherAvatar,
     required this.teacherName,
-    required this.courseSessions,
+    required this.meetings,
   });
   //---------------- UI -----------------
   @override
@@ -30,7 +30,7 @@ class CourseItem extends StatelessWidget {
     final deviceSize = MediaQuery.of(context).size;
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed(ElectronicCourseDetailScreen.routeName, arguments: courseId);
+        Navigator.of(context).pushNamed(SimpleCourseDetailScreen.routeName, arguments: courseId);
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -99,7 +99,7 @@ class CourseItem extends StatelessWidget {
                                     children: [
                                       const Icon(Icons.video_collection_outlined, size: 14),
                                       const SizedBox(width: 4),
-                                      Text('$courseSessions جلسه', style: const TextStyle(fontSize: 10)),
+                                      Text('$meetings جلسه', style: const TextStyle(fontSize: 10)),
                                     ],
                                   ),
                                   const Padding(

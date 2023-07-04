@@ -1,34 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/screens/course/course_purchase_screen1.dart';
+import 'package:lms/screens/home_screen.dart';
+import 'package:lms/widgets/course/detail/course_comments_list.dart';
+import 'package:lms/widgets/course/detail/course_detail_cards.dart';
+import 'package:lms/widgets/course/detail/course_detail_text.dart';
 import 'package:lms/widgets/course/detail/course_feedback.dart';
-import 'package:lms/widgets/course/detail/course_price_card.dart';
-import '../../widgets/course/detail/course_teachers_list.dart';
-import '../../widgets/course/detail/course_image.dart';
-import '../../widgets/course/detail/course_detail_text.dart';
-import '../../widgets/course/detail/course_name.dart';
+import 'package:lms/widgets/course/detail/course_image.dart';
+import 'package:lms/widgets/course/detail/course_name.dart';
+import 'package:lms/widgets/course/detail/course_teachers_list.dart';
+import 'package:lms/widgets/elements/custom_appbar.dart';
+import 'package:lms/widgets/elements/spinner.dart';
 import 'package:provider/provider.dart';
-import '../../providers/Course/CourseProvider.dart';
-import '../home_screen.dart';
-import '../../widgets/elements/spinner.dart';
-import '../../widgets/course/detail/course_exams_list.dart';
-import '../../widgets/course/detail/course_description.dart';
-import '../../widgets/course/detail/course_detail_cards.dart';
-import '../../widgets/course/detail/course_comments_list.dart';
-import '../../widgets/course/recourses/course_resources_card.dart';
-import '../../widgets/course/assessment/course_assessment.dart';
-import '../../widgets/elements/custom_appbar.dart';
 
-class ElectronicCourseDetailScreen extends StatefulWidget {
-  static const routeName = '/electronic-course-detail-screen';
-
-  const ElectronicCourseDetailScreen({super.key});
+class SimpleCourseDetailScreen extends StatefulWidget {
+  static const routeName = '/simple-course-detail-screen';
+  const SimpleCourseDetailScreen({super.key});
 
   @override
-  State<ElectronicCourseDetailScreen> createState() => _ElectronicCourseDetailScreenState();
+  State<SimpleCourseDetailScreen> createState() => _SimpleCourseDetailScreenState();
 }
 
-class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScreen> {
+class _SimpleCourseDetailScreenState extends State<SimpleCourseDetailScreen> {
   // ---------------  state  --------------
   bool _isLoading = true;
   Map<String, dynamic>? courseDetails;
@@ -68,9 +62,9 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
 
   // ---------------  methods ---------------
   Future<void> fetchElectronicCourseDetails(int courseId) async {
-    await Provider.of<CourseProvider>(context, listen: false).fetchCourseDetails(courseId);
+    await Provider.of<SimpleCourseProvider>(context, listen: false).fetchSimpleCourseDetails(courseId);
     setState(() {
-      courseDetails = Provider.of<CourseProvider>(context, listen: false).courseDetails;
+      courseDetails = Provider.of<SimpleCourseProvider>(context, listen: false).courseDetails;
       _isLoading = false;
     });
   }
@@ -78,8 +72,8 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
   Future<void> submitCourse() async {
     Navigator.of(context).pushNamed(CourseShippingScreen.routeName, arguments: courseDetails?['id']);
   }
-  //---------------- UI ------------------
 
+  //---------------- UI ------------------
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
@@ -106,7 +100,12 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                         BoxShadow(blurRadius: 20, color: Colors.blue.withOpacity(0.5)),
                       ],
                     ),
-                    child: const Center(child: Text('ثبت‌نام در دوره', style: TextStyle(color: Colors.white, fontSize: 13))),
+                    child: const Center(
+                      child: Text(
+                        'ثبت‌نام در دوره',
+                        style: TextStyle(color: Colors.white, fontSize: 13),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -118,24 +117,24 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                     physics: const BouncingScrollPhysics(),
                     controller: _scrollController,
                     slivers: [
-                      const CustomAppbar(
-                        title: 'اطلاعات دوره',
-                      ),
+                      const CustomAppbar(title: 'اطلاعات دوره'),
                       SliverList(
                         delegate: SliverChildListDelegate.fixed(
                           [
-                            Consumer<CourseProvider>(builder: (context, myProvider, child) {
+                            Consumer<SimpleCourseProvider>(builder: (context, myProvider, child) {
                               return CourseName(courseName: myProvider.courseDetails['title']);
                             }),
                             const SizedBox(height: 25),
                             const CourseTeachersList(),
                             const SizedBox(height: 35),
-                            Consumer<CourseProvider>(builder: (context, myProvider, child) {
-                              return CourseImage(
-                                imageUrl: myProvider.courseDetails['main_image'],
-                                lessonName: myProvider.courseDetails['lesson_id'],
-                              );
-                            }),
+                            Consumer<SimpleCourseProvider>(
+                              builder: (context, myProvider, child) {
+                                return CourseImage(
+                                  imageUrl: myProvider.courseDetails['main_image'],
+                                  lessonName: myProvider.courseDetails['lesson_id'],
+                                );
+                              },
+                            ),
                             const Padding(
                               padding: EdgeInsets.fromLTRB(32, 20, 32, 16),
                               child: Text(
@@ -143,10 +142,12 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                                 style: TextStyle(fontSize: 18, color: Colors.blue, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Consumer<CourseProvider>(builder: (context, myProvider, child) {
-                              return CourseDetailText(description: myProvider.courseDetails['description']);
-                            }),
-                            Consumer<CourseProvider>(builder: (context, myProvider, child) {
+                            Consumer<SimpleCourseProvider>(
+                              builder: (context, myProvider, child) {
+                                return CourseDetailText(description: myProvider.courseDetails['description']);
+                              },
+                            ),
+                            Consumer<SimpleCourseProvider>(builder: (context, myProvider, child) {
                               return CourseDetailCards(
                                 seasonsCount: myProvider.courseDetails['seasons_count'],
                                 sessionCount: myProvider.courseDetails['sessions_count'],
@@ -155,44 +156,11 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                               );
                             }),
                             const SizedBox(height: 15),
-                            SizedBox(
-                              width: deviceSize.width,
-                              child: Row(
-                                children: [
-                                  Consumer<CourseProvider>(builder: (context, myProvider, child) {
-                                    return CourseResourcesCard(
-                                      seasons: myProvider.courseDetails['seasons'],
-                                      courseId: myProvider.courseDetails['id'],
-                                      imageUrl: myProvider.courseDetails['main_image'],
-                                      courseName: myProvider.courseDetails['title'],
-                                      coursePeriod: myProvider.courseDetails['time'],
-                                      studentsCount: myProvider.courseDetails['students_count'],
-                                    );
-                                  }),
-                                  Consumer<CourseProvider>(builder: (context, myProvider, child) {
-                                    return CourseAssessment(courseId: myProvider.courseDetails['id']);
-                                  }),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 20),
-                            Consumer<CourseProvider>(builder: (context, myProvider, child) {
-                              return CourseExamsList(title: 'آزمون‌ها', exams: myProvider.courseDetails['exams'], courseId: myProvider.courseDetails['id']);
-                            }),
-                            const SizedBox(height: 20),
-                            Consumer<CourseProvider>(builder: (context, myProvider, child) {
-                              return CourseDescription(title: 'گواهینامه', description: myProvider.courseDetails['description']);
-                            }),
-                            const SizedBox(height: 15),
-                            Consumer<CourseProvider>(builder: (context, myProvider, child) {
-                              return CoursePriceCard(amount: myProvider.courseDetails['amount'], discount: myProvider.courseDetails['discount'], finalAmount: myProvider.courseDetails['final_amount']);
-                            }),
-                            const SizedBox(height: 20),
                             const CourseCommentsList(),
                             const FeedbackWidget(),
                           ],
                         ),
-                      ),
+                      )
                     ],
                   ),
                   Visibility(

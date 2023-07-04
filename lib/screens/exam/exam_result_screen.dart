@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import '../../widgets/elements/circular_chart.dart';
-import '../course/electronic_course_detail_screen.dart';
+import 'package:lms/screens/course/electronic_course_detail_screen.dart';
+import 'package:lms/widgets/elements/circular_chart.dart';
 
 class ExamResultScreen extends StatefulWidget {
   static const routeName = '/exam-result-screen';
-  const ExamResultScreen({Key? key}) : super(key: key);
+  const ExamResultScreen({super.key});
 
   @override
-  State<ExamResultScreen> createState() => _ExamResultScreenState();
+  _ExamResultScreenState createState() => _ExamResultScreenState();
 }
 
 class _ExamResultScreenState extends State<ExamResultScreen> {
   //------------------- state -----------------------
   int? courseId;
-  //------------------- method -----------------------
 
   //------------------- lifecycle -----------------------
   @override
@@ -25,100 +24,127 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
   }
 
   //------------------- UI -----------------------
-
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
-    return WillPopScope(
-      onWillPop: () async {
-        Navigator.of(context).pushReplacementNamed(ElectronicCourseDetailScreen.routeName, arguments: courseId);
-        return false;
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('نتیجه آزمون', style: TextStyle(color: Colors.black, fontSize: 16)),
-          centerTitle: true,
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
-          elevation: 1,
+    return Scaffold(
+      floatingActionButton: InkWell(
+        onTap: () => Navigator.of(context).pushReplacementNamed(ElectronicCourseDetailScreen.routeName, arguments: courseId),
+        child: Container(
+          width: 100,
+          height: 48,
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(blurRadius: 20, color: Colors.blue.withOpacity(0.5)),
+            ],
+          ),
+          child: const Center(child: Text('بازگشت به دوره', style: TextStyle(color: Colors.white, fontSize: 13))),
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 5),
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    SizedBox(
-                      height: 80,
-                      width: deviceSize.width / 3,
-                      child: Card(
-                        elevation: 1,
+      ),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: const Text('نتیجه آزمون', style: TextStyle(fontSize: 16, color: Colors.black)),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                    height: 120,
+                    width: deviceSize.width / 3.25,
+                    child: Card(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      elevation: 2,
+                      child: Center(
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            const Text('پاسخ های صحیح', style: TextStyle(fontSize: 13, color: Colors.green, fontWeight: FontWeight.bold)),
-                            Text('25', style: TextStyle(fontSize: 17, color: Colors.green[300])),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 80,
-                      width: deviceSize.width / 3,
-                      child: Card(
-                        elevation: 1,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text('پاسخ های غلط', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.red)),
+                            Image.asset('assets/images/icons/checked.png', width: 35, height: 35),
                             Text(
-                              '5',
-                              style: TextStyle(fontSize: 17, color: Colors.red[300]),
+                              '25',
+                              style: TextStyle(fontSize: 20),
                             ),
                           ],
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 80,
-                      width: deviceSize.width / 3,
-                      child: Card(
-                        elevation: 1,
+                  ),
+                  SizedBox(
+                    height: 120,
+                    width: deviceSize.width / 3.25,
+                    child: Card(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      elevation: 2,
+                      child: Center(
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            const Text(
-                              'پاسخ داده نشده',
-                              style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.orange),
+                            Image.asset('assets/images/icons/eye.png', width: 35, height: 35),
+                            Text(
+                              '10',
+                              style: TextStyle(fontSize: 20),
                             ),
-                            Text('10', style: TextStyle(fontSize: 17, color: Colors.orange[300])),
                           ],
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: Card(
-                  elevation: 1,
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 20),
-                      CircularChartWidget(
-                        data: [
-                          CircularData('پاسخ های غلط', 5, Colors.red),
-                          CircularData('بدون پاسخ', 10, Colors.orange),
-                          CircularData('پاسخ های صحیح', 25, Colors.green),
-                        ],
+                  ),
+                  SizedBox(
+                    height: 120,
+                    width: deviceSize.width / 3.25,
+                    child: Card(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      elevation: 2,
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Image.asset('assets/images/icons/close.png', width: 35, height: 35),
+                            Text('5', style: TextStyle(fontSize: 20)),
+                          ],
+                        ),
                       ),
-                      const SizedBox(height: 30),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Row(
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8, right: 8, top: 15),
+              child: SizedBox(
+                height: 220,
+                child: Card(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  elevation: 2,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      AspectRatio(
+                        aspectRatio: 1,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 0, left: 10),
+                          child: CircularChartWidget(
+                            data: [
+                              CircularData('پاسخ های غلط', 5, Colors.red),
+                              CircularData('بدون پاسخ', 10, Colors.orange),
+                              CircularData('پاسخ های صحیح', 25, Colors.green),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Row(
@@ -128,10 +154,10 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                                   height: 18,
                                   decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(5)),
                                 ),
-                                const SizedBox(width: 2),
+                                const SizedBox(width: 3),
                                 const Text(
                                   'پاسخ های صحیح',
-                                  style: TextStyle(fontSize: 12),
+                                  style: TextStyle(fontSize: 11),
                                 )
                               ],
                             ),
@@ -142,8 +168,8 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                                   height: 18,
                                   decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(5)),
                                 ),
-                                const SizedBox(width: 2),
-                                const Text('پاسخ های غلط', style: TextStyle(fontSize: 12)),
+                                const SizedBox(width: 3),
+                                const Text('پاسخ های غلط', style: TextStyle(fontSize: 11)),
                               ],
                             ),
                             Row(
@@ -153,66 +179,70 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                                   height: 18,
                                   decoration: BoxDecoration(color: Colors.orange, borderRadius: BorderRadius.circular(5)),
                                 ),
-                                const SizedBox(width: 2),
-                                const Text('بدون پاسخ', style: TextStyle(fontSize: 12)),
+                                const SizedBox(width: 3),
+                                const Text('بدون پاسخ', style: TextStyle(fontSize: 11)),
                               ],
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
               ),
-              SizedBox(
-                height: 60,
-                width: double.infinity,
+            ),
+            SizedBox(
+              height: 80,
+              width: deviceSize.width,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Card(
-                  elevation: 1,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: Row(
-                          children: const [
-                            Text('نمره آزمون : '),
-                            Text('25', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Row(
-                          children: const [
-                            Text('وضعیت قبولی : '),
-                            Text('قبول', style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                      )
-                    ],
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  elevation: 2,
+                  child: const Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Row(
+                      children: [
+                        Text('نمره آزمون : ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        SizedBox(width: 5),
+                        Text('25  از 100', style: TextStyle(fontSize: 20)),
+                      ],
+                    ),
                   ),
                 ),
               ),
-              const SizedBox(height: 15),
-              Padding(
-                padding: const EdgeInsets.only(left: 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () => Navigator.of(context).pushReplacementNamed(ElectronicCourseDetailScreen.routeName, arguments: courseId),
-                      child: const Text(
-                        'بازگشت به دوره',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                    )
-                  ],
+            ),
+            SizedBox(
+              height: 80,
+              width: deviceSize.width,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Card(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  elevation: 2,
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Row(
+                      children: [
+                        Text('وضعیت قبولی : ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        SizedBox(width: 5),
+                        Row(
+                          children: [
+                            Text(
+                              'قبول',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            SizedBox(width: 5),
+                            Image.asset('assets/images/icons/checked.png', width: 19, height: 19)
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
