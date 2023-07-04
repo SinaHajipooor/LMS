@@ -96,7 +96,7 @@ class _CourseResourcesScreenState extends State<CourseResourcesScreen> {
                   children: [
                     Row(
                       children: [
-                        const Text('مدت دوره : ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        const Text('مدت دوره : ', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
                         Text(widget.coursePeriod, style: const TextStyle(fontSize: 17, color: Colors.blue)),
                       ],
                     ),
@@ -104,7 +104,7 @@ class _CourseResourcesScreenState extends State<CourseResourcesScreen> {
                       children: [
                         const Text(
                           'تعداد فراگیران : ',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                         ),
                         Text(
                           widget.studentsCount.toString(),

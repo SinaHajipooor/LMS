@@ -35,10 +35,10 @@ class UserInformationInput extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: TextFormField(
               decoration: const InputDecoration(
-                contentPadding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 7.0),
+                contentPadding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 10.0),
                 border: InputBorder.none, // Hide default border
               ),
-              style: const TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 13.0, fontWeight: FontWeight.bold),
               onChanged: onChanged,
               controller: TextEditingController(text: value),
               keyboardType: keyboardType,
