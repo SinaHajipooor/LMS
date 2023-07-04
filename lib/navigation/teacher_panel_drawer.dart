@@ -55,7 +55,7 @@ class _TeacherPanelDrawerState extends State<TeacherPanelDrawer> {
               Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/home.png', width: 25, height: 25, color: Colors.orange),
+              leading: Image.asset('assets/images/icons/home.png', color: Colors.orange, width: 24, height: 24),
               title: const Text('صفحه‌اصلی'),
             ),
           ),

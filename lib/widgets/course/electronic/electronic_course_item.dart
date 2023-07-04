@@ -81,7 +81,7 @@ class ElectronicCourseItem extends StatelessWidget {
                         child: Text('قیمت : $coursePrice تومان', style: const TextStyle(fontSize: 11)),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 10, right: 7),
+                        padding: const EdgeInsets.only(top: 10, right: 7, bottom: 5),
                         child: Row(
                           children: [
                             Expanded(
