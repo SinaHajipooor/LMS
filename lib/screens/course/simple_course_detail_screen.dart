@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
-import 'package:lms/screens/course/course_purchase_screen1.dart';
+import 'package:lms/screens/course/course_shipping_screen.dart';
 import 'package:lms/screens/home_screen.dart';
 import 'package:lms/widgets/course/detail/course_comments_list.dart';
 import 'package:lms/widgets/course/detail/course_detail_cards.dart';
@@ -10,6 +10,7 @@ import 'package:lms/widgets/course/detail/course_feedback.dart';
 import 'package:lms/widgets/course/detail/course_image.dart';
 import 'package:lms/widgets/course/detail/course_name.dart';
 import 'package:lms/widgets/course/detail/course_teachers_list.dart';
+import 'package:lms/widgets/course/simple/course_files_drawer.dart';
 import 'package:lms/widgets/elements/custom_appbar.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:provider/provider.dart';
@@ -156,6 +157,7 @@ class _SimpleCourseDetailScreenState extends State<SimpleCourseDetailScreen> {
                               );
                             }),
                             const SizedBox(height: 15),
+                            const CourseFilesDrawer(),
                             const CourseCommentsList(),
                             const FeedbackWidget(),
                           ],
