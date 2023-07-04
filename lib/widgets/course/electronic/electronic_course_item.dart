@@ -99,7 +99,7 @@ class ElectronicCourseItem extends StatelessWidget {
                                     children: [
                                       const Icon(Icons.video_collection_outlined, size: 14),
                                       const SizedBox(width: 4),
-                                      Text('$courseSessions جلسه', style: const TextStyle(fontSize: 10)),
+                                      Text('$courseSessions قسمت', style: const TextStyle(fontSize: 10)),
                                     ],
                                   ),
                                   const Padding(
