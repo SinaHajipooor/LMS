@@ -160,7 +160,14 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                               child: Row(
                                 children: [
                                   Consumer<CourseProvider>(builder: (context, myProvider, child) {
-                                    return CourseResourcesCard(seasons: myProvider.courseDetails['seasons'], courseId: myProvider.courseDetails['id']);
+                                    return CourseResourcesCard(
+                                      seasons: myProvider.courseDetails['seasons'],
+                                      courseId: myProvider.courseDetails['id'],
+                                      imageUrl: myProvider.courseDetails['main_image'],
+                                      courseName: myProvider.courseDetails['title'],
+                                      coursePeriod: myProvider.courseDetails['time'],
+                                      studentsCount: myProvider.courseDetails['students_count'],
+                                    );
                                   }),
                                   Consumer<CourseProvider>(builder: (context, myProvider, child) {
                                     return CourseAssessment(courseId: myProvider.courseDetails['id']);

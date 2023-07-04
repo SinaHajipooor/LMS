@@ -6,7 +6,11 @@ class CourseResourcesCard extends StatelessWidget {
   // ------------------ feilds -------------------
   final List seasons;
   final int courseId;
-  const CourseResourcesCard({super.key, required this.seasons, required this.courseId});
+  final String imageUrl;
+  final String courseName;
+  final int studentsCount;
+  final String coursePeriod;
+  const CourseResourcesCard({super.key, required this.seasons, required this.courseId, required this.imageUrl, required this.courseName, required this.studentsCount, required this.coursePeriod});
   // ------------------ UI -------------------
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,11 @@ class CourseResourcesCard extends StatelessWidget {
           PageRouteBuilder(
             pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
               return CourseResourcesScreen(
+                coursePeriod: coursePeriod,
+                studentsCount: studentsCount,
                 resources: seasons,
+                courseName: courseName,
+                imageUrl: imageUrl,
                 courseId: courseId,
               );
             },
@@ -50,8 +58,12 @@ class CourseResourcesCard extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => CourseResourcesScreen(
+                            coursePeriod: coursePeriod,
+                            studentsCount: studentsCount,
+                            courseName: courseName,
                             resources: seasons,
                             courseId: courseId,
+                            imageUrl: imageUrl,
                           ),
                         ),
                       );
