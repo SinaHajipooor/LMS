@@ -89,37 +89,38 @@ class _SimpleCourseMeetingsState extends State<SimpleCourseMeetings> {
                           duration: const Duration(milliseconds: 500),
                           opacity: _isExpanded ? 1.0 : 0.0,
                           child: ListView.builder(
-                              physics: const BouncingScrollPhysics(),
-                              padding: const EdgeInsets.only(top: 10, bottom: 5),
-                              shrinkWrap: true,
-                              itemCount: widget.meetings.length,
-                              itemBuilder: (ctx, i) {
-                                final meeting = widget.meetings[i];
-                                return Container(
-                                  decoration: widget.meetings.length == i + 1
-                                      ? null
-                                      : const BoxDecoration(
-                                          border: Border(
-                                            bottom: BorderSide(
-                                              color: Colors.grey,
-                                              width: 0.5,
-                                            ),
+                            physics: const BouncingScrollPhysics(),
+                            padding: const EdgeInsets.only(top: 10, bottom: 5),
+                            shrinkWrap: true,
+                            itemCount: widget.meetings.length,
+                            itemBuilder: (ctx, i) {
+                              final meeting = widget.meetings[i];
+                              return Container(
+                                decoration: widget.meetings.length == i + 1
+                                    ? null
+                                    : const BoxDecoration(
+                                        border: Border(
+                                          bottom: BorderSide(
+                                            color: Colors.grey,
+                                            width: 0.5,
                                           ),
                                         ),
-                                  child: ListTile(
-                                    onTap: () {},
-                                    title: Text('زمان شروع : ${meeting['start_meet']}', style: const TextStyle(fontSize: 13, color: Colors.black)),
-                                    subtitle: Text(
-                                      'زمان پایان : ${meeting['end_meet']}',
-                                      style: const TextStyle(fontSize: 13, color: Colors.black),
-                                    ),
-                                    trailing: IconButton(
-                                      onPressed: () => showInputDialog(meeting),
-                                      icon: const Icon(Icons.remove_red_eye, color: Colors.orange),
-                                    ),
+                                      ),
+                                child: ListTile(
+                                  onTap: () {},
+                                  title: Text('زمان شروع : ${meeting['start_meet']}', style: const TextStyle(fontSize: 13, color: Colors.black)),
+                                  subtitle: Text(
+                                    'زمان پایان : ${meeting['end_meet']}',
+                                    style: const TextStyle(fontSize: 13, color: Colors.black),
                                   ),
-                                );
-                              }),
+                                  trailing: IconButton(
+                                    onPressed: () => showInputDialog(meeting),
+                                    icon: const Icon(Icons.remove_red_eye, color: Colors.orange),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ],
