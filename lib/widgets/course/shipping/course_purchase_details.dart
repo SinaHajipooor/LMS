@@ -30,7 +30,7 @@ class CoursePurchaseDetails extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           child: Card(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            elevation: 4,
+            elevation: 2,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

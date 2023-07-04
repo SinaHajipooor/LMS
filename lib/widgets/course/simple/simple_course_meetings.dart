@@ -107,7 +107,7 @@ class _SimpleCourseMeetingsState extends State<SimpleCourseMeetings> {
                                         ),
                                       ),
                                 child: ListTile(
-                                  onTap: () {},
+                                  onTap: () => showInputDialog(meeting),
                                   title: Text('زمان شروع : ${meeting['start_meet']}', style: const TextStyle(fontSize: 13, color: Colors.black)),
                                   subtitle: Text(
                                     'زمان پایان : ${meeting['end_meet']}',

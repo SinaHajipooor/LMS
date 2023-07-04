@@ -22,7 +22,7 @@ class _AuthScreenState extends State<AuthScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(bottom: 15, top: 15),
+              padding: const EdgeInsets.only(bottom: 25, top: 35),
               child: Image.asset(
                 'assets/images/avatar-edu.png',
                 width: 130,
