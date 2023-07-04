@@ -36,7 +36,7 @@ class CoursePriceCard extends StatelessWidget {
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(top: 5),
-                      child: Text('قیمت دوره : ', style: TextStyle(fontSize: 17, fontWeight: FontWeight.normal)),
+                      child: Text('قیمت دوره : ', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
                     ),
                     discount == '0'
                         ? Padding(

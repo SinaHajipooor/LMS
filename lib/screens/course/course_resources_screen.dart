@@ -17,7 +17,7 @@ class _CourseResourcesScreenState extends State<CourseResourcesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 1,
+        elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
         title: const Text('منابع آموزشی', style: TextStyle(fontSize: 16, color: Colors.black)),
@@ -27,6 +27,7 @@ class _CourseResourcesScreenState extends State<CourseResourcesScreen> {
         ),
       ),
       body: ListView.builder(
+        physics: const BouncingScrollPhysics(),
         itemCount: widget.resources.length,
         itemBuilder: (ctx, i) => Padding(
           padding: const EdgeInsets.only(top: 10.0),
