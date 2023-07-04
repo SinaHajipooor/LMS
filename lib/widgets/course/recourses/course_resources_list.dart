@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/widgets/course/course_season_card.dart';
+import 'package:lms/widgets/course/detail/course_season_card.dart';
 
 class CourseResourcesList extends StatelessWidget {
   final List resources;

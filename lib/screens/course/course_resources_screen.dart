@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/widgets/course/course_resources_list.dart';
+import 'package:lms/widgets/course/recourses/course_resources_list.dart';
 
 class CourseResourcesScreen extends StatefulWidget {
 // ------------------- feilds ----------------------
@@ -21,18 +21,18 @@ class _CourseResourcesScreenState extends State<CourseResourcesScreen> {
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          title: const Text('منابع آموزشی', style: TextStyle(fontSize: 16, color: Colors.black)),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        title: const Text('منابع آموزشی', style: TextStyle(fontSize: 16, color: Colors.black)),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        body: SafeArea(
-            child: SingleChildScrollView(
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
@@ -121,6 +121,8 @@ class _CourseResourcesScreenState extends State<CourseResourcesScreen> {
               )
             ],
           ),
-        )));
+        ),
+      ),
+    );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/providers/Course/CourseProvider.dart';
-import 'package:lms/widgets/course/course_payment_approachs.dart';
-import 'package:lms/widgets/course/course_purchase_details.dart';
+import 'package:lms/widgets/course/shipping/course_payment_approachs.dart';
+import 'package:lms/widgets/course/shipping/course_purchase_details.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:provider/provider.dart';
 
