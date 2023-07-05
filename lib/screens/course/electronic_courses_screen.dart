@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/screens/landing_screen.dart';
+import 'package:lms/screens/root/landing_screen.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/course/electronic/electronic_courses_list.dart';
 import '../../providers/Course/CourseProvider.dart';

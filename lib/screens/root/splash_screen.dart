@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/screens/landing_screen.dart';
+import 'package:lms/screens/root/landing_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static const routeName = '/splash-screen';

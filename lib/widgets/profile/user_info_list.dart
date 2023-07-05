@@ -2,7 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/navigation/bottom_tabas.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
-import 'package:lms/screens/landing_screen.dart';
+import 'package:lms/screens/root/landing_screen.dart';
 import 'package:lms/screens/profile/user_birth_certificate_form.dart';
 import 'package:lms/screens/profile/user_education_screen.dart';
 import 'package:lms/screens/profile/user_job_info_screen.dart';
