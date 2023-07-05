@@ -89,7 +89,7 @@ class _TeachersPanelDrawerState extends State<TeachersPanelDrawer> {
               Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const BottomTabs(defaultPageIndex: 2)));
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/teacher.png', width: 20, height: 20, color: const Color.fromARGB(255, 92, 92, 92)),
+              leading: Image.asset('assets/images/icons/student.png', width: 20, height: 20, color: const Color.fromARGB(255, 92, 92, 92)),
               title: const Text('پنل فراگیران', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
             ),
           ),
