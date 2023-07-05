@@ -13,11 +13,11 @@ class PresenceScreen extends StatefulWidget {
 }
 
 class _PresenceScreenState extends State<PresenceScreen> {
-  // ---------------  state  --------------
+  // ---------------  state  -------------------
   bool _isLoading = false;
   final _scrollController = ScrollController();
   bool _isFabVisible = true;
-  // ---------------  lifecycle  ---------------
+  // ----------------  lifecycle  ----------------
 
   @override
   void initState() {
