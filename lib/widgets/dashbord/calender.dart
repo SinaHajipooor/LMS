@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/screens/teachers/presence_screen.dart';
 import 'package:lms/widgets/dashbord/calendar_modal.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
@@ -181,7 +182,7 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
                                   padding: const EdgeInsets.symmetric(horizontal: 5),
                                   child: ElevatedButton(
                                     style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.orange[400]!)),
-                                    onPressed: () {},
+                                    onPressed: () => Navigator.of(context).pushNamed(PresenceScreen.routeName),
                                     child: const Text('لیست حضور غیاب'),
                                   ),
                                 ),

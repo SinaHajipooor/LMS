@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lms/widgets/elements/custom_appbar.dart';
 import 'package:lms/widgets/elements/spinner.dart';
+import 'package:lms/widgets/teachersPanel/presence_list.dart';
 
 class PresenceScreen extends StatefulWidget {
   static const routeName = '/presence-screen';
@@ -38,6 +39,7 @@ class _PresenceScreenState extends State<PresenceScreen> {
   //---------------- UI ------------------
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () async {
         Navigator.of(context).pop();
@@ -54,9 +56,13 @@ class _PresenceScreenState extends State<PresenceScreen> {
                   child: Container(
                     width: 80,
                     height: 45,
-                    decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(12), boxShadow: [
-                      BoxShadow(blurRadius: 20, color: Colors.green.withOpacity(0.5)),
-                    ]),
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(blurRadius: 20, color: Colors.green.withOpacity(0.5)),
+                      ],
+                    ),
                     child: const Center(child: Text('ثبت', style: TextStyle(color: Colors.white, fontSize: 14))),
                   ),
                 ),
@@ -68,7 +74,19 @@ class _PresenceScreenState extends State<PresenceScreen> {
                   CustomScrollView(
                     physics: const BouncingScrollPhysics(),
                     controller: _scrollController,
-                    slivers: [const CustomAppbar(title: 'لیست حضور و غیاب'), SliverList(delegate: SliverChildListDelegate.fixed([]))],
+                    slivers: [
+                      const CustomAppbar(title: 'لیست حضور و غیاب'),
+                      SliverList(
+                        delegate: SliverChildListDelegate.fixed(
+                          [
+                            SizedBox(
+                              height: deviceSize.height,
+                              child: const PresenceList(),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   )
                 ],
               ),

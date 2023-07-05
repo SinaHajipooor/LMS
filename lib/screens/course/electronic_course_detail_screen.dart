@@ -118,9 +118,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                     physics: const BouncingScrollPhysics(),
                     controller: _scrollController,
                     slivers: [
-                      const CustomAppbar(
-                        title: 'اطلاعات دوره',
-                      ),
+                      const CustomAppbar(title: 'اطلاعات دوره'),
                       SliverList(
                         delegate: SliverChildListDelegate.fixed(
                           [
