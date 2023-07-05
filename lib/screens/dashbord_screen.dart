@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lms/navigation/students_panel_drawer.dart';
 import 'package:lms/screens/profile/user_profile_screen.dart';
 import 'package:lms/widgets/dashbord/calender.dart';
 import 'package:lms/widgets/dashbord/dashbord_info_cards.dart';
-import '../navigation/app_drawer.dart';
 
 class DashbordScreen extends StatefulWidget {
 // ---------------- feilds -----------------
@@ -66,7 +66,7 @@ class _DashbordScreenState extends State<DashbordScreen> {
           ),
         ],
       ),
-      drawer: const AppDrawer(),
+      drawer: const StudentsPanelDrawer(),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
