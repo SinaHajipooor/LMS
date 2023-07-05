@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lms/screens/teacher/teacher_dashbord_screen.dart';
-import 'package:lms/screens/teacher/teaching_document_screen.dart';
+import 'package:lms/screens/teachers/teacher_dashbord_screen.dart';
+import 'package:lms/screens/teachers/teaching_document_screen.dart';
 
 class TeacherBottomTabs extends StatefulWidget {
   final int defaultPageIndex;
