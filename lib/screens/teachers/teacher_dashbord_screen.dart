@@ -7,7 +7,6 @@ import 'package:lms/screens/profile/user_profile_screen.dart';
 import 'package:lms/widgets/dashbord/calender.dart';
 import 'package:lms/widgets/dashbord/dashbord_info_cards.dart';
 import 'package:lms/widgets/elements/spinner.dart';
-// import 'package:lms/widgets/teachersPanel/teacher_coureses_list.dart';
 import 'package:provider/provider.dart';
 
 class TeacherDashbordScreen extends StatefulWidget {
@@ -126,10 +125,7 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
                     DashbordInfoCards(),
                     Padding(
                       padding: EdgeInsets.only(top: 35, right: 15),
-                      child: Text(
-                        'دوره های جاری',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
+                      child: Text('دوره های جاری', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                     ),
                     // TeacherCoursesList(teacherCurrentCourses: _teacherCurrentCourses)
                   ],

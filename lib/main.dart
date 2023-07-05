@@ -11,13 +11,14 @@ import 'package:lms/screens/profile/user_birth_certificate_form.dart';
 import 'package:lms/screens/profile/user_education_screen.dart';
 import 'package:lms/screens/profile/user_job_info_screen.dart';
 import 'package:lms/screens/profile/user_profile_screen.dart';
-import 'package:lms/screens/splash_screen.dart';
+import 'package:lms/screens/root/splash_screen.dart';
+import 'package:lms/screens/teachers/presence_screen.dart';
 import 'package:provider/provider.dart';
 import 'providers/Landing/LandingProvider.dart';
 import './providers/Course/CourseProvider.dart';
-import './screens/landing_screen.dart';
-import './screens/dashbord_screen.dart';
-import './screens/home_screen.dart';
+import 'screens/root/landing_screen.dart';
+import 'screens/students/dashbord_screen.dart';
+import 'screens/root/home_screen.dart';
 import './providers/Auth/AuthProvider.dart';
 import './screens/exam/exam_screen.dart';
 import './screens/course/course_assessment_screen.dart';
@@ -74,6 +75,7 @@ class MyApp extends StatelessWidget {
             SimpleCoursesScreen.routeName: (ctx) => const SimpleCoursesScreen(),
             SimpleCourseDetailScreen.routeName: (ctx) => const SimpleCourseDetailScreen(),
             UserProfileScreen.routeName: (ctx) => const UserProfileScreen(),
+            PresenceScreen.routeName: (ctx) => const PresenceScreen(),
             CourseShippingScreen.routeName: (ctx) => const CourseShippingScreen(),
             UserBirthCertificateScreen.routeName: (ctx) => const UserBirthCertificateScreen(),
             UserEducationScreen.routeName: (ctx) => const UserEducationScreen(),

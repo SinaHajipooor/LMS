@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/screens/course/course_shipping_screen.dart';
-import 'package:lms/screens/home_screen.dart';
+import 'package:lms/screens/root/home_screen.dart';
 import 'package:lms/widgets/course/detail/course_comments_list.dart';
 import 'package:lms/widgets/course/detail/course_detail_cards.dart';
 import 'package:lms/widgets/course/detail/course_detail_text.dart';

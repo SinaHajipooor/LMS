@@ -2,7 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/navigation/bottom_tabas.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
-import 'package:lms/screens/landing_screen.dart';
+import 'package:lms/screens/root/landing_screen.dart';
 import 'package:lms/screens/profile/user_profile_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -89,7 +89,7 @@ class _TeachersPanelDrawerState extends State<TeachersPanelDrawer> {
               Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const BottomTabs(defaultPageIndex: 2)));
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/teacher.png', width: 20, height: 20, color: const Color.fromARGB(255, 92, 92, 92)),
+              leading: Image.asset('assets/images/icons/student.png', width: 20, height: 20, color: const Color.fromARGB(255, 92, 92, 92)),
               title: const Text('پنل فراگیران', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
             ),
           ),

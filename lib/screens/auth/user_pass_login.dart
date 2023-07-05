@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
-import 'package:lms/screens/home_screen.dart';
+import 'package:lms/screens/root/home_screen.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:provider/provider.dart';
 

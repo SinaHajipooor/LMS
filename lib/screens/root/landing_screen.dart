@@ -3,15 +3,15 @@ import 'package:flutter/services.dart';
 import 'package:lms/screens/auth/auth_screen.dart';
 import 'package:lms/widgets/landing/amazing_courses_list.dart';
 import 'package:provider/provider.dart';
-import '../widgets/elements/slider/annoucement_slider.dart';
-import '../widgets/elements/slider/normal_slider.dart';
-import '../providers/Landing/LandingProvider.dart';
-import '../widgets/elements/slider/tms_slider.dart';
-import '../widgets/elements/slider/teachers_list.dart';
-import '../widgets/elements/slider/news_list.dart';
-import '../widgets/elements/spinner.dart';
-import '../providers/Auth/AuthProvider.dart';
-import '../screens/home_screen.dart';
+import '../../widgets/elements/slider/annoucement_slider.dart';
+import '../../widgets/elements/slider/normal_slider.dart';
+import '../../providers/Landing/LandingProvider.dart';
+import '../../widgets/elements/slider/tms_slider.dart';
+import '../../widgets/elements/slider/teachers_list.dart';
+import '../../widgets/elements/slider/news_list.dart';
+import '../../widgets/elements/spinner.dart';
+import '../../providers/Auth/AuthProvider.dart';
+import 'home_screen.dart';
 
 class LandingScreen extends StatefulWidget {
 // --------------- feilds -----------------
