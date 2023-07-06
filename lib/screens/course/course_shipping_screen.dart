@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/providers/Course/CourseProvider.dart';
+import 'package:lms/providers/Course/ElectronicCourseProvider.dart';
 import 'package:lms/widgets/course/shipping/course_payment_approachs.dart';
 import 'package:lms/widgets/course/shipping/course_purchase_details.dart';
 import 'package:lms/widgets/elements/spinner.dart';
@@ -29,9 +29,9 @@ class _CourseShippingScreenState extends State<CourseShippingScreen> {
 
   // ------------------- methods -------------------
   Future<void> fetchCourseShippingDetails(int courseId) async {
-    await Provider.of<CourseProvider>(context, listen: false).fetchCourseShippingDetails(courseId);
+    await Provider.of<ElectronicCourseProvider>(context, listen: false).fetchCourseShippingDetails(courseId);
     setState(() {
-      courseInfo = Provider.of<CourseProvider>(context, listen: false).courseShippingDetails;
+      courseInfo = Provider.of<ElectronicCourseProvider>(context, listen: false).courseShippingDetails;
       _isLoading = false;
     });
   }
@@ -66,7 +66,7 @@ class _CourseShippingScreenState extends State<CourseShippingScreen> {
                       courseName: courseInfo?['title'],
                       courseTotalAmount: courseInfo?['final_amount'],
                     ),
-                    CoursePaymentApproachs(paymentGateways: Provider.of<CourseProvider>(context).coursePaymentGateways),
+                    CoursePaymentApproachs(paymentGateways: Provider.of<ElectronicCourseProvider>(context).coursePaymentGateways),
                   ],
                 ),
               ),

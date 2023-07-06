@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/providers/Course/CourseProvider.dart';
+import 'package:lms/providers/Course/ElectronicCourseProvider.dart';
 import 'package:provider/provider.dart';
 import 'electronic_course_item.dart';
 
@@ -32,7 +32,7 @@ class _ElectronicCoursesListState extends State<ElectronicCoursesList> {
 
 //------------------ methods -------------------
   Future<void> fetchElectronicCourseById() async {
-    electronicCourses = await Provider.of<CourseProvider>(context, listen: false).fetchElectronicCoursesByGroupId(widget.groupId);
+    electronicCourses = await Provider.of<ElectronicCourseProvider>(context, listen: false).fetchElectronicCoursesByGroupId(widget.groupId);
     if (mounted) {
       setState(() {});
     }

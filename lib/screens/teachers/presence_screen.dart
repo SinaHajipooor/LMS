@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:lms/navigation/teacher_bottom_tabs.dart';
+import 'package:lms/navigation/TeachersPanel/teachers_bottom_tabs.dart';
 import 'package:lms/widgets/elements/custom_appbar.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/teachersPanel/presence_list.dart';
@@ -59,7 +59,7 @@ class _PresenceScreenState extends State<PresenceScreen> {
           content: Text('گزارش با موفقیت ثبت شد', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           duration: Duration(seconds: 3),
         );
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const TeacherBottomTabs(defaultPageIndex: 0)));
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const TeachersBottomTabs(defaultPageIndex: 0)));
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       },
     ).show();

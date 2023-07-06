@@ -15,9 +15,9 @@ import 'package:lms/screens/root/splash_screen.dart';
 import 'package:lms/screens/teachers/presence_screen.dart';
 import 'package:provider/provider.dart';
 import 'providers/Landing/LandingProvider.dart';
-import './providers/Course/CourseProvider.dart';
+import 'providers/Course/ElectronicCourseProvider.dart';
 import 'screens/root/landing_screen.dart';
-import 'screens/students/dashbord_screen.dart';
+import 'screens/students/students_dashbord_screen.dart';
 import 'screens/root/home_screen.dart';
 import './providers/Auth/AuthProvider.dart';
 import './screens/exam/exam_screen.dart';
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (ctx) => AuthProvider()),
         ChangeNotifierProvider(create: (ctx) => LandingProvider()),
-        ChangeNotifierProvider(create: (ctx) => CourseProvider()),
+        ChangeNotifierProvider(create: (ctx) => ElectronicCourseProvider()),
         ChangeNotifierProvider(create: (ctx) => SimpleCourseProvider()),
         ChangeNotifierProvider(create: (ctx) => TeachersPanelProvider()),
       ],
@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
             SplashScreen.routeName: (ctx) => const SplashScreen(),
             LandingScreen.routeName: (ctx) => const LandingScreen(),
             HomeScreen.routeName: (ctx) => const HomeScreen(),
-            DashbordScreen.routeName: (ctx) => DashbordScreen(),
+            StudentsDashbordScreen.routeName: (ctx) => StudentsDashbordScreen(),
             ExamScreen.routeName: (ctx) => const ExamScreen(),
             ExamResultScreen.routeName: (ctx) => const ExamResultScreen(),
             ElectronicCourseDetailScreen.routeName: (ctx) => const ElectronicCourseDetailScreen(),

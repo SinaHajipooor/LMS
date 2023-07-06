@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CourseProvider with ChangeNotifier {
+class ElectronicCourseProvider with ChangeNotifier {
   // ------------------- feilds --------------------
   static const _baseUrl = 'http://45.149.77.156:8082/api/course/electronic';
   static const _courseDetailUrl = 'http://45.149.77.156:8082/api/course/electronic/show';

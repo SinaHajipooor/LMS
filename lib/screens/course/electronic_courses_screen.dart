@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/course/electronic/electronic_courses_list.dart';
-import '../../providers/Course/CourseProvider.dart';
+import '../../providers/Course/ElectronicCourseProvider.dart';
 import '../../widgets/elements/spinner.dart';
 
 enum FilterOptions { List, Item }
@@ -46,10 +46,10 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
   // }
 
   Future<void> getAllCourseGroups() async {
-    await Provider.of<CourseProvider>(context, listen: false).fetchElectronicCourseGroups();
+    await Provider.of<ElectronicCourseProvider>(context, listen: false).fetchElectronicCourseGroups();
     if (mounted) {
       setState(() {
-        _courseGroups = Provider.of<CourseProvider>(context, listen: false).courseGroups;
+        _courseGroups = Provider.of<ElectronicCourseProvider>(context, listen: false).courseGroups;
         _isLoading = false;
       });
     }

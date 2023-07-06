@@ -1,6 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/navigation/bottom_tabas.dart';
+import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:lms/screens/profile/user_birth_certificate_form.dart';
@@ -61,7 +61,7 @@ class _UserInfoListState extends State<UserInfoList> {
             onTap: () {
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                  builder: (context) => const BottomTabs(defaultPageIndex: 2),
+                  builder: (context) => const StudentsBottomTabs(defaultPageIndex: 2),
                 ),
               );
             },
