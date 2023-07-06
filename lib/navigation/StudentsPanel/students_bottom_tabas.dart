@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lms/screens/course/electronic_courses_screen.dart';
 import 'package:lms/screens/course/simple_courses_screen.dart';
-import 'package:lms/screens/students/dashbord_screen.dart';
+import 'package:lms/screens/students/students_dashbord_screen.dart';
 import 'package:lms/screens/students/educational_document_screen.dart';
 
 class StudentsBottomTabs extends StatefulWidget {

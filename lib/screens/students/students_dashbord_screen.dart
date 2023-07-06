@@ -4,18 +4,18 @@ import 'package:lms/screens/profile/user_profile_screen.dart';
 import 'package:lms/widgets/dashbord/calender.dart';
 import 'package:lms/widgets/dashbord/dashbord_info_cards.dart';
 
-class DashbordScreen extends StatefulWidget {
+class StudentsDashbordScreen extends StatefulWidget {
 // ---------------- feilds -----------------
   static const routeName = '/dashbord-screen';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  DashbordScreen({super.key});
+  StudentsDashbordScreen({super.key});
 
   @override
-  State<DashbordScreen> createState() => _DashbordScreenState();
+  State<StudentsDashbordScreen> createState() => _StudentsDashbordScreenState();
 }
 
-class _DashbordScreenState extends State<DashbordScreen> {
+class _StudentsDashbordScreenState extends State<StudentsDashbordScreen> {
 // --------------- methods -----------------
 
 // --------------- UI -----------------
