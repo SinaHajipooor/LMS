@@ -51,70 +51,11 @@ class _CourseResourcesScreenState extends State<CourseResourcesScreen> {
                           child: Image.network(widget.imageUrl, fit: BoxFit.cover),
                         ),
                       ),
-                      Positioned(
-                        bottom: 16,
-                        left: 16,
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.4),
-                            borderRadius: BorderRadius.circular(7),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.2),
-                                blurRadius: 8,
-                                spreadRadius: -2,
-                                offset: const Offset(0, 2),
-                              ),
-                            ],
-                          ),
-                          child: Text(
-                            widget.courseName,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              shadows: [
-                                Shadow(
-                                  color: Colors.black.withOpacity(0.5),
-                                  blurRadius: 0,
-                                  offset: const Offset(0, 2),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const Text('مدت دوره : ', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-                        Text(widget.coursePeriod, style: const TextStyle(fontSize: 17, color: Colors.blue)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          'تعداد فراگیران : ',
-                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          widget.studentsCount.toString(),
-                          style: const TextStyle(fontSize: 17, color: Colors.green),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              Text(widget.courseName, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
               CourseResourcesList(
                 resources: widget.resources,
                 courseId: widget.courseId,

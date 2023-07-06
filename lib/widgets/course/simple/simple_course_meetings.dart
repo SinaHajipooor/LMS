@@ -42,7 +42,7 @@ class _SimpleCourseMeetingsState extends State<SimpleCourseMeetings> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 680),
           curve: Curves.easeInOut,
-          height: _isExpanded ? 270 : 55,
+          height: _isExpanded ? 290 : 55,
           child: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
               return GestureDetector(

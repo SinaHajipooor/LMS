@@ -24,8 +24,8 @@ class AmazingCourseItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.network(
-              'https://images.ctfassets.net/aq13lwl6616q/4wW7nnU5Nuuf9DHIIcO4Zo/7838e981e306b0148c4f902d0b012b53/4403121_33c8.jpeg?w=500&fm=webp',
+            child: Image.asset(
+              'assets/images/course.png',
               fit: BoxFit.fitHeight,
               width: 140,
               height: 149,

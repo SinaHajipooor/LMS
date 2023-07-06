@@ -13,7 +13,7 @@ class CourseTeachersList extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: List.generate(
-                10,
+                5,
                 (index) => Padding(
                   padding: const EdgeInsets.only(right: 16),
                   child: Row(
@@ -33,11 +33,8 @@ class CourseTeachersList extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('سیناحاجی‌پور', style: TextStyle(fontSize: 11)),
-                            Text(
-                              'مدرس',
-                              style: TextStyle(fontSize: 10, color: Colors.grey),
-                            ),
+                            Text('سیناحاجی‌پور', style: TextStyle(fontSize: 11), overflow: TextOverflow.ellipsis, maxLines: 2),
+                            Text('مدرس', style: TextStyle(fontSize: 10, color: Colors.grey)),
                           ],
                         ),
                       )

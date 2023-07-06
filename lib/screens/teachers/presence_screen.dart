@@ -1,5 +1,7 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:lms/navigation/teacher_bottom_tabs.dart';
 import 'package:lms/widgets/elements/custom_appbar.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/teachersPanel/presence_list.dart';
@@ -13,11 +15,11 @@ class PresenceScreen extends StatefulWidget {
 }
 
 class _PresenceScreenState extends State<PresenceScreen> {
-  // ---------------  state  --------------
+  // ---------------  state  -------------------
   bool _isLoading = false;
   final _scrollController = ScrollController();
   bool _isFabVisible = true;
-  // ---------------  lifecycle  ---------------
+  // ----------------  lifecycle  ----------------
 
   @override
   void initState() {
@@ -36,6 +38,33 @@ class _PresenceScreenState extends State<PresenceScreen> {
   }
   // ---------------  methods ---------------
 
+  void _showConfirmationAlert(BuildContext context) {
+    AwesomeDialog(
+      context: context,
+      dialogType: DialogType.warning,
+      title: 'پایان حضور غیاب',
+      titleTextStyle: const TextStyle(color: Colors.orange, fontWeight: FontWeight.bold, fontSize: 17),
+      desc: 'آیا از ثبت لیست حضور غیاب اطمینان دارید ؟',
+      descTextStyle: const TextStyle(fontSize: 13),
+      btnCancelColor: Colors.red,
+      btnOkColor: Colors.blue,
+      btnOkText: 'بله',
+      buttonsBorderRadius: BorderRadius.circular(9),
+      btnCancelText: 'لغو',
+      buttonsTextStyle: const TextStyle(fontSize: 15),
+      btnCancelOnPress: () => Navigator.of(context).pop(),
+      btnOkOnPress: () {
+        const snackBar = SnackBar(
+          backgroundColor: Colors.green,
+          content: Text('گزارش با موفقیت ثبت شد', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          duration: Duration(seconds: 3),
+        );
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const TeacherBottomTabs(defaultPageIndex: 0)));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      },
+    ).show();
+  }
+
   //---------------- UI ------------------
   @override
   Widget build(BuildContext context) {
@@ -52,7 +81,7 @@ class _PresenceScreenState extends State<PresenceScreen> {
                 opacity: _isFabVisible ? 1 : 0,
                 duration: const Duration(microseconds: 200),
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () => _showConfirmationAlert(context),
                   child: Container(
                     width: 80,
                     height: 45,

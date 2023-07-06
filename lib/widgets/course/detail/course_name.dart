@@ -11,6 +11,8 @@ class CourseName extends StatelessWidget {
       child: Text(
         courseName,
         style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        overflow: TextOverflow.ellipsis,
+        maxLines: 2,
       ),
     );
   }

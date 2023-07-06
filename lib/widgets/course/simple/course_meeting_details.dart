@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lms/widgets/elements/three_line_input.dart';
 
 class CourseMeetingDetails extends StatelessWidget {
   final Map<String, dynamic> meeting;
@@ -10,7 +9,7 @@ class CourseMeetingDetails extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 10),
-        const Text('جزئیات جلسه', style: TextStyle(fontSize: 16, color: Colors.blue, fontWeight: FontWeight.bold)),
+        const Text('جزئیات جلسه', style: TextStyle(fontSize: 17, color: Colors.blue, fontWeight: FontWeight.bold)),
         Padding(
           padding: const EdgeInsets.only(top: 15, right: 12),
           child: Row(
@@ -29,24 +28,24 @@ class CourseMeetingDetails extends StatelessWidget {
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 15, right: 12),
-          child: Row(
-            children: [
-              const Text('زمان شروع : ', style: TextStyle(fontSize: 14)),
-              Text(meeting['start_meet'], style: const TextStyle(fontSize: 16)),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(right: 12, top: 15),
-          child: Row(
-            children: [
-              const Text('زمان پایان : ', style: TextStyle(fontSize: 14)),
-              Text(meeting['end_meet'], style: const TextStyle(fontSize: 16)),
-            ],
-          ),
-        ),
+        // Padding(
+        //   padding: const EdgeInsets.only(top: 15, right: 12),
+        //   child: Row(
+        //     children: [
+        //       const Text('زمان شروع : ', style: TextStyle(fontSize: 14)),
+        //       Text(meeting['start_meet'], style: const TextStyle(fontSize: 16)),
+        //     ],
+        //   ),
+        // ),
+        // Padding(
+        //   padding: const EdgeInsets.only(right: 12, top: 15),
+        //   child: Row(
+        //     children: [
+        //       const Text('زمان پایان : ', style: TextStyle(fontSize: 14)),
+        //       Text(meeting['end_meet'], style: const TextStyle(fontSize: 16)),
+        //     ],
+        //   ),
+        // ),
         Padding(
           padding: const EdgeInsets.only(top: 15, right: 12, bottom: 10),
           child: Row(
@@ -93,7 +92,22 @@ class CourseMeetingDetails extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 15),
-        ThreeLineInput(value: meeting['description'], label: 'توضیحات', onChanged: (value) {}),
+        Padding(
+          padding: const EdgeInsets.only(right: 12, top: 10),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('توضیحات : ', style: TextStyle(fontSize: 14)),
+              Flexible(
+                child: Text(
+                  meeting['description'],
+                  style: const TextStyle(fontSize: 13),
+                  softWrap: true,
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }

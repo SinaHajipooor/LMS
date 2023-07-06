@@ -32,10 +32,13 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
               ),
             ),
-            RatingBarIndicator(
-              rating: 2.5,
-              itemBuilder: (context, _) => const Icon(Icons.star, color: Colors.amber),
-              itemSize: 20,
+            Padding(
+              padding: const EdgeInsets.only(left: 12),
+              child: RatingBarIndicator(
+                rating: 2.5,
+                itemBuilder: (context, _) => const Icon(Icons.star, color: Colors.amber),
+                itemSize: 20,
+              ),
             ),
           ],
         ),
