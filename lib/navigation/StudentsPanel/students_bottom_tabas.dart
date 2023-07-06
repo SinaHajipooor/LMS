@@ -18,7 +18,7 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
   final List<Widget> _screens = [
     const ElectronicCoursesScreen(),
     const SimpleCoursesScreen(),
-    DashbordScreen(),
+    StudentsDashbordScreen(),
     const EducationalDocumentScreen(),
   ];
   // ----------------- lifecycle ------------------
