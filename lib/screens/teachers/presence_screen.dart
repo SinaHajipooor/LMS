@@ -1,5 +1,7 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:lms/navigation/teacher_bottom_tabs.dart';
 import 'package:lms/widgets/elements/custom_appbar.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/teachersPanel/presence_list.dart';
@@ -36,6 +38,27 @@ class _PresenceScreenState extends State<PresenceScreen> {
   }
   // ---------------  methods ---------------
 
+  void _showConfirmationAlert(BuildContext context) {
+    AwesomeDialog(
+      context: context,
+      dialogType: DialogType.warning,
+      title: 'پایان حضور غیاب',
+      titleTextStyle: const TextStyle(color: Colors.orange, fontWeight: FontWeight.bold, fontSize: 17),
+      desc: 'آیا از ثبت لیست حضور غیاب اطمینان دارید ؟',
+      descTextStyle: const TextStyle(fontSize: 13),
+      btnCancelColor: Colors.red,
+      btnOkColor: Colors.blue,
+      btnOkText: 'بله',
+      buttonsBorderRadius: BorderRadius.circular(9),
+      btnCancelText: 'لغو',
+      buttonsTextStyle: const TextStyle(fontSize: 15),
+      btnCancelOnPress: () => Navigator.of(context).pop(),
+      btnOkOnPress: () {
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const TeacherBottomTabs(defaultPageIndex: 0)));
+      },
+    ).show();
+  }
+
   //---------------- UI ------------------
   @override
   Widget build(BuildContext context) {
@@ -52,7 +75,7 @@ class _PresenceScreenState extends State<PresenceScreen> {
                 opacity: _isFabVisible ? 1 : 0,
                 duration: const Duration(microseconds: 200),
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () => _showConfirmationAlert(context),
                   child: Container(
                     width: 80,
                     height: 45,
