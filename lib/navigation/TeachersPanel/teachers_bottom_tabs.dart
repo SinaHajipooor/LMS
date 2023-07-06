@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:lms/screens/teachers/teacher_dashbord_screen.dart';
 import 'package:lms/screens/teachers/teaching_document_screen.dart';
 
-class TeacherBottomTabs extends StatefulWidget {
+class TeachersBottomTabs extends StatefulWidget {
   final int defaultPageIndex;
-  const TeacherBottomTabs({super.key, required this.defaultPageIndex});
+  const TeachersBottomTabs({super.key, required this.defaultPageIndex});
   @override
-  State createState() => _TeacherBottomTabsState();
+  State createState() => _TeachersBottomTabsState();
 }
 
-class _TeacherBottomTabsState extends State<TeacherBottomTabs> {
+class _TeachersBottomTabsState extends State<TeachersBottomTabs> {
   // ----------------- state ------------------
   int? _currentIndex;
   final List<Widget> _screens = [

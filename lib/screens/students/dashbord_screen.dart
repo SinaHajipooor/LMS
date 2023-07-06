@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/navigation/students_panel_drawer.dart';
+import 'package:lms/navigation/StudentsPanel/students_panel_drawer.dart';
 import 'package:lms/screens/profile/user_profile_screen.dart';
 import 'package:lms/widgets/dashbord/calender.dart';
 import 'package:lms/widgets/dashbord/dashbord_info_cards.dart';

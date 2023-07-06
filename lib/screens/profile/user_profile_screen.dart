@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:lms/navigation/students_bottom_tabas.dart';
+import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
 import 'package:lms/widgets/profile/user_info_card.dart';
 import 'package:lms/widgets/profile/user_info_list.dart';
 
