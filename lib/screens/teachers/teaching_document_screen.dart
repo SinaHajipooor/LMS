@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:lms/navigation/bottom_tabas.dart';
+import 'package:lms/navigation/students_bottom_tabas.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
 import 'package:lms/widgets/elements/custom_appbar.dart';
 import 'package:lms/widgets/elements/spinner.dart';
@@ -56,7 +56,7 @@ class _TeachingDocumentScreenState extends State<TeachingDocumentScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const BottomTabs(defaultPageIndex: 2)));
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const StudentsBottomTabs(defaultPageIndex: 2)));
         return false;
       },
       child: Scaffold(
@@ -66,8 +66,8 @@ class _TeachingDocumentScreenState extends State<TeachingDocumentScreen> {
                 children: [
                   CustomScrollView(
                     controller: _scrollController,
-                    slivers: [
-                      const CustomAppbar(title: 'پرونده تدریس'),
+                    slivers: const [
+                      CustomAppbar(title: 'پرونده تدریس'),
                       SliverList(
                         delegate: SliverChildListDelegate.fixed([
                           // TeacherCoursesList(teacherCurrentCourses: _allTeacherCourses)

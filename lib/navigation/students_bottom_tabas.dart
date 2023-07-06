@@ -5,14 +5,14 @@ import 'package:lms/screens/course/simple_courses_screen.dart';
 import 'package:lms/screens/students/dashbord_screen.dart';
 import 'package:lms/screens/students/educational_document_screen.dart';
 
-class BottomTabs extends StatefulWidget {
+class StudentsBottomTabs extends StatefulWidget {
   final int defaultPageIndex;
-  const BottomTabs({super.key, required this.defaultPageIndex});
+  const StudentsBottomTabs({super.key, required this.defaultPageIndex});
   @override
-  State createState() => _BottomTabsState();
+  State createState() => _StudentsBottomTabsState();
 }
 
-class _BottomTabsState extends State<BottomTabs> {
+class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
   // ----------------- state ------------------
   int? _currentIndex;
   final List<Widget> _screens = [

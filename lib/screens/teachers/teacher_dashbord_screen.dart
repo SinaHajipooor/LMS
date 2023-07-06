@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:lms/navigation/bottom_tabas.dart';
+import 'package:lms/navigation/students_bottom_tabas.dart';
 import 'package:lms/navigation/teachers_panel_drawer.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
 import 'package:lms/screens/profile/user_profile_screen.dart';
@@ -65,7 +65,7 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const BottomTabs(defaultPageIndex: 1)));
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const StudentsBottomTabs(defaultPageIndex: 1)));
         return false;
       },
       child: Scaffold(

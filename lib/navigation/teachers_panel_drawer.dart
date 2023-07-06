@@ -1,6 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/navigation/bottom_tabas.dart';
+import 'package:lms/navigation/students_bottom_tabas.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:lms/screens/profile/user_profile_screen.dart';
@@ -86,7 +86,7 @@ class _TeachersPanelDrawerState extends State<TeachersPanelDrawer> {
           ),
           InkWell(
             onTap: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const BottomTabs(defaultPageIndex: 2)));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const StudentsBottomTabs(defaultPageIndex: 2)));
             },
             child: ListTile(
               leading: Image.asset('assets/images/icons/student.png', width: 20, height: 20, color: const Color.fromARGB(255, 92, 92, 92)),

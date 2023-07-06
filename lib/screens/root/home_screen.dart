@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/navigation/bottom_tabas.dart';
+import 'package:lms/navigation/students_bottom_tabas.dart';
 import 'package:lms/screens/root/landing_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
         Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
         return false;
       },
-      child: const BottomTabs(defaultPageIndex: 2),
+      child: const StudentsBottomTabs(defaultPageIndex: 2),
     );
   }
 }
