@@ -34,7 +34,7 @@ class TeacherItem extends StatelessWidget {
                   padding: const EdgeInsets.all(5),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(17),
-                    child: Image.network('https://wwwassets.rand.org/content/rand/pubs/research_reports/RRA1108-1/jcr:content/par/teaser.fit.0x1200.jpeg/1684799287399.jpeg'),
+                    child: Image.asset('assets/images/avatar.png'),
                   ),
                 ),
               ),

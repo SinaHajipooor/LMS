@@ -22,7 +22,7 @@ class _CourseResourcesScreenState extends State<CourseResourcesScreen> {
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        elevation: 1,
+        elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
         title: const Text('منابع آموزشی', style: TextStyle(fontSize: 16, color: Colors.black)),
