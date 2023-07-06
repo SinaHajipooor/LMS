@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/exam/question.dart';
 import '../../widgets/course/assessment/course_assessment_answer.dart';
-import '../../providers/Course/CourseProvider.dart';
+import '../../providers/Course/ElectronicCourseProvider.dart';
 import '../../widgets/elements/spinner.dart';
 import './electronic_course_detail_screen.dart';
 
@@ -39,10 +39,10 @@ class _CourseAssessmentScreenState extends State<CourseAssessmentScreen> {
     setState(() {
       _isLoading = true;
     });
-    await Provider.of<CourseProvider>(context, listen: false).fetchCourseAssessmentDetails(courseId);
+    await Provider.of<ElectronicCourseProvider>(context, listen: false).fetchCourseAssessmentDetails(courseId);
     setState(() {
-      _questions = Provider.of<CourseProvider>(context, listen: false).courseAssessmentQuestions;
-      _answers = Provider.of<CourseProvider>(context, listen: false).courseAssessmentAnswers;
+      _questions = Provider.of<ElectronicCourseProvider>(context, listen: false).courseAssessmentQuestions;
+      _answers = Provider.of<ElectronicCourseProvider>(context, listen: false).courseAssessmentAnswers;
       _selectedAnswers = Map.fromIterable(_questions, key: (q) => q['id'], value: (_) => 0);
       _isLoading = false;
     });
