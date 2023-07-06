@@ -28,7 +28,7 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
     _currentIndex = widget.defaultPageIndex;
     super.initState();
   }
-  // ----------------- UI ------------------
+  // ----------------- UI ------------------//
 
   @override
   Widget build(BuildContext context) {
