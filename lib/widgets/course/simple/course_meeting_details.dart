@@ -28,24 +28,6 @@ class CourseMeetingDetails extends StatelessWidget {
             ],
           ),
         ),
-        // Padding(
-        //   padding: const EdgeInsets.only(top: 15, right: 12),
-        //   child: Row(
-        //     children: [
-        //       const Text('زمان شروع : ', style: TextStyle(fontSize: 14)),
-        //       Text(meeting['start_meet'], style: const TextStyle(fontSize: 16)),
-        //     ],
-        //   ),
-        // ),
-        // Padding(
-        //   padding: const EdgeInsets.only(right: 12, top: 15),
-        //   child: Row(
-        //     children: [
-        //       const Text('زمان پایان : ', style: TextStyle(fontSize: 14)),
-        //       Text(meeting['end_meet'], style: const TextStyle(fontSize: 16)),
-        //     ],
-        //   ),
-        // ),
         Padding(
           padding: const EdgeInsets.only(top: 15, right: 12, bottom: 10),
           child: Row(

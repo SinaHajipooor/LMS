@@ -19,7 +19,6 @@ class JobInfoForm extends StatelessWidget {
           padding: const EdgeInsets.all(0.0),
           child: Column(
             children: [
-              // const SizedBox(height: 15),
               Row(
                 children: [
                   Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'دستگاه اجرایی')),

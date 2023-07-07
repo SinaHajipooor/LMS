@@ -14,11 +14,12 @@ class UserInfoFormModal extends StatefulWidget {
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _UserInfoFormModalState createState() => _UserInfoFormModalState();
 }
 
 class _UserInfoFormModalState extends State<UserInfoFormModal> {
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
 
   String _birthDate = 'تاریخ تولد';
   String startEmployeeTime = 'زمان استخدام';
