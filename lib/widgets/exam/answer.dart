@@ -47,7 +47,7 @@ class Answer extends StatelessWidget {
                   maxLines: 4,
                 ),
                 const SizedBox(width: 15),
-                ImagePreview(imagePath: 'http://45.149.77.156:8080/portal-assets/img/team/team-1.jpg')
+                const ImagePreview(imagePath: 'http://45.149.77.156:8080/portal-assets/img/team/team-1.jpg')
               ],
             ),
           ),

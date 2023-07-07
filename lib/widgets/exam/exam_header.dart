@@ -26,9 +26,9 @@ class ExamHeader extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text('نام دوره : ', style: TextStyle(fontSize: 13)),
                       Padding(
                         padding: EdgeInsets.only(top: 5),
