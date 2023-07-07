@@ -27,11 +27,6 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
   // ignore: unused_field
   List<dynamic> _teacherCurrentCourses = [];
   //----------------- lifecycle --------------------
-  // @override
-  // void didChangeDependencies() {
-  //   _fetchTeacherCurrentCourses();
-  //   super.didChangeDependencies();
-  // }
 
   @override
   void initState() {

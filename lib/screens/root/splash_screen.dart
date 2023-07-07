@@ -20,8 +20,8 @@ class _SplashScreenState extends State<SplashScreen> {
           transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
             return FadeTransition(
               opacity: Tween<double>(
-                begin: 0.0, // Define the initial opacity of the child widget
-                end: 1.0, // Define the final opacity of the child widget
+                begin: 0.0,
+                end: 1.0,
               ).animate(animation),
               child: child,
             );

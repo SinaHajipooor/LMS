@@ -14,9 +14,6 @@ class UserBirthCertificateScreen extends StatefulWidget {
 }
 
 class _UserBirthCertificateScreenState extends State<UserBirthCertificateScreen> {
-  // String? _birthDate;
-  // String? startEmployeeTime;
-  // String? endEmployeeTime;
   Future<void> _selectDate(BuildContext context) async {
     final Jalali? picked = await showPersianDatePicker(
       context: context,
