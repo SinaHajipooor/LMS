@@ -55,11 +55,10 @@ class PaymentGatewaysSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 150,
       width: double.infinity,
       child: SingleChildScrollView(
-        // scrollDirection: Axis.horizontal,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: paymentGateways.map((paymentApproach) {

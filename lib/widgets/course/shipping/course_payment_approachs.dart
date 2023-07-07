@@ -13,10 +13,6 @@ class CoursePaymentApproachs extends StatefulWidget {
 }
 
 class _CoursePaymentApproachsState extends State<CoursePaymentApproachs> {
-// -------------------- state ------------------------
-
-// ------------------ methods ---------------------
-
 // -------------------- UI ------------------------
 
   @override
