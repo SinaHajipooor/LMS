@@ -45,7 +45,7 @@ class _UserInfoCardState extends State<UserInfoCard> {
       ),
       btnCancel: ElevatedButton(
         onPressed: () {
-          Navigator.of(context).pop(); // Close the dialog when cancel button is pressed
+          Navigator.of(context).pop();
         },
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
