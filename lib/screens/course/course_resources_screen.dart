@@ -48,8 +48,11 @@ class _CourseResourcesScreenState extends State<CourseResourcesScreen> {
                     children: [
                       Positioned.fill(
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: const NetworkVideoPlayer(videoUrl: 'https://www.uplooder.net/f/tl/70/4cde8767d5e4e5ba6480165bc3437431/8.-Adding-Another-Piece-of-State.mp4'),
+                          borderRadius: BorderRadius.circular(10),
+                          child: const Directionality(
+                            textDirection: TextDirection.ltr,
+                            child: NetworkVideoPlayer(videoUrl: 'https://www.uplooder.net/f/tl/70/4cde8767d5e4e5ba6480165bc3437431/8.-Adding-Another-Piece-of-State.mp4'),
+                          ),
                         ),
                       ),
                     ],

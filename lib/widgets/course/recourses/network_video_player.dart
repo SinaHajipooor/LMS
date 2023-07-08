@@ -14,12 +14,16 @@ class NetworkVideoPlayer extends StatefulWidget {
 
 class _NetworkVideoPlayerState extends State<NetworkVideoPlayer> {
   late FlickManager flickManager;
+  bool isVideoPlaying = false;
 
   @override
   void initState() {
     super.initState();
     flickManager = FlickManager(
-      videoPlayerController: VideoPlayerController.networkUrl(Uri.parse(widget.videoUrl)),
+      videoPlayerController: VideoPlayerController.networkUrl(
+        Uri.parse(widget.videoUrl),
+      ),
+      autoPlay: false,
     );
   }
 
@@ -35,11 +39,28 @@ class _NetworkVideoPlayerState extends State<NetworkVideoPlayer> {
       aspectRatio: 16 / 9,
       child: Container(
         color: Colors.black,
-        child: FlickVideoPlayer(
-          flickManager: flickManager,
-          preferredDeviceOrientationFullscreen: const [
-            DeviceOrientation.landscapeLeft,
-            DeviceOrientation.landscapeRight,
+        child: Stack(
+          children: [
+            FlickVideoPlayer(
+              flickManager: flickManager,
+              preferredDeviceOrientationFullscreen: const [
+                DeviceOrientation.landscapeLeft,
+                DeviceOrientation.landscapeRight,
+              ],
+            ),
+            if (!isVideoPlaying)
+              Center(
+                child: IconButton(
+                  icon: Icon(Icons.play_arrow),
+                  iconSize: 64.0,
+                  onPressed: () {
+                    setState(() {
+                      isVideoPlaying = true;
+                    });
+                    flickManager.flickControlManager?.togglePlay();
+                  },
+                ),
+              ),
           ],
         ),
       ),
