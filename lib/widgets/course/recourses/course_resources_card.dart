@@ -56,15 +56,26 @@ class CourseResourcesCard extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => CourseResourcesScreen(
-                            coursePeriod: coursePeriod,
-                            studentsCount: studentsCount,
-                            courseName: courseName,
-                            resources: seasons,
-                            courseId: courseId,
-                            imageUrl: imageUrl,
-                          ),
+                        PageRouteBuilder(
+                          pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
+                            return CourseResourcesScreen(
+                              coursePeriod: coursePeriod,
+                              studentsCount: studentsCount,
+                              resources: seasons,
+                              courseName: courseName,
+                              imageUrl: imageUrl,
+                              courseId: courseId,
+                            );
+                          },
+                          transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+                            return SlideTransition(
+                              position: Tween<Offset>(
+                                begin: const Offset(1.0, 0.0),
+                                end: Offset.zero,
+                              ).animate(animation),
+                              child: child,
+                            );
+                          },
                         ),
                       );
                     },
