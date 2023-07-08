@@ -18,18 +18,21 @@ class CourseAssessmentAnswer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Radio(
-            value: answerId,
-            groupValue: selectedAnswers[questionId],
-            onChanged: (value) => onSelectAnswer(questionId, value!),
-          ),
-          Text(answerText, style: const TextStyle(fontSize: 12)),
-        ],
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      child: InkWell(
+        onTap: () {},
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Radio(
+              value: answerId,
+              groupValue: selectedAnswers[questionId],
+              onChanged: (value) => onSelectAnswer(questionId, value!),
+            ),
+            Text(answerText, style: const TextStyle(fontSize: 12)),
+          ],
+        ),
       ),
     );
   }

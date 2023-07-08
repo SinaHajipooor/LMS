@@ -83,51 +83,76 @@ class _CourseAssessmentScreenState extends State<CourseAssessmentScreen> {
         elevation: 1,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
+        centerTitle: true,
         title: const Text('ارزیابی اثربخشی', style: TextStyle(color: Colors.black, fontSize: 18)),
-        actions: [IconButton(onPressed: () => _showConfirmationAlert(context), icon: const Icon(Icons.save_alt, color: Colors.green))],
       ),
+      floatingActionButton: _isLoading
+          ? null
+          : AnimatedOpacity(
+              opacity: 1,
+              duration: const Duration(microseconds: 200),
+              child: InkWell(
+                onTap: () => _showConfirmationAlert(context),
+                child: Container(
+                  width: 80,
+                  height: 45,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(blurRadius: 20, color: Colors.green.withOpacity(0.5)),
+                    ],
+                  ),
+                  child: const Center(child: Text('ثبت', style: TextStyle(color: Colors.white, fontSize: 14))),
+                ),
+              ),
+            ),
       body: _isLoading
           ? const Center(child: Spinner(size: 35))
           : ListView.builder(
+              physics: const BouncingScrollPhysics(),
               itemCount: _questions.length,
               itemBuilder: (ctx, i) {
                 String questionText = _questions[i]['name'];
                 int questionId = _questions[i]['id'];
-                return Column(
-                  children: [
-                    SizedBox(
-                      width: double.infinity,
-                      child: Card(
-                        elevation: 1,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Question(index: i + 1, text: questionText, usecase: 2),
-                            ),
-                            SingleChildScrollView(
-                              physics: const BouncingScrollPhysics(),
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                children: _answers
-                                    .map(
-                                      (answer) => CourseAssessmentAnswer(
-                                        answerId: answer['id'],
-                                        questionId: questionId,
-                                        answerText: answer['name'],
-                                        selectedAnswers: _selectedAnswers,
-                                        onSelectAnswer: _selecteAnswerHandler,
-                                      ),
-                                    )
-                                    .toList(),
+                return Container(
+                  margin: i == _questions.length - 1 ? const EdgeInsets.only(bottom: 70) : null,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        width: double.infinity,
+                        child: Card(
+                          elevation: 1,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Question(index: i + 1, text: questionText, usecase: 2),
                               ),
-                            ),
-                          ],
+                              SingleChildScrollView(
+                                physics: const BouncingScrollPhysics(),
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: _answers
+                                      .map(
+                                        (answer) => CourseAssessmentAnswer(
+                                          answerId: answer['id'],
+                                          questionId: questionId,
+                                          answerText: answer['name'],
+                                          selectedAnswers: _selectedAnswers,
+                                          onSelectAnswer: _selecteAnswerHandler,
+                                        ),
+                                      )
+                                      .toList(),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 );
               },
             ),
