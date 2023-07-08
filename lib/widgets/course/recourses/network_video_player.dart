@@ -48,19 +48,6 @@ class _NetworkVideoPlayerState extends State<NetworkVideoPlayer> {
                 DeviceOrientation.landscapeRight,
               ],
             ),
-            if (!isVideoPlaying)
-              Center(
-                child: IconButton(
-                  icon: Icon(Icons.play_arrow),
-                  iconSize: 64.0,
-                  onPressed: () {
-                    setState(() {
-                      isVideoPlaying = true;
-                    });
-                    flickManager.flickControlManager?.togglePlay();
-                  },
-                ),
-              ),
           ],
         ),
       ),
