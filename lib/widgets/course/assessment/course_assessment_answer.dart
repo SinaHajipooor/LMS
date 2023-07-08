@@ -21,7 +21,7 @@ class CourseAssessmentAnswer extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 5),
       child: InkWell(
-        onTap: () {},
+        onTap: () => onSelectAnswer(questionId, answerId),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [

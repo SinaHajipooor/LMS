@@ -24,7 +24,7 @@ class CourseAssessment extends StatelessWidget {
       buttonsTextStyle: const TextStyle(fontSize: 15),
       btnCancelOnPress: () {},
       btnOkOnPress: () {
-        Navigator.of(context).pushReplacementNamed(CourseAssessmentScreen.routeName, arguments: courseId);
+        Navigator.of(context).pushNamed(CourseAssessmentScreen.routeName, arguments: courseId);
       },
     ).show();
   }
