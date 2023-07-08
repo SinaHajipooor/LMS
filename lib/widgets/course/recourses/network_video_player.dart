@@ -9,6 +9,7 @@ class NetworkVideoPlayer extends StatefulWidget {
   const NetworkVideoPlayer({Key? key, required this.videoUrl}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _NetworkVideoPlayerState createState() => _NetworkVideoPlayerState();
 }
 
