@@ -16,7 +16,6 @@ class CourseShippingScreen extends StatefulWidget {
 
 class _CourseShippingScreenState extends State<CourseShippingScreen> {
   // ------------------- state -------------------
-
   Map<String, dynamic>? courseInfo;
   bool _isLoading = true;
   // ------------------- lifecycle ------------------
@@ -35,17 +34,16 @@ class _CourseShippingScreenState extends State<CourseShippingScreen> {
       _isLoading = false;
     });
   }
-
   // ------------------- UI -------------------
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
+        elevation: 1,
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: const Text('خرید دوره', style: TextStyle(color: Colors.black, fontSize: 15)),
+        title: const Text('خرید دوره', style: TextStyle(color: Colors.black, fontSize: 16)),
         leading: IconButton(
           icon: const Icon(CupertinoIcons.arrow_right, color: Colors.black, size: 22),
           onPressed: () => Navigator.of(context).pop(),
