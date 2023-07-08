@@ -60,7 +60,7 @@ class _UserInfoCardState extends State<UserInfoCard> {
     return SizedBox(
       height: 200,
       child: Card(
-        elevation: 4,
+        elevation: 2,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),

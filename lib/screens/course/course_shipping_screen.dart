@@ -16,7 +16,6 @@ class CourseShippingScreen extends StatefulWidget {
 
 class _CourseShippingScreenState extends State<CourseShippingScreen> {
   // ------------------- state -------------------
-
   Map<String, dynamic>? courseInfo;
   bool _isLoading = true;
   // ------------------- lifecycle ------------------
@@ -35,7 +34,6 @@ class _CourseShippingScreenState extends State<CourseShippingScreen> {
       _isLoading = false;
     });
   }
-
   // ------------------- UI -------------------
 
   @override
