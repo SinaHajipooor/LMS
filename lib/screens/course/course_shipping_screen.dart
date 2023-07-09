@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/providers/Course/ElectronicCourseProvider.dart';
 import 'package:lms/widgets/course/shipping/course_payment_approachs.dart';
 import 'package:lms/widgets/course/shipping/course_purchase_details.dart';
@@ -20,6 +21,14 @@ class _CourseShippingScreenState extends State<CourseShippingScreen> {
   bool _isLoading = true;
   // ------------------- lifecycle ------------------
   @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
+    super.initState();
+  }
+
+  @override
   void didChangeDependencies() {
     int id = ModalRoute.of(context)!.settings.arguments as int;
     fetchCourseShippingDetails(id);
@@ -34,6 +43,11 @@ class _CourseShippingScreenState extends State<CourseShippingScreen> {
       _isLoading = false;
     });
   }
+
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
+  }
+
   // ------------------- UI -------------------
 
   @override
