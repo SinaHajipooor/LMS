@@ -52,7 +52,7 @@ class InternetConnectivityHelper {
     if (connectivityResult == ConnectivityResult.none) {
       showConnectionDialog(context);
     } else {
-      print("user is connected to internet");
+      // print("user is connected to internet");
     }
   }
 }
