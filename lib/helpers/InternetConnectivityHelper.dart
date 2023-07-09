@@ -50,10 +50,9 @@ class InternetConnectivityHelper {
   static Future<void> checkInternetConnectivity(BuildContext context) async {
     var connectivityResult = await Connectivity().checkConnectivity();
     if (connectivityResult == ConnectivityResult.none) {
-      print("User is not connected to the internet");
-    } else {
-      print("talashe mojadad");
       showConnectionDialog(context);
+    } else {
+      print("user is connected to internet");
     }
   }
 }
