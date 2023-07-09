@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/widgets/profile/job_info_form_modal.dart';
 
 class UserEducationScreen extends StatefulWidget {
@@ -31,6 +32,19 @@ class _UserEducationScreenState extends State<UserEducationScreen> {
     {'id': '009', 'device': 'Desktop', 'operation': 'Design'},
     {'id': '009', 'device': 'Desktop', 'operation': 'Design'},
   ];
+  // ----------- lifecycle -------------
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
+    super.initState();
+  }
+
+  // --------------- methods -----------------
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
+  }
 
   _showJobinfoFormModal(BuildContext context, double deviceHeight, int selectedIndex) {
     showModalBottomSheet(

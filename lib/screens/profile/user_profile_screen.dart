@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
 import 'package:lms/widgets/profile/user_info_card.dart';
 import 'package:lms/widgets/profile/user_info_list.dart';
@@ -16,6 +17,18 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   //------------------- state ---------------------
 
   //------------------- lifecycle ---------------------
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
+    super.initState();
+  }
+
+// --------------- methods -----------------
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
+  }
 
   //------------------- UI ---------------------
   @override
