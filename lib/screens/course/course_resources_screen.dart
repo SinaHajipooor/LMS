@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/widgets/course/recourses/course_resources_list.dart';
 import 'package:lms/widgets/course/recourses/network_video_player.dart';
 
@@ -17,6 +18,20 @@ class CourseResourcesScreen extends StatefulWidget {
 }
 
 class _CourseResourcesScreenState extends State<CourseResourcesScreen> {
+// ---------------- lifecycle ---------------
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
+    super.initState();
+  }
+
+// ---------------- methods -----------------
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
+  }
+
 // ------------------- UI ----------------------
   @override
   Widget build(BuildContext context) {
