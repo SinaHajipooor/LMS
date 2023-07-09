@@ -1,13 +1,26 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:android_intent/android_intent.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class InternetConnectivityHelper {
   static const AndroidIntent intent = AndroidIntent(
     action: 'android.settings.WIFI_SETTINGS',
   );
+
+  static void openWifiSettings() async {
+    const String url = 'App-Prefs:root=WIFI';
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      throw 'Could not open Wi-Fi settings.';
+    }
+  }
+
   static void showConnectionDialog(BuildContext context) {
     AwesomeDialog(
       context: context,
@@ -44,7 +57,13 @@ class InternetConnectivityHelper {
         child: const Text('تلاش مجدد'),
       ),
       btnCancel: ElevatedButton(
-        onPressed: () => intent.launch(),
+        onPressed: () {
+          if (Platform.isAndroid) {
+            intent.launch();
+          } else if (Platform.isIOS) {
+            openWifiSettings();
+          }
+        },
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 224, 224, 224)),
         ),
