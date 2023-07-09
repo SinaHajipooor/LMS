@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/navigation/StudentsPanel/students_panel_drawer.dart';
 import 'package:lms/screens/profile/user_profile_screen.dart';
 import 'package:lms/widgets/dashbord/calender.dart';
@@ -16,7 +17,19 @@ class StudentsDashbordScreen extends StatefulWidget {
 }
 
 class _StudentsDashbordScreenState extends State<StudentsDashbordScreen> {
+//----------------- lifecycle --------------------
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
+    super.initState();
+  }
+
 // --------------- methods -----------------
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
+  }
 
 // --------------- UI -----------------
   @override

@@ -52,6 +52,7 @@ class InternetConnectivityHelper {
     if (connectivityResult == ConnectivityResult.none) {
       print("User is not connected to the internet");
     } else {
+      print("talashe mojadad");
       showConnectionDialog(context);
     }
   }
