@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/screens/course/course_shipping_screen.dart';
 import 'package:lms/screens/root/home_screen.dart';
@@ -36,6 +37,9 @@ class _SimpleCourseDetailScreenState extends State<SimpleCourseDetailScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
     _scrollController.addListener(() {
       if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
         setState(() {
@@ -73,6 +77,10 @@ class _SimpleCourseDetailScreenState extends State<SimpleCourseDetailScreen> {
 
   Future<void> submitCourse() async {
     Navigator.of(context).pushNamed(CourseShippingScreen.routeName, arguments: courseDetails?['id']);
+  }
+
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
   }
 
   //---------------- UI ------------------
