@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
 import 'package:lms/widgets/dashbord/dashbord_info_cards.dart';
 import 'package:lms/widgets/elements/custom_appbar.dart';
@@ -23,6 +24,9 @@ class _EducationalDocumentScreenState extends State<EducationalDocumentScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
     _scrollController.addListener(() {
       if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
         setState(() {
@@ -34,6 +38,11 @@ class _EducationalDocumentScreenState extends State<EducationalDocumentScreen> {
         });
       }
     });
+  }
+
+  // --------------- methods -----------------
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
   }
   // ----------------- UI ----------------------
 
