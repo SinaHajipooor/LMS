@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/screens/auth/phone_number_login.dart';
 import 'package:lms/screens/auth/user_pass_login.dart';
 
@@ -13,6 +14,18 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen> {
   // 0 for login and 1 for sign up screen
   int currentTab = 0;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
+    super.initState();
+  }
+
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
+  }
 
   @override
   Widget build(BuildContext context) {

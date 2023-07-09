@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/screens/course/electronic_course_detail_screen.dart';
 import 'package:lms/widgets/elements/circular_chart.dart';
 
@@ -16,12 +17,26 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
   int? courseId;
 
   //------------------- lifecycle -----------------------
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
+    super.initState();
+  }
+
   @override
   void didChangeDependencies() {
     setState(() {
       courseId = ModalRoute.of(context)!.settings.arguments as int;
     });
     super.didChangeDependencies();
+  }
+
+  // --------------- methods -----------------
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
   }
 
   //------------------- UI -----------------------

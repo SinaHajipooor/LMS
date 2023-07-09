@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/screens/exam/exam_result_screen.dart';
 import '../../widgets/exam/exam_header.dart';
 import '../../widgets/exam/questions_list.dart';
@@ -44,6 +45,14 @@ class _ExamScreenState extends State<ExamScreen> {
 
 // ----------------- lifecycle -----------------
   @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
+    super.initState();
+  }
+
+  @override
   void didChangeDependencies() {
     final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     setState(() {
@@ -74,6 +83,10 @@ class _ExamScreenState extends State<ExamScreen> {
     setState(() {
       _selectedAnswerId = value;
     });
+  }
+
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
   }
 
   void _showConfirmationAlert(BuildContext context, int courseId) {

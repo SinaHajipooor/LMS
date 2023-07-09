@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
 import 'package:lms/navigation/TeachersPanel/teachers_panel_drawer.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
@@ -31,6 +32,9 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
     _scrollController.addListener(() {
       if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
         setState(() {
@@ -53,6 +57,10 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
         _isLoading = false;
       });
     }
+  }
+
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
   }
 
   //----------------- UI --------------------

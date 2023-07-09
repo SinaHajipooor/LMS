@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/course/electronic/electronic_courses_list.dart';
@@ -26,6 +27,9 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
 // --------------- lifecycle -----------------
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
     getAllCourseGroups();
     super.initState();
   }
@@ -33,6 +37,11 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
   @override
   void dispose() {
     super.dispose();
+  }
+
+// --------------- methods -----------------
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
   }
 
   Future<void> getAllCourseGroups() async {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/screens/auth/auth_screen.dart';
 import 'package:lms/widgets/landing/amazing_courses_list.dart';
 import 'package:provider/provider.dart';
@@ -26,11 +27,12 @@ class LandingScreen extends StatefulWidget {
 class _LandingScreenState extends State<LandingScreen> {
 // --------------- state -----------------
   bool _isLoading = false;
-
 // --------------- lifecycle -----------------
-
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
     getAllLandingData();
     super.initState();
   }
@@ -51,6 +53,11 @@ class _LandingScreenState extends State<LandingScreen> {
       _isLoading = false;
     });
   }
+
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
+  }
+
 // --------------- UI -----------------
 
   @override

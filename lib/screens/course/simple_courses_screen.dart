@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:lms/widgets/course/simple/simple_courses_list.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +23,9 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
 // --------------- lifecycle -----------------
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
     getAllCourseGroups();
     super.initState();
   }
@@ -41,6 +45,10 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
         _isLoading = false;
       });
     }
+  }
+
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
   }
 
 // --------------- UI -----------------
