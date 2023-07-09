@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/exam/question.dart';
 import '../../widgets/course/assessment/course_assessment_answer.dart';
@@ -25,6 +26,15 @@ class _CourseAssessmentScreenState extends State<CourseAssessmentScreen> {
   Map<int, int> _selectedAnswers = {};
   int? courseId;
 // ----------------- lifecycle ------------------
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
+    super.initState();
+  }
+
   @override
   void didChangeDependencies() {
     setState(() {
@@ -73,6 +83,10 @@ class _CourseAssessmentScreenState extends State<CourseAssessmentScreen> {
         Navigator.of(context).pushReplacementNamed(ElectronicCourseDetailScreen.routeName, arguments: courseId);
       },
     ).show();
+  }
+
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
   }
 
 // -------------------- UI --------------------
