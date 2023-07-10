@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/navigation/TeachersPanel/teachers_bottom_tabs.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/root/landing_screen.dart';
@@ -39,14 +40,16 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
     return Drawer(
+      backgroundColor: themeMode == ThemeMode.dark ? Color.fromARGB(255, 46, 52, 64) : Colors.white,
       child: ListView(
         children: <Widget>[
           Stack(
             children: [
               UserAccountsDrawerHeader(
                 onDetailsPressed: () => Navigator.of(context).pushReplacementNamed(UserProfileScreen.routeName),
-                decoration: const BoxDecoration(color: Colors.lightBlue),
+                decoration: BoxDecoration(color: themeMode == ThemeMode.dark ? Color.fromARGB(255, 41, 46, 54) : Colors.lightBlue),
                 accountName: Padding(
                   padding: const EdgeInsets.only(top: 15.0),
                   child: Text(
@@ -73,11 +76,12 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
                 top: 16.0,
                 left: 12.0,
                 child: InkWell(
+                  onTap: () => Provider.of<ThemeModel>(context, listen: false).toggleTheme(),
                   child: Image.asset(
-                    'assets/images/icons/night.png',
+                    themeMode == ThemeMode.light ? 'assets/images/icons/night.png' : 'assets/images/icons/sun.png',
                     color: Colors.white,
-                    width: 35,
-                    height: 35,
+                    width: 30,
+                    height: 30,
                   ),
                 ),
               ),
@@ -89,7 +93,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
               Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/home.png', width: 20, height: 20, color: const Color.fromARGB(255, 92, 92, 92)),
+              leading: Image.asset('assets/images/icons/home.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
               title: Text('صفحه‌اصلی', style: theme.textTheme.titleSmall),
             ),
           ),
@@ -98,7 +102,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
               Navigator.of(context).pushReplacementNamed(UserProfileScreen.routeName);
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/person.png', width: 20, height: 20, color: const Color.fromARGB(255, 92, 92, 92)),
+              leading: Image.asset('assets/images/icons/person.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
               title: Text('پروفایل', style: theme.textTheme.titleSmall),
             ),
           ),
@@ -107,7 +111,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
               Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const TeachersBottomTabs(defaultPageIndex: 0)));
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/teacher.png', width: 20, height: 20, color: const Color.fromARGB(255, 92, 92, 92)),
+              leading: Image.asset('assets/images/icons/teacher.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
               title: Text('پنل مدرسان', style: theme.textTheme.titleSmall),
             ),
           ),
@@ -117,7 +121,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
               _showConfirmationAlert(context);
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/exit.png', width: 20, height: 20, color: const Color.fromARGB(255, 92, 92, 92)),
+              leading: Image.asset('assets/images/icons/exit.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
               title: Text('خروج', style: theme.textTheme.titleSmall),
             ),
           ),
