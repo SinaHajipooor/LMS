@@ -16,6 +16,8 @@ class TextInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -23,7 +25,7 @@ class TextInput extends StatelessWidget {
           padding: const EdgeInsets.only(right: 10),
           child: Text(
             label,
-            style: const TextStyle(fontSize: 10),
+            style: theme.textTheme.bodySmall,
           ),
         ),
         Card(
