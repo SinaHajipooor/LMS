@@ -16,6 +16,7 @@ class UserInformationInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -23,7 +24,7 @@ class UserInformationInput extends StatelessWidget {
           padding: const EdgeInsets.only(right: 10),
           child: Text(
             label,
-            style: const TextStyle(fontSize: 10),
+            style: theme.textTheme.bodySmall,
           ),
         ),
         Card(
@@ -38,7 +39,8 @@ class UserInformationInput extends StatelessWidget {
                 contentPadding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 10.0),
                 border: InputBorder.none, // Hide default border
               ),
-              style: const TextStyle(fontSize: 13.0, fontWeight: FontWeight.bold),
+              style: theme.textTheme.bodyMedium!.apply(overflow: TextOverflow.ellipsis),
+              maxLines: 1,
               onChanged: onChanged,
               controller: TextEditingController(text: value),
               keyboardType: keyboardType,

@@ -13,10 +13,10 @@ class ImagePreview extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               elevation: 1,
-              backgroundColor: Colors.white,
-              title: const Text('تصویر', style: TextStyle(fontSize: 17, color: Colors.black)),
+              backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+              title: Text('تصویر', style: Theme.of(context).textTheme.titleMedium),
               leading: IconButton(
-                icon: const Icon(Icons.arrow_back, color: Colors.black),
+                icon: Icon(Icons.arrow_back, color: Theme.of(context).appBarTheme.iconTheme!.color),
                 onPressed: () => Navigator.of(context).pop(),
               ),
             ),

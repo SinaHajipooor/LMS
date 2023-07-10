@@ -98,7 +98,7 @@ class _NewsListState extends State<NewsList> with SingleTickerProviderStateMixin
               right: 7,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.4),
+                  color: Colors.black.withOpacity(0.2),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(10),
                     bottomRight: Radius.circular(10),
@@ -107,11 +107,10 @@ class _NewsListState extends State<NewsList> with SingleTickerProviderStateMixin
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 child: Text(
                   newsItem['name'],
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.bodyLarge,
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),

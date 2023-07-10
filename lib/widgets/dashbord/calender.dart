@@ -154,7 +154,7 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
                         alignment: Alignment.center,
                         child: Text(
                           'مشاهده رویداد',
-                          style: TextStyle(color: widget.calendarUsecase == 2 ? Colors.orange[600] : Colors.blue, fontWeight: FontWeight.bold),
+                          style: Theme.of(context).textTheme.titleMedium!.apply(color: widget.calendarUsecase == 1 ? Colors.blue : Colors.orange[400]),
                         ),
                       ),
                       const SizedBox(height: 20),

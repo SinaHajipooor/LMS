@@ -5,10 +5,25 @@ enum ThemeModeType { light, dark }
 class ThemeHelper with ChangeNotifier {
   ThemeData getLightTheme() {
     return ThemeData(
-      fontFamily: 'YekanbBakh',
+      fontFamily: 'YekanBakh',
       primarySwatch: Colors.blue,
       brightness: Brightness.light,
       scaffoldBackgroundColor: Colors.white,
+      textTheme: const TextTheme(
+        titleLarge: TextStyle(fontSize: 18),
+        titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        titleSmall: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+        bodyLarge: TextStyle(fontSize: 15),
+        bodyMedium: TextStyle(fontSize: 12),
+        bodySmall: TextStyle(fontSize: 11),
+      ),
+      appBarTheme: const AppBarTheme(
+        toolbarTextStyle: TextStyle(color: Colors.black),
+        color: Colors.white,
+        iconTheme: IconThemeData(
+          color: Colors.black,
+        ),
+      ),
       cardTheme: const CardTheme(
         color: Colors.white,
       ),
@@ -21,9 +36,21 @@ class ThemeHelper with ChangeNotifier {
       fontFamily: 'YekanBakh',
       brightness: Brightness.dark,
       appBarTheme: const AppBarTheme(
+        toolbarTextStyle: TextStyle(color: Colors.white),
         color: Color.fromARGB(255, 41, 46, 54),
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
       ),
-      scaffoldBackgroundColor: Color.fromARGB(255, 41, 46, 54),
+      textTheme: const TextTheme(
+        titleLarge: TextStyle(fontSize: 18),
+        titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        titleSmall: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        bodyLarge: TextStyle(fontSize: 15),
+        bodyMedium: TextStyle(fontSize: 12),
+        bodySmall: TextStyle(fontSize: 11),
+      ),
+      scaffoldBackgroundColor: const Color.fromARGB(255, 41, 46, 54),
       cardTheme: const CardTheme(
         color: Color.fromARGB(255, 46, 52, 64),
       ),

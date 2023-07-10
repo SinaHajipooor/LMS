@@ -45,7 +45,7 @@ class _UserInfoFormModalState extends State<UserInfoFormModal> {
   @override
   Widget build(BuildContext context) {
     final keyboardOffset = MediaQuery.of(context).viewInsets.bottom;
-
+    final theme = Theme.of(context);
     return StatefulBuilder(
       builder: (context, setState) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -74,7 +74,7 @@ class _UserInfoFormModalState extends State<UserInfoFormModal> {
                   alignment: Alignment.center,
                   child: Text(
                     widget.selectedIndex == 2 ? 'ایجاد اطلاعات شغلی' : 'ایجاد اطلاعات تحصیلی',
-                    style: const TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                    style: theme.textTheme.titleMedium!.apply(color: Colors.blue),
                   ),
                 ),
                 const SizedBox(height: 20),

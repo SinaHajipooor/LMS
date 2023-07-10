@@ -129,11 +129,11 @@ class _PaymentByBankDocumentFormState extends State<PaymentByBankDocumentForm> {
               child: TextFormField(
                 keyboardType: TextInputType.number,
                 controller: _textEditingController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'کد پیگیری را وارد کنید',
-                  labelStyle: TextStyle(fontSize: 12),
+                  labelStyle: Theme.of(context).textTheme.bodySmall,
                   border: InputBorder.none,
-                  contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 ),
               ),
             ),

@@ -16,9 +16,9 @@ class FreeRegister extends StatelessWidget {
         ),
       ),
       onTap: () {},
-      title: const Text(
+      title: Text(
         'رایگان',
-        style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        style: Theme.of(context).textTheme.titleMedium,
       ),
     );
   }

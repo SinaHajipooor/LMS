@@ -66,6 +66,7 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
   //----------------- UI --------------------
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return WillPopScope(
       onWillPop: () async {
         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const StudentsBottomTabs(defaultPageIndex: 1)));
@@ -75,11 +76,11 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
         key: widget._scaffoldKey,
         appBar: AppBar(
           elevation: 1,
-          backgroundColor: Colors.white,
+          backgroundColor: theme.appBarTheme.backgroundColor,
           leading: Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.menu, color: Colors.orange),
+                icon: Icon(Icons.menu, color: theme.appBarTheme.iconTheme!.color),
                 onPressed: () => widget._scaffoldKey.currentState?.openDrawer(),
               ),
             ],
@@ -116,19 +117,19 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
         drawer: const TeachersPanelDrawer(),
         body: _isLoading
             ? const Center(child: Spinner(size: 35))
-            : const SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
+            : SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    PersianFullCalendar(
+                    const PersianFullCalendar(
                       calendarUsecase: 2,
                     ),
-                    SizedBox(height: 10),
-                    DashbordInfoCards(),
+                    const SizedBox(height: 10),
+                    const DashbordInfoCards(),
                     Padding(
-                      padding: EdgeInsets.only(top: 35, right: 15),
-                      child: Text('دوره های جاری', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      padding: const EdgeInsets.only(top: 35, right: 15),
+                      child: Text('دوره های جاری', style: theme.textTheme.titleMedium),
                     ),
                     // TeacherCoursesList(teacherCurrentCourses: _teacherCurrentCourses)
                   ],

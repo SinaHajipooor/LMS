@@ -6,16 +6,17 @@ class CourseMeetingDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).textTheme;
     return Column(
       children: [
         const SizedBox(height: 10),
-        const Text('جزئیات جلسه', style: TextStyle(fontSize: 17, color: Colors.blue, fontWeight: FontWeight.bold)),
+        Text('جزئیات جلسه', style: theme.titleMedium!.apply(color: Colors.blue)),
         Padding(
           padding: const EdgeInsets.only(top: 15, right: 12),
           child: Row(
             children: [
-              const Text('ماهیت جلسه : ', style: TextStyle(fontSize: 14)),
-              Text(meeting['meeting_method'], style: const TextStyle(fontSize: 14)),
+              Text('ماهیت جلسه : ', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
+              Text(meeting['meeting_method'], style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
             ],
           ),
         ),
@@ -23,8 +24,8 @@ class CourseMeetingDetails extends StatelessWidget {
           padding: const EdgeInsets.only(top: 15, right: 12),
           child: Row(
             children: [
-              const Text('نوع برگزاری : ', style: TextStyle(fontSize: 14)),
-              Text(meeting['hold_course']['name'], style: const TextStyle(fontSize: 14)),
+              Text('نوع برگزاری : ', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
+              Text(meeting['hold_course']['name'], style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
             ],
           ),
         ),
@@ -32,8 +33,8 @@ class CourseMeetingDetails extends StatelessWidget {
           padding: const EdgeInsets.only(top: 15, right: 12, bottom: 10),
           child: Row(
             children: [
-              const Text('تلفن هماهنگی : ', style: TextStyle(fontSize: 14)),
-              Text(meeting['support_phone'], style: const TextStyle(fontSize: 16)),
+              Text('تلفن هماهنگی : ', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
+              Text(meeting['support_phone'], style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
             ],
           ),
         ),
@@ -42,11 +43,11 @@ class CourseMeetingDetails extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('آدرس : ', style: TextStyle(fontSize: 14)),
+              Text('آدرس : ', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
               Flexible(
                 child: Text(
                   meeting['address'],
-                  style: const TextStyle(fontSize: 13),
+                  style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal),
                   softWrap: true,
                 ),
               ),
@@ -60,14 +61,14 @@ class CourseMeetingDetails extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Text('مدرس : ', style: TextStyle(fontSize: 14)),
-                  Text(meeting['teacher'], style: const TextStyle(fontSize: 14)),
+                  Text('مدرس : ', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
+                  Text(meeting['teacher'], style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
                 ],
               ),
               Row(
                 children: [
-                  const Text('ناظر : ', style: TextStyle(fontSize: 14)),
-                  Text(meeting['supervisor'], style: const TextStyle(fontSize: 14)),
+                  Text('ناظر : ', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
+                  Text(meeting['supervisor'], style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
                 ],
               ),
             ],
@@ -79,11 +80,11 @@ class CourseMeetingDetails extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('توضیحات : ', style: TextStyle(fontSize: 14)),
+              Text('توضیحات : ', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
               Flexible(
                 child: Text(
                   meeting['description'],
-                  style: const TextStyle(fontSize: 13),
+                  style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal),
                   softWrap: true,
                 ),
               ),

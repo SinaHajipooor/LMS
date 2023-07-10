@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/root/landing_screen.dart';
@@ -45,14 +46,17 @@ class _UserInfoListState extends State<UserInfoList> {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
     return Padding(
       padding: EdgeInsets.only(top: deviceSize.height / 2.5),
       child: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
           ListTile(
-            leading: const CircleAvatar(
-              child: Image(
+            leading: CircleAvatar(
+              backgroundColor: themeMode == ThemeMode.dark ? const Color.fromARGB(255, 30, 33, 37) : Colors.blue,
+              child: const Image(
                 width: 20,
                 height: 20,
                 image: AssetImage('assets/images/icons/dashboard.png'),
@@ -65,15 +69,16 @@ class _UserInfoListState extends State<UserInfoList> {
                 ),
               );
             },
-            title: const Text(
+            title: Text(
               'داشبورد',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: theme.textTheme.titleMedium,
             ),
           ),
           const SizedBox(height: 20),
           ListTile(
-            leading: const CircleAvatar(
-              child: Image(
+            leading: CircleAvatar(
+              backgroundColor: themeMode == ThemeMode.dark ? const Color.fromARGB(255, 30, 33, 37) : Colors.blue,
+              child: const Image(
                 width: 24,
                 height: 24,
                 image: AssetImage('assets/images/icons/person.png'),
@@ -82,54 +87,57 @@ class _UserInfoListState extends State<UserInfoList> {
             onTap: () {
               Navigator.of(context).pushNamed(UserBirthCertificateScreen.routeName);
             },
-            title: const Text(
+            title: Text(
               'اطلاعات شناسنامه‌ای',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: theme.textTheme.titleMedium,
             ),
           ),
           const SizedBox(height: 20),
           ListTile(
-            leading: const CircleAvatar(
-              child: Image(
+            leading: CircleAvatar(
+              backgroundColor: themeMode == ThemeMode.dark ? const Color.fromARGB(255, 30, 33, 37) : Colors.blue,
+              child: const Image(
                 width: 22,
                 height: 22,
                 image: AssetImage('assets/images/icons/university.png'),
               ),
             ),
             onTap: () => Navigator.of(context).pushNamed(UserEducationScreen.routeName),
-            title: const Text(
+            title: Text(
               'اطلاعات تحصیلی',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: theme.textTheme.titleMedium,
             ),
           ),
           const SizedBox(height: 20),
           ListTile(
-            leading: const CircleAvatar(
-              child: Image(
+            leading: CircleAvatar(
+              backgroundColor: themeMode == ThemeMode.dark ? const Color.fromARGB(255, 30, 33, 37) : Colors.blue,
+              child: const Image(
                 width: 25,
                 height: 25,
                 image: AssetImage('assets/images/icons/job.png'),
               ),
             ),
             onTap: () => Navigator.of(context).pushNamed(UserJobInfoScreen.routeName),
-            title: const Text(
+            title: Text(
               'اطلاعات شغلی',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: theme.textTheme.titleMedium,
             ),
           ),
           const SizedBox(height: 20),
           ListTile(
-            leading: const CircleAvatar(
-              child: Image(
+            leading: CircleAvatar(
+              backgroundColor: themeMode == ThemeMode.dark ? const Color.fromARGB(255, 30, 33, 37) : Colors.blue,
+              child: const Image(
                 width: 20,
                 height: 20,
                 image: AssetImage('assets/images/icons/exit.png'),
               ),
             ),
             onTap: () => _showConfirmationAlert(context),
-            title: const Text(
+            title: Text(
               'خروج',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: theme.textTheme.titleMedium,
             ),
           ),
         ],

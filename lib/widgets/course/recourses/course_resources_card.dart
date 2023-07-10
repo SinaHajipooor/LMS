@@ -53,7 +53,7 @@ class CourseResourcesCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('منابع آموزشی', style: TextStyle(fontSize: 13)),
+                const Text('منابع آموزشی', style: TextStyle(fontSize: 14)),
                 IconButton(onPressed: () => _navigateToRessourceScreen(context), icon: const Icon(Icons.video_call_outlined, color: Colors.blue)),
               ],
             ),

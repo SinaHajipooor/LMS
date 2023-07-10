@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:provider/provider.dart';
 
 class CoursePriceCard extends StatelessWidget {
   // ----------------- feilds ----------------
@@ -17,6 +19,7 @@ class CoursePriceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
     return SizedBox(
       height: 70,
       width: deviceSize.width,
@@ -34,9 +37,9 @@ class CoursePriceCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(top: 5),
-                      child: Text('قیمت دوره : ', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: Text('قیمت دوره : ', style: Theme.of(context).textTheme.titleMedium),
                     ),
                     discount == '0'
                         ? Padding(
@@ -50,7 +53,7 @@ class CoursePriceCard extends StatelessWidget {
                               children: [
                                 Text(
                                   amount,
-                                  style: TextStyle(decoration: TextDecoration.lineThrough, color: Colors.black45, decorationColor: Colors.red[800], fontSize: 20),
+                                  style: TextStyle(decoration: TextDecoration.lineThrough, color: themeMode == ThemeMode.dark ? Colors.white24 : Colors.black, decorationColor: Colors.red[800], fontSize: 20),
                                 ),
                                 const SizedBox(width: 10),
                                 Text(

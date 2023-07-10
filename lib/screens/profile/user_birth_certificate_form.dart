@@ -35,13 +35,14 @@ class _UserBirthCertificateScreenState extends State<UserBirthCertificateScreen>
 // --------------- UI -----------------
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
-        backgroundColor: Colors.white,
-        title: const Text('اطلاعات شناسنامه‌ای', style: TextStyle(color: Colors.black, fontSize: 15)),
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        title: Text('اطلاعات شناسنامه‌ای', style: theme.textTheme.titleMedium),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: Icon(Icons.arrow_back, color: theme.appBarTheme.iconTheme!.color),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
@@ -89,13 +90,13 @@ class _UserBirthCertificateScreenState extends State<UserBirthCertificateScreen>
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Row(
+                        child: Row(
                           children: [
-                            Icon(Icons.calendar_today, size: 20),
-                            SizedBox(width: 16),
+                            const Icon(Icons.calendar_today, size: 20),
+                            const SizedBox(width: 16),
                             Text(
-                              'تاریخ شروع استخدام',
-                              style: TextStyle(fontSize: 11),
+                              'شروع استخدام',
+                              style: theme.textTheme.bodyMedium,
                             ),
                           ],
                         ),
@@ -119,13 +120,13 @@ class _UserBirthCertificateScreenState extends State<UserBirthCertificateScreen>
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Row(
+                        child: Row(
                           children: [
-                            Icon(Icons.calendar_today, size: 20),
-                            SizedBox(width: 16),
+                            const Icon(Icons.calendar_today, size: 20),
+                            const SizedBox(width: 16),
                             Text(
-                              'تاریخ پایان استخدام',
-                              style: TextStyle(fontSize: 11),
+                              'پایان استخدام',
+                              style: theme.textTheme.bodyMedium,
                             ),
                           ],
                         ),
@@ -162,13 +163,13 @@ class _UserBirthCertificateScreenState extends State<UserBirthCertificateScreen>
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Row(
+                        child: Row(
                           children: [
-                            Icon(Icons.calendar_today, size: 20),
-                            SizedBox(width: 16),
+                            const Icon(Icons.calendar_today, size: 20),
+                            const SizedBox(width: 16),
                             Text(
                               'تاریخ تولد!',
-                              style: TextStyle(fontSize: 11),
+                              style: theme.textTheme.bodyMedium,
                             ),
                           ],
                         ),

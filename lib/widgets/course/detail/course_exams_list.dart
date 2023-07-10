@@ -1,5 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:provider/provider.dart';
 import '../../../screens/exam/exam_screen.dart';
 
 class CourseExamsList extends StatefulWidget {
@@ -45,6 +47,8 @@ class _CourseExamsListState extends State<CourseExamsList> {
 
   @override
   Widget build(BuildContext context) {
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+
     return InkWell(
       onTap: () {
         setState(() {
@@ -74,7 +78,7 @@ class _CourseExamsListState extends State<CourseExamsList> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(right: 10, left: 10),
+                        padding: const EdgeInsets.only(right: 10, left: 10, top: 5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -82,7 +86,7 @@ class _CourseExamsListState extends State<CourseExamsList> {
                             Text(
                               widget.title,
                               style: TextStyle(
-                                color: _isExpanded ? Colors.blue : Colors.black,
+                                color: _isExpanded ? Colors.blue : (themeMode == ThemeMode.dark ? Colors.white : Colors.black),
                                 fontSize: _isExpanded ? 16.0 : 15,
                                 fontWeight: _isExpanded ? FontWeight.bold : FontWeight.normal,
                               ),

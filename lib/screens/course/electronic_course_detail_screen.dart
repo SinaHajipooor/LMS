@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/screens/course/course_shipping_screen.dart';
 import 'package:lms/widgets/course/detail/course_feedback.dart';
 import 'package:lms/widgets/course/detail/course_price_card.dart';
@@ -92,6 +93,10 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final lightShadowColors = [Colors.white, Colors.white.withOpacity(0)];
+    final darkShadowColors = [theme.scaffoldBackgroundColor, theme.scaffoldBackgroundColor.withOpacity(0)];
     return WillPopScope(
       onWillPop: () async {
         Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
@@ -143,11 +148,11 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                                 lessonName: myProvider.courseDetails['lesson_id'],
                               );
                             }),
-                            const Padding(
-                              padding: EdgeInsets.fromLTRB(32, 20, 32, 16),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(32, 20, 32, 16),
                               child: Text(
                                 'توضیحات دوره',
-                                style: TextStyle(fontSize: 18, color: Colors.blue, fontWeight: FontWeight.bold),
+                                style: theme.textTheme.titleLarge!.apply(color: Colors.blue),
                               ),
                             ),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
@@ -213,7 +218,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                           gradient: LinearGradient(
                             begin: Alignment.bottomCenter,
                             end: Alignment.topCenter,
-                            colors: [Colors.white, Colors.white.withOpacity(0)],
+                            colors: themeMode == ThemeMode.light ? lightShadowColors : darkShadowColors,
                           ),
                         ),
                       ),

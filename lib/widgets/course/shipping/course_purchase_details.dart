@@ -20,6 +20,7 @@ class CoursePurchaseDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
     return Center(
       child: Container(
         margin: const EdgeInsets.only(top: 20),
@@ -71,7 +72,7 @@ class CoursePurchaseDetails extends StatelessWidget {
                         children: [
                           Text(
                             courseName,
-                            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                            style: theme.textTheme.titleSmall,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                             softWrap: false,
@@ -79,14 +80,14 @@ class CoursePurchaseDetails extends StatelessWidget {
                           const SizedBox(height: 15),
                           Row(
                             children: [
-                              const Text('تعداد جلسات : ', style: TextStyle(fontSize: 12)),
+                              Text('تعداد جلسات : ', style: theme.textTheme.bodyMedium),
                               Text('$sessionsCount', style: const TextStyle(fontSize: 13, color: Colors.blue)),
                             ],
                           ),
                           const SizedBox(height: 4),
                           Row(
                             children: [
-                              const Text('مدت دوره : ', style: TextStyle(fontSize: 12)),
+                              Text('مدت دوره : ', style: theme.textTheme.bodyMedium),
                               Text(coursePeriod, style: const TextStyle(fontSize: 13, color: Colors.red)),
                             ],
                           ),
@@ -102,13 +103,16 @@ class CoursePurchaseDetails extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          const Text('درصد تخفیف : ', style: TextStyle(fontSize: 15)),
+                          Text(
+                            'درصد تخفیف : ',
+                            style: theme.textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.normal),
+                          ),
                           Text(courseDiscount, style: const TextStyle(fontSize: 15, color: Colors.green)),
                         ],
                       ),
                       Row(
                         children: [
-                          const Text('قیمت نهایی : '),
+                          Text('قیمت نهایی : ', style: theme.textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.normal)),
                           Text(courseTotalAmount, style: const TextStyle(fontSize: 15, color: Colors.blue)),
                           const Text(' تومان', style: TextStyle(fontSize: 17, color: Colors.blue)),
                         ],

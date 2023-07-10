@@ -6,15 +6,16 @@ class CustomAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return SliverAppBar(
       automaticallyImplyLeading: false,
       pinned: true,
       floating: true,
-      title: Text(title, style: const TextStyle(fontSize: 13, color: Colors.black)),
-      backgroundColor: Colors.white,
+      title: Text(title, style: theme.textTheme.titleSmall),
+      backgroundColor: theme.appBarTheme.backgroundColor,
       titleSpacing: 32,
       actions: [
-        IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_rounded, color: Colors.black)),
+        IconButton(onPressed: () {}, icon: Icon(Icons.more_horiz_rounded, color: theme.appBarTheme.iconTheme!.color)),
         const SizedBox(width: 16),
       ],
     );

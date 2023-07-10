@@ -30,11 +30,7 @@ class CircularTimer extends StatelessWidget {
         backgroundGradient: null,
         strokeWidth: 5.0,
         strokeCap: StrokeCap.round,
-        textStyle: const TextStyle(
-          fontSize: 14.0,
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
-        ),
+        textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 15),
         textFormat: CountdownTextFormat.MM_SS,
         isReverse: true,
         isReverseAnimation: true,

@@ -14,6 +14,8 @@ class ThreeLineInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,7 +23,7 @@ class ThreeLineInput extends StatelessWidget {
           padding: const EdgeInsets.only(right: 15),
           child: Text(
             label,
-            style: const TextStyle(fontSize: 12),
+            style: theme.textTheme.bodySmall,
           ),
         ),
         Card(
@@ -32,7 +34,7 @@ class ThreeLineInput extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: TextFormField(
-              style: const TextStyle(fontSize: 13),
+              style: theme.textTheme.bodyMedium,
               decoration: const InputDecoration(
                 border: InputBorder.none,
               ),

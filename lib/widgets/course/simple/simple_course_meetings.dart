@@ -1,6 +1,8 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/widgets/course/simple/course_meeting_details.dart';
+import 'package:provider/provider.dart';
 
 class SimpleCourseMeetings extends StatefulWidget {
   final List meetings;
@@ -30,6 +32,8 @@ class _SimpleCourseMeetingsState extends State<SimpleCourseMeetings> {
   bool _isExpanded = false;
   @override
   Widget build(BuildContext context) {
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+
     return InkWell(
       onTap: () {
         setState(() {
@@ -42,7 +46,7 @@ class _SimpleCourseMeetingsState extends State<SimpleCourseMeetings> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 680),
           curve: Curves.easeInOut,
-          height: _isExpanded ? 290 : 55,
+          height: _isExpanded ? 290 : 60,
           child: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
               return GestureDetector(
@@ -59,7 +63,7 @@ class _SimpleCourseMeetingsState extends State<SimpleCourseMeetings> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(right: 20, left: 10),
+                        padding: const EdgeInsets.only(right: 20, left: 10, top: 5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -67,7 +71,7 @@ class _SimpleCourseMeetingsState extends State<SimpleCourseMeetings> {
                             Text(
                               'جلسات',
                               style: TextStyle(
-                                color: _isExpanded ? Colors.blue : Colors.black,
+                                color: _isExpanded ? Colors.blue : (themeMode == ThemeMode.dark ? Colors.white : Colors.black),
                                 fontSize: _isExpanded ? 16.0 : 15,
                                 fontWeight: _isExpanded ? FontWeight.bold : FontWeight.normal,
                               ),
@@ -108,10 +112,10 @@ class _SimpleCourseMeetingsState extends State<SimpleCourseMeetings> {
                                       ),
                                 child: ListTile(
                                   onTap: () => showInputDialog(meeting),
-                                  title: Text('زمان شروع : ${meeting['start_meet']}', style: const TextStyle(fontSize: 13, color: Colors.black)),
+                                  title: Text('زمان شروع : ${meeting['start_meet']}', style: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
                                   subtitle: Text(
                                     'زمان پایان : ${meeting['end_meet']}',
-                                    style: const TextStyle(fontSize: 13, color: Colors.black),
+                                    style: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.normal),
                                   ),
                                   trailing: IconButton(
                                     onPressed: () => showInputDialog(meeting),

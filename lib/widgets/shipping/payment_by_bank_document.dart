@@ -43,6 +43,7 @@ class _PaymentByBankDocumentState extends State<PaymentByBankDocument> {
   Widget build(BuildContext context) {
     return ListTile(
       leading: const CircleAvatar(
+        backgroundColor: Colors.blueAccent,
         child: Image(
           width: 22,
           height: 22,
@@ -50,13 +51,13 @@ class _PaymentByBankDocumentState extends State<PaymentByBankDocument> {
         ),
       ),
       onTap: () => showInputDialog(),
-      title: const Text(
+      title: Text(
         'پرداخت توسط فراگیر',
-        style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        style: Theme.of(context).textTheme.titleMedium,
       ),
-      subtitle: const Text(
+      subtitle: Text(
         'سند بانکی',
-        style: TextStyle(fontSize: 13),
+        style: Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.grey),
       ),
     );
   }

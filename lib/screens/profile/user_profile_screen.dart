@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
 import 'package:lms/widgets/profile/user_info_card.dart';
 import 'package:lms/widgets/profile/user_info_list.dart';
+import 'package:provider/provider.dart';
 
 class UserProfileScreen extends StatefulWidget {
   static const routeName = '/user-profile-screen';
@@ -34,6 +35,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final theme = Theme.of(context);
     return WillPopScope(
       onWillPop: () async {
         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const StudentsBottomTabs(defaultPageIndex: 2)));
@@ -45,22 +48,22 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             children: [
               Column(
                 children: [
-                  Container(height: deviceSize.height / 4, color: Colors.lightBlue),
+                  Container(height: deviceSize.height / 4, color: themeMode == ThemeMode.light ? Colors.lightBlue : const Color.fromARGB(255, 30, 33, 37)),
                 ],
               ),
               Positioned(
                 top: 35,
                 left: deviceSize.width / 2.5,
-                child: const Center(
+                child: Center(
                     child: Text(
                   'اطلاعات کاربری',
-                  style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+                  style: theme.textTheme.titleLarge!.apply(color: Colors.white),
                 )),
               ),
               Positioned(
                 top: deviceSize.height / 9,
-                left: 20,
-                right: 20,
+                left: 12,
+                right: 12,
                 child: const UserInfoCard(),
               ),
               const UserInfoList(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/screens/course/course_shipping_screen.dart';
 import 'package:lms/screens/root/home_screen.dart';
@@ -87,6 +88,10 @@ class _SimpleCourseDetailScreenState extends State<SimpleCourseDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final lightShadowColors = [Colors.white, Colors.white.withOpacity(0)];
+    final darkShadowColors = [theme.scaffoldBackgroundColor, theme.scaffoldBackgroundColor.withOpacity(0)];
     return WillPopScope(
       onWillPop: () async {
         Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
@@ -190,7 +195,7 @@ class _SimpleCourseDetailScreenState extends State<SimpleCourseDetailScreen> {
                           gradient: LinearGradient(
                             begin: Alignment.bottomCenter,
                             end: Alignment.topCenter,
-                            colors: [Colors.white, Colors.white.withOpacity(0)],
+                            colors: themeMode == ThemeMode.light ? lightShadowColors : darkShadowColors,
                           ),
                         ),
                       ),

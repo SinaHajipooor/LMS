@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/course/electronic/electronic_courses_list.dart';
@@ -58,6 +59,7 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
   @override
   Widget build(BuildContext context) {
     final margin = MediaQuery.of(context).size.width * .200;
+    final theme = Theme.of(context);
     return DefaultTabController(
       length: _courseGroups.length,
       child: WillPopScope(
@@ -70,13 +72,14 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
             elevation: 1,
             toolbarHeight: 12,
             automaticallyImplyLeading: false,
-            backgroundColor: Colors.white,
+            backgroundColor: theme.appBarTheme.backgroundColor,
             leading: null,
             bottom: TabBar(
-              unselectedLabelColor: Colors.black,
+              unselectedLabelColor: theme.appBarTheme.toolbarTextStyle!.color,
               unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal, fontFamily: 'YekanBakh', fontSize: 12),
               labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'YekanBakh', fontSize: 14),
               isScrollable: true,
+              indicatorColor: Provider.of<ThemeModel>(context).themeMode == ThemeMode.dark ? Colors.white : Colors.blue,
               labelColor: Colors.blue,
               labelPadding: const EdgeInsets.symmetric(horizontal: 25),
               tabs: List.generate(

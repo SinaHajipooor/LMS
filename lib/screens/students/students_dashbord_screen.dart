@@ -38,11 +38,11 @@ class _StudentsDashbordScreenState extends State<StudentsDashbordScreen> {
       key: widget._scaffoldKey,
       appBar: AppBar(
         elevation: 1,
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         leading: Row(
           children: [
             IconButton(
-              icon: const Icon(Icons.menu, color: Colors.blue),
+              icon: Icon(Icons.menu, color: Theme.of(context).iconTheme.color),
               onPressed: () => widget._scaffoldKey.currentState?.openDrawer(),
             ),
           ],

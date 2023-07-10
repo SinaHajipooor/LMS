@@ -23,6 +23,7 @@ class DashbordInfoCards extends StatelessWidget {
 
 Widget _buildCard(BuildContext context, String title, String count, Color color) {
   final deviceSize = MediaQuery.of(context).size;
+  final theme = Theme.of(context);
   return SizedBox(
     height: 80,
     width: deviceSize.width / 4,
@@ -32,10 +33,10 @@ Widget _buildCard(BuildContext context, String title, String count, Color color)
         onTap: () {},
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Text(title, style: const TextStyle(fontSize: 13)),
-              Text(count, style: TextStyle(color: color)),
+              Text(title, style: theme.textTheme.bodyMedium),
+              Text(count, style: TextStyle(color: color, fontSize: 16, fontWeight: FontWeight.normal)),
             ],
           ),
         ),

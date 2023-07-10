@@ -28,13 +28,14 @@ class SimpleCourseItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(SimpleCourseDetailScreen.routeName, arguments: courseId);
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        height: 120,
+        height: 130,
         width: deviceSize.width - 20,
         child: Card(
           elevation: 0.5,
@@ -70,15 +71,15 @@ class SimpleCourseItem extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 15, right: 7),
-                        child: Text(courseTitle, style: const TextStyle(color: Colors.blue, fontSize: 13, fontWeight: FontWeight.bold)),
+                        child: Text(courseTitle, style: theme.textTheme.titleSmall!.apply(color: Colors.blue)),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 5, right: 7),
-                        child: Text('استاد دوره : $teacherName', style: const TextStyle(fontSize: 11)),
+                        child: Text('استاد دوره : $teacherName', style: theme.textTheme.bodyMedium),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 5, right: 7),
-                        child: Text('قیمت : $coursePrice تومان', style: const TextStyle(fontSize: 11)),
+                        child: Text('قیمت : $coursePrice تومان', style: theme.textTheme.bodyMedium),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 10, right: 7, bottom: 5),
@@ -90,16 +91,16 @@ class SimpleCourseItem extends StatelessWidget {
                                 children: [
                                   Row(
                                     children: [
-                                      const Icon(Icons.watch_later_outlined, size: 15),
+                                      Icon(Icons.watch_later_outlined, size: 15, color: Colors.grey[600]),
                                       const SizedBox(width: 4),
-                                      Text('$courseTime ساعت', style: const TextStyle(fontSize: 10)),
+                                      Text('$courseTime ساعت', style: theme.textTheme.bodySmall),
                                     ],
                                   ),
                                   Row(
                                     children: [
-                                      const Icon(Icons.video_collection_outlined, size: 14),
+                                      Icon(Icons.video_collection_outlined, size: 15, color: Colors.grey[600]),
                                       const SizedBox(width: 4),
-                                      Text('$meetings جلسه', style: const TextStyle(fontSize: 10)),
+                                      Text('$meetings جلسه', style: theme.textTheme.bodySmall),
                                     ],
                                   ),
                                   const SizedBox(),

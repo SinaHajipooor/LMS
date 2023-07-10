@@ -31,14 +31,9 @@ class _PaymentGatewaysListState extends State<PaymentGatewaysList> {
           child: ListTile(
             title: Text(
               paymentGateway['type'],
-              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 13),
             ),
-            subtitle: Text(
-              paymentGateway['name'],
-              style: const TextStyle(
-                fontSize: 12,
-              ),
-            ),
+            subtitle: Text(paymentGateway['name'], style: Theme.of(context).textTheme.bodySmall),
             leading: CircleAvatar(
               backgroundImage: NetworkImage(paymentGateway['logo']),
             ),
