@@ -7,6 +7,7 @@ class TeacherItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.fromLTRB(4, 12, 4, 0),
       child: Column(
@@ -43,7 +44,10 @@ class TeacherItem extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             teacher.name,
-            style: const TextStyle(fontSize: 12),
+            style: theme.textTheme.bodyMedium,
+            maxLines: 2,
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),

@@ -17,6 +17,7 @@ class _TmsSliderState extends State<TmsSlider> {
   //---------------- UI ------------------
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       children: [
         const SizedBox(height: 30),
@@ -25,7 +26,7 @@ class _TmsSliderState extends State<TmsSlider> {
           children: [
             Container(
               margin: const EdgeInsets.only(right: 12),
-              child: const Text('مراکز آموزشی', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+              child: Text('مراکز آموزشی', style: theme.textTheme.titleMedium),
             ),
             IconButton(
               onPressed: () {
@@ -82,7 +83,7 @@ class _TmsSliderState extends State<TmsSlider> {
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                       child: Text(
                         item['name'],
-                        style: const TextStyle(fontSize: 11.0, color: Colors.black),
+                        style: theme.textTheme.bodyMedium,
                         maxLines: 2,
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,

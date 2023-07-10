@@ -18,6 +18,7 @@ class _AnnoucementSliderState extends State<AnnoucementSlider> {
   // --------------- UI -----------------------
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       children: [
         Row(
@@ -25,7 +26,7 @@ class _AnnoucementSliderState extends State<AnnoucementSlider> {
           children: [
             Container(
               margin: const EdgeInsets.only(right: 12),
-              child: const Text('اطلاعیه های اخیر', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+              child: Text('اطلاعیه های اخیر', style: theme.textTheme.titleMedium),
             ),
             IconButton(
                 onPressed: () {
@@ -44,52 +45,53 @@ class _AnnoucementSliderState extends State<AnnoucementSlider> {
             autoPlayCurve: Curves.fastOutSlowIn,
             enableInfiniteScroll: true,
             autoPlayAnimationDuration: const Duration(milliseconds: 600),
-            viewportFraction: 0.46,
+            viewportFraction: 0.5,
           ),
           items: widget.announcements.map((item) {
             return Builder(
               builder: (BuildContext context) {
-                return Column(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        child: AspectRatio(
-                          aspectRatio: 16 / 9,
-                          child: ClipRRect(
+                return Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                          decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12.0),
-                            child: Image.network(
-                              item["main_image"],
-                              fit: BoxFit.cover,
-                              loadingBuilder: (context, child, progress) {
-                                if (progress == null) return child;
-                                return Center(
-                                  child: Spinner(size: 30),
-                                );
-                              },
+                          ),
+                          child: AspectRatio(
+                            aspectRatio: 16 / 9,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12.0),
+                              child: Image.network(
+                                item["main_image"],
+                                fit: BoxFit.cover,
+                                loadingBuilder: (context, child, progress) {
+                                  if (progress == null) return child;
+                                  return const Center(
+                                    child: Spinner(size: 30),
+                                  );
+                                },
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 8.0),
-                    Container(
-                      child: Padding(
+                      const SizedBox(height: 8.0),
+                      Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                         child: Text(
                           item['edu']['name'],
-                          style: const TextStyle(fontSize: 11.0, color: Colors.black),
+                          style: theme.textTheme.bodyMedium,
                           maxLines: 2,
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 );
               },
             );

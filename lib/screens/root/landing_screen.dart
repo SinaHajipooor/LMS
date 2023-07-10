@@ -62,6 +62,7 @@ class _LandingScreenState extends State<LandingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final landingProvider = Provider.of<LandingProvider>(context);
     return WillPopScope(
       onWillPop: () async {
@@ -72,7 +73,7 @@ class _LandingScreenState extends State<LandingScreen> {
         appBar: AppBar(
           elevation: 1,
           automaticallyImplyLeading: false,
-          title: const Text(' یادگیری الکترونیک', style: TextStyle(color: Colors.black, fontSize: 17)),
+          title: Text(' یادگیری الکترونیک', style: theme.textTheme.titleLarge),
           backgroundColor: Colors.white,
           centerTitle: true,
         ),
@@ -103,15 +104,15 @@ class _LandingScreenState extends State<LandingScreen> {
                     Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                       Container(
                         margin: const EdgeInsets.only(right: 12),
-                        child: const Text('مدرسان مجرب سازمان', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+                        child: Text('مدرسان مجرب سازمان', style: theme.textTheme.titleMedium),
                       ),
                     ]),
                     const SizedBox(height: 15),
                     const TeachersList(),
                     const SizedBox(height: 30),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 15, bottom: 15),
-                      child: Text('اخبار اخیر', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15, bottom: 15),
+                      child: Text('اخبار اخیر', style: theme.textTheme.titleMedium),
                     ),
                     SizedBox(height: 280, child: NewsList(newsList: landingProvider.news)),
                     const SizedBox(height: 20),
@@ -122,7 +123,7 @@ class _LandingScreenState extends State<LandingScreen> {
                       children: [
                         Container(
                           margin: const EdgeInsets.only(right: 12, bottom: 15),
-                          child: const Text('دوره های شگفت‌انگیز', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+                          child: Text('دوره های شگفت‌انگیز', style: theme.textTheme.titleMedium),
                         ),
                       ],
                     ),
