@@ -103,9 +103,9 @@ class _CourseAssessmentScreenState extends State<CourseAssessmentScreen> {
           backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
           automaticallyImplyLeading: false,
           centerTitle: true,
-          title: const Text('ارزیابی اثربخشی', style: TextStyle(color: Colors.black, fontSize: 18)),
+          title: Text('ارزیابی اثربخشی', style: Theme.of(context).textTheme.titleLarge),
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
+            icon: Icon(Icons.arrow_back, color: Theme.of(context).appBarTheme.iconTheme!.color),
             onPressed: () => Navigator.of(context).pop(),
           ),
         ),
