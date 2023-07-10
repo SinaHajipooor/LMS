@@ -14,12 +14,12 @@ class _PaymentByOrganizationState extends State<PaymentByOrganization> {
       context: context,
       dialogType: DialogType.success,
       animType: AnimType.scale,
-      body: const SizedBox(
+      body: SizedBox(
         height: 100,
         child: Center(
           child: Text(
             'درخواست شما با موفقیت ثبت گردید',
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 15),
             textAlign: TextAlign.center,
           ),
         ),
@@ -39,12 +39,13 @@ class _PaymentByOrganizationState extends State<PaymentByOrganization> {
       context: context,
       dialogType: DialogType.warning,
       animType: AnimType.scale,
-      body: const SizedBox(
+      body: SizedBox(
         height: 100,
         child: Center(
           child: Text(
             'رویکرد پرداخت توسط دستگاه اجرایی را انتخاب می‌کنید ؟',
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 15),
+            overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
           ),
         ),
@@ -83,9 +84,9 @@ class _PaymentByOrganizationState extends State<PaymentByOrganization> {
         ),
       ),
       onTap: () => showInputDialog(),
-      title: const Text(
+      title: Text(
         'پرداخت توسط دستگاه اجرایی',
-        style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        style: Theme.of(context).textTheme.titleMedium,
       ),
     );
   }

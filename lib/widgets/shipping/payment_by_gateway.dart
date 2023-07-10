@@ -21,9 +21,9 @@ class _PaymentByGatewayState extends State<PaymentByGateway> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Text('درگاه پرداخت مورد نظر خود را انتخاب کنید', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Text('درگاه پرداخت مورد نظر خود را انتخاب کنید', style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14)),
             ),
             SizedBox(
               height: 185,
@@ -70,13 +70,13 @@ class _PaymentByGatewayState extends State<PaymentByGateway> {
         ),
       ),
       onTap: () => showInputDialog(),
-      title: const Text(
+      title: Text(
         'پرداخت توسط فراگیر',
-        style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        style: Theme.of(context).textTheme.titleMedium,
       ),
-      subtitle: const Text(
+      subtitle: Text(
         'درگاه پرداخت',
-        style: TextStyle(fontSize: 13),
+        style: Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.grey),
       ),
     );
   }

@@ -52,12 +52,13 @@ class _CourseShippingScreenState extends State<CourseShippingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: const Text('خرید دوره', style: TextStyle(color: Colors.black, fontSize: 16)),
+        title: Text('خرید دوره', style: theme.textTheme.titleLarge),
         leading: IconButton(
           icon: const Icon(CupertinoIcons.arrow_right, color: Colors.black, size: 22),
           onPressed: () => Navigator.of(context).pop(),
