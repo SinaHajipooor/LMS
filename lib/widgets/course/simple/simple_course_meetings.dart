@@ -108,10 +108,10 @@ class _SimpleCourseMeetingsState extends State<SimpleCourseMeetings> {
                                       ),
                                 child: ListTile(
                                   onTap: () => showInputDialog(meeting),
-                                  title: Text('زمان شروع : ${meeting['start_meet']}', style: const TextStyle(fontSize: 13, color: Colors.black)),
+                                  title: Text('زمان شروع : ${meeting['start_meet']}', style: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
                                   subtitle: Text(
                                     'زمان پایان : ${meeting['end_meet']}',
-                                    style: const TextStyle(fontSize: 13, color: Colors.black),
+                                    style: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.normal),
                                   ),
                                   trailing: IconButton(
                                     onPressed: () => showInputDialog(meeting),

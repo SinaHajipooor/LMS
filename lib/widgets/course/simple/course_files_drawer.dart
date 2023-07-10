@@ -115,9 +115,9 @@ class _CourseFilesDrawerState extends State<CourseFilesDrawer> {
                                     ),
                                   ),
                                   child: ListTile(
-                                      title: const Text(
+                                      title: Text(
                                         'فایل های دستگاه اجرایی',
-                                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+                                        style: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.normal),
                                       ),
                                       trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.remove_red_eye, color: Colors.orange))),
                                 ),
@@ -125,7 +125,7 @@ class _CourseFilesDrawerState extends State<CourseFilesDrawer> {
                               InkWell(
                                 onTap: () => showInputDialog(),
                                 child: ListTile(
-                                  title: const Text('فایل های فراگیر', style: TextStyle(fontSize: 14, fontWeight: FontWeight.normal)),
+                                  title: Text('فایل های فراگیر', style: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
                                   trailing: IconButton(
                                     onPressed: () => showInputDialog(),
                                     icon: const Icon(Icons.upload_file, color: Colors.blue),
