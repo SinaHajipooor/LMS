@@ -66,11 +66,12 @@ class _UserEducationScreenState extends State<UserEducationScreen> {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
-        title: const Text('اطلاعات تحصیلی', style: TextStyle(color: Colors.black, fontSize: 15)),
+        title: Text('اطلاعات تحصیلی', style: theme.textTheme.titleMedium),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
@@ -94,11 +95,11 @@ class _UserEducationScreenState extends State<UserEducationScreen> {
                     headingRowColor: MaterialStateColor.resolveWith((states) => Colors.grey.shade100),
                     dataRowHeight: 50,
                     columns: [
-                      const DataColumn(label: Center(child: Text('مدرک‌تحصیلی', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-                      const DataColumn(label: Center(child: Text('رشته‌تحصیلی', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-                      const DataColumn(label: Center(child: Text('نوع‌دانشگاه‌محل‌اخذ‌مدرک', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-                      const DataColumn(label: Center(child: Text('دانشگاه‌محل‌اخذ‌مدرک', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-                      const DataColumn(label: Center(child: Text('عملیات', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
+                      DataColumn(label: Center(child: Text('مدرک‌تحصیلی', style: theme.textTheme.titleSmall))),
+                      DataColumn(label: Center(child: Text('رشته‌تحصیلی', style: theme.textTheme.titleSmall))),
+                      DataColumn(label: Center(child: Text('نوع‌دانشگاه‌محل‌اخذ‌مدرک', style: theme.textTheme.titleSmall))),
+                      DataColumn(label: Center(child: Text('دانشگاه‌محل‌اخذ‌مدرک', style: theme.textTheme.titleSmall))),
+                      DataColumn(label: Center(child: Text('عملیات', style: theme.textTheme.titleSmall))),
                       DataColumn(
                         label: Row(
                           children: [

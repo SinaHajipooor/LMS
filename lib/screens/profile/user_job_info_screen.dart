@@ -63,11 +63,12 @@ class _UserJobInfoScreenState extends State<UserJobInfoScreen> {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
-        title: const Text('اطلاعات شغلی', style: TextStyle(fontSize: 15, color: Colors.black)),
+        title: Text('اطلاعات شغلی', style: theme.textTheme.titleMedium),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
@@ -87,13 +88,13 @@ class _UserJobInfoScreenState extends State<UserJobInfoScreen> {
                   headingRowColor: MaterialStateColor.resolveWith((states) => Colors.grey.shade100),
                   dataRowHeight: 50,
                   columns: [
-                    const DataColumn(label: Center(child: Text('شماره پرسنلی', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-                    const DataColumn(label: Center(child: Text('دستگاه اجرایی', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-                    const DataColumn(label: Center(child: Text('عملیات', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
+                    DataColumn(label: Center(child: Text('شماره پرسنلی', style: theme.textTheme.titleSmall))),
+                    DataColumn(label: Center(child: Text('دستگاه اجرایی', style: theme.textTheme.titleSmall))),
+                    DataColumn(label: Center(child: Text('عملیات', style: theme.textTheme.titleSmall))),
                     DataColumn(
                       label: Row(
                         children: [
-                          const Text('انتخاب', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
+                          Text('انتخاب', style: theme.textTheme.titleSmall),
                           Checkbox(
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                             value: _checkAll,

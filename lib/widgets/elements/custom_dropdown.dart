@@ -27,6 +27,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Card(
       elevation: 0.5,
       shape: RoundedRectangleBorder(
@@ -40,12 +41,12 @@ class _CustomDropdownState extends State<CustomDropdown> {
           items: [
             DropdownMenuItem<String>(
               value: widget.placeholder,
-              child: Text(widget.placeholder, style: const TextStyle(fontSize: 12)),
+              child: Text(widget.placeholder, style: theme.textTheme.bodyMedium),
             ),
             ...widget.items.map((String value) {
               return DropdownMenuItem<String>(
                 value: value,
-                child: Text(value),
+                child: Text(value, style: theme.textTheme.bodyMedium),
               );
             }),
           ],

@@ -12,7 +12,7 @@ class ThemeHelper with ChangeNotifier {
       textTheme: const TextTheme(
         titleLarge: TextStyle(fontSize: 18),
         titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        titleSmall: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        titleSmall: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
         bodyLarge: TextStyle(fontSize: 15),
         bodyMedium: TextStyle(fontSize: 12),
         bodySmall: TextStyle(fontSize: 11),
