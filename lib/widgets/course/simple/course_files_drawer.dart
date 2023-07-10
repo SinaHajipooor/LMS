@@ -1,6 +1,8 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/widgets/course/simple/student_files_form.dart';
+import 'package:provider/provider.dart';
 
 class CourseFilesDrawer extends StatefulWidget {
   const CourseFilesDrawer({super.key});
@@ -42,6 +44,8 @@ class _CourseFilesDrawerState extends State<CourseFilesDrawer> {
 
   @override
   Widget build(BuildContext context) {
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+
     return InkWell(
       onTap: () {
         setState(() {
@@ -54,7 +58,7 @@ class _CourseFilesDrawerState extends State<CourseFilesDrawer> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 680),
           curve: Curves.easeInOut,
-          height: _isExpanded ? 190 : 55,
+          height: _isExpanded ? 190 : 60,
           child: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
               return GestureDetector(
@@ -71,7 +75,7 @@ class _CourseFilesDrawerState extends State<CourseFilesDrawer> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(right: 20, left: 10),
+                        padding: const EdgeInsets.only(right: 20, left: 10, top: 5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -79,7 +83,7 @@ class _CourseFilesDrawerState extends State<CourseFilesDrawer> {
                             Text(
                               'فایل ها',
                               style: TextStyle(
-                                color: _isExpanded ? Colors.blue : Colors.black,
+                                color: _isExpanded ? Colors.blue : (themeMode == ThemeMode.dark ? Colors.white : Colors.black),
                                 fontSize: _isExpanded ? 16.0 : 15,
                                 fontWeight: _isExpanded ? FontWeight.bold : FontWeight.normal,
                               ),
