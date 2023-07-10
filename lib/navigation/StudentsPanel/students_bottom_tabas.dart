@@ -128,7 +128,7 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
                                     Icon(
                                       listOfIcons[index],
                                       size: displayWidth * .055,
-                                      color: index == _currentIndex ? Colors.blueAccent : Colors.white,
+                                      color: index == _currentIndex ? Colors.blueAccent : Colors.grey,
                                     ),
                                   ],
                                 ),

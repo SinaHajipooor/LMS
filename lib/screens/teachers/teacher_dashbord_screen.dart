@@ -76,11 +76,11 @@ class _TeacherDashbordScreenState extends State<TeacherDashbordScreen> {
         key: widget._scaffoldKey,
         appBar: AppBar(
           elevation: 1,
-          backgroundColor: Colors.white,
+          backgroundColor: theme.appBarTheme.backgroundColor,
           leading: Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.menu, color: Colors.orange),
+                icon: Icon(Icons.menu, color: theme.appBarTheme.iconTheme!.color),
                 onPressed: () => widget._scaffoldKey.currentState?.openDrawer(),
               ),
             ],

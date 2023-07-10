@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/screens/teachers/teacher_dashbord_screen.dart';
 import 'package:lms/screens/teachers/teaching_document_screen.dart';
+import 'package:provider/provider.dart';
 
 class TeachersBottomTabs extends StatefulWidget {
   final int defaultPageIndex;
@@ -29,6 +31,7 @@ class _TeachersBottomTabsState extends State<TeachersBottomTabs> {
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
     return Scaffold(
       body: Stack(
         children: [
@@ -44,7 +47,7 @@ class _TeachersBottomTabsState extends State<TeachersBottomTabs> {
                 width: MediaQuery.of(context).size.width / 1.5,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).scaffoldBackgroundColor,
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(.1),
@@ -93,7 +96,7 @@ class _TeachersBottomTabsState extends State<TeachersBottomTabs> {
                                 Icon(
                                   listOfIcons[index],
                                   size: displayWidth * .055,
-                                  color: index == _currentIndex ? Colors.orange : Colors.black26,
+                                  color: index == _currentIndex ? Colors.orange : (themeMode == ThemeMode.dark ? Colors.grey : Colors.grey),
                                 ),
                                 SizedBox(width: displayWidth * .01),
                                 AnimatedOpacity(
