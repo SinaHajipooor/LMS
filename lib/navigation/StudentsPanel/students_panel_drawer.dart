@@ -41,31 +41,48 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
     return Drawer(
       child: ListView(
         children: <Widget>[
-          UserAccountsDrawerHeader(
-            onDetailsPressed: () => Navigator.of(context).pushReplacementNamed(UserProfileScreen.routeName),
-            decoration: const BoxDecoration(color: Colors.lightBlue),
-            accountName: const Padding(
-              padding: EdgeInsets.only(top: 15.0),
-              child: Text(
-                "سیناحاجی پور",
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+          Stack(
+            children: [
+              UserAccountsDrawerHeader(
+                onDetailsPressed: () => Navigator.of(context).pushReplacementNamed(UserProfileScreen.routeName),
+                decoration: const BoxDecoration(color: Colors.lightBlue),
+                accountName: const Padding(
+                  padding: EdgeInsets.only(top: 15.0),
+                  child: Text(
+                    "سیناحاجی پور",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                accountEmail: const Padding(
+                  padding: EdgeInsets.zero,
+                  child: Text(
+                    "+98 9155613393",
+                    textDirection: TextDirection.ltr,
+                    style: TextStyle(fontSize: 12),
+                  ),
+                ),
+                currentAccountPicture: InkWell(
+                  onTap: () => Navigator.of(context).pushReplacementNamed(UserProfileScreen.routeName),
+                  child: const CircleAvatar(
+                    backgroundImage: AssetImage("assets/images/avatar.png"),
+                  ),
+                ),
               ),
-            ),
-            accountEmail: const Padding(
-              padding: EdgeInsets.zero,
-              child: Text(
-                "+98 9155613393",
-                textDirection: TextDirection.ltr,
-                style: TextStyle(fontSize: 12),
+              Positioned(
+                top: 16.0,
+                left: 12.0,
+                child: InkWell(
+                  child: Image.asset(
+                    'assets/images/icons/night.png',
+                    color: Colors.white,
+                    width: 35,
+                    height: 35,
+                  ),
+                ),
               ),
-            ),
-            currentAccountPicture: InkWell(
-              onTap: () => Navigator.of(context).pushReplacementNamed(UserProfileScreen.routeName),
-              child: const CircleAvatar(
-                backgroundImage: AssetImage("assets/images/avatar.png"),
-              ),
-            ),
+            ],
           ),
+
           InkWell(
             onTap: () {
               Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);

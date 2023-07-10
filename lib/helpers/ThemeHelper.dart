@@ -23,7 +23,7 @@ class ThemeHelper with ChangeNotifier {
       appBarTheme: const AppBarTheme(
         color: Color.fromARGB(255, 41, 46, 54),
       ),
-      scaffoldBackgroundColor: Color.fromARGB(255, 41, 46, 54),
+      scaffoldBackgroundColor: const Color.fromARGB(255, 41, 46, 54),
       cardTheme: const CardTheme(
         color: Color.fromARGB(255, 46, 52, 64),
       ),
