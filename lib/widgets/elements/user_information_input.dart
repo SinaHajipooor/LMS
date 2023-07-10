@@ -39,7 +39,7 @@ class UserInformationInput extends StatelessWidget {
                 contentPadding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 10.0),
                 border: InputBorder.none, // Hide default border
               ),
-              style: theme.textTheme.bodyMedium!.apply(color: Colors.black, overflow: TextOverflow.ellipsis),
+              style: theme.textTheme.bodyMedium!.apply(overflow: TextOverflow.ellipsis),
               maxLines: 1,
               onChanged: onChanged,
               controller: TextEditingController(text: value),

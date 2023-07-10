@@ -1,6 +1,8 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/widgets/elements/user_information_input.dart';
+import 'package:provider/provider.dart';
 
 class UserInfoCard extends StatefulWidget {
   const UserInfoCard({super.key});
@@ -58,6 +60,7 @@ class _UserInfoCardState extends State<UserInfoCard> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
     return SizedBox(
       height: 200,
       child: Card(
@@ -91,7 +94,12 @@ class _UserInfoCardState extends State<UserInfoCard> {
               right: 20,
               child: InkWell(
                 onTap: () => showInputDialog(),
-                child: Image.asset('assets/images/icons/edit.png', width: 20, height: 20),
+                child: Image.asset(
+                  'assets/images/icons/edit.png',
+                  width: 20,
+                  height: 20,
+                  color: themeMode == ThemeMode.light ? Colors.blue : Colors.white,
+                ),
               ),
             ),
           ],

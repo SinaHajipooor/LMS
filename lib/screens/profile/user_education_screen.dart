@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/widgets/profile/job_info_form_modal.dart';
+import 'package:provider/provider.dart';
 
 class UserEducationScreen extends StatefulWidget {
   static const routeName = '/user-education-screen';
@@ -67,17 +69,18 @@ class _UserEducationScreenState extends State<UserEducationScreen> {
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     final theme = Theme.of(context);
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
-        backgroundColor: Colors.white,
+        backgroundColor: theme.appBarTheme.backgroundColor,
         title: Text('اطلاعات تحصیلی', style: theme.textTheme.titleMedium),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: Icon(Icons.arrow_back, color: theme.appBarTheme.iconTheme!.color),
           onPressed: () => Navigator.of(context).pop(),
         ),
         actions: [
-          IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: const Icon(Icons.add, color: Colors.blue)),
+          IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
       body: SingleChildScrollView(
@@ -92,7 +95,7 @@ class _UserEducationScreenState extends State<UserEducationScreen> {
                   DataTable(
                     dividerThickness: 0.5,
                     horizontalMargin: 0,
-                    headingRowColor: MaterialStateColor.resolveWith((states) => Colors.grey.shade100),
+                    headingRowColor: MaterialStateColor.resolveWith((states) => theme.cardTheme.color!),
                     dataRowHeight: 50,
                     columns: [
                       DataColumn(label: Center(child: Text('مدرک‌تحصیلی', style: theme.textTheme.titleSmall))),

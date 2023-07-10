@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/widgets/profile/job_info_form_modal.dart';
+import 'package:provider/provider.dart';
 
 class UserJobInfoScreen extends StatefulWidget {
   static const routeName = '/user-job-info-screen';
@@ -64,16 +66,17 @@ class _UserJobInfoScreenState extends State<UserJobInfoScreen> {
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     final theme = Theme.of(context);
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
-        backgroundColor: Colors.white,
+        backgroundColor: theme.appBarTheme.backgroundColor,
         title: Text('اطلاعات شغلی', style: theme.textTheme.titleMedium),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: Icon(Icons.arrow_back, color: theme.appBarTheme.iconTheme!.color),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        actions: [IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 2), icon: const Icon(Icons.add, color: Colors.blue))],
+        actions: [IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 2), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white))],
       ),
       body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -85,7 +88,7 @@ class _UserJobInfoScreenState extends State<UserJobInfoScreen> {
                 child: DataTable(
                   dividerThickness: 0.5,
                   horizontalMargin: 0,
-                  headingRowColor: MaterialStateColor.resolveWith((states) => Colors.grey.shade100),
+                  headingRowColor: MaterialStateColor.resolveWith((states) => theme.cardTheme.color!),
                   dataRowHeight: 50,
                   columns: [
                     DataColumn(label: Center(child: Text('شماره پرسنلی', style: theme.textTheme.titleSmall))),
