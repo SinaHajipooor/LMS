@@ -61,8 +61,8 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
       ),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
-        title: const Text('نتیجه آزمون', style: TextStyle(fontSize: 16, color: Colors.black)),
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        title: Text('نتیجه آزمون', style: Theme.of(context).textTheme.titleMedium),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

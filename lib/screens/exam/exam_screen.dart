@@ -118,121 +118,123 @@ class _ExamScreenState extends State<ExamScreen> {
         return false;
       },
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.only(top: 10),
-          child: Column(
-            children: [
-              ExamHeader(finishExam: _showConfirmationAlert),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        QuestionsList(
-                          usecase: 1,
-                          onChangePage: _onChangePage,
-                          pageController: _pageController,
-                          questions: _questions,
-                          selectedQuestionIndex: selectedQuestionIndex,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 50),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AnswersList(
-                                selectedAnswerId: _selectedAnswerId,
-                                onSelectAnswer: onSelectAnswer,
-                                answers: _answers,
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(bottom: 50, top: 20),
-                                child: TextButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _selectedAnswerId = -1;
-                                    });
-                                  },
-                                  child: const Text('پاک کردن انتخاب', style: TextStyle(fontSize: 12)),
-                                ),
-                              ),
-                            ],
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Column(
+              children: [
+                ExamHeader(finishExam: _showConfirmationAlert),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          QuestionsList(
+                            usecase: 1,
+                            onChangePage: _onChangePage,
+                            pageController: _pageController,
+                            questions: _questions,
+                            selectedQuestionIndex: selectedQuestionIndex,
                           ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Visibility(
-                              visible: selectedQuestionIndex != 0,
-                              child: Padding(
-                                padding: const EdgeInsets.only(right: 10),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    if (selectedQuestionIndex > 0) {
-                                      _pageController.previousPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 50),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                AnswersList(
+                                  selectedAnswerId: _selectedAnswerId,
+                                  onSelectAnswer: onSelectAnswer,
+                                  answers: _answers,
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(bottom: 50, top: 20),
+                                  child: TextButton(
+                                    onPressed: () {
                                       setState(() {
-                                        selectedQuestionIndex--;
+                                        _selectedAnswerId = -1;
                                       });
-                                    }
-                                  },
-                                  child: const Text('قبلی'),
+                                    },
+                                    child: const Text('پاک کردن انتخاب', style: TextStyle(fontSize: 12)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Visibility(
+                                visible: selectedQuestionIndex != 0,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      if (selectedQuestionIndex > 0) {
+                                        _pageController.previousPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+                                        setState(() {
+                                          selectedQuestionIndex--;
+                                        });
+                                      }
+                                    },
+                                    child: const Text('قبلی'),
+                                  ),
                                 ),
                               ),
-                            ),
-                            DropdownButton(
-                              elevation: 1,
-                              icon: const Icon(Icons.arrow_drop_up),
-                              menuMaxHeight: 220,
-                              value: selectedQuestionIndex,
-                              items: List.generate(_questions.length, (index) {
-                                return DropdownMenuItem(
-                                  value: index,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text('سوال ${index + 1}', style: const TextStyle(fontSize: 14)),
-                                  ),
-                                );
-                              }),
-                              onChanged: (value) {
-                                setState(() {
-                                  selectedQuestionIndex = value!;
-                                });
-                                _pageController.animateToPage(
-                                  selectedQuestionIndex,
-                                  duration: const Duration(milliseconds: 500),
-                                  curve: Curves.easeInOut,
-                                );
-                              },
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: ElevatedButton(
-                                onPressed: selectedQuestionIndex == _questions.length - 1
-                                    ? () {
-                                        _showConfirmationAlert(context, courseId!);
-                                      }
-                                    : () {
-                                        if (selectedQuestionIndex < _questions.length - 1) {
-                                          _pageController.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
-                                          setState(() {
-                                            selectedQuestionIndex++;
-                                          });
-                                        }
-                                      },
-                                child: Text(selectedQuestionIndex == _questions.length - 1 ? 'پایان' : 'بعدی'),
+                              DropdownButton(
+                                elevation: 1,
+                                icon: const Icon(Icons.arrow_drop_up),
+                                menuMaxHeight: 220,
+                                value: selectedQuestionIndex,
+                                items: List.generate(_questions.length, (index) {
+                                  return DropdownMenuItem(
+                                    value: index,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text('سوال ${index + 1}', style: const TextStyle(fontSize: 14)),
+                                    ),
+                                  );
+                                }),
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedQuestionIndex = value!;
+                                  });
+                                  _pageController.animateToPage(
+                                    selectedQuestionIndex,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.easeInOut,
+                                  );
+                                },
                               ),
-                            )
-                          ],
-                        )
-                      ],
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: ElevatedButton(
+                                  onPressed: selectedQuestionIndex == _questions.length - 1
+                                      ? () {
+                                          _showConfirmationAlert(context, courseId!);
+                                        }
+                                      : () {
+                                          if (selectedQuestionIndex < _questions.length - 1) {
+                                            _pageController.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+                                            setState(() {
+                                              selectedQuestionIndex++;
+                                            });
+                                          }
+                                        },
+                                  child: Text(selectedQuestionIndex == _questions.length - 1 ? 'پایان' : 'بعدی'),
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

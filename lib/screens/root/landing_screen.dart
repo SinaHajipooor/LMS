@@ -74,7 +74,7 @@ class _LandingScreenState extends State<LandingScreen> {
           elevation: 1,
           automaticallyImplyLeading: false,
           title: Text(' یادگیری الکترونیک', style: theme.textTheme.titleLarge),
-          backgroundColor: Colors.white,
+          backgroundColor: theme.appBarTheme.backgroundColor,
           centerTitle: true,
         ),
         floatingActionButton: Consumer<AuthProvider>(

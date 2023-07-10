@@ -7,8 +7,9 @@ class ExamHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
-      margin: const EdgeInsets.only(top: 15),
+      margin: const EdgeInsets.only(top: 15, left: 5, right: 5),
       child: Card(
         elevation: 1,
         shadowColor: Colors.blue,
@@ -16,27 +17,27 @@ class ExamHeader extends StatelessWidget {
           padding: const EdgeInsets.all(5.0),
           child: Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.all(8),
+              Padding(
+                padding: const EdgeInsets.all(8),
                 child: Text(
                   'به نام خدا',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: theme.textTheme.titleLarge,
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('نام دوره : ', style: TextStyle(fontSize: 13)),
+                      Text('نام دوره : ', style: theme.textTheme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
                       Padding(
-                        padding: EdgeInsets.only(top: 5),
-                        child: Text('نام درس : ', style: TextStyle(fontSize: 13)),
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Text('نام درس : ', style: theme.textTheme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 5),
-                        child: Text('تعداد سوالات : ', style: TextStyle(fontSize: 13)),
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Text('تعداد سوالات : ', style: theme.textTheme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
                       ),
                     ],
                   ),

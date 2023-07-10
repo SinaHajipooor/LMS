@@ -1,8 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/widgets/shipping/payment_gateways_list.dart';
-import 'package:provider/provider.dart';
 
 class PaymentByGateway extends StatefulWidget {
   final List paymentGateways;
@@ -63,11 +61,10 @@ class _PaymentByGatewayState extends State<PaymentByGateway> {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
     return ListTile(
-      leading: CircleAvatar(
-        backgroundColor: themeMode == ThemeMode.dark ? Colors.blue : Colors.orange,
-        child: const Image(
+      leading: const CircleAvatar(
+        backgroundColor: Colors.blue,
+        child: Image(
           width: 24,
           height: 24,
           image: AssetImage('assets/images/icons/person.png'),

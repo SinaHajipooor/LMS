@@ -1,8 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/widgets/shipping/payment_by_bank_documnt_form.dart';
-import 'package:provider/provider.dart';
 
 class PaymentByBankDocument extends StatefulWidget {
   const PaymentByBankDocument({super.key});
@@ -43,11 +41,10 @@ class _PaymentByBankDocumentState extends State<PaymentByBankDocument> {
   // ------------------- UI --------------------
   @override
   Widget build(BuildContext context) {
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
     return ListTile(
-      leading: CircleAvatar(
-        backgroundColor: themeMode == ThemeMode.dark ? Colors.blueAccent : Colors.yellow,
-        child: const Image(
+      leading: const CircleAvatar(
+        backgroundColor: Colors.blueAccent,
+        child: Image(
           width: 22,
           height: 22,
           image: AssetImage('assets/images/icons/document.png'),

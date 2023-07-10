@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/data/data.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:provider/provider.dart';
 
 class AmazingCourseItem extends StatelessWidget {
   final PostData amazingCourse;
@@ -8,16 +10,17 @@ class AmazingCourseItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
     return Container(
       height: 149,
       margin: const EdgeInsets.fromLTRB(16, 8, 16, 8),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: theme.cardTheme.color,
         borderRadius: BorderRadius.circular(16),
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
             blurRadius: 20,
-            color: Color(0x1a5285ff),
+            color: themeMode == ThemeMode.light ? Color(0x1a5285ff) : Colors.black12,
           ),
         ],
       ),
@@ -41,17 +44,17 @@ class AmazingCourseItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(width: 10),
-                  Text(amazingCourse.caption, style: theme.textTheme.bodyLarge),
+                  Text(amazingCourse.caption, style: theme.textTheme.bodyLarge!.apply(color: Colors.blue)),
                   const SizedBox(width: 5),
                   Row(
                     children: [
                       Text(
                         'نام استاد : ',
-                        style: theme.textTheme.bodySmall!.apply(color: Colors.black),
+                        style: theme.textTheme.bodySmall,
                       ),
                       Text(
                         'سیناحاجی پور',
-                        style: theme.textTheme.bodySmall!.apply(color: Colors.black),
+                        style: theme.textTheme.bodySmall,
                       ),
                     ],
                   ),

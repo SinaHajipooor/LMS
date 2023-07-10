@@ -34,7 +34,7 @@ class Question extends StatelessWidget {
               Flexible(
                 child: Text(
                   text,
-                  style: const TextStyle(fontSize: 16),
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.normal, fontSize: 17),
                 ),
               ),
               const SizedBox(width: 10),
