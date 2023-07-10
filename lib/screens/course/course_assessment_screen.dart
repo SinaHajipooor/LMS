@@ -100,7 +100,7 @@ class _CourseAssessmentScreenState extends State<CourseAssessmentScreen> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 1,
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
           automaticallyImplyLeading: false,
           centerTitle: true,
           title: const Text('ارزیابی اثربخشی', style: TextStyle(color: Colors.black, fontSize: 18)),

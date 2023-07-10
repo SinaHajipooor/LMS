@@ -39,11 +39,14 @@ class _CourseResourcesScreenState extends State<CourseResourcesScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         centerTitle: true,
-        title: const Text('منابع آموزشی', style: TextStyle(fontSize: 16, color: Colors.black)),
+        title: Text('منابع آموزشی', style: Theme.of(context).textTheme.titleMedium),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: Icon(
+            Icons.arrow_back,
+            color: Theme.of(context).appBarTheme.iconTheme!.color,
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
