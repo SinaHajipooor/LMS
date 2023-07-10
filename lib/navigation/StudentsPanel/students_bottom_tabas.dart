@@ -48,7 +48,7 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
                 width: MediaQuery.of(context).size.width,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).scaffoldBackgroundColor,
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(.1),
@@ -128,7 +128,7 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
                                     Icon(
                                       listOfIcons[index],
                                       size: displayWidth * .055,
-                                      color: index == _currentIndex ? Colors.blueAccent : Colors.black26,
+                                      color: index == _currentIndex ? Colors.blueAccent : Colors.white,
                                     ),
                                   ],
                                 ),

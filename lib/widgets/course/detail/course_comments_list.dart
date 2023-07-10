@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:provider/provider.dart';
 
 class CourseCommentsList extends StatelessWidget {
   const CourseCommentsList({super.key});
@@ -6,6 +8,7 @@ class CourseCommentsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(
@@ -48,7 +51,7 @@ class CourseCommentsList extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('سینا‌حاجی‌پور', style: theme.textTheme.bodyMedium!.apply(color: Colors.black)),
+                              Text('سینا‌حاجی‌پور', style: theme.textTheme.bodyMedium!.apply(color: themeMode == ThemeMode.dark ? Colors.white : Colors.black)),
                               Text('11 بهمن', style: theme.textTheme.bodySmall),
                             ],
                           ),

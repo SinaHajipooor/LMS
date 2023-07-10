@@ -17,6 +17,11 @@ class ThemeHelper with ChangeNotifier {
         bodyMedium: TextStyle(fontSize: 12),
         bodySmall: TextStyle(fontSize: 11),
       ),
+      appBarTheme: const AppBarTheme(
+          toolbarTextStyle: TextStyle(color: Colors.black),
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          )),
       cardTheme: const CardTheme(
         color: Colors.white,
       ),
@@ -29,8 +34,11 @@ class ThemeHelper with ChangeNotifier {
       fontFamily: 'YekanBakh',
       brightness: Brightness.dark,
       appBarTheme: const AppBarTheme(
-        color: Color.fromARGB(255, 41, 46, 54),
-      ),
+          toolbarTextStyle: TextStyle(color: Colors.white),
+          color: Color.fromARGB(255, 41, 46, 54),
+          iconTheme: IconThemeData(
+            color: Colors.white,
+          )),
       textTheme: const TextTheme(
         titleLarge: TextStyle(fontSize: 18),
         titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
