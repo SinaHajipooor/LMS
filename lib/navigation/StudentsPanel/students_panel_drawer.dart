@@ -42,7 +42,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
     final theme = Theme.of(context);
     final themeMode = Provider.of<ThemeModel>(context).themeMode;
     return Drawer(
-      backgroundColor: themeMode == ThemeMode.dark ? Color.fromARGB(255, 46, 52, 64) : Colors.white,
+      backgroundColor: themeMode == ThemeMode.dark ? theme.cardTheme.color : Colors.white,
       child: ListView(
         children: <Widget>[
           Stack(

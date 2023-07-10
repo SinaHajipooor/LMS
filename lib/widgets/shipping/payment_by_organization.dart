@@ -45,7 +45,7 @@ class _PaymentByOrganizationState extends State<PaymentByOrganization> {
           child: Text(
             'رویکرد پرداخت توسط دستگاه اجرایی را انتخاب می‌کنید ؟',
             style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 15),
-            overflow: TextOverflow.ellipsis,
+            // overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
           ),
         ),

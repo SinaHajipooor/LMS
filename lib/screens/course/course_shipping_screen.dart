@@ -56,11 +56,11 @@ class _CourseShippingScreenState extends State<CourseShippingScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
-        backgroundColor: Colors.white,
+        backgroundColor: theme.appBarTheme.backgroundColor,
         centerTitle: true,
         title: Text('خرید دوره', style: theme.textTheme.titleLarge),
         leading: IconButton(
-          icon: const Icon(CupertinoIcons.arrow_right, color: Colors.black, size: 22),
+          icon: Icon(CupertinoIcons.arrow_right, color: theme.appBarTheme.iconTheme!.color, size: 22),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
