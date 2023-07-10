@@ -38,6 +38,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Drawer(
       child: ListView(
         children: <Widget>[
@@ -46,19 +47,19 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
               UserAccountsDrawerHeader(
                 onDetailsPressed: () => Navigator.of(context).pushReplacementNamed(UserProfileScreen.routeName),
                 decoration: const BoxDecoration(color: Colors.lightBlue),
-                accountName: const Padding(
-                  padding: EdgeInsets.only(top: 15.0),
+                accountName: Padding(
+                  padding: const EdgeInsets.only(top: 15.0),
                   child: Text(
                     "سیناحاجی پور",
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    style: theme.textTheme.titleMedium!.apply(color: Colors.white),
                   ),
                 ),
-                accountEmail: const Padding(
+                accountEmail: Padding(
                   padding: EdgeInsets.zero,
                   child: Text(
                     "+98 9155613393",
                     textDirection: TextDirection.ltr,
-                    style: TextStyle(fontSize: 12),
+                    style: theme.textTheme.bodyMedium!.apply(color: Colors.white),
                   ),
                 ),
                 currentAccountPicture: InkWell(
@@ -89,7 +90,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
             },
             child: ListTile(
               leading: Image.asset('assets/images/icons/home.png', width: 20, height: 20, color: const Color.fromARGB(255, 92, 92, 92)),
-              title: const Text('صفحه‌اصلی', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+              title: Text('صفحه‌اصلی', style: theme.textTheme.titleSmall),
             ),
           ),
           InkWell(
@@ -98,7 +99,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
             },
             child: ListTile(
               leading: Image.asset('assets/images/icons/person.png', width: 20, height: 20, color: const Color.fromARGB(255, 92, 92, 92)),
-              title: const Text('پروفایل', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+              title: Text('پروفایل', style: theme.textTheme.titleSmall),
             ),
           ),
           InkWell(
@@ -107,7 +108,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
             },
             child: ListTile(
               leading: Image.asset('assets/images/icons/teacher.png', width: 20, height: 20, color: const Color.fromARGB(255, 92, 92, 92)),
-              title: const Text('پنل مدرسان', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+              title: Text('پنل مدرسان', style: theme.textTheme.titleSmall),
             ),
           ),
 
@@ -117,7 +118,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
             },
             child: ListTile(
               leading: Image.asset('assets/images/icons/exit.png', width: 20, height: 20, color: const Color.fromARGB(255, 92, 92, 92)),
-              title: const Text('خروج', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+              title: Text('خروج', style: theme.textTheme.titleSmall),
             ),
           ),
           // Add more ListTile items as needed
