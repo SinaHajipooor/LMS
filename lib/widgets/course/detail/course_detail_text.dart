@@ -6,11 +6,12 @@ class CourseDetailText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 0, 20, 32),
       child: Text(
         description,
-        style: const TextStyle(fontSize: 12),
+        style: theme.textTheme.bodyMedium,
       ),
     );
   }

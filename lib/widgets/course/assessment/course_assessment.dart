@@ -44,7 +44,7 @@ class CourseAssessment extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('ارزیابی اثربخشی', style: TextStyle(fontSize: 13)),
+                const Text('ارزیابی اثربخشی', style: TextStyle(fontSize: 14)),
                 IconButton(onPressed: () => _showConfirmationAlert(context, courseId), icon: const Icon(Icons.play_arrow_outlined, color: Colors.green)),
               ],
             ),

@@ -34,9 +34,9 @@ class CoursePriceCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(top: 5),
-                      child: Text('قیمت دوره : ', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: Text('قیمت دوره : ', style: Theme.of(context).textTheme.titleMedium),
                     ),
                     discount == '0'
                         ? Padding(

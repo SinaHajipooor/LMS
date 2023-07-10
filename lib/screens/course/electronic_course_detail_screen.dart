@@ -92,6 +92,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
     return WillPopScope(
       onWillPop: () async {
         Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
@@ -143,11 +144,11 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                                 lessonName: myProvider.courseDetails['lesson_id'],
                               );
                             }),
-                            const Padding(
-                              padding: EdgeInsets.fromLTRB(32, 20, 32, 16),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(32, 20, 32, 16),
                               child: Text(
                                 'توضیحات دوره',
-                                style: TextStyle(fontSize: 18, color: Colors.blue, fontWeight: FontWeight.bold),
+                                style: theme.textTheme.titleLarge!.apply(color: Colors.blue),
                               ),
                             ),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {

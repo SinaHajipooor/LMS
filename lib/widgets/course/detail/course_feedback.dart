@@ -19,17 +19,18 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(right: 12, top: 18),
+            Padding(
+              padding: const EdgeInsets.only(right: 12, top: 18),
               child: Text(
                 'نظر خود را وارد کنید',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                style: theme.textTheme.titleSmall,
               ),
             ),
             Padding(
@@ -55,6 +56,7 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: TextField(
+              style: theme.textTheme.bodyMedium,
               controller: _textController,
               onChanged: (values) {
                 print(values);
@@ -74,7 +76,10 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
               onPressed: () {
                 // Use the value from _textController here
               },
-              child: const Text('ثبت نظر', style: TextStyle(fontSize: 14)),
+              child: Text(
+                'ثبت نظر',
+                style: theme.textTheme.titleSmall!.apply(color: Colors.blue),
+              ),
             )
           ],
         )

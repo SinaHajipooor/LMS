@@ -10,7 +10,6 @@ class CourseImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
-
     return Stack(
       children: [
         ClipRRect(

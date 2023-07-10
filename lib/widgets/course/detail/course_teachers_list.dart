@@ -5,6 +5,7 @@ class CourseTeachersList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       children: [
         Expanded(
@@ -28,13 +29,13 @@ class CourseTeachersList extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      const Padding(
-                        padding: EdgeInsets.only(right: 10),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('سیناحاجی‌پور', style: TextStyle(fontSize: 11), overflow: TextOverflow.ellipsis, maxLines: 2),
-                            Text('مدرس', style: TextStyle(fontSize: 10, color: Colors.grey)),
+                            Text('سیناحاجی‌پور', style: theme.textTheme.bodyMedium, overflow: TextOverflow.ellipsis, maxLines: 2),
+                            Text('مدرس', style: theme.textTheme.bodySmall),
                           ],
                         ),
                       )
