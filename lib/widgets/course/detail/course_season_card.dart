@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:provider/provider.dart';
 
 class CourseSeasonCard extends StatefulWidget {
   //-------------------- feilds -----------------------
@@ -17,6 +19,7 @@ class _CourseSeasonCardState extends State<CourseSeasonCard> {
 
   @override
   Widget build(BuildContext context) {
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
     return InkWell(
       onTap: () {
         setState(() {
@@ -50,12 +53,14 @@ class _CourseSeasonCardState extends State<CourseSeasonCard> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text(widget.title,
-                                style: TextStyle(
-                                  fontSize: _isExpanded ? 17 : 15,
-                                  color: _isExpanded ? Colors.blue : Colors.black,
-                                  fontWeight: _isExpanded ? FontWeight.bold : FontWeight.normal,
-                                )),
+                            Text(
+                              widget.title,
+                              style: TextStyle(
+                                color: _isExpanded ? Colors.blue : (themeMode == ThemeMode.dark ? Colors.white : Colors.black),
+                                fontSize: _isExpanded ? 16.0 : 15,
+                                fontWeight: _isExpanded ? FontWeight.bold : FontWeight.normal,
+                              ),
+                            ),
                             Icon(_isExpanded ? Icons.keyboard_arrow_down : Icons.keyboard_arrow_left, size: 25.0),
                           ],
                         ),
