@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
 import 'package:lms/widgets/profile/user_info_card.dart';
@@ -34,6 +33,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
     return WillPopScope(
       onWillPop: () async {
         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const StudentsBottomTabs(defaultPageIndex: 2)));
@@ -51,10 +51,10 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               Positioned(
                 top: 35,
                 left: deviceSize.width / 2.5,
-                child: const Center(
+                child: Center(
                     child: Text(
                   'اطلاعات کاربری',
-                  style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+                  style: theme.textTheme.titleLarge!.apply(color: Colors.white),
                 )),
               ),
               Positioned(

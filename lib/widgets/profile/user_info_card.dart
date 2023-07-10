@@ -57,6 +57,7 @@ class _UserInfoCardState extends State<UserInfoCard> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return SizedBox(
       height: 200,
       child: Card(
@@ -79,7 +80,7 @@ class _UserInfoCardState extends State<UserInfoCard> {
                     ),
                   ),
                   const SizedBox(height: 15),
-                  const Text('سیناحاجی‌پور', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text('سیناحاجی‌پور', style: theme.textTheme.titleLarge),
                   const SizedBox(height: 5),
                   const Text('فراگیر', style: TextStyle(fontSize: 14, color: Colors.grey)),
                 ],

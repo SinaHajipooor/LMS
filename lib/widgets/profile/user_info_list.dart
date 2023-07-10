@@ -45,6 +45,7 @@ class _UserInfoListState extends State<UserInfoList> {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
     return Padding(
       padding: EdgeInsets.only(top: deviceSize.height / 2.5),
       child: ListView(
@@ -65,9 +66,9 @@ class _UserInfoListState extends State<UserInfoList> {
                 ),
               );
             },
-            title: const Text(
+            title: Text(
               'داشبورد',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: theme.textTheme.titleMedium,
             ),
           ),
           const SizedBox(height: 20),
@@ -82,9 +83,9 @@ class _UserInfoListState extends State<UserInfoList> {
             onTap: () {
               Navigator.of(context).pushNamed(UserBirthCertificateScreen.routeName);
             },
-            title: const Text(
+            title: Text(
               'اطلاعات شناسنامه‌ای',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: theme.textTheme.titleMedium,
             ),
           ),
           const SizedBox(height: 20),
@@ -97,9 +98,9 @@ class _UserInfoListState extends State<UserInfoList> {
               ),
             ),
             onTap: () => Navigator.of(context).pushNamed(UserEducationScreen.routeName),
-            title: const Text(
+            title: Text(
               'اطلاعات تحصیلی',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: theme.textTheme.titleMedium,
             ),
           ),
           const SizedBox(height: 20),
@@ -112,9 +113,9 @@ class _UserInfoListState extends State<UserInfoList> {
               ),
             ),
             onTap: () => Navigator.of(context).pushNamed(UserJobInfoScreen.routeName),
-            title: const Text(
+            title: Text(
               'اطلاعات شغلی',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: theme.textTheme.titleMedium,
             ),
           ),
           const SizedBox(height: 20),
@@ -127,9 +128,9 @@ class _UserInfoListState extends State<UserInfoList> {
               ),
             ),
             onTap: () => _showConfirmationAlert(context),
-            title: const Text(
+            title: Text(
               'خروج',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: theme.textTheme.titleMedium,
             ),
           ),
         ],
