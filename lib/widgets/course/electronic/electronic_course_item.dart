@@ -28,20 +28,21 @@ class ElectronicCourseItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return InkWell(
-      onTap: () {
-        Navigator.of(context).pushNamed(ElectronicCourseDetailScreen.routeName, arguments: courseId);
-      },
-      child: Container(
-        margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-        height: 130,
-        child: Card(
-          elevation: 1,
-          shape: RoundedRectangleBorder(
+    return Container(
+      margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+      height: 130,
+      child: Card(
+        elevation: 1,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: InkWell(
             borderRadius: BorderRadius.circular(12),
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(12),
+            onTap: () {
+              Navigator.of(context).pushNamed(ElectronicCourseDetailScreen.routeName, arguments: courseId);
+            },
             child: Row(
               children: [
                 SizedBox(
