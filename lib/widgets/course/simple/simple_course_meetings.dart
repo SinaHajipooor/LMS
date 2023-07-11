@@ -18,6 +18,7 @@ class _SimpleCourseMeetingsState extends State<SimpleCourseMeetings> {
       context: context,
       dialogType: DialogType.info,
       animType: AnimType.scale,
+      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SingleChildScrollView(physics: const BouncingScrollPhysics(), child: CourseMeetingDetails(meeting: meeting)),
       btnOk: ElevatedButton(
         onPressed: () => Navigator.of(context).pop(),

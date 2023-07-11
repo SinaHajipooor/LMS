@@ -16,6 +16,7 @@ class _PaymentByGatewayState extends State<PaymentByGateway> {
   void showInputDialog() {
     AwesomeDialog(
       context: context,
+      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
       dialogType: DialogType.info,
       animType: AnimType.scale,
       body: SingleChildScrollView(

@@ -94,6 +94,7 @@ class _ExamScreenState extends State<ExamScreen> {
       context: context,
       dialogType: DialogType.warning,
       title: 'پایان آزمون',
+      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
       titleTextStyle: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 17),
       desc: 'آیا از اتمام آزمون خود اطمینان دارید ؟',
       descTextStyle: const TextStyle(fontSize: 13),

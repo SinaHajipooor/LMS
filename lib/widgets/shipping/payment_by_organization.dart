@@ -14,6 +14,7 @@ class _PaymentByOrganizationState extends State<PaymentByOrganization> {
       context: context,
       dialogType: DialogType.success,
       animType: AnimType.scale,
+      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SizedBox(
         height: 100,
         child: Center(
@@ -37,6 +38,7 @@ class _PaymentByOrganizationState extends State<PaymentByOrganization> {
   void showInputDialog() {
     AwesomeDialog(
       context: context,
+      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
       dialogType: DialogType.warning,
       animType: AnimType.scale,
       body: SizedBox(

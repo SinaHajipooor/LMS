@@ -22,6 +22,7 @@ class _UserInfoListState extends State<UserInfoList> {
   void _showConfirmationAlert(BuildContext context) {
     AwesomeDialog(
       context: context,
+      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
       dialogType: DialogType.warning,
       title: 'خروج از حساب',
       titleTextStyle: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 17),

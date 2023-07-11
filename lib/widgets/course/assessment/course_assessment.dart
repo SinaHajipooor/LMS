@@ -12,6 +12,7 @@ class CourseAssessment extends StatelessWidget {
     AwesomeDialog(
       context: context,
       dialogType: DialogType.warning,
+      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
       title: 'شروع ارزیابی',
       titleTextStyle: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 17),
       desc: 'آیا مطمعن هستید که ارزیابی را شروع می کنید ؟',

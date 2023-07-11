@@ -69,6 +69,7 @@ class _CourseAssessmentScreenState extends State<CourseAssessmentScreen> {
       context: context,
       dialogType: DialogType.warning,
       title: 'اتمام ارزشیابی',
+      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
       titleTextStyle: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 17),
       desc: 'همه‌ی پاسخ ها را ثبت می‌کنید ؟',
       descTextStyle: const TextStyle(fontSize: 13),

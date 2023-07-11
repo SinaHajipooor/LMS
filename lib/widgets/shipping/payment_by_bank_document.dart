@@ -14,6 +14,7 @@ class _PaymentByBankDocumentState extends State<PaymentByBankDocument> {
     AwesomeDialog(
       context: context,
       dialogType: DialogType.info,
+      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
       animType: AnimType.scale,
       body: const SingleChildScrollView(
         physics: BouncingScrollPhysics(),
