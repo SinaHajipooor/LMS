@@ -137,7 +137,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                         delegate: SliverChildListDelegate.fixed(
                           [
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
-                              return CourseName(courseName: myProvider.courseDetails['title']);
+                              return CourseName(courseName: myProvider.courseDetails['title'] ?? '_');
                             }),
                             const SizedBox(height: 25),
                             const CourseTeachersList(),
@@ -145,7 +145,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
                               return CourseImage(
                                 imageUrl: myProvider.courseDetails['main_image'],
-                                lessonName: myProvider.courseDetails['lesson_id'],
+                                lessonName: myProvider.courseDetails['lesson_id'] ?? '_',
                               );
                             }),
                             Padding(
@@ -156,14 +156,14 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                               ),
                             ),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
-                              return CourseDetailText(description: myProvider.courseDetails['description']);
+                              return CourseDetailText(description: myProvider.courseDetails['description'] ?? 'توضیحی وجود ندارد !!');
                             }),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
                               return CourseDetailCards(
-                                seasonsCount: myProvider.courseDetails['seasons_count'],
-                                sessionCount: myProvider.courseDetails['sessions_count'],
-                                time: myProvider.courseDetails['time'],
-                                studentsCount: myProvider.courseDetails['students_count'],
+                                seasonsCount: myProvider.courseDetails['seasons_count'] ?? 0,
+                                sessionCount: myProvider.courseDetails['sessions_count'] ?? 0,
+                                time: myProvider.courseDetails['time'] ?? '0',
+                                studentsCount: myProvider.courseDetails['students_count'] ?? 0,
                               );
                             }),
                             const SizedBox(height: 15),
@@ -173,23 +173,23 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                                 children: [
                                   Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
                                     return CourseResourcesCard(
-                                      seasons: myProvider.courseDetails['seasons'],
-                                      courseId: myProvider.courseDetails['id'],
+                                      seasons: myProvider.courseDetails['seasons'] ?? [],
+                                      courseId: myProvider.courseDetails['id'] ?? 0,
                                       imageUrl: myProvider.courseDetails['main_image'],
-                                      courseName: myProvider.courseDetails['title'],
-                                      coursePeriod: myProvider.courseDetails['time'],
-                                      studentsCount: myProvider.courseDetails['students_count'],
+                                      courseName: myProvider.courseDetails['title'] ?? '_',
+                                      coursePeriod: myProvider.courseDetails['time'] ?? '_',
+                                      studentsCount: myProvider.courseDetails['students_count'] ?? 0,
                                     );
                                   }),
                                   Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
-                                    return CourseAssessment(courseId: myProvider.courseDetails['id']);
+                                    return CourseAssessment(courseId: myProvider.courseDetails['id'] ?? 0);
                                   }),
                                 ],
                               ),
                             ),
                             const SizedBox(height: 20),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
-                              return CourseExamsList(title: 'آزمون‌ها', exams: myProvider.courseDetails['exams'], courseId: myProvider.courseDetails['id']);
+                              return CourseExamsList(title: 'آزمون‌ها', exams: myProvider.courseDetails['exams'] ?? [], courseId: myProvider.courseDetails['id'] ?? 0);
                             }),
                             const SizedBox(height: 20),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
@@ -197,7 +197,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                             }),
                             const SizedBox(height: 15),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
-                              return CoursePriceCard(amount: myProvider.courseDetails['amount'], discount: myProvider.courseDetails['discount'], finalAmount: myProvider.courseDetails['final_amount']);
+                              return CoursePriceCard(amount: myProvider.courseDetails['amount'] ?? '_', discount: myProvider.courseDetails['discount'] ?? '_', finalAmount: myProvider.courseDetails['final_amount'] ?? '_');
                             }),
                             const SizedBox(height: 20),
                             const CourseCommentsList(),
