@@ -1,4 +1,3 @@
-import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -51,49 +50,46 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => MyThemeModel()),
       ],
       child: Consumer<MyThemeModel>(
-        builder: (ctx, themeModel, _) {
-          return ThemeProvider(
-            initTheme: _themeHelper.getLightTheme(),
-            child: MaterialApp(
-              locale: const Locale('fa', 'IR'),
-              localizationsDelegates: const [
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: const [
-                Locale('fa'),
-                Locale('en', 'US'),
-              ],
-              title: 'LMS',
-              debugShowCheckedModeBanner: false,
-              themeMode: themeModel.themeMode,
-              theme: _themeHelper.getLightTheme(),
-              darkTheme: _themeHelper.getDarkTheme(),
-              home: const Directionality(
-                textDirection: TextDirection.rtl,
-                child: SplashScreen(),
-              ),
-              routes: {
-                SplashScreen.routeName: (ctx) => const SplashScreen(),
-                LandingScreen.routeName: (ctx) => const LandingScreen(),
-                HomeScreen.routeName: (ctx) => const HomeScreen(),
-                StudentsDashbordScreen.routeName: (ctx) => StudentsDashbordScreen(),
-                ExamScreen.routeName: (ctx) => const ExamScreen(),
-                ExamResultScreen.routeName: (ctx) => const ExamResultScreen(),
-                ElectronicCourseDetailScreen.routeName: (ctx) => const ElectronicCourseDetailScreen(),
-                CourseAssessmentScreen.routeName: (ctx) => const CourseAssessmentScreen(),
-                SimpleCoursesScreen.routeName: (ctx) => const SimpleCoursesScreen(),
-                SimpleCourseDetailScreen.routeName: (ctx) => const SimpleCourseDetailScreen(),
-                UserProfileScreen.routeName: (ctx) => const UserProfileScreen(),
-                PresenceScreen.routeName: (ctx) => const PresenceScreen(),
-                CourseShippingScreen.routeName: (ctx) => const CourseShippingScreen(),
-                UserBirthCertificateScreen.routeName: (ctx) => const UserBirthCertificateScreen(),
-                UserEducationScreen.routeName: (ctx) => const UserEducationScreen(),
-                UserJobInfoScreen.routeName: (ctx) => const UserJobInfoScreen(),
-                AuthScreen.routeName: (ctx) => const AuthScreen(),
-              },
+        builder: (ctx, myThemeModel, _) {
+          return MaterialApp(
+            locale: const Locale('fa', 'IR'),
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('fa'),
+              Locale('en', 'US'),
+            ],
+            title: 'LMS',
+            debugShowCheckedModeBanner: false,
+            themeMode: myThemeModel.themeMode,
+            theme: _themeHelper.getLightTheme(),
+            darkTheme: _themeHelper.getDarkTheme(),
+            home: const Directionality(
+              textDirection: TextDirection.rtl,
+              child: SplashScreen(),
             ),
+            routes: {
+              SplashScreen.routeName: (ctx) => const SplashScreen(),
+              LandingScreen.routeName: (ctx) => const LandingScreen(),
+              HomeScreen.routeName: (ctx) => const HomeScreen(),
+              StudentsDashbordScreen.routeName: (ctx) => StudentsDashbordScreen(),
+              ExamScreen.routeName: (ctx) => const ExamScreen(),
+              ExamResultScreen.routeName: (ctx) => const ExamResultScreen(),
+              ElectronicCourseDetailScreen.routeName: (ctx) => const ElectronicCourseDetailScreen(),
+              CourseAssessmentScreen.routeName: (ctx) => const CourseAssessmentScreen(),
+              SimpleCoursesScreen.routeName: (ctx) => const SimpleCoursesScreen(),
+              SimpleCourseDetailScreen.routeName: (ctx) => const SimpleCourseDetailScreen(),
+              UserProfileScreen.routeName: (ctx) => const UserProfileScreen(),
+              PresenceScreen.routeName: (ctx) => const PresenceScreen(),
+              CourseShippingScreen.routeName: (ctx) => const CourseShippingScreen(),
+              UserBirthCertificateScreen.routeName: (ctx) => const UserBirthCertificateScreen(),
+              UserEducationScreen.routeName: (ctx) => const UserEducationScreen(),
+              UserJobInfoScreen.routeName: (ctx) => const UserJobInfoScreen(),
+              AuthScreen.routeName: (ctx) => const AuthScreen(),
+            },
           );
         },
       ),
