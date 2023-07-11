@@ -9,6 +9,7 @@ import 'package:lms/screens/course/course_shipping_screen.dart';
 import 'package:lms/screens/course/simple_course_detail_screen.dart';
 import 'package:lms/screens/exam/exam_result_screen.dart';
 import 'package:lms/screens/profile/activities_info_screen.dart';
+import 'package:lms/screens/profile/compilations_and_translations_screen.dart';
 import 'package:lms/screens/profile/external_passed_courses_screen.dart';
 import 'package:lms/screens/profile/internal_passed_courses_screen.dart';
 import 'package:lms/screens/profile/non_university_teaching_history_screen.dart';
@@ -98,6 +99,7 @@ class MyApp extends StatelessWidget {
               ExternalPassedCoursesScreen.routeName: (ctx) => const ExternalPassedCoursesScreen(),
               UniversityTeachingHistoryScreen.routeName: (ctx) => const UniversityTeachingHistoryScreen(),
               NonUniversityTeachingHistoryScreen.routeName: (ctx) => const NonUniversityTeachingHistoryScreen(),
+              CompilationsAndTranslationsScreen.routeName: (ctx) => const CompilationsAndTranslationsScreen(),
               AuthScreen.routeName: (ctx) => const AuthScreen(),
             },
           );

@@ -4,6 +4,7 @@ import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/profile/activities_info_screen.dart';
+import 'package:lms/screens/profile/compilations_and_translations_screen.dart';
 import 'package:lms/screens/profile/external_passed_courses_screen.dart';
 import 'package:lms/screens/profile/internal_passed_courses_screen.dart';
 import 'package:lms/screens/profile/non_university_teaching_history_screen.dart';
@@ -189,7 +190,7 @@ class _UserInfoListState extends State<UserInfoList> {
                   image: AssetImage('assets/images/icons/job.png'),
                 ),
               ),
-              onTap: () => Navigator.of(context).pushNamed(UserJobInfoScreen.routeName),
+              onTap: () => Navigator.of(context).pushNamed(CompilationsAndTranslationsScreen.routeName),
               title: Text(
                 'تالیفات و ترجمات',
                 style: theme.textTheme.titleMedium,
