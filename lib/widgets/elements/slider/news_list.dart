@@ -45,26 +45,45 @@ class _NewsListState extends State<NewsList> with SingleTickerProviderStateMixin
         } else {
           return Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
-                child: Row(
+              Visibility(
+                visible: widget.newsList.isNotEmpty,
+                child: Column(
                   children: [
-                    Expanded(child: _buildNewsItem(widget.newsList[0])),
-                    const SizedBox(width: 5),
-                    Expanded(child: _buildNewsItem(widget.newsList[1])),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
+                      child: Row(
+                        children: [
+                          Expanded(child: _buildNewsItem(widget.newsList[0])),
+                          const SizedBox(width: 5),
+                          Expanded(child: _buildNewsItem(widget.newsList[1])),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
+                      child: Row(
+                        children: [
+                          Expanded(child: _buildNewsItem(widget.newsList[2])),
+                          const SizedBox(width: 5),
+                          Expanded(child: _buildNewsItem(widget.newsList[3])),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
-                child: Row(
-                  children: [
-                    Expanded(child: _buildNewsItem(widget.newsList[2])),
-                    const SizedBox(width: 5),
-                    Expanded(child: _buildNewsItem(widget.newsList[3])),
-                  ],
+              Visibility(
+                visible: widget.newsList.isEmpty,
+                child: SizedBox(
+                  height: 200,
+                  child: Center(
+                    child: Text(
+                      'اخباری وجود ندارد ! ',
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.normal),
+                    ),
+                  ),
                 ),
-              ),
+              )
             ],
           );
         }

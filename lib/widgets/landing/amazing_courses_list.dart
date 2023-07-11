@@ -8,15 +8,31 @@ class AmazingCoursesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final amazingCourses = AppDatabase.posts;
-    return ListView.builder(
-      itemExtent: 141,
-      shrinkWrap: true,
-      itemCount: amazingCourses.length,
-      physics: const ClampingScrollPhysics(),
-      itemBuilder: (context, index) {
-        final amazingCourse = amazingCourses[index];
-        return AmazingCourseItem(amazingCourse: amazingCourse);
-      },
+    return Column(
+      children: [
+        Visibility(
+          visible: amazingCourses.isNotEmpty,
+          child: ListView.builder(
+            itemExtent: 141,
+            shrinkWrap: true,
+            itemCount: amazingCourses.length,
+            physics: const ClampingScrollPhysics(),
+            itemBuilder: (context, index) {
+              final amazingCourse = amazingCourses[index];
+              return AmazingCourseItem(amazingCourse: amazingCourse);
+            },
+          ),
+        ),
+        Visibility(
+          visible: amazingCourses.isEmpty,
+          child: SizedBox(
+            height: 150,
+            child: Center(
+              child: Text('دوره‌ای وجود ندارد !', style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.normal)),
+            ),
+          ),
+        )
+      ],
     );
   }
 }
