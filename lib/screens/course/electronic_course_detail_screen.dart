@@ -94,7 +94,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     final theme = Theme.of(context);
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
     final lightShadowColors = [Colors.white, Colors.white.withOpacity(0)];
     final darkShadowColors = [theme.scaffoldBackgroundColor, theme.scaffoldBackgroundColor.withOpacity(0)];
     return WillPopScope(

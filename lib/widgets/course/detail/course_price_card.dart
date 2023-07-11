@@ -19,7 +19,7 @@ class CoursePriceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
     return SizedBox(
       height: 70,
       width: deviceSize.width,

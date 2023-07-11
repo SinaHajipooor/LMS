@@ -61,7 +61,7 @@ class _UserInfoCardState extends State<UserInfoCard> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
     return SizedBox(
       height: 200,
       child: Card(

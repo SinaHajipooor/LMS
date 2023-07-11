@@ -48,7 +48,7 @@ class _UserInfoListState extends State<UserInfoList> {
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     final theme = Theme.of(context);
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
     return Padding(
       padding: EdgeInsets.only(top: deviceSize.height / 2.5),
       child: ListView(

@@ -40,7 +40,7 @@ class _TeachersPanelDrawerState extends State<TeachersPanelDrawer> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
 
     return Drawer(
       backgroundColor: themeMode == ThemeMode.dark ? theme.cardTheme.color : Colors.white,
@@ -77,7 +77,7 @@ class _TeachersPanelDrawerState extends State<TeachersPanelDrawer> {
                 top: 16.0,
                 left: 12.0,
                 child: InkWell(
-                  onTap: () => Provider.of<ThemeModel>(context, listen: false).toggleTheme(),
+                  onTap: () => Provider.of<MyThemeModel>(context, listen: false).toggleTheme(),
                   child: Image.asset(
                     themeMode == ThemeMode.light ? 'assets/images/icons/night.png' : 'assets/images/icons/sun.png',
                     color: Colors.white,

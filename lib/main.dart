@@ -47,10 +47,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ElectronicCourseProvider()),
         ChangeNotifierProvider(create: (_) => SimpleCourseProvider()),
         ChangeNotifierProvider(create: (_) => TeachersPanelProvider()),
-        ChangeNotifierProvider(create: (_) => ThemeModel()),
+        ChangeNotifierProvider(create: (_) => MyThemeModel()),
       ],
-      child: Consumer<ThemeModel>(
-        builder: (ctx, themeModel, _) {
+      child: Consumer<MyThemeModel>(
+        builder: (ctx, myThemeModel, _) {
           return MaterialApp(
             locale: const Locale('fa', 'IR'),
             localizationsDelegates: const [
@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
             ],
             title: 'LMS',
             debugShowCheckedModeBanner: false,
-            themeMode: themeModel.themeMode,
+            themeMode: myThemeModel.themeMode,
             theme: _themeHelper.getLightTheme(),
             darkTheme: _themeHelper.getDarkTheme(),
             home: const Directionality(
