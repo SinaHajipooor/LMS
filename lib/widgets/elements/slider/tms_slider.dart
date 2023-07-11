@@ -18,6 +18,7 @@ class _TmsSliderState extends State<TmsSlider> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Column(
       children: [
         const SizedBox(height: 30),
@@ -37,64 +38,79 @@ class _TmsSliderState extends State<TmsSlider> {
           ],
         ),
         const SizedBox(height: 30),
-        CarouselSlider(
-          carouselController: _controller,
-          options: CarouselOptions(
-            height: 165,
-            autoPlay: true,
-            aspectRatio: 16 / 9,
-            autoPlayCurve: Curves.fastOutSlowIn,
-            enableInfiniteScroll: true,
-            autoPlayAnimationDuration: const Duration(milliseconds: 600),
-            viewportFraction: 0.46,
-          ),
-          items: widget.tmsList.map((item) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Column(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        child: AspectRatio(
-                          aspectRatio: 16 / 9,
-                          child: ClipRRect(
+        Visibility(
+          visible: widget.tmsList.isNotEmpty,
+          child: CarouselSlider(
+            carouselController: _controller,
+            options: CarouselOptions(
+              height: 165,
+              autoPlay: true,
+              aspectRatio: 16 / 9,
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enableInfiniteScroll: true,
+              autoPlayAnimationDuration: const Duration(milliseconds: 600),
+              viewportFraction: 0.46,
+            ),
+            items: widget.tmsList.map((item) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return Column(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                          decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12.0),
-                            child: Image.network(
-                              item["logo"],
-                              fit: BoxFit.cover,
-                              loadingBuilder: (context, child, progress) {
-                                if (progress == null) return child;
-                                return const Center(
-                                  child: Spinner(size: 30),
-                                );
-                              },
+                          ),
+                          child: AspectRatio(
+                            aspectRatio: 16 / 9,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12.0),
+                              child: Image.network(
+                                item["logo"],
+                                fit: BoxFit.cover,
+                                loadingBuilder: (context, child, progress) {
+                                  if (progress == null) return child;
+                                  return const Center(
+                                    child: Spinner(size: 30),
+                                  );
+                                },
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 8.0),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-                      child: Text(
-                        item['name'],
-                        style: theme.textTheme.bodyMedium,
-                        maxLines: 2,
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
+                      const SizedBox(height: 8.0),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                        child: Text(
+                          item['name'],
+                          style: theme.textTheme.bodyMedium,
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
-                    ),
-                  ],
-                );
-              },
-            );
-          }).toList(),
+                    ],
+                  );
+                },
+              );
+            }).toList(),
+          ),
         ),
+        Visibility(
+          visible: widget.tmsList.isEmpty,
+          child: SizedBox(
+            height: 160,
+            child: Center(
+              child: Text(
+                'مرکز آموزشی وجود ندارد !',
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.normal),
+              ),
+            ),
+          ),
+        )
       ],
     );
   }

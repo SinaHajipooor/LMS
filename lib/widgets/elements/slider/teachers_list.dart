@@ -8,18 +8,37 @@ class TeachersList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final teachers = AppDatabase.stories;
-    return SizedBox(
-      height: 110,
-      child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        itemCount: teachers.length,
-        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-        itemBuilder: (context, index) {
-          final teacher = teachers[index];
-          return TeacherItem(teacher: teacher);
-        },
-      ),
+    return Column(
+      children: [
+        Visibility(
+          visible: teachers.isNotEmpty,
+          child: SizedBox(
+            height: 110,
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              itemCount: teachers.length,
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+              itemBuilder: (context, index) {
+                final teacher = teachers[index];
+                return TeacherItem(teacher: teacher);
+              },
+            ),
+          ),
+        ),
+        Visibility(
+          visible: teachers.isEmpty,
+          child: SizedBox(
+            height: 110,
+            child: Center(
+              child: Text(
+                'مدرس وجود ندارد !',
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.normal),
+              ),
+            ),
+          ),
+        )
+      ],
     );
   }
 }

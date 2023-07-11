@@ -137,7 +137,7 @@ class _SimpleCourseDetailScreenState extends State<SimpleCourseDetailScreen> {
                         delegate: SliverChildListDelegate.fixed(
                           [
                             Consumer<SimpleCourseProvider>(builder: (context, myProvider, child) {
-                              return CourseName(courseName: myProvider.courseDetails['title']);
+                              return CourseName(courseName: myProvider.courseDetails['title'] ?? '_');
                             }),
                             const SizedBox(height: 25),
                             const CourseTeachersList(),
@@ -146,7 +146,7 @@ class _SimpleCourseDetailScreenState extends State<SimpleCourseDetailScreen> {
                               builder: (context, myProvider, child) {
                                 return CourseImage(
                                   imageUrl: myProvider.courseDetails['main_image'],
-                                  lessonName: myProvider.courseDetails['lesson_id'],
+                                  lessonName: myProvider.courseDetails['lesson_id'] ?? '_',
                                 );
                               },
                             ),
@@ -159,22 +159,22 @@ class _SimpleCourseDetailScreenState extends State<SimpleCourseDetailScreen> {
                             ),
                             Consumer<SimpleCourseProvider>(
                               builder: (context, myProvider, child) {
-                                return CourseDetailText(description: myProvider.courseDetails['description']);
+                                return CourseDetailText(description: myProvider.courseDetails['description'] ?? 'نوضیحی وجود ندارد !');
                               },
                             ),
                             Consumer<SimpleCourseProvider>(builder: (context, myProvider, child) {
                               return CourseDetailCards(
-                                seasonsCount: myProvider.courseDetails['seasons_count'],
-                                sessionCount: myProvider.courseDetails['sessions_count'],
-                                time: myProvider.courseDetails['time'],
-                                studentsCount: myProvider.courseDetails['students_count'],
+                                seasonsCount: myProvider.courseDetails['seasons_count'] ?? 0,
+                                sessionCount: myProvider.courseDetails['sessions_count'] ?? 0,
+                                time: myProvider.courseDetails['time'] ?? '_',
+                                studentsCount: myProvider.courseDetails['students_count'] ?? 0,
                               );
                             }),
                             const SizedBox(height: 15),
                             const CourseFilesDrawer(),
                             const SizedBox(height: 20),
                             Consumer<SimpleCourseProvider>(builder: (context, myprovider, child) {
-                              return SimpleCourseMeetings(meetings: myprovider.courseDetails['meetings']);
+                              return SimpleCourseMeetings(meetings: myprovider.courseDetails['meetings'] ?? []);
                             }),
                             const SizedBox(height: 15),
                             const CourseCommentsList(),
