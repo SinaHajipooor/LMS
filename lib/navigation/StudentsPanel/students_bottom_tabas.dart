@@ -35,7 +35,7 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
     return Scaffold(
       body: Stack(
         children: [

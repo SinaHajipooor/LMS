@@ -10,7 +10,7 @@ class AmazingCourseItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
     return Container(
       height: 149,
       margin: const EdgeInsets.fromLTRB(16, 8, 16, 8),

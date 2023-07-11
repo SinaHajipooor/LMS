@@ -33,7 +33,7 @@ class _SimpleCourseMeetingsState extends State<SimpleCourseMeetings> {
   bool _isExpanded = false;
   @override
   Widget build(BuildContext context) {
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
 
     return InkWell(
       onTap: () {

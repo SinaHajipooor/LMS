@@ -35,7 +35,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
     final theme = Theme.of(context);
     return WillPopScope(
       onWillPop: () async {

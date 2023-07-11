@@ -41,7 +41,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
     return Drawer(
       backgroundColor: themeMode == ThemeMode.dark ? theme.cardTheme.color : Colors.white,
       child: ListView(
@@ -76,34 +76,21 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
               Positioned(
                 top: 16.0,
                 left: 12.0,
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 500),
-                  transitionBuilder: (Widget child, Animation<double> animation) {
-                    return FadeTransition(
-                      opacity: animation,
-                      child: ScaleTransition(
-                        scale: animation,
-                        child: child,
-                      ),
-                    );
+                child: InkWell(
+                  onTap: () {
+                    Provider.of<MyThemeModel>(context, listen: false).toggleTheme();
                   },
-                  child: InkWell(
-                    onTap: () {
-                      Provider.of<ThemeModel>(context, listen: false).toggleTheme();
-                    },
-                    child: Image.asset(
-                      themeMode == ThemeMode.light ? 'assets/images/icons/night.png' : 'assets/images/icons/sun.png',
-                      key: ValueKey(themeMode), // Update when the theme changes
-                      color: Colors.white,
-                      width: 30,
-                      height: 30,
-                    ),
+                  child: Image.asset(
+                    themeMode == ThemeMode.light ? 'assets/images/icons/night.png' : 'assets/images/icons/sun.png',
+                    key: ValueKey(themeMode), // Update when the theme changes
+                    color: Colors.white,
+                    width: 30,
+                    height: 30,
                   ),
                 ),
               ),
             ],
           ),
-
           InkWell(
             onTap: () {
               Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);

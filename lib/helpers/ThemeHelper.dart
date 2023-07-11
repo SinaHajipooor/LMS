@@ -62,7 +62,7 @@ class ThemeHelper with ChangeNotifier {
   }
 }
 
-class ThemeModel with ChangeNotifier {
+class MyThemeModel with ChangeNotifier {
   ThemeModeType _themeMode = ThemeModeType.light;
 
   ThemeMode get themeMode => _themeMode == ThemeModeType.light ? ThemeMode.light : ThemeMode.dark;

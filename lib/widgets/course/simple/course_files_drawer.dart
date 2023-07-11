@@ -45,7 +45,7 @@ class _CourseFilesDrawerState extends State<CourseFilesDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
 
     return InkWell(
       onTap: () {

@@ -70,7 +70,7 @@ class _OtpLoginState extends State<OtpLogin> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
     final remainingDuration = Duration(seconds: _startSeconds);
     final remaining = '${remainingDuration.inMinutes.remainder(60).toString().padLeft(2, '0')}:${remainingDuration.inSeconds.remainder(60).toString().padLeft(2, '0')}';
     final PinDecoration pinDecoration = BoxLooseDecoration(

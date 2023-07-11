@@ -19,7 +19,7 @@ class _CourseSeasonCardState extends State<CourseSeasonCard> {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
     return InkWell(
       onTap: () {
         setState(() {

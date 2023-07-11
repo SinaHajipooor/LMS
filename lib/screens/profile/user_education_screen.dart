@@ -69,7 +69,7 @@ class _UserEducationScreenState extends State<UserEducationScreen> {
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     final theme = Theme.of(context);
-    final themeMode = Provider.of<ThemeModel>(context).themeMode;
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
