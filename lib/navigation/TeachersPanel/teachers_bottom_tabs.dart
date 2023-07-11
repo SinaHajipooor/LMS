@@ -50,9 +50,8 @@ class _TeachersBottomTabsState extends State<TeachersBottomTabs> {
                     color: Theme.of(context).scaffoldBackgroundColor,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(.1),
-                        blurRadius: 30,
-                        offset: const Offset(0, 10),
+                        color: themeMode == ThemeMode.light ? Colors.black.withOpacity(.1) : Colors.blue.withOpacity(.1),
+                        blurRadius: 6,
                       ),
                     ],
                     borderRadius: BorderRadius.circular(20),
