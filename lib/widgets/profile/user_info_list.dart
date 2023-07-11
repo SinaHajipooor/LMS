@@ -6,6 +6,8 @@ import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/profile/activities_info_screen.dart';
 import 'package:lms/screens/profile/external_passed_courses_screen.dart';
 import 'package:lms/screens/profile/internal_passed_courses_screen.dart';
+import 'package:lms/screens/profile/non_university_teaching_history_screen.dart';
+import 'package:lms/screens/profile/university_taeching_history_screen.dart';
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:lms/screens/profile/user_birth_certificate_form.dart';
 import 'package:lms/screens/profile/user_education_screen.dart';
@@ -155,7 +157,7 @@ class _UserInfoListState extends State<UserInfoList> {
                   image: AssetImage('assets/images/icons/job.png'),
                 ),
               ),
-              onTap: () => Navigator.of(context).pushNamed(UserJobInfoScreen.routeName),
+              onTap: () => Navigator.of(context).pushNamed(UniversityTeachingHistoryScreen.routeName),
               title: Text(
                 'سوابق تدریس دانشگاهی',
                 style: theme.textTheme.titleMedium,
@@ -171,7 +173,7 @@ class _UserInfoListState extends State<UserInfoList> {
                   image: AssetImage('assets/images/icons/job.png'),
                 ),
               ),
-              onTap: () => Navigator.of(context).pushNamed(UserJobInfoScreen.routeName),
+              onTap: () => Navigator.of(context).pushNamed(NonUniversityTeachingHistoryScreen.routeName),
               title: Text(
                 'سوابق تدریس غیر دانشگاهی',
                 style: theme.textTheme.titleMedium,

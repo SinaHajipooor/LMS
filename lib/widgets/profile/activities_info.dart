@@ -19,6 +19,7 @@ class _ActivitiesInfoState extends State<ActivitiesInfo> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
+      physics: const BouncingScrollPhysics(),
       child: Card(
         elevation: 1,
         child: DataTable(

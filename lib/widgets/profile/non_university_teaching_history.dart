@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ExternalPassedCoursesInfo extends StatefulWidget {
-  const ExternalPassedCoursesInfo({super.key});
+class NonUniversityTeachingHistory extends StatefulWidget {
+  const NonUniversityTeachingHistory({super.key});
 
   @override
-  State<ExternalPassedCoursesInfo> createState() => _ExternalPassedCoursesInfoState();
+  State<NonUniversityTeachingHistory> createState() => _NonUniversityTeachingHistoryState();
 }
 
-class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
+class _NonUniversityTeachingHistoryState extends State<NonUniversityTeachingHistory> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -22,11 +22,11 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
           dataRowHeight: 50,
           columns: [
             const DataColumn(label: Center(child: Text('عنوان', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-            const DataColumn(label: Center(child: Text('نام موسسه', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
             const DataColumn(label: Center(child: Text('آدرس', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
+            const DataColumn(label: Center(child: Text('موضوع ارائه شده', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
             const DataColumn(label: Center(child: Text('زمان شروع', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
             const DataColumn(label: Center(child: Text('زمان پایان', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-            const DataColumn(label: Center(child: Text('مدت', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
+            const DataColumn(label: Center(child: Text('فعالیت جاری', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
             const DataColumn(label: Center(child: Text('عملیات', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
             const DataColumn(label: Center(child: Text('انتخاب', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
           ],
