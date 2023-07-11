@@ -8,6 +8,7 @@ import 'package:lms/screens/auth/auth_screen.dart';
 import 'package:lms/screens/course/course_shipping_screen.dart';
 import 'package:lms/screens/course/simple_course_detail_screen.dart';
 import 'package:lms/screens/exam/exam_result_screen.dart';
+import 'package:lms/screens/profile/activities_info_screen.dart';
 import 'package:lms/screens/profile/user_birth_certificate_form.dart';
 import 'package:lms/screens/profile/user_education_screen.dart';
 import 'package:lms/screens/profile/user_job_info_screen.dart';
@@ -88,6 +89,7 @@ class MyApp extends StatelessWidget {
               UserBirthCertificateScreen.routeName: (ctx) => const UserBirthCertificateScreen(),
               UserEducationScreen.routeName: (ctx) => const UserEducationScreen(),
               UserJobInfoScreen.routeName: (ctx) => const UserJobInfoScreen(),
+              ActivitiesInfoScreen.routeName: (ctx) => const ActivitiesInfoScreen(),
               AuthScreen.routeName: (ctx) => const AuthScreen(),
             },
           );
