@@ -36,7 +36,7 @@ class ElectronicCourseItem extends StatelessWidget {
         margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
         height: 130,
         child: Card(
-          elevation: 2,
+          elevation: 1,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
