@@ -27,7 +27,6 @@ class SimpleCourseItem extends StatelessWidget {
   //---------------- UI -----------------
   @override
   Widget build(BuildContext context) {
-    final deviceSize = MediaQuery.of(context).size;
     final theme = Theme.of(context);
     return InkWell(
       onTap: () {
@@ -36,18 +35,20 @@ class SimpleCourseItem extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         height: 130,
-        width: deviceSize.width - 20,
         child: Card(
-          elevation: 0.5,
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
             child: Row(
               children: [
                 SizedBox(
                   width: 130,
                   height: 120,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(12),
                     child: TweenAnimationBuilder<double>(
                       duration: const Duration(milliseconds: 600),
                       tween: Tween<double>(begin: 0, end: 1),
