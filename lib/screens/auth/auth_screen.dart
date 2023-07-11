@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/screens/auth/phone_number_login.dart';
 import 'package:lms/screens/auth/user_pass_login.dart';
+import 'package:provider/provider.dart';
 
 class AuthScreen extends StatefulWidget {
   static const routeName = '/auth-screen';
@@ -30,6 +32,7 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
     return Scaffold(
       body: Column(
         children: [
@@ -40,6 +43,7 @@ class _AuthScreenState extends State<AuthScreen> {
               'assets/images/avatar-edu.png',
               width: 130,
               height: 130,
+              color: themeMode == ThemeMode.dark ? Colors.white : Colors.black,
             ),
           ),
           Expanded(
@@ -83,7 +87,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: themeData.colorScheme.surface,
+                        color: themeData.scaffoldBackgroundColor,
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(32),
                           topRight: Radius.circular(32),

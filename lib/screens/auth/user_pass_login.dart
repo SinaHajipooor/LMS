@@ -37,6 +37,7 @@ class _UserPassLoginState extends State<UserPassLogin> {
   // ------------------------ UI ------------------------
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).textTheme;
     return _isLoading
         ? const Center(child: Spinner(size: 20))
         : SingleChildScrollView(
@@ -47,17 +48,18 @@ class _UserPassLoginState extends State<UserPassLogin> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       'به سیستم یادگیری الکترونیک خوش آمدید',
-                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                      style: theme.bodyLarge,
                     ),
                     const SizedBox(height: 8),
                     Text(
                       'اطلاعات کاربری خود را وارد کنید',
-                      style: TextStyle(fontSize: 13, color: Colors.grey.shade700),
+                      style: theme.bodySmall!.copyWith(fontSize: 12),
                     ),
                     const SizedBox(height: 26),
                     TextFormField(
+                      style: theme.bodyMedium!.copyWith(fontSize: 17),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'از صحت نام‌کاربری خود مطمئن شوید';
@@ -71,10 +73,10 @@ class _UserPassLoginState extends State<UserPassLogin> {
                       onSaved: (String? value) {
                         _username = value!;
                       },
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         label: Text(
                           'نام کاربری',
-                          style: TextStyle(fontSize: 11),
+                          style: theme.bodySmall,
                         ),
                       ),
                     ),
@@ -95,20 +97,21 @@ class _UserPassLoginState extends State<UserPassLogin> {
                       enableSuggestions: false,
                       autocorrect: false,
                       obscureText: _isObscure,
+                      style: theme.bodyMedium!.copyWith(fontSize: 17),
                       decoration: InputDecoration(
-                        label: const Text(
+                        label: Text(
                           'رمز عبور',
-                          style: TextStyle(fontSize: 11),
+                          style: theme.bodySmall,
                         ),
-                        suffix: InkWell(
-                          onTap: () {
+                        suffixIcon: IconButton(
+                          onPressed: () {
                             setState(() {
                               _isObscure = !_isObscure;
                             });
                           },
-                          child: Text(
-                            _isObscure ? 'show' : 'Hide',
-                            style: TextStyle(fontSize: 14, color: Theme.of(context).colorScheme.primary),
+                          icon: Icon(
+                            _isObscure ? Icons.visibility_off : Icons.visibility,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                         ),
                       ),
