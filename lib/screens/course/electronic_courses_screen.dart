@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
-import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/course/electronic/electronic_courses_list.dart';
@@ -79,7 +78,7 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
               unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal, fontFamily: 'YekanBakh', fontSize: 12),
               labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'YekanBakh', fontSize: 14),
               isScrollable: true,
-              indicatorColor: Provider.of<ThemeModel>(context).themeMode == ThemeMode.dark ? Colors.white : Colors.blue,
+              indicatorColor: Colors.blue,
               labelColor: Colors.blue,
               labelPadding: const EdgeInsets.symmetric(horizontal: 25),
               tabs: List.generate(

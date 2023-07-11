@@ -9,6 +9,8 @@ class ThemeHelper with ChangeNotifier {
       primarySwatch: Colors.blue,
       brightness: Brightness.light,
       scaffoldBackgroundColor: Colors.white,
+      dialogBackgroundColor: Colors.white,
+      bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.white),
       textTheme: const TextTheme(
         titleLarge: TextStyle(fontSize: 18),
         titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -50,6 +52,8 @@ class ThemeHelper with ChangeNotifier {
         bodyMedium: TextStyle(fontSize: 12),
         bodySmall: TextStyle(fontSize: 11),
       ),
+      dialogBackgroundColor: const Color.fromARGB(255, 41, 46, 54),
+      bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Color.fromARGB(255, 41, 46, 54)),
       scaffoldBackgroundColor: const Color.fromARGB(255, 41, 46, 54),
       cardTheme: const CardTheme(
         color: Color.fromARGB(255, 46, 52, 64),

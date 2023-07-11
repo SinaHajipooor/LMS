@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/root/home_screen.dart';
 import 'package:lms/widgets/elements/spinner.dart';
@@ -68,12 +69,14 @@ class _OtpLoginState extends State<OtpLogin> {
   // --------------- UI ----------------
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).textTheme;
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
     final remainingDuration = Duration(seconds: _startSeconds);
     final remaining = '${remainingDuration.inMinutes.remainder(60).toString().padLeft(2, '0')}:${remainingDuration.inSeconds.remainder(60).toString().padLeft(2, '0')}';
     final PinDecoration pinDecoration = BoxLooseDecoration(
       strokeColorBuilder: PinListenColorBuilder(Colors.grey.shade600.withOpacity(0.2), Colors.grey.shade300),
       radius: const Radius.circular(10),
-      textStyle: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
+      textStyle: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: themeMode == ThemeMode.light ? Colors.black : Colors.grey),
       obscureStyle: ObscureStyle(
         isTextObscure: false,
         obscureText: '●',
@@ -93,15 +96,15 @@ class _OtpLoginState extends State<OtpLogin> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('به سیستم یادگیری الکترونیک خوش آمدید', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                  Text('به سیستم یادگیری الکترونیک خوش آمدید', style: theme.bodyLarge),
                   const SizedBox(height: 15),
                   Text.rich(
                     TextSpan(
-                      text: ' ما یک پیامک حاوی کد تایید برای شماره ',
-                      style: TextStyle(fontSize: 12, color: Colors.grey.shade700),
+                      text: ' ما یک پیامک حاوی کد تایید برای شماره  ',
+                      style: theme.bodySmall!.copyWith(fontSize: 12),
                       children: <TextSpan>[
-                        TextSpan(text: widget.mobileNumber, style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15)),
-                        const TextSpan(text: ' ارسال کردیم'),
+                        TextSpan(text: widget.mobileNumber, style: TextStyle(color: themeMode == ThemeMode.dark ? Colors.white : Colors.black, fontSize: 16)),
+                        const TextSpan(text: '  ارسال کردیم'),
                       ],
                     ),
                   ),
@@ -118,7 +121,7 @@ class _OtpLoginState extends State<OtpLogin> {
                       },
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 50),
                   remaining == '00:00'
                       ? Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -127,8 +130,8 @@ class _OtpLoginState extends State<OtpLogin> {
                             TextButton(onPressed: () {}, child: const Text('دوباره ارسال کن', style: TextStyle(fontSize: 11))),
                           ],
                         )
-                      : Center(child: Text('زمان باقی مانده : $remaining', style: TextStyle(fontSize: 14.0, color: Colors.grey.shade800))),
-                  const SizedBox(height: 25),
+                      : Center(child: Text('زمان باقی مانده : $remaining', style: theme.bodySmall!.copyWith(fontSize: 14))),
+                  const SizedBox(height: 30),
                   ElevatedButton(
                     onPressed: mobileConfirmLogin,
                     style: ButtonStyle(

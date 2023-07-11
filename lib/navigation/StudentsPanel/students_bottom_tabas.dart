@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/screens/course/electronic_courses_screen.dart';
 import 'package:lms/screens/course/simple_courses_screen.dart';
 import 'package:lms/screens/students/students_dashbord_screen.dart';
 import 'package:lms/screens/students/educational_document_screen.dart';
+import 'package:provider/provider.dart';
 
 class StudentsBottomTabs extends StatefulWidget {
   final int defaultPageIndex;
@@ -33,6 +35,7 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
+    final themeMode = Provider.of<ThemeModel>(context).themeMode;
     return Scaffold(
       body: Stack(
         children: [
@@ -48,12 +51,11 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
                 width: MediaQuery.of(context).size.width,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Theme.of(context).scaffoldBackgroundColor,
+                    color: Theme.of(context).appBarTheme.backgroundColor,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(.1),
-                        blurRadius: 30,
-                        offset: const Offset(0, 10),
+                        color: themeMode == ThemeMode.light ? Colors.black.withOpacity(.1) : Colors.blue.withOpacity(.1),
+                        blurRadius: 6,
                       ),
                     ],
                     borderRadius: BorderRadius.circular(20),

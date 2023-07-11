@@ -15,6 +15,7 @@ class _UserInfoCardState extends State<UserInfoCard> {
   void showInputDialog() {
     AwesomeDialog(
       context: context,
+      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
       dialogType: DialogType.info,
       animType: AnimType.scale,
       title: 'Input Dialog',

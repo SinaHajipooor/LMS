@@ -47,6 +47,7 @@ class _PresenceScreenState extends State<PresenceScreen> {
       context: context,
       dialogType: DialogType.warning,
       title: 'پایان حضور غیاب',
+      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
       titleTextStyle: const TextStyle(color: Colors.orange, fontWeight: FontWeight.bold, fontSize: 17),
       desc: 'آیا از ثبت لیست حضور غیاب اطمینان دارید ؟',
       descTextStyle: const TextStyle(fontSize: 13),
@@ -60,7 +61,7 @@ class _PresenceScreenState extends State<PresenceScreen> {
       btnOkOnPress: () {
         const snackBar = SnackBar(
           backgroundColor: Colors.green,
-          content: Text('گزارش با موفقیت ثبت شد', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          content: Text('گزارش با موفقیت ثبت شد', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
           duration: Duration(seconds: 3),
         );
         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const TeachersBottomTabs(defaultPageIndex: 0)));

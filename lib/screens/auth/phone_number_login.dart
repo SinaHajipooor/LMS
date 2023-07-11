@@ -38,6 +38,7 @@ class _PhoneNumberLoginState extends State<PhoneNumberLogin> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.fromLTRB(32, 38, 32, 32),
       child: PageView(
@@ -50,16 +51,17 @@ class _PhoneNumberLoginState extends State<PhoneNumberLogin> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('به سیستم یادگیری الکترونیک خوش آمدید', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                      Text('به سیستم یادگیری الکترونیک خوش آمدید', style: theme.bodyLarge),
                       const SizedBox(height: 8),
                       Text(
                         'لطفا شماره موبایل خود را وارد کنید',
-                        style: TextStyle(fontSize: 12, color: Colors.grey.shade700),
+                        style: theme.bodySmall!.copyWith(fontSize: 12),
                       ),
                       const SizedBox(height: 58),
                       Form(
                         key: _formKey,
                         child: TextFormField(
+                          style: theme.bodyMedium!.copyWith(fontSize: 18),
                           keyboardType: TextInputType.phone,
                           validator: (value) {
                             if (value!.isEmpty) {

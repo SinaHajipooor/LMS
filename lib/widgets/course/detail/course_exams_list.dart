@@ -30,6 +30,7 @@ class _CourseExamsListState extends State<CourseExamsList> {
       titleTextStyle: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 17),
       desc: 'آیا مطمعن هستید که آزمون را شروع می کنید ؟',
       descTextStyle: const TextStyle(fontSize: 13),
+      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
       btnCancelColor: Colors.red,
       btnOkColor: const Color.fromARGB(255, 99, 223, 103),
       btnOkText: 'بله',

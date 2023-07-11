@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
-import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:lms/widgets/course/simple/simple_courses_list.dart';
 import 'package:provider/provider.dart';
@@ -78,7 +77,7 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
               labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'YekanBakh', fontSize: 14),
               isScrollable: true,
               labelColor: Colors.blue,
-              indicatorColor: Provider.of<ThemeModel>(context).themeMode == ThemeMode.dark ? Colors.white : Colors.blue,
+              indicatorColor: Colors.blue,
               labelPadding: const EdgeInsets.symmetric(horizontal: 25),
               tabs: List.generate(
                 _courseGroups.length,

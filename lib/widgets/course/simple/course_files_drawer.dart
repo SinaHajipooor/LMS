@@ -19,6 +19,7 @@ class _CourseFilesDrawerState extends State<CourseFilesDrawer> {
       context: context,
       dialogType: DialogType.info,
       animType: AnimType.scale,
+      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: const SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: StudentFilesForm(),
