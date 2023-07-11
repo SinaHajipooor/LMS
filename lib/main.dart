@@ -8,6 +8,12 @@ import 'package:lms/screens/auth/auth_screen.dart';
 import 'package:lms/screens/course/course_shipping_screen.dart';
 import 'package:lms/screens/course/simple_course_detail_screen.dart';
 import 'package:lms/screens/exam/exam_result_screen.dart';
+import 'package:lms/screens/profile/activities_info_screen.dart';
+import 'package:lms/screens/profile/compilations_and_translations_screen.dart';
+import 'package:lms/screens/profile/external_passed_courses_screen.dart';
+import 'package:lms/screens/profile/internal_passed_courses_screen.dart';
+import 'package:lms/screens/profile/non_university_teaching_history_screen.dart';
+import 'package:lms/screens/profile/university_taeching_history_screen.dart';
 import 'package:lms/screens/profile/user_birth_certificate_form.dart';
 import 'package:lms/screens/profile/user_education_screen.dart';
 import 'package:lms/screens/profile/user_job_info_screen.dart';
@@ -88,6 +94,12 @@ class MyApp extends StatelessWidget {
               UserBirthCertificateScreen.routeName: (ctx) => const UserBirthCertificateScreen(),
               UserEducationScreen.routeName: (ctx) => const UserEducationScreen(),
               UserJobInfoScreen.routeName: (ctx) => const UserJobInfoScreen(),
+              ActivitiesInfoScreen.routeName: (ctx) => const ActivitiesInfoScreen(),
+              InternalPassedCoursesScreen.routeName: (ctx) => const InternalPassedCoursesScreen(),
+              ExternalPassedCoursesScreen.routeName: (ctx) => const ExternalPassedCoursesScreen(),
+              UniversityTeachingHistoryScreen.routeName: (ctx) => const UniversityTeachingHistoryScreen(),
+              NonUniversityTeachingHistoryScreen.routeName: (ctx) => const NonUniversityTeachingHistoryScreen(),
+              CompilationsAndTranslationsScreen.routeName: (ctx) => const CompilationsAndTranslationsScreen(),
               AuthScreen.routeName: (ctx) => const AuthScreen(),
             },
           );
