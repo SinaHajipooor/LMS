@@ -53,25 +53,28 @@ class _UserInfoListState extends State<UserInfoList> {
       child: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          ListTile(
-            leading: CircleAvatar(
-              backgroundColor: themeMode == ThemeMode.dark ? const Color.fromARGB(255, 30, 33, 37) : Colors.blue,
-              child: const Image(
-                width: 20,
-                height: 20,
-                image: AssetImage('assets/images/icons/dashboard.png'),
-              ),
-            ),
-            onTap: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const StudentsBottomTabs(defaultPageIndex: 2),
+          Padding(
+            padding: const EdgeInsets.only(top: 15),
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundColor: themeMode == ThemeMode.dark ? const Color.fromARGB(255, 30, 33, 37) : Colors.blue,
+                child: const Image(
+                  width: 20,
+                  height: 20,
+                  image: AssetImage('assets/images/icons/dashboard.png'),
                 ),
-              );
-            },
-            title: Text(
-              'داشبورد',
-              style: theme.textTheme.titleMedium,
+              ),
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => const StudentsBottomTabs(defaultPageIndex: 2),
+                  ),
+                );
+              },
+              title: Text(
+                'داشبورد',
+                style: theme.textTheme.titleMedium,
+              ),
             ),
           ),
           const SizedBox(height: 20),
