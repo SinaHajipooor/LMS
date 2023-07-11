@@ -4,6 +4,8 @@ import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/profile/activities_info_screen.dart';
+import 'package:lms/screens/profile/external_passed_courses_screen.dart';
+import 'package:lms/screens/profile/internal_passed_courses_screen.dart';
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:lms/screens/profile/user_birth_certificate_form.dart';
 import 'package:lms/screens/profile/user_education_screen.dart';
@@ -201,7 +203,7 @@ class _UserInfoListState extends State<UserInfoList> {
                   image: AssetImage('assets/images/icons/job.png'),
                 ),
               ),
-              onTap: () => Navigator.of(context).pushNamed(UserJobInfoScreen.routeName),
+              onTap: () => Navigator.of(context).pushNamed(InternalPassedCoursesScreen.routeName),
               title: Text(
                 'دوره‌های گذرانده شده در مرکز',
                 style: theme.textTheme.titleMedium,
@@ -217,7 +219,7 @@ class _UserInfoListState extends State<UserInfoList> {
                   image: AssetImage('assets/images/icons/job.png'),
                 ),
               ),
-              onTap: () => Navigator.of(context).pushNamed(UserJobInfoScreen.routeName),
+              onTap: () => Navigator.of(context).pushNamed(ExternalPassedCoursesScreen.routeName),
               title: Text(
                 'دوره‌های گذرانده شده خارج مرکز',
                 style: theme.textTheme.titleMedium,
