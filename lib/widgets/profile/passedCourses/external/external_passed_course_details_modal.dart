@@ -1,7 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:lms/providers/Profile/PassedCourses/ExternalPassedCoursesProvider.dart';
 import 'package:lms/widgets/elements/spinner.dart';
-import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_form.dart';
 import 'package:provider/provider.dart';
 
 class ExternalPassedCourseDetailsModal extends StatefulWidget {
@@ -26,6 +27,19 @@ class _ExternalPassedCourseDetailsModalState extends State<ExternalPassedCourseD
   // ---------------  state  --------------
   final ScrollController _scrollController = ScrollController();
   bool _isLoading = true;
+  Map<String, dynamic> externalCourseInfo = {
+    'user_id': '',
+    'title': '',
+    'address': '',
+    'start_date': '',
+    'end_date': '',
+    'duration': '',
+    'institute_title': '',
+    'has_certificate': false,
+    'file': File,
+    'status': false,
+    'is_related': false,
+  };
   // ---------------  lifecycle  ---------------
   @override
   void initState() {
@@ -40,6 +54,7 @@ class _ExternalPassedCourseDetailsModalState extends State<ExternalPassedCourseD
       _isLoading = false;
     });
   }
+
   // ---------------  UI ---------------
 
   @override
@@ -80,39 +95,63 @@ class _ExternalPassedCourseDetailsModalState extends State<ExternalPassedCourseD
                         ),
                       ),
                       const SizedBox(height: 20),
-                      Expanded(
-                          child: ExternalPassedCoursesForm(
-                        isCreating: false,
-                        isEditing: widget.useCase == 2,
-                        externalPassedCourseDetails: Provider.of<ExternalPassedCoursesProvider>(context, listen: false).externalCourseDetails,
-                      )),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 5),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
+                      // Expanded(
+                      //   child: ExternalPassedCoursesForm(
+                      //     isCreating: false,
+                      //     isEditing: widget.useCase == 2,
+                      //     externalPassedCourseDetails: Provider.of<ExternalPassedCoursesProvider>(context, listen: false).externalCourseDetails,
+                      //     externalPassedCourseInfo: externalCourseInfo,
+                      //   ),
+                      // ),
+                      Visibility(
+                        visible: widget.useCase == 2,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 5),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
+                                  ),
+                                  child: const Text('انصراف'),
                                 ),
-                                child: const Text('انصراف'),
                               ),
                             ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 5),
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                child: const Text('ذخیره'),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 5),
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('ذخیره'),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
+                      Visibility(
+                        visible: widget.useCase == 1,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: SizedBox(
+                                height: 50,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 5, right: 5, bottom: 5),
+                                  child: ElevatedButton(
+                                    onPressed: () => Navigator.of(context).pop(),
+                                    child: const Text('بستن'),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
           ),

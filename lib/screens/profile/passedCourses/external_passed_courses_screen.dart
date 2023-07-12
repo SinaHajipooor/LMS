@@ -53,7 +53,9 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return ExternalPassedCoursesModal(deviceHeight: deviceHeight);
+        return ExternalPassedCoursesModal(
+          deviceHeight: deviceHeight,
+        );
       },
     );
   }
