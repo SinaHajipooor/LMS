@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
-import 'package:lms/widgets/profile/internal_passed_courses_info.dart';
-import 'package:lms/widgets/profile/job_info_form_modal.dart';
+import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_info.dart';
+import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_modal.dart';
 import 'package:provider/provider.dart';
 
-class InternalPassedCoursesScreen extends StatefulWidget {
-  static const routeName = '/internal-passed-courses-screen';
-  const InternalPassedCoursesScreen({super.key});
+class ExternalPassedCoursesScreen extends StatefulWidget {
+  static const routeName = '/external-passed-courses-screen';
+  const ExternalPassedCoursesScreen({super.key});
 
   @override
-  State<InternalPassedCoursesScreen> createState() => _InternalPassedCoursesScreenState();
+  State<ExternalPassedCoursesScreen> createState() => _ExternalPassedCoursesScreenState();
 }
 
-class _InternalPassedCoursesScreenState extends State<InternalPassedCoursesScreen> {
+class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScreen> {
   // ----------- lifecycle -------------
   @override
   void initState() {
@@ -39,7 +39,7 @@ class _InternalPassedCoursesScreenState extends State<InternalPassedCoursesScree
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return UserInfoFormModal(deviceHeight: deviceHeight, selectedIndex: selectedIndex);
+        return ExternalPassedCoursesModal(deviceHeight: deviceHeight);
       },
     );
   }
@@ -54,7 +54,7 @@ class _InternalPassedCoursesScreenState extends State<InternalPassedCoursesScree
       appBar: AppBar(
         elevation: 1,
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text('دوره‌های گذرانده شده در مرکز', style: theme.textTheme.titleMedium),
+        title: Text('دوره‌های گذرانده شده خارج مرکز', style: theme.textTheme.titleMedium),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: theme.appBarTheme.iconTheme!.color),
           onPressed: () => Navigator.of(context).pop(),
@@ -63,7 +63,7 @@ class _InternalPassedCoursesScreenState extends State<InternalPassedCoursesScree
           IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: const InternalPassedCoursesInfo(),
+      body: const ExternalPassedCoursesInfo(),
     );
   }
 }

@@ -3,19 +3,18 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/widgets/elements/text_input.dart';
 import 'package:lms/widgets/elements/three_line_input.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
-import '../../elements/text_input.dart';
 
-// ignore: must_be_immutable
-class ActivitiesInfoForm extends StatefulWidget {
-  const ActivitiesInfoForm({super.key});
+class ExternalPassedCoursesForm extends StatefulWidget {
+  const ExternalPassedCoursesForm({super.key});
 
   @override
-  State<ActivitiesInfoForm> createState() => _ActivitiesInfoFormState();
+  State<ExternalPassedCoursesForm> createState() => _ExternalPassedCoursesFormState();
 }
 
-class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
+class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
   bool status = false;
   bool isRelated = false;
   File? _selectedFile;

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
-import 'package:lms/widgets/profile/external_passed_courses_info.dart';
+import 'package:lms/widgets/profile/passedCourses/internal/internal_passed_courses_info.dart';
 import 'package:lms/widgets/profile/job_info_form_modal.dart';
 import 'package:provider/provider.dart';
 
-class ExternalPassedCoursesScreen extends StatefulWidget {
-  static const routeName = '/external-passed-courses-screen';
-  const ExternalPassedCoursesScreen({super.key});
+class InternalPassedCoursesScreen extends StatefulWidget {
+  static const routeName = '/internal-passed-courses-screen';
+  const InternalPassedCoursesScreen({super.key});
 
   @override
-  State<ExternalPassedCoursesScreen> createState() => _ExternalPassedCoursesScreenState();
+  State<InternalPassedCoursesScreen> createState() => _InternalPassedCoursesScreenState();
 }
 
-class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScreen> {
+class _InternalPassedCoursesScreenState extends State<InternalPassedCoursesScreen> {
   // ----------- lifecycle -------------
   @override
   void initState() {
@@ -54,7 +54,7 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
       appBar: AppBar(
         elevation: 1,
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text('دوره‌های گذرانده شده خارج مرکز', style: theme.textTheme.titleMedium),
+        title: Text('دوره‌های گذرانده شده در مرکز', style: theme.textTheme.titleMedium),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: theme.appBarTheme.iconTheme!.color),
           onPressed: () => Navigator.of(context).pop(),
@@ -63,7 +63,7 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
           IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: const ExternalPassedCoursesInfo(),
+      body: const InternalPassedCoursesInfo(),
     );
   }
 }
