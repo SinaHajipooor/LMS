@@ -201,6 +201,7 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
                           children: [
                             Text('وضعیت', style: theme.bodySmall),
                             CupertinoSwitch(
+                              activeColor: Colors.blue,
                               value: status,
                               onChanged: (bool value) {
                                 setState(() {
@@ -214,6 +215,7 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
                           children: [
                             Text('فعالیت مرتبط', style: theme.bodySmall),
                             CupertinoSwitch(
+                              activeColor: Colors.blue,
                               value: isRelated,
                               onChanged: (bool value) {
                                 setState(() {
