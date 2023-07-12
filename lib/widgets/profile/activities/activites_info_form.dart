@@ -4,7 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/widgets/elements/three_line_input.dart';
-import '../../widgets/elements/text_input.dart';
+import '../../elements/text_input.dart';
 
 // ignore: must_be_immutable
 class ActivitiesInfoForm extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/widgets/profile/activites_info_form.dart';
+import 'package:lms/widgets/profile/activities/activites_info_form.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class ActivitiesInfoModal extends StatefulWidget {
@@ -73,7 +73,7 @@ class _ActivitiesInfoModalState extends State<ActivitiesInfoModal> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   alignment: Alignment.center,
                   child: Text(
-                    'ایجاد فعالیت‌ها و تجارب',
+                    'ایجاد سوابق تدریس دانشگاهی',
                     style: theme.textTheme.titleMedium!.apply(color: Colors.blue),
                   ),
                 ),

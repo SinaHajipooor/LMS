@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/widgets/profile/job_info_form_modal.dart';
-import 'package:lms/widgets/profile/non_university_teaching_history.dart';
+import 'package:lms/widgets/profile/teaching/non-university/non_university_teaching_history.dart';
 import 'package:provider/provider.dart';
 
 class NonUniversityTeachingHistoryScreen extends StatefulWidget {

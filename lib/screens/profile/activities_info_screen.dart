@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
-import 'package:lms/widgets/profile/activities_info.dart';
-import 'package:lms/widgets/profile/activities_info_modal.dart';
+import 'package:lms/widgets/profile/activities/activities_info.dart';
+import 'package:lms/widgets/profile/activities/activities_info_modal.dart';
 import 'package:provider/provider.dart';
 
 class ActivitiesInfoScreen extends StatefulWidget {
