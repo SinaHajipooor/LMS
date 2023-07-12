@@ -3,7 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
-import 'package:lms/providers/Profile/ProfileProvider.dart';
+import 'package:lms/providers/Profile/PassedCourses/ExternalPassedCoursesProvider.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
 import 'package:lms/screens/auth/auth_screen.dart';
 import 'package:lms/screens/course/course_shipping_screen.dart';
@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
-        ChangeNotifierProvider(create: (_) => ProfileProvider()),
+        ChangeNotifierProvider(create: (_) => ExternalPassedCoursesProvider()),
         ChangeNotifierProvider(create: (_) => LandingProvider()),
         ChangeNotifierProvider(create: (_) => ElectronicCourseProvider()),
         ChangeNotifierProvider(create: (_) => SimpleCourseProvider()),

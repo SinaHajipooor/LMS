@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
-import 'package:lms/providers/Profile/ProfileProvider.dart';
+import 'package:lms/providers/Profile/PassedCourses/ExternalPassedCoursesProvider.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_info.dart';
 import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_modal.dart';
@@ -32,7 +32,7 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
   // --------------- methods -----------------
 
   Future<void> fetchAllExternalCourses() async {
-    await Provider.of<ProfileProvider>(context, listen: false).fetchAllExternalCourses();
+    await Provider.of<ExternalPassedCoursesProvider>(context, listen: false).fetchAllExternalCourses();
     setState(() {
       _isLoading = false;
     });
@@ -77,7 +77,7 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
           IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: _isLoading ? const Center(child: Spinner(size: 35)) : ExternalPassedCoursesInfo(externalCourses: Provider.of<ProfileProvider>(context, listen: false).externalCourses),
+      body: _isLoading ? const Center(child: Spinner(size: 35)) : ExternalPassedCoursesInfo(externalCourses: Provider.of<ExternalPassedCoursesProvider>(context, listen: false).externalCourses),
     );
   }
 }

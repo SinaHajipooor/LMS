@@ -10,7 +10,7 @@ class ExternalPassedCoursesInfo extends StatefulWidget {
 }
 
 class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
-  _showJobinfoFormModal(BuildContext context, double deviceHeight) {
+  _showExternalPassedCoursesInfoModal(BuildContext context, double deviceHeight) {
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -110,7 +110,7 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
                 ),
                 DataCell(IconButton(
                   icon: const Icon(Icons.remove_red_eye, color: Colors.orange, size: 20),
-                  onPressed: () => _showJobinfoFormModal(context, MediaQuery.of(context).size.height),
+                  onPressed: () => _showExternalPassedCoursesInfoModal(context, MediaQuery.of(context).size.height),
                 )),
               ],
             ),
