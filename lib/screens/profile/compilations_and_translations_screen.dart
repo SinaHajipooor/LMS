@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
-import 'package:lms/widgets/profile/compilations_and_translations.dart';
-import 'package:lms/widgets/profile/job_info_form_modal.dart';
+import 'package:lms/widgets/profile/compilations/compilations_and_translations.dart';
+import 'package:lms/widgets/profile/compilations/compilations_modal.dart';
 import 'package:provider/provider.dart';
 
 class CompilationsAndTranslationsScreen extends StatefulWidget {
@@ -39,7 +39,7 @@ class _CompilationsAndTranslationsScreenState extends State<CompilationsAndTrans
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return UserInfoFormModal(deviceHeight: deviceHeight, selectedIndex: selectedIndex);
+        return CompilationsModal(deviceHeight: deviceHeight);
       },
     );
   }
