@@ -65,7 +65,7 @@ class _ActivitiesInfoModalState extends State<ActivitiesInfoModal> {
             bottom: keyboardOffset + MediaQuery.of(context).padding.bottom,
           ),
           child: SizedBox(
-            height: widget.deviceHeight * 0.7,
+            height: widget.deviceHeight * 0.6,
             child: Column(
               children: [
                 Container(
@@ -73,7 +73,7 @@ class _ActivitiesInfoModalState extends State<ActivitiesInfoModal> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   alignment: Alignment.center,
                   child: Text(
-                    'ایجاد سوابق تدریس دانشگاهی',
+                    'ایجاد سوابق  فعالیت‌ها و تجارب',
                     style: theme.textTheme.titleMedium!.apply(color: Colors.blue),
                   ),
                 ),

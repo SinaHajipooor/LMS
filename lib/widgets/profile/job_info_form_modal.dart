@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lms/widgets/profile/education_info_form.dart';
-import 'package:lms/widgets/profile/job_info_form.dart';
+import 'package:lms/widgets/profile/teaching/education/education_info_form.dart';
+import 'package:lms/widgets/profile/job/job_info_form.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class UserInfoFormModal extends StatefulWidget {

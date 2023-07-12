@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../elements/text_input.dart';
-import '../elements/custom_dropdown.dart';
+import '../../../elements/text_input.dart';
+import '../../../elements/custom_dropdown.dart';
 
 // ignore: must_be_immutable
 class EducationInfoForm extends StatelessWidget {

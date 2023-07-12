@@ -4,6 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/widgets/elements/three_line_input.dart';
+import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import '../../elements/text_input.dart';
 
 // ignore: must_be_immutable
@@ -18,6 +19,13 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
   bool status = false;
   bool isRelated = false;
   File? _selectedFile;
+  String title = '';
+  String address = '';
+  String startedDate = '';
+  String endedDate = '';
+  String position = '';
+  String currentPosition = '';
+  String description = '';
   Future<void> _selectFile() async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
@@ -26,6 +34,40 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
     if (result != null) {
       setState(() {
         _selectedFile = File(result.files.single.path!);
+      });
+    }
+  }
+
+  Future<void> _selectStartedDate(BuildContext context) async {
+    final Jalali? picked = await showPersianDatePicker(
+      context: context,
+      initialDate: Jalali.now(),
+      firstDate: Jalali(1300, 1, 1),
+      lastDate: Jalali.now(),
+      locale: const Locale('fa'),
+    );
+
+    if (picked != null) {
+      final String formattedDate = picked.toJalaliDateTime().substring(0, 10);
+      setState(() {
+        startedDate = formattedDate;
+      });
+    }
+  }
+
+  Future<void> _selectEndedDate(BuildContext context) async {
+    final Jalali? picked = await showPersianDatePicker(
+      context: context,
+      initialDate: Jalali.now(),
+      firstDate: Jalali(1300, 1, 1),
+      lastDate: Jalali.now(),
+      locale: const Locale('fa'),
+    );
+
+    if (picked != null) {
+      final String formattedDate = picked.toJalaliDateTime().substring(0, 10);
+      setState(() {
+        endedDate = formattedDate;
       });
     }
   }
@@ -43,8 +85,8 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
             children: [
               Row(
                 children: [
-                  Expanded(child: TextInput(value: '', label: 'عنوان', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                  Expanded(child: TextInput(value: '', label: 'آدرس', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(value: title, label: 'عنوان', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(value: address, label: 'آدرس', onChanged: (value) {}, keyboardType: TextInputType.number)),
                 ],
               ),
               const SizedBox(height: 15),
@@ -57,7 +99,9 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
                       ),
                       elevation: 1,
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          _selectStartedDate(context);
+                        },
                         child: Container(
                           width: double.infinity,
                           padding: const EdgeInsets.all(16),
@@ -69,8 +113,8 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
                               const Icon(Icons.calendar_today, size: 20),
                               const SizedBox(width: 16),
                               Text(
-                                'تاریخ شروع',
-                                style: theme.bodySmall,
+                                startedDate == '' ? 'تاریخ شروع' : startedDate,
+                                style: theme.bodyMedium,
                               ),
                             ],
                           ),
@@ -97,8 +141,8 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
                               const Icon(Icons.calendar_today, size: 20),
                               const SizedBox(width: 16),
                               Text(
-                                'تاریخ پایان',
-                                style: theme.bodySmall,
+                                endedDate == '' ? 'تاریخ پایان' : endedDate,
+                                style: theme.bodyMedium,
                               ),
                             ],
                           ),
@@ -111,8 +155,8 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
               const SizedBox(height: 15),
               Row(
                 children: [
-                  Expanded(child: TextInput(value: '', label: 'سمت', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                  Expanded(child: TextInput(value: '', label: 'فعالیت جاری', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(value: position, label: 'سمت', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(value: currentPosition, label: 'فعالیت جاری', onChanged: (value) {}, keyboardType: TextInputType.number)),
                 ],
               ),
               const SizedBox(height: 15),
@@ -185,7 +229,7 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
                 ],
               ),
               const SizedBox(height: 15),
-              ThreeLineInput(value: '', label: 'توضیحات', onChanged: (value) {}),
+              ThreeLineInput(value: description, label: 'توضیحات', onChanged: (value) {}),
               const SizedBox(height: 15),
             ],
           ),
