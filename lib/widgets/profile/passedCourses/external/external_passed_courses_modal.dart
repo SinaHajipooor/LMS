@@ -55,7 +55,7 @@ class _ExternalPassedCoursesModalState extends State<ExternalPassedCoursesModal>
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Expanded(child: ExternalPassedCoursesForm()),
+                const Expanded(child: ExternalPassedCoursesForm(isCreating: true, isEditing: false)),
                 Row(
                   children: [
                     Expanded(

@@ -36,6 +36,7 @@ class TextInput extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: TextFormField(
+              style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14),
               decoration: const InputDecoration(
                 border: InputBorder.none, // Hide default border
               ),

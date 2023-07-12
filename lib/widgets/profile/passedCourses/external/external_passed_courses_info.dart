@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_modal.dart';
+import 'package:lms/widgets/profile/passedCourses/external/external_passed_course_details_modal.dart';
 
 class ExternalPassedCoursesInfo extends StatefulWidget {
   final List<dynamic> externalCourses;
@@ -10,7 +10,7 @@ class ExternalPassedCoursesInfo extends StatefulWidget {
 }
 
 class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
-  _showExternalPassedCoursesInfoModal(BuildContext context, double deviceHeight) {
+  _showExternalPassedCoursesInfoModal(BuildContext context, double deviceHeight, int externalCourseId, int useCase, Map<String, dynamic> externalCourseDetails) {
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -21,7 +21,11 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return ExternalPassedCoursesModal(deviceHeight: deviceHeight);
+        return ExternalPassedCourseDetailsModal(
+          deviceHeight: deviceHeight,
+          externalCourseId: externalCourseId,
+          useCase: useCase,
+        );
       },
     );
   }
@@ -78,7 +82,7 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
                               child: IconButton(
                                 icon: const Icon(Icons.edit, color: Colors.white, size: 15),
                                 onPressed: () {
-                                  // Handle edit action
+                                  _showExternalPassedCoursesInfoModal(context, MediaQuery.of(context).size.height, widget.externalCourses[index]['id'], 2, widget.externalCourses[index]);
                                 },
                               ),
                             ),
@@ -110,7 +114,7 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
                 ),
                 DataCell(IconButton(
                   icon: const Icon(Icons.remove_red_eye, color: Colors.orange, size: 20),
-                  onPressed: () => _showExternalPassedCoursesInfoModal(context, MediaQuery.of(context).size.height),
+                  onPressed: () => _showExternalPassedCoursesInfoModal(context, MediaQuery.of(context).size.height, widget.externalCourses[index]['id'], 1, widget.externalCourses[index]),
                 )),
               ],
             ),

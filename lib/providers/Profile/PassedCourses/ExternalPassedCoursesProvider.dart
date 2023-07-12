@@ -81,4 +81,18 @@ class ExternalPassedCoursesProvider with ChangeNotifier {
       rethrow;
     }
   }
+
+  Future<void> deleteExternalCourse(int id) async {
+    try {
+      final response = await http.delete(
+        Uri.parse(_externalCoursesUrl + '/destroy/$id'),
+        headers: <String, String>{'Content-Type': 'application/json'},
+      );
+      if (response.statusCode != 200) throw Exception('failed to delete external course');
+      notifyListeners();
+    } catch (error) {
+      print(error);
+      rethrow;
+    }
+  }
 }
