@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:lms/providers/Profile/ProfileProvider.dart';
+import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_info.dart';
 import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_modal.dart';
 import 'package:provider/provider.dart';
@@ -14,16 +16,28 @@ class ExternalPassedCoursesScreen extends StatefulWidget {
 }
 
 class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScreen> {
+  // ----------- state -------------
+  bool _isLoading = true;
   // ----------- lifecycle -------------
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _checkInternetConnectivity(context);
     });
+    fetchAllExternalCourses();
     super.initState();
   }
 
   // --------------- methods -----------------
+
+  Future<void> fetchAllExternalCourses() async {
+    await Provider.of<ProfileProvider>(context, listen: false).fetchAllExternalCourses();
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
   void _checkInternetConnectivity(BuildContext context) {
     InternetConnectivityHelper.checkInternetConnectivity(context);
   }
@@ -63,7 +77,7 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
           IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: const ExternalPassedCoursesInfo(),
+      body: _isLoading ? const Center(child: Spinner(size: 35)) : ExternalPassedCoursesInfo(externalCourses: Provider.of<ProfileProvider>(context, listen: false).externalCourses),
     );
   }
 }
