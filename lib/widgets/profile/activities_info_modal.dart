@@ -65,7 +65,7 @@ class _ActivitiesInfoModalState extends State<ActivitiesInfoModal> {
             bottom: keyboardOffset + MediaQuery.of(context).padding.bottom,
           ),
           child: SizedBox(
-            height: widget.deviceHeight * 0.65,
+            height: widget.deviceHeight * 0.7,
             child: Column(
               children: [
                 Container(
@@ -78,7 +78,7 @@ class _ActivitiesInfoModalState extends State<ActivitiesInfoModal> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Expanded(child: ActivitiesInfoForm(selectDate: _selectDate)),
+                const Expanded(child: ActivitiesInfoForm()),
                 Row(
                   children: [
                     Expanded(

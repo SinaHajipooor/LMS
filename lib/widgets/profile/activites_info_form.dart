@@ -1,20 +1,42 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/widgets/elements/three_line_input.dart';
 import '../../widgets/elements/text_input.dart';
-import '../../widgets/elements/custom_dropdown.dart';
 
 // ignore: must_be_immutable
-class ActivitiesInfoForm extends StatelessWidget {
-  String? birthDate;
-  String? startEmployeeTime;
-  String? endEmployeeTime;
-  Future<void> Function(BuildContext) selectDate;
-  ActivitiesInfoForm({super.key, this.birthDate, required this.selectDate, this.startEmployeeTime, this.endEmployeeTime});
+class ActivitiesInfoForm extends StatefulWidget {
+  const ActivitiesInfoForm({super.key});
+
+  @override
+  State<ActivitiesInfoForm> createState() => _ActivitiesInfoFormState();
+}
+
+class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
+  bool status = false;
+  bool isRelated = false;
+  File? _selectedFile;
+  Future<void> _selectFile() async {
+    final result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'jpeg', 'png', 'pdf'],
+    );
+    if (result != null) {
+      setState(() {
+        _selectedFile = File(result.files.single.path!);
+      });
+    }
+  }
 
 // --------------- UI -----------------
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).textTheme;
     return Scrollbar(
       child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(0.0),
           child: Column(
@@ -35,9 +57,7 @@ class ActivitiesInfoForm extends StatelessWidget {
                       ),
                       elevation: 1,
                       child: InkWell(
-                        onTap: () {
-                          selectDate(context);
-                        },
+                        onTap: () {},
                         child: Container(
                           width: double.infinity,
                           padding: const EdgeInsets.all(16),
@@ -49,8 +69,8 @@ class ActivitiesInfoForm extends StatelessWidget {
                               const Icon(Icons.calendar_today, size: 20),
                               const SizedBox(width: 16),
                               Text(
-                                startEmployeeTime!,
-                                style: TextStyle(fontSize: startEmployeeTime != 'تاریخ شروع' ? 13 : 11),
+                                'تاریخ شروع',
+                                style: theme.bodySmall,
                               ),
                             ],
                           ),
@@ -65,9 +85,7 @@ class ActivitiesInfoForm extends StatelessWidget {
                       ),
                       elevation: 1,
                       child: InkWell(
-                        onTap: () {
-                          selectDate(context);
-                        },
+                        onTap: () {},
                         child: Container(
                           width: double.infinity,
                           padding: const EdgeInsets.all(16),
@@ -79,8 +97,8 @@ class ActivitiesInfoForm extends StatelessWidget {
                               const Icon(Icons.calendar_today, size: 20),
                               const SizedBox(width: 16),
                               Text(
-                                endEmployeeTime!,
-                                style: TextStyle(fontSize: endEmployeeTime != 'تاریخ پایان ' ? 13 : 11),
+                                'تاریخ پایان',
+                                style: theme.bodySmall,
                               ),
                             ],
                           ),
@@ -100,17 +118,74 @@ class ActivitiesInfoForm extends StatelessWidget {
               const SizedBox(height: 15),
               Row(
                 children: [
-                  Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'توضیحات')),
-                  Expanded(child: TextInput(value: '', label: 'فایل ضمیمه', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      elevation: 1,
+                      child: InkWell(
+                        onTap: () => _selectFile(),
+                        child: Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Row(
+                            children: [
+                              const Icon(Icons.attach_file),
+                              const SizedBox(width: 16),
+                              Expanded(
+                                child: Text(
+                                  _selectedFile != null ? 'فایل انتخاب شد' : 'فایل ضمیمه',
+                                  style: const TextStyle(fontSize: 11),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Column(
+                          children: [
+                            Text('وضعیت', style: theme.bodySmall),
+                            CupertinoSwitch(
+                              value: status,
+                              onChanged: (bool value) {
+                                setState(() {
+                                  status = value;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text('فعالیت مرتبط', style: theme.bodySmall),
+                            CupertinoSwitch(
+                              value: isRelated,
+                              onChanged: (bool value) {
+                                setState(() {
+                                  isRelated = value;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 15),
-              Row(
-                children: [
-                  Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'وضعیت')),
-                  Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'فعالیت مرتبط')),
-                ],
-              ),
+              ThreeLineInput(value: '', label: 'توضیحات', onChanged: (value) {}),
               const SizedBox(height: 15),
             ],
           ),
