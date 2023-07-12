@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
-import 'package:lms/widgets/profile/activities_info.dart';
-import 'package:lms/widgets/profile/job_info_form_modal.dart';
+import 'package:lms/widgets/profile/activities/activities_info.dart';
+import 'package:lms/widgets/profile/activities/activities_info_modal.dart';
 import 'package:provider/provider.dart';
 
 class ActivitiesInfoScreen extends StatefulWidget {
@@ -39,7 +39,7 @@ class _ActivitiesInfoScreenState extends State<ActivitiesInfoScreen> {
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return UserInfoFormModal(deviceHeight: deviceHeight, selectedIndex: selectedIndex);
+        return ActivitiesInfoModal(deviceHeight: deviceHeight);
       },
     );
   }

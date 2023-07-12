@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
+import 'package:lms/providers/Profile/ProfileProvider.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
 import 'package:lms/screens/auth/auth_screen.dart';
 import 'package:lms/screens/course/course_shipping_screen.dart';
@@ -10,10 +11,10 @@ import 'package:lms/screens/course/simple_course_detail_screen.dart';
 import 'package:lms/screens/exam/exam_result_screen.dart';
 import 'package:lms/screens/profile/activities_info_screen.dart';
 import 'package:lms/screens/profile/compilations_and_translations_screen.dart';
-import 'package:lms/screens/profile/external_passed_courses_screen.dart';
-import 'package:lms/screens/profile/internal_passed_courses_screen.dart';
-import 'package:lms/screens/profile/non_university_teaching_history_screen.dart';
-import 'package:lms/screens/profile/university_taeching_history_screen.dart';
+import 'package:lms/screens/profile/passedCourses/external_passed_courses_screen.dart';
+import 'package:lms/screens/profile/passedCourses/internal_passed_courses_screen.dart';
+import 'package:lms/screens/profile/teaching/non_university_teaching_history_screen.dart';
+import 'package:lms/screens/profile/teaching/university_taeching_history_screen.dart';
 import 'package:lms/screens/profile/user_birth_certificate_form.dart';
 import 'package:lms/screens/profile/user_education_screen.dart';
 import 'package:lms/screens/profile/user_job_info_screen.dart';
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => ProfileProvider()),
         ChangeNotifierProvider(create: (_) => LandingProvider()),
         ChangeNotifierProvider(create: (_) => ElectronicCourseProvider()),
         ChangeNotifierProvider(create: (_) => SimpleCourseProvider()),

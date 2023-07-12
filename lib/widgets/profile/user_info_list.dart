@@ -5,10 +5,10 @@ import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/profile/activities_info_screen.dart';
 import 'package:lms/screens/profile/compilations_and_translations_screen.dart';
-import 'package:lms/screens/profile/external_passed_courses_screen.dart';
-import 'package:lms/screens/profile/internal_passed_courses_screen.dart';
-import 'package:lms/screens/profile/non_university_teaching_history_screen.dart';
-import 'package:lms/screens/profile/university_taeching_history_screen.dart';
+import 'package:lms/screens/profile/passedCourses/external_passed_courses_screen.dart';
+import 'package:lms/screens/profile/passedCourses/internal_passed_courses_screen.dart';
+import 'package:lms/screens/profile/teaching/non_university_teaching_history_screen.dart';
+import 'package:lms/screens/profile/teaching/university_taeching_history_screen.dart';
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:lms/screens/profile/user_birth_certificate_form.dart';
 import 'package:lms/screens/profile/user_education_screen.dart';
@@ -137,9 +137,10 @@ class _UserInfoListState extends State<UserInfoList> {
               leading: CircleAvatar(
                 backgroundColor: themeMode == ThemeMode.dark ? const Color.fromARGB(255, 30, 33, 37) : Colors.blue,
                 child: const Image(
-                  width: 25,
-                  height: 25,
-                  image: AssetImage('assets/images/icons/job.png'),
+                  width: 20,
+                  height: 20,
+                  color: Colors.white,
+                  image: AssetImage('assets/images/icons/work.png'),
                 ),
               ),
               onTap: () => Navigator.of(context).pushNamed(ActivitiesInfoScreen.routeName),
@@ -153,9 +154,10 @@ class _UserInfoListState extends State<UserInfoList> {
               leading: CircleAvatar(
                 backgroundColor: themeMode == ThemeMode.dark ? const Color.fromARGB(255, 30, 33, 37) : Colors.blue,
                 child: const Image(
-                  width: 25,
-                  height: 25,
-                  image: AssetImage('assets/images/icons/job.png'),
+                  width: 20,
+                  height: 20,
+                  color: Colors.white,
+                  image: AssetImage('assets/images/icons/teacher.png'),
                 ),
               ),
               onTap: () => Navigator.of(context).pushNamed(UniversityTeachingHistoryScreen.routeName),
@@ -171,7 +173,8 @@ class _UserInfoListState extends State<UserInfoList> {
                 child: const Image(
                   width: 25,
                   height: 25,
-                  image: AssetImage('assets/images/icons/job.png'),
+                  color: Colors.white,
+                  image: AssetImage('assets/images/icons/non-university-teacher.png'),
                 ),
               ),
               onTap: () => Navigator.of(context).pushNamed(NonUniversityTeachingHistoryScreen.routeName),
@@ -185,9 +188,10 @@ class _UserInfoListState extends State<UserInfoList> {
               leading: CircleAvatar(
                 backgroundColor: themeMode == ThemeMode.dark ? const Color.fromARGB(255, 30, 33, 37) : Colors.blue,
                 child: const Image(
-                  width: 25,
-                  height: 25,
-                  image: AssetImage('assets/images/icons/job.png'),
+                  width: 24,
+                  height: 24,
+                  color: Colors.white,
+                  image: AssetImage('assets/images/icons/book.png'),
                 ),
               ),
               onTap: () => Navigator.of(context).pushNamed(CompilationsAndTranslationsScreen.routeName),
@@ -201,9 +205,10 @@ class _UserInfoListState extends State<UserInfoList> {
               leading: CircleAvatar(
                 backgroundColor: themeMode == ThemeMode.dark ? const Color.fromARGB(255, 30, 33, 37) : Colors.blue,
                 child: const Image(
-                  width: 25,
-                  height: 25,
-                  image: AssetImage('assets/images/icons/job.png'),
+                  width: 24,
+                  height: 24,
+                  color: Colors.white,
+                  image: AssetImage('assets/images/icons/university-course.png'),
                 ),
               ),
               onTap: () => Navigator.of(context).pushNamed(InternalPassedCoursesScreen.routeName),
@@ -217,9 +222,10 @@ class _UserInfoListState extends State<UserInfoList> {
               leading: CircleAvatar(
                 backgroundColor: themeMode == ThemeMode.dark ? const Color.fromARGB(255, 30, 33, 37) : Colors.blue,
                 child: const Image(
-                  width: 25,
-                  height: 25,
-                  image: AssetImage('assets/images/icons/job.png'),
+                  width: 23,
+                  color: Colors.white,
+                  height: 23,
+                  image: AssetImage('assets/images/icons/non-university-course.png'),
                 ),
               ),
               onTap: () => Navigator.of(context).pushNamed(ExternalPassedCoursesScreen.routeName),

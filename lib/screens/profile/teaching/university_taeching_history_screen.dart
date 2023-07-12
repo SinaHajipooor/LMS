@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
-import 'package:lms/widgets/profile/external_passed_courses_info.dart';
-import 'package:lms/widgets/profile/job_info_form_modal.dart';
+import 'package:lms/widgets/profile/teaching/university/university_teaching_hiostory_modal.dart';
+import 'package:lms/widgets/profile/teaching/university/university_teaching_history.dart';
 import 'package:provider/provider.dart';
 
-class ExternalPassedCoursesScreen extends StatefulWidget {
-  static const routeName = '/external-passed-courses-screen';
-  const ExternalPassedCoursesScreen({super.key});
+class UniversityTeachingHistoryScreen extends StatefulWidget {
+  static const routeName = '/university-teaching-history-screen';
+  const UniversityTeachingHistoryScreen({super.key});
 
   @override
-  State<ExternalPassedCoursesScreen> createState() => _ExternalPassedCoursesScreenState();
+  State<UniversityTeachingHistoryScreen> createState() => _UniversityTeachingHistoryScreenState();
 }
 
-class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScreen> {
+class _UniversityTeachingHistoryScreenState extends State<UniversityTeachingHistoryScreen> {
   // ----------- lifecycle -------------
   @override
   void initState() {
@@ -39,7 +39,7 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return UserInfoFormModal(deviceHeight: deviceHeight, selectedIndex: selectedIndex);
+        return UniversityTeachingHistoryModal(deviceHeight: deviceHeight);
       },
     );
   }
@@ -54,7 +54,7 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
       appBar: AppBar(
         elevation: 1,
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text('دوره‌های گذرانده شده خارج مرکز', style: theme.textTheme.titleMedium),
+        title: Text('سوابق تدریس دانشگاهی', style: theme.textTheme.titleMedium),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: theme.appBarTheme.iconTheme!.color),
           onPressed: () => Navigator.of(context).pop(),
@@ -63,7 +63,7 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
           IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: const ExternalPassedCoursesInfo(),
+      body: const UniversityTeachingHistory(),
     );
   }
 }

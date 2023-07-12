@@ -59,7 +59,7 @@ dependencies:
   connectivity: ^3.0.6
   url_launcher: ^6.0.0
   android_intent: ^2.0.0
-  animated_theme_switcher: ^2.0.0
+  animated_theme_switcher: ^2.0.8
 
 
 

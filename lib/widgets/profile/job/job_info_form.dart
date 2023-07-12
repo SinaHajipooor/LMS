@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../widgets/elements/text_input.dart';
-import '../../widgets/elements/custom_dropdown.dart';
+import '../../elements/text_input.dart';
+import '../../elements/custom_dropdown.dart';
 
 // ignore: must_be_immutable
 class JobInfoForm extends StatelessWidget {

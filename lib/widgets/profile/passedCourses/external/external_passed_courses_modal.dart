@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lms/widgets/profile/activites_info_form.dart';
-import 'package:persian_datetime_picker/persian_datetime_picker.dart';
+import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_form.dart';
 
-class ActivitiesInfoModal extends StatefulWidget {
+class ExternalPassedCoursesModal extends StatefulWidget {
   final double deviceHeight;
   // final int selectedIndex;
 
-  const ActivitiesInfoModal({
+  const ExternalPassedCoursesModal({
     required this.deviceHeight,
     // required this.selectedIndex,
     Key? key,
@@ -14,33 +13,11 @@ class ActivitiesInfoModal extends StatefulWidget {
 
   @override
   // ignore: library_private_types_in_public_api
-  _ActivitiesInfoModalState createState() => _ActivitiesInfoModalState();
+  _ExternalPassedCoursesModalState createState() => _ExternalPassedCoursesModalState();
 }
 
-class _ActivitiesInfoModalState extends State<ActivitiesInfoModal> {
+class _ExternalPassedCoursesModalState extends State<ExternalPassedCoursesModal> {
   final ScrollController _scrollController = ScrollController();
-
-  // ignore: unused_field
-  String _birthDate = 'تاریخ تولد';
-  String startEmployeeTime = 'زمان استخدام';
-  String endEmployeeTime = 'زمان پایان استخدام';
-
-  Future<void> _selectDate(BuildContext context) async {
-    final Jalali? picked = await showPersianDatePicker(
-      context: context,
-      initialDate: Jalali.now(),
-      firstDate: Jalali(1300, 1, 1),
-      lastDate: Jalali.now(),
-      locale: const Locale('fa'),
-    );
-
-    if (picked != null) {
-      final String formattedDate = picked.toJalaliDateTime().substring(0, 10);
-      setState(() {
-        _birthDate = formattedDate;
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +42,7 @@ class _ActivitiesInfoModalState extends State<ActivitiesInfoModal> {
             bottom: keyboardOffset + MediaQuery.of(context).padding.bottom,
           ),
           child: SizedBox(
-            height: widget.deviceHeight * 0.65,
+            height: widget.deviceHeight * 0.6,
             child: Column(
               children: [
                 Container(
@@ -73,12 +50,12 @@ class _ActivitiesInfoModalState extends State<ActivitiesInfoModal> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   alignment: Alignment.center,
                   child: Text(
-                    'ایجاد فعالیت‌ها و تجارب',
+                    'ایجاد دوره گذرانده شده خارج مرکز',
                     style: theme.textTheme.titleMedium!.apply(color: Colors.blue),
                   ),
                 ),
                 const SizedBox(height: 20),
-                Expanded(child: ActivitiesInfoForm(selectDate: _selectDate)),
+                const Expanded(child: ExternalPassedCoursesForm()),
                 Row(
                   children: [
                     Expanded(

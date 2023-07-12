@@ -1,46 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:lms/widgets/profile/education/education_info_form.dart';
-import 'package:lms/widgets/profile/job/job_info_form.dart';
-import 'package:persian_datetime_picker/persian_datetime_picker.dart';
+import 'package:lms/widgets/profile/compilations/compilations_form.dart';
 
-class UserInfoFormModal extends StatefulWidget {
+class CompilationsModal extends StatefulWidget {
   final double deviceHeight;
-  final int selectedIndex;
 
-  const UserInfoFormModal({
-    required this.deviceHeight,
-    required this.selectedIndex,
-    Key? key,
-  }) : super(key: key);
+  const CompilationsModal({super.key, required this.deviceHeight});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _UserInfoFormModalState createState() => _UserInfoFormModalState();
+  State<CompilationsModal> createState() => _CompilationsModalState();
 }
 
-class _UserInfoFormModalState extends State<UserInfoFormModal> {
+class _CompilationsModalState extends State<CompilationsModal> {
   final ScrollController _scrollController = ScrollController();
-
-  String _birthDate = 'تاریخ تولد';
-  String startEmployeeTime = 'زمان استخدام';
-  String endEmployeeTime = 'زمان پایان استخدام';
-
-  Future<void> _selectDate(BuildContext context) async {
-    final Jalali? picked = await showPersianDatePicker(
-      context: context,
-      initialDate: Jalali.now(),
-      firstDate: Jalali(1300, 1, 1),
-      lastDate: Jalali.now(),
-      locale: const Locale('fa'),
-    );
-
-    if (picked != null) {
-      final String formattedDate = picked.toJalaliDateTime().substring(0, 10);
-      setState(() {
-        _birthDate = formattedDate;
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +36,7 @@ class _UserInfoFormModalState extends State<UserInfoFormModal> {
             bottom: keyboardOffset + MediaQuery.of(context).padding.bottom,
           ),
           child: SizedBox(
-            height: widget.selectedIndex == 2 ? widget.deviceHeight * 0.65 : widget.deviceHeight * 0.5,
+            height: widget.deviceHeight * 0.6,
             child: Column(
               children: [
                 Container(
@@ -73,26 +44,12 @@ class _UserInfoFormModalState extends State<UserInfoFormModal> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   alignment: Alignment.center,
                   child: Text(
-                    widget.selectedIndex == 2 ? 'ایجاد اطلاعات شغلی' : 'ایجاد اطلاعات تحصیلی',
+                    'ایجاد تالیفات و ترجمات',
                     style: theme.textTheme.titleMedium!.apply(color: Colors.blue),
                   ),
                 ),
                 const SizedBox(height: 20),
-                Expanded(
-                  child: widget.selectedIndex == 2
-                      ? JobInfoForm(
-                          selectDate: _selectDate,
-                          startEmployeeTime: startEmployeeTime,
-                          endEmployeeTime: endEmployeeTime,
-                          birthDate: _birthDate,
-                        )
-                      : EducationInfoForm(
-                          selectDate: _selectDate,
-                          birthDate: _birthDate,
-                          startEmployeeTime: startEmployeeTime,
-                          endEmployeeTime: endEmployeeTime,
-                        ),
-                ),
+                const Expanded(child: CompilationsForm()),
                 Row(
                   children: [
                     Expanded(

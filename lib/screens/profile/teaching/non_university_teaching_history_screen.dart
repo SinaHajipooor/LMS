@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/widgets/profile/job_info_form_modal.dart';
-import 'package:lms/widgets/profile/university_teaching_history.dart';
+import 'package:lms/widgets/profile/teaching/non-university/non_university_teaching_history.dart';
 import 'package:provider/provider.dart';
 
-class UniversityTeachingHistoryScreen extends StatefulWidget {
-  static const routeName = '/university-teaching-history-screen';
-  const UniversityTeachingHistoryScreen({super.key});
+class NonUniversityTeachingHistoryScreen extends StatefulWidget {
+  static const routeName = '/non-university-teaching-history-screen';
+  const NonUniversityTeachingHistoryScreen({super.key});
 
   @override
-  State<UniversityTeachingHistoryScreen> createState() => _UniversityTeachingHistoryScreenState();
+  State<NonUniversityTeachingHistoryScreen> createState() => _NonUniversityTeachingHistoryScreenState();
 }
 
-class _UniversityTeachingHistoryScreenState extends State<UniversityTeachingHistoryScreen> {
+class _NonUniversityTeachingHistoryScreenState extends State<NonUniversityTeachingHistoryScreen> {
   // ----------- lifecycle -------------
   @override
   void initState() {
@@ -54,7 +54,7 @@ class _UniversityTeachingHistoryScreenState extends State<UniversityTeachingHist
       appBar: AppBar(
         elevation: 1,
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text('سوابق تدریس دانشگاهی', style: theme.textTheme.titleMedium),
+        title: Text('سوابق تدریس غیر دانشگاهی', style: theme.textTheme.titleMedium),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: theme.appBarTheme.iconTheme!.color),
           onPressed: () => Navigator.of(context).pop(),
@@ -63,7 +63,7 @@ class _UniversityTeachingHistoryScreenState extends State<UniversityTeachingHist
           IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: const UniversityTeachingHistory(),
+      body: const NonUniversityTeachingHistory(),
     );
   }
 }

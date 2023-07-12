@@ -1,29 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
-import 'package:lms/widgets/profile/job_info_form_modal.dart';
-import 'package:lms/widgets/profile/non_university_teaching_history.dart';
+import 'package:lms/providers/Profile/ProfileProvider.dart';
+import 'package:lms/widgets/elements/spinner.dart';
+import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_info.dart';
+import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_modal.dart';
 import 'package:provider/provider.dart';
 
-class NonUniversityTeachingHistoryScreen extends StatefulWidget {
-  static const routeName = '/non-university-teaching-history-screen';
-  const NonUniversityTeachingHistoryScreen({super.key});
+class ExternalPassedCoursesScreen extends StatefulWidget {
+  static const routeName = '/external-passed-courses-screen';
+  const ExternalPassedCoursesScreen({super.key});
 
   @override
-  State<NonUniversityTeachingHistoryScreen> createState() => _NonUniversityTeachingHistoryScreenState();
+  State<ExternalPassedCoursesScreen> createState() => _ExternalPassedCoursesScreenState();
 }
 
-class _NonUniversityTeachingHistoryScreenState extends State<NonUniversityTeachingHistoryScreen> {
+class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScreen> {
+  // ----------- state -------------
+  bool _isLoading = true;
   // ----------- lifecycle -------------
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _checkInternetConnectivity(context);
     });
+    fetchAllExternalCourses();
     super.initState();
   }
 
   // --------------- methods -----------------
+
+  Future<void> fetchAllExternalCourses() async {
+    await Provider.of<ProfileProvider>(context, listen: false).fetchAllExternalCourses();
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
   void _checkInternetConnectivity(BuildContext context) {
     InternetConnectivityHelper.checkInternetConnectivity(context);
   }
@@ -39,7 +53,7 @@ class _NonUniversityTeachingHistoryScreenState extends State<NonUniversityTeachi
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return UserInfoFormModal(deviceHeight: deviceHeight, selectedIndex: selectedIndex);
+        return ExternalPassedCoursesModal(deviceHeight: deviceHeight);
       },
     );
   }
@@ -54,7 +68,7 @@ class _NonUniversityTeachingHistoryScreenState extends State<NonUniversityTeachi
       appBar: AppBar(
         elevation: 1,
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text('سوابق تدریس غیر دانشگاهی', style: theme.textTheme.titleMedium),
+        title: Text('دوره‌های گذرانده شده خارج مرکز', style: theme.textTheme.titleMedium),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: theme.appBarTheme.iconTheme!.color),
           onPressed: () => Navigator.of(context).pop(),
@@ -63,7 +77,7 @@ class _NonUniversityTeachingHistoryScreenState extends State<NonUniversityTeachi
           IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: const NonUniversityTeachingHistory(),
+      body: _isLoading ? const Center(child: Spinner(size: 35)) : ExternalPassedCoursesInfo(externalCourses: Provider.of<ProfileProvider>(context, listen: false).externalCourses),
     );
   }
 }

@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:lms/widgets/profile/education/education_info_form.dart';
-import 'package:lms/widgets/profile/job/job_info_form.dart';
+import 'package:lms/widgets/profile/teaching/university/university_teaching_history_form.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
-class UserInfoFormModal extends StatefulWidget {
+class UniversityTeachingHistoryModal extends StatefulWidget {
   final double deviceHeight;
-  final int selectedIndex;
+  // final int selectedIndex;
 
-  const UserInfoFormModal({
+  const UniversityTeachingHistoryModal({
     required this.deviceHeight,
-    required this.selectedIndex,
+    // required this.selectedIndex,
     Key? key,
   }) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _UserInfoFormModalState createState() => _UserInfoFormModalState();
+  _UniversityTeachingHistoryModalState createState() => _UniversityTeachingHistoryModalState();
 }
 
-class _UserInfoFormModalState extends State<UserInfoFormModal> {
+class _UniversityTeachingHistoryModalState extends State<UniversityTeachingHistoryModal> {
   final ScrollController _scrollController = ScrollController();
 
+  // ignore: unused_field
   String _birthDate = 'تاریخ تولد';
   String startEmployeeTime = 'زمان استخدام';
   String endEmployeeTime = 'زمان پایان استخدام';
@@ -65,7 +65,7 @@ class _UserInfoFormModalState extends State<UserInfoFormModal> {
             bottom: keyboardOffset + MediaQuery.of(context).padding.bottom,
           ),
           child: SizedBox(
-            height: widget.selectedIndex == 2 ? widget.deviceHeight * 0.65 : widget.deviceHeight * 0.5,
+            height: widget.deviceHeight * 0.6,
             child: Column(
               children: [
                 Container(
@@ -73,26 +73,12 @@ class _UserInfoFormModalState extends State<UserInfoFormModal> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   alignment: Alignment.center,
                   child: Text(
-                    widget.selectedIndex == 2 ? 'ایجاد اطلاعات شغلی' : 'ایجاد اطلاعات تحصیلی',
+                    'ایجاد سوابق تدریس دانشگاهی',
                     style: theme.textTheme.titleMedium!.apply(color: Colors.blue),
                   ),
                 ),
                 const SizedBox(height: 20),
-                Expanded(
-                  child: widget.selectedIndex == 2
-                      ? JobInfoForm(
-                          selectDate: _selectDate,
-                          startEmployeeTime: startEmployeeTime,
-                          endEmployeeTime: endEmployeeTime,
-                          birthDate: _birthDate,
-                        )
-                      : EducationInfoForm(
-                          selectDate: _selectDate,
-                          birthDate: _birthDate,
-                          startEmployeeTime: startEmployeeTime,
-                          endEmployeeTime: endEmployeeTime,
-                        ),
-                ),
+                const Expanded(child: UniversityTeachingHistoryForm()),
                 Row(
                   children: [
                     Expanded(
