@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/widgets/elements/custom_dropdown.dart';
 import 'package:lms/widgets/elements/text_input.dart';
 import 'package:lms/widgets/elements/three_line_input.dart';
-import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class CompilationsForm extends StatefulWidget {
   const CompilationsForm({super.key});
@@ -37,40 +37,6 @@ class _CompilationsFormState extends State<CompilationsForm> {
     }
   }
 
-  Future<void> _selectStartedDate(BuildContext context) async {
-    final Jalali? picked = await showPersianDatePicker(
-      context: context,
-      initialDate: Jalali.now(),
-      firstDate: Jalali(1300, 1, 1),
-      lastDate: Jalali.now(),
-      locale: const Locale('fa'),
-    );
-
-    if (picked != null) {
-      final String formattedDate = picked.toJalaliDateTime().substring(0, 10);
-      setState(() {
-        startedDate = formattedDate;
-      });
-    }
-  }
-
-  Future<void> _selectEndedDate(BuildContext context) async {
-    final Jalali? picked = await showPersianDatePicker(
-      context: context,
-      initialDate: Jalali.now(),
-      firstDate: Jalali(1300, 1, 1),
-      lastDate: Jalali.now(),
-      locale: const Locale('fa'),
-    );
-
-    if (picked != null) {
-      final String formattedDate = picked.toJalaliDateTime().substring(0, 10);
-      setState(() {
-        endedDate = formattedDate;
-      });
-    }
-  }
-
 // --------------- UI -----------------
   @override
   Widget build(BuildContext context) {
@@ -84,80 +50,21 @@ class _CompilationsFormState extends State<CompilationsForm> {
             children: [
               Row(
                 children: [
-                  Expanded(child: TextInput(value: title, label: 'عنوان', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                  Expanded(child: TextInput(value: address, label: 'آدرس', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(value: title, label: 'عنوان', onChanged: (value) {})),
                 ],
               ),
               const SizedBox(height: 15),
               Row(
                 children: [
-                  Expanded(
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      elevation: 1,
-                      child: InkWell(
-                        onTap: () {
-                          _selectStartedDate(context);
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            children: [
-                              const Icon(Icons.calendar_today, size: 20),
-                              const SizedBox(width: 16),
-                              Text(
-                                startedDate == '' ? 'تاریخ شروع' : startedDate,
-                                style: theme.bodyMedium,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      elevation: 1,
-                      child: InkWell(
-                        onTap: () {
-                          _selectEndedDate(context);
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            children: [
-                              const Icon(Icons.calendar_today, size: 20),
-                              const SizedBox(width: 16),
-                              Text(
-                                endedDate == '' ? 'تاریخ پایان' : endedDate,
-                                style: theme.bodyMedium,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'نوع اثر')),
+                  Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'زبان')),
                 ],
               ),
               const SizedBox(height: 15),
               Row(
                 children: [
-                  Expanded(child: TextInput(value: position, label: 'سمت', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                  Expanded(child: TextInput(value: currentPosition, label: 'فعالیت جاری', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(value: position, label: 'سال انتشار', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(value: title, label: 'محل انتشار', onChanged: (value) {})),
                 ],
               ),
               const SizedBox(height: 15),
