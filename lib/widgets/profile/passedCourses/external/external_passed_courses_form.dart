@@ -1,42 +1,21 @@
-import 'dart:io';
-
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/widgets/elements/text_input.dart';
-import 'package:lms/widgets/elements/three_line_input.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class ExternalPassedCoursesForm extends StatefulWidget {
-  const ExternalPassedCoursesForm({super.key});
+  final bool isCreating;
+  final bool isEditing;
+  final Map<String, dynamic>? externalPassedCourseDetails;
+  final Map<dynamic, dynamic> externalPassedCourseInfo;
+  final Future<void> Function() selectFile;
+  const ExternalPassedCoursesForm({super.key, required this.isCreating, required this.isEditing, this.externalPassedCourseDetails, required this.externalPassedCourseInfo, required this.selectFile});
 
   @override
   State<ExternalPassedCoursesForm> createState() => _ExternalPassedCoursesFormState();
 }
 
 class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
-  bool status = false;
-  bool isRelated = false;
-  File? _selectedFile;
-  String title = '';
-  String address = '';
-  String startedDate = '';
-  String endedDate = '';
-  String position = '';
-  String currentPosition = '';
-  String description = '';
-  Future<void> _selectFile() async {
-    final result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['jpg', 'jpeg', 'png', 'pdf'],
-    );
-    if (result != null) {
-      setState(() {
-        _selectedFile = File(result.files.single.path!);
-      });
-    }
-  }
-
   Future<void> _selectStartedDate(BuildContext context) async {
     final Jalali? picked = await showPersianDatePicker(
       context: context,
@@ -49,7 +28,7 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
     if (picked != null) {
       final String formattedDate = picked.toJalaliDateTime().substring(0, 10);
       setState(() {
-        startedDate = formattedDate;
+        widget.externalPassedCourseInfo['start_date'] = formattedDate;
       });
     }
   }
@@ -66,7 +45,7 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
     if (picked != null) {
       final String formattedDate = picked.toJalaliDateTime().substring(0, 10);
       setState(() {
-        endedDate = formattedDate;
+        widget.externalPassedCourseInfo['end_date'] = formattedDate;
       });
     }
   }
@@ -84,71 +63,24 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
             children: [
               Row(
                 children: [
-                  Expanded(child: TextInput(value: title, label: 'عنوان', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                  Expanded(child: TextInput(value: address, label: 'آدرس', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                ],
-              ),
-              const SizedBox(height: 15),
-              Row(
-                children: [
                   Expanded(
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      elevation: 1,
-                      child: InkWell(
-                        onTap: () {
-                          _selectStartedDate(context);
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            children: [
-                              const Icon(Icons.calendar_today, size: 20),
-                              const SizedBox(width: 16),
-                              Text(
-                                startedDate == '' ? 'تاریخ شروع' : startedDate,
-                                style: theme.bodyMedium,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    child: TextInput(
+                      value: widget.isCreating ? widget.externalPassedCourseInfo['title'] : widget.externalPassedCourseDetails?['title'],
+                      label: 'عنوان',
+                      onChanged: (value) {
+                        widget.externalPassedCourseInfo['title'] = value;
+                      },
+                      editable: widget.isEditing,
                     ),
                   ),
                   Expanded(
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      elevation: 1,
-                      child: InkWell(
-                        onTap: () {
-                          _selectEndedDate(context);
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            children: [
-                              const Icon(Icons.calendar_today, size: 20),
-                              const SizedBox(width: 16),
-                              Text(
-                                endedDate == '' ? 'تاریخ پایان' : endedDate,
-                                style: theme.bodyMedium,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    child: TextInput(
+                      value: widget.isCreating ? widget.externalPassedCourseInfo['institute_title'] : widget.externalPassedCourseDetails?['institute_title'],
+                      label: 'نام موسسه',
+                      onChanged: (value) {
+                        widget.externalPassedCourseInfo['institute_title'] = value;
+                      },
+                      editable: widget.isEditing,
                     ),
                   ),
                 ],
@@ -156,8 +88,113 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
               const SizedBox(height: 15),
               Row(
                 children: [
-                  Expanded(child: TextInput(value: position, label: 'سمت', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                  Expanded(child: TextInput(value: currentPosition, label: 'فعالیت جاری', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: Text(
+                            'تاریخ شروع',
+                            style: theme.bodySmall,
+                          ),
+                        ),
+                        Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          elevation: 1,
+                          child: InkWell(
+                            onTap: () {
+                              _selectStartedDate(context);
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.calendar_today, size: 20),
+                                  const SizedBox(width: 16),
+                                  Text(
+                                    widget.isCreating ? widget.externalPassedCourseInfo['start_date'] : widget.externalPassedCourseDetails?['start_date'],
+                                    style: theme.bodyMedium,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: Text('تاریخ پایان', style: theme.bodySmall),
+                        ),
+                        Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          elevation: 1,
+                          child: InkWell(
+                            onTap: () {
+                              _selectEndedDate(context);
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.calendar_today, size: 20),
+                                  const SizedBox(width: 16),
+                                  Text(
+                                    widget.isCreating ? widget.externalPassedCourseInfo['end_date'] : widget.externalPassedCourseDetails?['end_date'],
+                                    style: theme.bodyMedium,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 15),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextInput(
+                      value: widget.isCreating ? widget.externalPassedCourseInfo['address'] : widget.externalPassedCourseDetails?['address'],
+                      label: 'آدرس',
+                      onChanged: (value) {
+                        widget.externalPassedCourseInfo['address'] = value;
+                      },
+                      editable: widget.isEditing,
+                    ),
+                  ),
+                  Expanded(
+                    child: TextInput(
+                      value: widget.isCreating ? widget.externalPassedCourseInfo['duration'] : widget.externalPassedCourseDetails?['duration'],
+                      label: 'مدت',
+                      onChanged: (value) {
+                        widget.externalPassedCourseInfo['duration'] = value;
+                      },
+                      keyboardType: TextInputType.number,
+                      editable: widget.isEditing,
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 15),
@@ -170,7 +207,7 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                       ),
                       elevation: 1,
                       child: InkWell(
-                        onTap: () => _selectFile(),
+                        onTap: () => widget.selectFile(),
                         child: Container(
                           width: double.infinity,
                           padding: const EdgeInsets.all(16),
@@ -183,7 +220,7 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                               const SizedBox(width: 16),
                               Expanded(
                                 child: Text(
-                                  _selectedFile != null ? 'فایل انتخاب شد' : 'فایل ضمیمه',
+                                  widget.externalPassedCourseInfo['file'] != null ? 'فایل انتخاب شد' : 'فایل ضمیمه',
                                   style: const TextStyle(fontSize: 11),
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -203,11 +240,13 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                             Text('وضعیت', style: theme.bodySmall),
                             CupertinoSwitch(
                               activeColor: Colors.blue,
-                              value: status,
+                              value: widget.isCreating ? widget.externalPassedCourseInfo['status'] : (widget.externalPassedCourseDetails?['status'] == '0' ? false : true),
                               onChanged: (bool value) {
-                                setState(() {
-                                  status = value;
-                                });
+                                widget.isEditing
+                                    ? setState(() {
+                                        widget.externalPassedCourseInfo['status'] = value;
+                                      })
+                                    : null;
                               },
                             ),
                           ],
@@ -217,11 +256,31 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                             Text('فعالیت مرتبط', style: theme.bodySmall),
                             CupertinoSwitch(
                               activeColor: Colors.blue,
-                              value: isRelated,
+                              value: widget.isCreating ? widget.externalPassedCourseInfo['is_related'] : (widget.externalPassedCourseDetails?['is_related'] == '0' ? false : true),
                               onChanged: (bool value) {
-                                setState(() {
-                                  isRelated = value;
-                                });
+                                widget.isEditing
+                                    ? setState(() {
+                                        widget.externalPassedCourseInfo['is_related'] = value;
+                                      })
+                                    : null;
+                              },
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text('گواهینامه', style: theme.bodySmall),
+                            CupertinoSwitch(
+                              activeColor: Colors.blue,
+                              value: widget.isCreating ? widget.externalPassedCourseInfo['has_certificate'] : (widget.externalPassedCourseDetails?['has_certificate'] == '0' ? false : true),
+                              onChanged: (bool value) {
+                                widget.isEditing
+                                    ? setState(
+                                        () {
+                                          widget.externalPassedCourseInfo['has_certificate'] = value;
+                                        },
+                                      )
+                                    : null;
                               },
                             ),
                           ],
@@ -231,9 +290,7 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                   ),
                 ],
               ),
-              const SizedBox(height: 15),
-              ThreeLineInput(value: description, label: 'توضیحات', onChanged: (value) {}),
-              const SizedBox(height: 15),
+              const SizedBox(height: 10),
             ],
           ),
         ),
