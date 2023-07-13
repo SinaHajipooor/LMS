@@ -88,15 +88,31 @@ class ExternalPassedCoursesProvider with ChangeNotifier {
     }
   }
 
-  Future<void> editExternalCourse(int id, Map<String, dynamic> externalCourseInfo) async {
+  Future<void> editExternalCourse(int id, Map<String, dynamic> externalCourseInfo, File file) async {
     try {
-      final response = await http.put(
-        Uri.parse(_externalCoursesUrl + '/update/$id'),
-        headers: <String, String>{'Content-Type': 'application/json'},
-        body: jsonEncode(externalCourseInfo),
-      );
-      if (response.statusCode != 200) throw Exception('failded to update external course');
-      notifyListeners();
+      var request = http.MultipartRequest('PUT', Uri.parse(_externalCoursesUrl + '/update/$id'));
+      // Add other fields to the request if needed
+      request.fields['user_id'] = externalCourseInfo['user_id'] ?? '';
+      request.fields['title'] = externalCourseInfo['title'] ?? '';
+      request.fields['address'] = externalCourseInfo['address'] ?? '';
+      request.fields['start_date'] = externalCourseInfo['start_date'] ?? '';
+      request.fields['end_date'] = externalCourseInfo['end_date'] ?? '';
+      request.fields['duration'] = externalCourseInfo['duration'] ?? '';
+      request.fields['institute_title'] = externalCourseInfo['institute_title'] ?? '';
+      request.fields['has_certificate'] = externalCourseInfo['has_certificate'].toString();
+      request.fields['status'] = externalCourseInfo['status'].toString();
+      request.fields['is_related'] = externalCourseInfo['is_related'].toString();
+      // Add file to the request
+      request.files.add(await http.MultipartFile.fromPath('file', file.path));
+      // Send the request
+      var response = await request.send();
+      // Get the response
+      if (response.statusCode == 200) {
+        print('External course edited successfully');
+        notifyListeners();
+      } else {
+        throw Exception('Failed to edit external course');
+      }
     } catch (error) {
       print(error);
       rethrow;

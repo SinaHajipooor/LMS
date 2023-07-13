@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/providers/Profile/PassedCourses/ExternalPassedCoursesProvider.dart';
 import 'package:lms/widgets/elements/spinner.dart';
+import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_form.dart';
 import 'package:provider/provider.dart';
 
 class ExternalPassedCourseDetailsModal extends StatefulWidget {
@@ -10,12 +12,14 @@ class ExternalPassedCourseDetailsModal extends StatefulWidget {
   // 1 for show 2 for edit
   final int useCase;
   final int externalCourseId;
+  final Function() refreshParent;
 
   const ExternalPassedCourseDetailsModal({
     required this.deviceHeight,
     Key? key,
     required this.useCase,
     required this.externalCourseId,
+    required this.refreshParent,
   }) : super(key: key);
 
   @override
@@ -27,6 +31,7 @@ class _ExternalPassedCourseDetailsModalState extends State<ExternalPassedCourseD
   // ---------------  state  --------------
   final ScrollController _scrollController = ScrollController();
   bool _isLoading = true;
+  File? filePath;
   Map<String, dynamic> externalCourseInfo = {
     'user_id': '',
     'title': '',
@@ -36,7 +41,6 @@ class _ExternalPassedCourseDetailsModalState extends State<ExternalPassedCourseD
     'duration': '',
     'institute_title': '',
     'has_certificate': false,
-    'file': File,
     'status': false,
     'is_related': false,
   };
@@ -53,6 +57,41 @@ class _ExternalPassedCourseDetailsModalState extends State<ExternalPassedCourseD
     setState(() {
       _isLoading = false;
     });
+  }
+
+  Future<void> _selectFile() async {
+    try {
+      final result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['jpg', 'jpeg', 'png', 'pdf'],
+      );
+      if (result != null && result.files.isNotEmpty) {
+        final file = File(result.files.single.path!);
+        if (file.existsSync()) {
+          setState(() {
+            filePath = file;
+          });
+        } else {
+          throw Exception('File does not exist');
+        }
+      }
+    } catch (error) {
+      print(error);
+      // Handle the error
+    }
+  }
+
+  Future<void> editExternalCourse() async {
+    setState(() {
+      _isLoading = true;
+    });
+    if (filePath != null) {
+      await Provider.of<ExternalPassedCoursesProvider>(context, listen: false).editExternalCourse(widget.externalCourseId, externalCourseInfo, filePath ?? File(''));
+    } else {
+      // Handle the case when filePath is null
+    }
+    widget.refreshParent();
+    Navigator.of(context).pop();
   }
 
   // ---------------  UI ---------------
@@ -95,14 +134,15 @@ class _ExternalPassedCourseDetailsModalState extends State<ExternalPassedCourseD
                         ),
                       ),
                       const SizedBox(height: 20),
-                      // Expanded(
-                      //   child: ExternalPassedCoursesForm(
-                      //     isCreating: false,
-                      //     isEditing: widget.useCase == 2,
-                      //     externalPassedCourseDetails: Provider.of<ExternalPassedCoursesProvider>(context, listen: false).externalCourseDetails,
-                      //     externalPassedCourseInfo: externalCourseInfo,
-                      //   ),
-                      // ),
+                      Expanded(
+                        child: ExternalPassedCoursesForm(
+                          selectFile: _selectFile,
+                          isCreating: false,
+                          isEditing: widget.useCase == 2,
+                          externalPassedCourseDetails: Provider.of<ExternalPassedCoursesProvider>(context, listen: false).externalCourseDetails,
+                          externalPassedCourseInfo: externalCourseInfo,
+                        ),
+                      ),
                       Visibility(
                         visible: widget.useCase == 2,
                         child: Row(
@@ -125,7 +165,7 @@ class _ExternalPassedCourseDetailsModalState extends State<ExternalPassedCourseD
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 5),
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () => editExternalCourse(),
                                   child: const Text('ذخیره'),
                                 ),
                               ),

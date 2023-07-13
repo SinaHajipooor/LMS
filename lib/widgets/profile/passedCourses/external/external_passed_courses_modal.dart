@@ -70,9 +70,7 @@ class _ExternalPassedCoursesModalState extends State<ExternalPassedCoursesModal>
       _isLoading = true;
     });
     await Provider.of<ExternalPassedCoursesProvider>(context, listen: false).addExternalCourse(externalCourseInfo, filePath!);
-    setState(() {
-      _isLoading = false;
-    });
+    Navigator.of(context).pop();
   }
 
   @override

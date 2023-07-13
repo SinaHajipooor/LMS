@@ -186,7 +186,7 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                   ),
                   Expanded(
                     child: TextInput(
-                      value: widget.isCreating ? widget.externalPassedCourseInfo['duration'] : widget.externalPassedCourseDetails?['duration'],
+                      value: widget.isCreating ? widget.externalPassedCourseInfo['duration'] : (widget.externalPassedCourseDetails?['duration'] ?? ''),
                       label: 'مدت',
                       onChanged: (value) {
                         widget.externalPassedCourseInfo['duration'] = value;

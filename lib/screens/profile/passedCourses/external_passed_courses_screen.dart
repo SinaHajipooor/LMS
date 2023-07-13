@@ -42,7 +42,13 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
     InternetConnectivityHelper.checkInternetConnectivity(context);
   }
 
-  _showJobinfoFormModal(BuildContext context, double deviceHeight, int selectedIndex) {
+  void refreshParent() {
+    setState(() {
+      // Update any necessary state variables in the parent widget
+    });
+  }
+
+  _showJobinfoFormModal(BuildContext context, double deviceHeight, int selectedIndexm, refreshParent) {
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -54,6 +60,7 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
       context: context,
       builder: (BuildContext context) {
         return ExternalPassedCoursesModal(
+          // refreshParent: refreshParent,
           deviceHeight: deviceHeight,
         );
       },
@@ -76,7 +83,7 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
           onPressed: () => Navigator.of(context).pop(),
         ),
         actions: [
-          IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
+          IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1, refreshParent), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
       body: _isLoading ? const Center(child: Spinner(size: 35)) : ExternalPassedCoursesInfo(externalCourses: Provider.of<ExternalPassedCoursesProvider>(context, listen: false).externalCourses),
