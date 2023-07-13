@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:lms/widgets/profile/activities/activites_info_form.dart';
 
+// ignore: must_be_immutable
 class ActivitiesInfoModal extends StatefulWidget {
   final double deviceHeight;
-  final int activityId;
+  int? activityId;
   final bool isEditing;
   final bool isCreating;
   final bool isShowing;
   final String title;
 
-  const ActivitiesInfoModal({
+  ActivitiesInfoModal({
     required this.deviceHeight,
     Key? key,
-    required this.activityId,
+    this.activityId,
     required this.isEditing,
     required this.isCreating,
     required this.isShowing,

@@ -28,7 +28,6 @@ class _ActivitiesInfoState extends State<ActivitiesInfo> {
 
   _showActivityModal(
     BuildContext context,
-    double deviceHeight,
     int activityId,
     int useCase,
   ) {
@@ -128,7 +127,7 @@ class _ActivitiesInfoState extends State<ActivitiesInfo> {
                                     radius: 15,
                                     child: IconButton(
                                       icon: const Icon(Icons.edit, color: Colors.white, size: 15),
-                                      onPressed: () {},
+                                      onPressed: () => _showActivityModal(context, activities[index]['id'], 1),
                                     ),
                                   ),
                                   CircleAvatar(
@@ -153,7 +152,7 @@ class _ActivitiesInfoState extends State<ActivitiesInfo> {
                         ),
                       ),
                       DataCell(
-                        IconButton(icon: const Icon(Icons.remove_red_eye, color: Colors.orange, size: 20), onPressed: () {}),
+                        IconButton(icon: const Icon(Icons.remove_red_eye, color: Colors.orange, size: 20), onPressed: () => _showActivityModal(context, activities[index]['id'], 2)),
                       ),
                     ],
                   ),

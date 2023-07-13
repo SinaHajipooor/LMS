@@ -52,7 +52,13 @@ class _ActivitiesInfoScreenState extends State<ActivitiesInfoScreen> {
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return ActivitiesInfoModal(deviceHeight: deviceHeight);
+        return ActivitiesInfoModal(
+          isCreating: true,
+          isEditing: false,
+          isShowing: false,
+          title: 'ایجاد فعالیت‌ها و تجارب',
+          deviceHeight: deviceHeight,
+        );
       },
     );
   }
