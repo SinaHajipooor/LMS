@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/widgets/profile/passedCourses/new/external_course_from.dart';
+import 'package:lms/widgets/profile/passedCourses/external/external_course_from.dart';
 
 // ignore: must_be_immutable
 class ExternalCourseModal extends StatefulWidget {

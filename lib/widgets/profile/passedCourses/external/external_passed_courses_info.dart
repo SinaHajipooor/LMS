@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lms/providers/Profile/PassedCourses/ExternalPassedCoursesProvider.dart';
 import 'package:lms/widgets/elements/spinner.dart';
-import 'package:lms/widgets/profile/passedCourses/new/external_course_modal.dart';
+import 'package:lms/widgets/profile/passedCourses/external/external_course_modal.dart';
 import 'package:provider/provider.dart';
 
 class ExternalPassedCoursesInfo extends StatefulWidget {

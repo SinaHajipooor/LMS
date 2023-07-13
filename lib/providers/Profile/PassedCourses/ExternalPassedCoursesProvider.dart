@@ -7,8 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ExternalPassedCoursesProvider with ChangeNotifier {
   // ------------------- feilds --------------------
-  static const _baseUrl = 'http://45.149.77.156:8081/api/profile/';
-  static const _externalCoursesUrl = _baseUrl + 'course/external';
+  static const _externalCoursesUrl = 'http://45.149.77.156:8081/api/profile/course/external';
   List _externalCourses = [];
   Map<String, dynamic>? _externalCourseDetails;
   // ------------------- getter --------------------
@@ -91,11 +90,9 @@ class ExternalPassedCoursesProvider with ChangeNotifier {
   Future<void> editExternalCourse(int id, Map<String, dynamic> externalCourseInfo, File file) async {
     try {
       var request = http.MultipartRequest('POST', Uri.parse(_externalCoursesUrl + '/update/$id'));
-      final prefs = await SharedPreferences.getInstance();
-      final userId = prefs.getString('userId');
       // Add other fields to the request if needed
       request.fields['_method'] = 'put';
-      request.fields['user_id'] = userId!;
+      request.fields['user_id'] = externalCourseInfo['user_id'];
       request.fields['title'] = externalCourseInfo['title'];
       request.fields['address'] = externalCourseInfo['address'];
       request.fields['start_date'] = externalCourseInfo['start_date'];
@@ -114,10 +111,14 @@ class ExternalPassedCoursesProvider with ChangeNotifier {
         print('External course edited successfully');
         notifyListeners();
       } else {
-        throw Exception('Failed to edit external course');
+        // throw Exception('Failed to edit external course');
+
+        print(response.statusCode);
+        print(await response.stream.bytesToString());
       }
     } catch (error) {
       print(error);
+
       rethrow;
     }
   }

@@ -34,8 +34,8 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
   final TextEditingController instituteController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
   final TextEditingController durationController = TextEditingController();
-  String startedDate = '';
-  String endedDate = '';
+  String startedDate = '1402-01-10';
+  String endedDate = '1402-12-13';
   String isRelated = '0';
   String hasCertificate = '0';
   String status = '0';
@@ -77,7 +77,6 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
       lastDate: Jalali.now(),
       locale: const Locale('fa'),
     );
-
     if (picked != null) {
       final String formattedDate = picked.toJalaliDateTime().substring(0, 10);
       setState(() {
@@ -119,8 +118,8 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
       instituteController.text = externalCourseDetails['institute_title'];
       addressController.text = externalCourseDetails['address'];
       durationController.text = externalCourseDetails['duration'];
-      startedDate = externalCourseDetails['start_date'];
-      endedDate = externalCourseDetails['end_date'];
+      startedDate = externalCourseDetails['start_date'].replaceAll('/', '-');
+      endedDate = externalCourseDetails['end_date'].replaceAll('/', '-');
       isRelated = externalCourseDetails['is_related'];
       status = externalCourseDetails['status'];
       hasCertificate = externalCourseDetails['has_certificate'];
@@ -149,6 +148,31 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
     await Provider.of<ExternalPassedCoursesProvider>(context, listen: false).addExternalCourse(externalCourseInfo, filePath!);
     Navigator.of(context).pop();
   }
+
+  Future<void> editExternalCourse() async {
+    print('... editing');
+    setState(() {
+      _isLoading = true;
+    });
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getString('userId');
+    final externalCourseInfo = {
+      'user_id': userId,
+      'title': titleController.text,
+      'institute_title': instituteController.text,
+      'duration': durationController.text,
+      'address': addressController.text,
+      'start_date': startedDate,
+      'end_date': endedDate,
+      'status': status,
+      'is_related': isRelated,
+      'has_certificate': hasCertificate,
+    };
+
+    await Provider.of<ExternalPassedCoursesProvider>(context, listen: false).editExternalCourse(widget.externalCourseId!, externalCourseInfo, filePath!);
+    Navigator.of(context).pop();
+  }
+
   //------------------- UI ----------------------
 
   @override
@@ -378,7 +402,9 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: ElevatedButton(
-                        onPressed: () => addExternalCourse(),
+                        onPressed: () {
+                          widget.isCreating ? addExternalCourse() : editExternalCourse();
+                        },
                         child: const Text('ذخیره'),
                       ),
                     ),
@@ -388,18 +414,19 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
             ),
           ),
           Visibility(
+              visible: widget.isShowing,
               child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              children: [
-                Expanded(
-                    child: ElevatedButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('بستن'),
-                ))
-              ],
-            ),
-          ))
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: ElevatedButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: const Text('بستن'),
+                    ))
+                  ],
+                ),
+              ))
         ],
       ),
     );
