@@ -30,4 +30,18 @@ class ActivityHistoryProvider with ChangeNotifier {
       rethrow;
     }
   }
+
+  Future<void> deleteActivity(int activityId) async {
+    try {
+      final response = await http.delete(
+        Uri.parse(_baseUrl + '/destroy/$activityId'),
+        headers: <String, String>{'Content-Type': 'application/json'},
+      );
+      if (response.statusCode != 200) throw Exception('failed to delete activity ');
+      notifyListeners();
+    } catch (error) {
+      print(error);
+      rethrow;
+    }
+  }
 }

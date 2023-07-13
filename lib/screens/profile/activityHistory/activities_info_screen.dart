@@ -79,8 +79,8 @@ class _ActivitiesInfoScreenState extends State<ActivitiesInfoScreen> {
       body: _isLoading
           ? const Center(child: Spinner(size: 35))
           : ActivitiesInfo(
-              activitesList: Provider.of<ActivityHistoryProvider>(context, listen: false).activities,
-            ),
+              // activitesList: Provider.of<ActivityHistoryProvider>(context, listen: false).activities,
+              ),
     );
   }
 }
