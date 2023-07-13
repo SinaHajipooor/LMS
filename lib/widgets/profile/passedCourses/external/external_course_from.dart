@@ -34,8 +34,8 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
   final TextEditingController instituteController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
   final TextEditingController durationController = TextEditingController();
-  String startedDate = '1402-01-10';
-  String endedDate = '1402-12-13';
+  String startedDate = '';
+  String endedDate = '';
   String isRelated = '0';
   String hasCertificate = '0';
   String status = '0';
