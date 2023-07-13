@@ -1,48 +1,27 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class TextInput extends StatefulWidget {
-  final String value;
   final String label;
-  final Function(String) onChanged;
   final TextInputType keyboardType;
-  final bool editable;
-  const TextInput({
+  final TextEditingController controller;
+  bool? editable;
+  final Function(String) onChanged;
+  TextInput({
     Key? key,
-    required this.value,
     required this.label,
+    required this.keyboardType,
+    required this.controller,
+    this.editable,
     required this.onChanged,
-    this.keyboardType = TextInputType.text,
-    this.editable = true,
   }) : super(key: key);
   @override
   _TextInputState createState() => _TextInputState();
 }
 
 class _TextInputState extends State<TextInput> {
-  late TextEditingController _controller;
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController(text: widget.value);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  void didUpdateWidget(covariant TextInput oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.value != oldWidget.value) {
-      _controller.text = widget.value;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -50,7 +29,7 @@ class _TextInputState extends State<TextInput> {
           padding: const EdgeInsets.only(right: 10),
           child: Text(
             widget.label,
-            style: theme.textTheme.bodySmall,
+            style: Theme.of(context).textTheme.bodySmall,
           ),
         ),
         Card(
@@ -64,26 +43,16 @@ class _TextInputState extends State<TextInput> {
               children: [
                 Expanded(
                   child: TextFormField(
-                    textDirection: TextDirection.rtl,
-                    style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14),
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 14),
+                    keyboardType: widget.keyboardType,
+                    controller: widget.controller,
+                    enabled: widget.editable ?? true,
+                    onChanged: widget.onChanged,
                     decoration: const InputDecoration(
                       border: InputBorder.none,
                     ),
-                    onChanged: widget.editable ? widget.onChanged : null,
-                    controller: _controller,
-                    keyboardType: widget.keyboardType,
-                    enabled: widget.editable,
                   ),
                 ),
-                if (widget.editable && _controller.text.isNotEmpty) // Show clear button only if the input is editable and has text
-                  IconButton(
-                    icon: const Icon(Icons.clear, size: 18, color: Colors.grey),
-                    onPressed: () {
-                      setState(() {
-                        _controller.clear(); // Clear the text in the input field
-                      });
-                    },
-                  ),
               ],
             ),
           ),

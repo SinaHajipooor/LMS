@@ -10,6 +10,8 @@ class EducationInfoForm extends StatelessWidget {
   String? endEmployeeTime;
   Future<void> Function(BuildContext) selectDate;
   EducationInfoForm({super.key, this.birthDate, required this.selectDate, this.startEmployeeTime, this.endEmployeeTime});
+  TextEditingController titleController = TextEditingController();
+
 // ---------------- UI ---------------
   @override
   Widget build(BuildContext context) {
@@ -100,8 +102,8 @@ class EducationInfoForm extends StatelessWidget {
             const SizedBox(height: 15),
             Row(
               children: [
-                Expanded(child: TextInput(value: '', label: ' معدل', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                Expanded(child: TextInput(value: '', label: 'دانشگاه اخذ مدرک', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                Expanded(child: TextInput(label: ' معدل', onChanged: (value) {}, keyboardType: TextInputType.number, controller: titleController)),
+                Expanded(child: TextInput(label: 'دانشگاه اخذ مدرک', onChanged: (value) {}, keyboardType: TextInputType.number, controller: titleController)),
               ],
             ),
             const SizedBox(height: 15),

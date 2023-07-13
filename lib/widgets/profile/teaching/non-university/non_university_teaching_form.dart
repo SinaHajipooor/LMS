@@ -15,6 +15,8 @@ class NonUniversityTeachingForm extends StatefulWidget {
 }
 
 class _NonUniversityTeachingFormState extends State<NonUniversityTeachingForm> {
+  TextEditingController titleController = TextEditingController();
+
   bool status = false;
   bool isRelated = false;
   bool isCurrentPosition = false;
@@ -84,8 +86,14 @@ class _NonUniversityTeachingFormState extends State<NonUniversityTeachingForm> {
             children: [
               Row(
                 children: [
-                  Expanded(child: TextInput(value: title, label: 'عنوان', onChanged: (value) {})),
-                  Expanded(child: TextInput(value: title, label: 'مطالب ارائه شده', onChanged: (value) {})),
+                  Expanded(
+                      child: TextInput(
+                    keyboardType: TextInputType.name,
+                    label: 'عنوان',
+                    onChanged: (value) {},
+                    controller: titleController,
+                  )),
+                  Expanded(child: TextInput(controller: titleController, keyboardType: TextInputType.name, label: 'مطالب ارائه شده', onChanged: (value) {})),
                 ],
               ),
               const SizedBox(height: 15),

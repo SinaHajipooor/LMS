@@ -13,6 +13,8 @@ class JobInfoForm extends StatelessWidget {
 // --------------- UI -----------------
   @override
   Widget build(BuildContext context) {
+    TextEditingController titleController = TextEditingController();
+
     return Scrollbar(
       child: SingleChildScrollView(
         child: Padding(
@@ -121,8 +123,8 @@ class JobInfoForm extends StatelessWidget {
               const SizedBox(height: 15),
               Row(
                 children: [
-                  Expanded(child: TextInput(value: '', label: 'تلفن محل‌کار', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                  Expanded(child: TextInput(value: '', label: 'شماره پرسنلی', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(label: 'تلفن محل‌کار', onChanged: (value) {}, keyboardType: TextInputType.number, controller: titleController)),
+                  Expanded(child: TextInput(label: 'شماره پرسنلی', onChanged: (value) {}, keyboardType: TextInputType.number, controller: titleController)),
                 ],
               ),
               const SizedBox(height: 15),

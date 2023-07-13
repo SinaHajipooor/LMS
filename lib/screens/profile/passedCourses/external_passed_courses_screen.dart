@@ -4,7 +4,7 @@ import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/providers/Profile/PassedCourses/ExternalPassedCoursesProvider.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_info.dart';
-import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_modal.dart';
+import 'package:lms/widgets/profile/passedCourses/external/external_course_modal.dart';
 import 'package:provider/provider.dart';
 
 class ExternalPassedCoursesScreen extends StatefulWidget {
@@ -42,7 +42,7 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
     InternetConnectivityHelper.checkInternetConnectivity(context);
   }
 
-  _showJobinfoFormModal(BuildContext context, double deviceHeight, int selectedIndex) {
+  _showExternalCourseFormModal(BuildContext context, double deviceHeight, int selectedIndexm) {
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -53,8 +53,11 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return ExternalPassedCoursesModal(
-          deviceHeight: deviceHeight,
+        return ExternalCourseModal(
+          isCreating: true,
+          isEditing: false,
+          isShowing: false,
+          title: 'ایجاد دوره گذرانده شده خارج مرکز',
         );
       },
     );
@@ -76,10 +79,14 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
           onPressed: () => Navigator.of(context).pop(),
         ),
         actions: [
-          IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
+          IconButton(onPressed: () => _showExternalCourseFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: _isLoading ? const Center(child: Spinner(size: 35)) : ExternalPassedCoursesInfo(externalCourses: Provider.of<ExternalPassedCoursesProvider>(context, listen: false).externalCourses),
+      body: _isLoading
+          ? const Center(child: Spinner(size: 35))
+          : ExternalPassedCoursesInfo(
+              externalCourses: Provider.of<ExternalPassedCoursesProvider>(context, listen: false).externalCourses,
+            ),
     );
   }
 }

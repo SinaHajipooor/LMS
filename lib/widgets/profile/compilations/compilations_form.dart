@@ -15,6 +15,8 @@ class CompilationsForm extends StatefulWidget {
 }
 
 class _CompilationsFormState extends State<CompilationsForm> {
+  TextEditingController titleController = TextEditingController();
+
   bool status = false;
   bool isRelated = false;
   File? _selectedFile;
@@ -50,7 +52,7 @@ class _CompilationsFormState extends State<CompilationsForm> {
             children: [
               Row(
                 children: [
-                  Expanded(child: TextInput(value: title, label: 'عنوان', onChanged: (value) {})),
+                  Expanded(child: TextInput(keyboardType: TextInputType.name, label: 'عنوان', onChanged: (value) {}, controller: titleController)),
                 ],
               ),
               const SizedBox(height: 15),
@@ -63,8 +65,14 @@ class _CompilationsFormState extends State<CompilationsForm> {
               const SizedBox(height: 15),
               Row(
                 children: [
-                  Expanded(child: TextInput(value: position, label: 'سال انتشار', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                  Expanded(child: TextInput(value: title, label: 'محل انتشار', onChanged: (value) {})),
+                  Expanded(child: TextInput(label: 'سال انتشار', onChanged: (value) {}, controller: titleController, keyboardType: TextInputType.number)),
+                  Expanded(
+                      child: TextInput(
+                    label: 'محل انتشار',
+                    onChanged: (value) {},
+                    controller: titleController,
+                    keyboardType: TextInputType.name,
+                  )),
                 ],
               ),
               const SizedBox(height: 15),

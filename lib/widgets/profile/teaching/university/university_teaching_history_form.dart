@@ -16,6 +16,8 @@ class UniversityTeachingHistoryForm extends StatefulWidget {
 }
 
 class _UniversityTeachingHistoryFormState extends State<UniversityTeachingHistoryForm> {
+  TextEditingController titleController = TextEditingController();
+
   bool status = false;
   bool isRelated = false;
   bool isCurrentPosition = false;
@@ -87,8 +89,8 @@ class _UniversityTeachingHistoryFormState extends State<UniversityTeachingHistor
             children: [
               Row(
                 children: [
-                  Expanded(child: TextInput(value: title, label: 'عنوان', onChanged: (value) {})),
-                  Expanded(child: TextInput(value: grade, label: 'مقطع تحصیلی', onChanged: (value) {})),
+                  Expanded(child: TextInput(keyboardType: TextInputType.name, label: 'عنوان', onChanged: (value) {}, controller: titleController)),
+                  Expanded(child: TextInput(keyboardType: TextInputType.name, label: 'مقطع تحصیلی', onChanged: (value) {}, controller: titleController)),
                 ],
               ),
               const SizedBox(height: 15),
@@ -159,8 +161,8 @@ class _UniversityTeachingHistoryFormState extends State<UniversityTeachingHistor
               const SizedBox(height: 15),
               Row(
                 children: [
-                  Expanded(child: TextInput(value: position, label: 'سمت', onChanged: (value) {})),
-                  Expanded(child: TextInput(value: currentPosition, label: 'فعالیت جاری', onChanged: (value) {})),
+                  Expanded(child: TextInput(keyboardType: TextInputType.name, label: 'سمت', onChanged: (value) {}, controller: titleController)),
+                  Expanded(child: TextInput(keyboardType: TextInputType.name, label: 'فعالیت جاری', onChanged: (value) {}, controller: titleController)),
                 ],
               ),
               const SizedBox(height: 15),
