@@ -1,55 +1,55 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/widgets/elements/text_input.dart';
-import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class ExternalPassedCoursesForm extends StatefulWidget {
   final bool isCreating;
   final bool isEditing;
-  final Map<String, dynamic>? externalPassedCourseDetails;
+  final bool hasCertificate;
+  final bool isRelated;
+  final bool status;
+  String? title;
+  final String startedDate;
+  final String endedDate;
+  final TextEditingController titleController;
+  final TextEditingController instituteNammeController;
+  final TextEditingController startedDateController;
+  final TextEditingController endedDateController;
+  final TextEditingController addressController;
+  final TextEditingController durationController;
+  final Map<String, dynamic> externalPassedCourseDetails;
   final Map<dynamic, dynamic> externalPassedCourseInfo;
   final Future<void> Function() selectFile;
-  const ExternalPassedCoursesForm({super.key, required this.isCreating, required this.isEditing, this.externalPassedCourseDetails, required this.externalPassedCourseInfo, required this.selectFile});
+  final Future<void> Function(BuildContext context) selectStartedDate;
+  final Future<void> Function(BuildContext context) selectEndedDate;
+  ExternalPassedCoursesForm({
+    super.key,
+    required this.isCreating,
+    required this.isEditing,
+    this.title,
+    required this.externalPassedCourseDetails,
+    required this.externalPassedCourseInfo,
+    required this.selectFile,
+    required this.hasCertificate,
+    required this.isRelated,
+    required this.status,
+    required this.titleController,
+    required this.instituteNammeController,
+    required this.startedDateController,
+    required this.endedDateController,
+    required this.addressController,
+    required this.durationController,
+    required this.startedDate,
+    required this.endedDate,
+    required this.selectStartedDate,
+    required this.selectEndedDate,
+  });
 
   @override
   State<ExternalPassedCoursesForm> createState() => _ExternalPassedCoursesFormState();
 }
 
 class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
-  Future<void> _selectStartedDate(BuildContext context) async {
-    final Jalali? picked = await showPersianDatePicker(
-      context: context,
-      initialDate: Jalali.now(),
-      firstDate: Jalali(1300, 1, 1),
-      lastDate: Jalali.now(),
-      locale: const Locale('fa'),
-    );
-
-    if (picked != null) {
-      final String formattedDate = picked.toJalaliDateTime().substring(0, 10);
-      setState(() {
-        widget.externalPassedCourseInfo['start_date'] = formattedDate;
-      });
-    }
-  }
-
-  Future<void> _selectEndedDate(BuildContext context) async {
-    final Jalali? picked = await showPersianDatePicker(
-      context: context,
-      initialDate: Jalali.now(),
-      firstDate: Jalali(1300, 1, 1),
-      lastDate: Jalali.now(),
-      locale: const Locale('fa'),
-    );
-
-    if (picked != null) {
-      final String formattedDate = picked.toJalaliDateTime().substring(0, 10);
-      setState(() {
-        widget.externalPassedCourseInfo['end_date'] = formattedDate;
-      });
-    }
-  }
-
 // --------------- UI -----------------
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,9 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                 children: [
                   Expanded(
                     child: TextInput(
-                      value: widget.isCreating ? widget.externalPassedCourseInfo['title'] : widget.externalPassedCourseDetails?['title'],
+                      // initialValue: widget.title,
+                      controller: widget.titleController,
+                      keyboardType: TextInputType.name,
                       label: 'عنوان',
                       onChanged: (value) {
                         widget.externalPassedCourseInfo['title'] = value;
@@ -75,7 +77,8 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                   ),
                   Expanded(
                     child: TextInput(
-                      value: widget.isCreating ? widget.externalPassedCourseInfo['institute_title'] : widget.externalPassedCourseDetails?['institute_title'],
+                      controller: widget.instituteNammeController,
+                      keyboardType: TextInputType.name,
                       label: 'نام موسسه',
                       onChanged: (value) {
                         widget.externalPassedCourseInfo['institute_title'] = value;
@@ -106,7 +109,7 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                           elevation: 1,
                           child: InkWell(
                             onTap: () {
-                              _selectStartedDate(context);
+                              widget.selectStartedDate(context);
                             },
                             child: Container(
                               width: double.infinity,
@@ -119,7 +122,7 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                                   const Icon(Icons.calendar_today, size: 20),
                                   const SizedBox(width: 16),
                                   Text(
-                                    widget.isCreating ? widget.externalPassedCourseInfo['start_date'] : widget.externalPassedCourseDetails?['start_date'],
+                                    widget.startedDate,
                                     style: theme.bodyMedium,
                                   ),
                                 ],
@@ -145,7 +148,7 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                           elevation: 1,
                           child: InkWell(
                             onTap: () {
-                              _selectEndedDate(context);
+                              widget.selectEndedDate(context);
                             },
                             child: Container(
                               width: double.infinity,
@@ -158,7 +161,7 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                                   const Icon(Icons.calendar_today, size: 20),
                                   const SizedBox(width: 16),
                                   Text(
-                                    widget.isCreating ? widget.externalPassedCourseInfo['end_date'] : widget.externalPassedCourseDetails?['end_date'],
+                                    widget.endedDate,
                                     style: theme.bodyMedium,
                                   ),
                                 ],
@@ -176,7 +179,8 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                 children: [
                   Expanded(
                     child: TextInput(
-                      value: widget.isCreating ? widget.externalPassedCourseInfo['address'] : widget.externalPassedCourseDetails?['address'],
+                      controller: widget.addressController,
+                      keyboardType: TextInputType.name,
                       label: 'آدرس',
                       onChanged: (value) {
                         widget.externalPassedCourseInfo['address'] = value;
@@ -186,7 +190,7 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                   ),
                   Expanded(
                     child: TextInput(
-                      value: widget.isCreating ? widget.externalPassedCourseInfo['duration'] : (widget.externalPassedCourseDetails?['duration'] ?? ''),
+                      controller: widget.durationController,
                       label: 'مدت',
                       onChanged: (value) {
                         widget.externalPassedCourseInfo['duration'] = value;
@@ -240,7 +244,7 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                             Text('وضعیت', style: theme.bodySmall),
                             CupertinoSwitch(
                               activeColor: Colors.blue,
-                              value: widget.isCreating ? widget.externalPassedCourseInfo['status'] : (widget.externalPassedCourseDetails?['status'] == '0' ? false : true),
+                              value: widget.status,
                               onChanged: (bool value) {
                                 widget.isEditing
                                     ? setState(() {
@@ -256,7 +260,7 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                             Text('فعالیت مرتبط', style: theme.bodySmall),
                             CupertinoSwitch(
                               activeColor: Colors.blue,
-                              value: widget.isCreating ? widget.externalPassedCourseInfo['is_related'] : (widget.externalPassedCourseDetails?['is_related'] == '0' ? false : true),
+                              value: widget.isRelated,
                               onChanged: (bool value) {
                                 widget.isEditing
                                     ? setState(() {
@@ -272,7 +276,7 @@ class _ExternalPassedCoursesFormState extends State<ExternalPassedCoursesForm> {
                             Text('گواهینامه', style: theme.bodySmall),
                             CupertinoSwitch(
                               activeColor: Colors.blue,
-                              value: widget.isCreating ? widget.externalPassedCourseInfo['has_certificate'] : (widget.externalPassedCourseDetails?['has_certificate'] == '0' ? false : true),
+                              value: widget.hasCertificate,
                               onChanged: (bool value) {
                                 widget.isEditing
                                     ? setState(

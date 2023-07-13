@@ -14,6 +14,8 @@ class UserBirthCertificateScreen extends StatefulWidget {
 }
 
 class _UserBirthCertificateScreenState extends State<UserBirthCertificateScreen> {
+  TextEditingController titleController = TextEditingController();
+
   Future<void> _selectDate(BuildContext context) async {
     final Jalali? picked = await showPersianDatePicker(
       context: context,
@@ -182,36 +184,36 @@ class _UserBirthCertificateScreenState extends State<UserBirthCertificateScreen>
             const SizedBox(height: 17),
             Row(
               children: [
-                Expanded(child: TextInput(value: '', label: 'نام لاتین', onChanged: (value) {})),
-                Expanded(child: TextInput(value: '', label: 'تلفن محل‌کار', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                Expanded(child: TextInput(controller: titleController, keyboardType: TextInputType.name, label: 'نام لاتین', onChanged: (value) {})),
+                Expanded(child: TextInput(controller: titleController, label: 'تلفن محل‌کار', onChanged: (value) {}, keyboardType: TextInputType.number)),
               ],
             ),
             const SizedBox(height: 17),
             Row(
               children: [
-                Expanded(child: TextInput(value: '', label: 'شماره شناسنامه', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                Expanded(child: TextInput(value: '', label: 'نام پدر', onChanged: (value) {})),
+                Expanded(child: TextInput(controller: titleController, label: 'شماره شناسنامه', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                Expanded(child: TextInput(controller: titleController, keyboardType: TextInputType.name, label: 'نام پدر', onChanged: (value) {})),
               ],
             ),
             const SizedBox(height: 17),
             Row(
               children: [
-                Expanded(child: TextInput(value: '', label: 'سری شناسنامه', onChanged: (value) {})),
-                Expanded(child: TextInput(value: '', label: 'سریال‌شناسنامه', onChanged: (value) {})),
+                Expanded(child: TextInput(controller: titleController, keyboardType: TextInputType.name, label: 'سری شناسنامه', onChanged: (value) {})),
+                Expanded(child: TextInput(controller: titleController, keyboardType: TextInputType.name, label: 'سریال‌شناسنامه', onChanged: (value) {})),
               ],
             ),
             const SizedBox(height: 17),
             Row(
               children: [
-                Expanded(child: TextInput(value: '', label: 'شماره‌شبا', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                Expanded(child: TextInput(value: '', label: 'کد‌پستی', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                Expanded(child: TextInput(controller: titleController, label: 'شماره‌شبا', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                Expanded(child: TextInput(controller: titleController, label: 'کد‌پستی', onChanged: (value) {}, keyboardType: TextInputType.number)),
               ],
             ),
             const SizedBox(height: 17),
             Row(
               children: [
-                Expanded(child: TextInput(value: '', label: 'آدرس', onChanged: (value) {})),
-                Expanded(child: TextInput(value: '', label: 'تلفن', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                Expanded(child: TextInput(controller: titleController, keyboardType: TextInputType.name, label: 'آدرس', onChanged: (value) {})),
+                Expanded(child: TextInput(controller: titleController, label: 'تلفن', onChanged: (value) {}, keyboardType: TextInputType.number)),
               ],
             ),
             const SizedBox(height: 17),

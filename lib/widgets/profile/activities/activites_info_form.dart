@@ -16,6 +16,8 @@ class ActivitiesInfoForm extends StatefulWidget {
 }
 
 class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
+  TextEditingController titleController = TextEditingController();
+
   bool status = false;
   bool isRelated = false;
   File? _selectedFile;
@@ -85,8 +87,8 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
             children: [
               Row(
                 children: [
-                  Expanded(child: TextInput(value: title, label: 'عنوان', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                  Expanded(child: TextInput(value: address, label: 'آدرس', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(controller: titleController, label: 'عنوان', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(controller: titleController, label: 'آدرس', onChanged: (value) {}, keyboardType: TextInputType.number)),
                 ],
               ),
               const SizedBox(height: 15),
@@ -157,8 +159,8 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
               const SizedBox(height: 15),
               Row(
                 children: [
-                  Expanded(child: TextInput(value: position, label: 'سمت', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                  Expanded(child: TextInput(value: currentPosition, label: 'فعالیت جاری', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(controller: titleController, label: 'سمت', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(controller: titleController, label: 'فعالیت جاری', onChanged: (value) {}, keyboardType: TextInputType.number)),
                 ],
               ),
               const SizedBox(height: 15),

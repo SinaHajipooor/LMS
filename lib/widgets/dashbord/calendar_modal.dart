@@ -13,6 +13,7 @@ class _CalendarModalState extends State<CalendarModal> {
   //---------------- state -------------------
   Map<String, String> inputValues = {};
   //---------------- UI -------------------
+  TextEditingController titleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,29 +25,29 @@ class _CalendarModalState extends State<CalendarModal> {
             children: [
               Row(
                 children: [
-                  Expanded(child: TextInput(value: '', label: 'نوع برگزاری', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                  Expanded(child: TextInput(value: '', label: 'ماهیت جلسه', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(controller: titleController, label: 'نوع برگزاری', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(controller: titleController, label: 'ماهیت جلسه', onChanged: (value) {}, keyboardType: TextInputType.number)),
                 ],
               ),
               const SizedBox(height: 15),
               Row(
                 children: [
-                  Expanded(child: TextInput(value: '', label: 'مدرس جلسه', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                  Expanded(child: TextInput(value: '', label: 'ناظر جلسه', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(controller: titleController, label: 'مدرس جلسه', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(controller: titleController, label: 'ناظر جلسه', onChanged: (value) {}, keyboardType: TextInputType.number)),
                 ],
               ),
               const SizedBox(height: 15),
               Row(
                 children: [
-                  Expanded(child: TextInput(value: '', label: 'زمان شروع', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                  Expanded(child: TextInput(value: '', label: 'زمان پایان', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(controller: titleController, label: 'زمان شروع', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(controller: titleController, label: 'زمان پایان', onChanged: (value) {}, keyboardType: TextInputType.number)),
                 ],
               ),
               const SizedBox(height: 15),
               Row(
                 children: [
-                  Expanded(child: TextInput(value: '', label: 'آدرس یا لینک', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                  Expanded(child: TextInput(value: '', label: 'تلفن هماهنگی', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(controller: titleController, label: 'آدرس یا لینک', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                  Expanded(child: TextInput(controller: titleController, label: 'تلفن هماهنگی', onChanged: (value) {}, keyboardType: TextInputType.number)),
                 ],
               ),
               const SizedBox(height: 15),

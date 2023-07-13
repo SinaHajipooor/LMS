@@ -10,11 +10,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ExternalPassedCoursesModal extends StatefulWidget {
   final double deviceHeight;
-  // final int selectedIndex;
 
   const ExternalPassedCoursesModal({
     required this.deviceHeight,
-    // required this.selectedIndex,
     Key? key,
   }) : super(key: key);
 
@@ -109,16 +107,6 @@ class _ExternalPassedCoursesModalState extends State<ExternalPassedCoursesModal>
                   ),
                 ),
                 const SizedBox(height: 20),
-                Expanded(
-                  child: _isLoading
-                      ? const Center(child: Spinner(size: 20))
-                      : ExternalPassedCoursesForm(
-                          isCreating: true,
-                          isEditing: true,
-                          externalPassedCourseInfo: externalCourseInfo,
-                          selectFile: _selectFile,
-                        ),
-                ),
                 Row(
                   children: [
                     Expanded(

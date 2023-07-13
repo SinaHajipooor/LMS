@@ -5,6 +5,7 @@ import 'package:lms/providers/Profile/PassedCourses/ExternalPassedCoursesProvide
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_info.dart';
 import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_modal.dart';
+import 'package:lms/widgets/profile/passedCourses/new/external_course_create_modal.dart';
 import 'package:provider/provider.dart';
 
 class ExternalPassedCoursesScreen extends StatefulWidget {
@@ -42,13 +43,7 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
     InternetConnectivityHelper.checkInternetConnectivity(context);
   }
 
-  void refreshParent() {
-    setState(() {
-      // Update any necessary state variables in the parent widget
-    });
-  }
-
-  _showJobinfoFormModal(BuildContext context, double deviceHeight, int selectedIndexm, refreshParent) {
+  _showExternalCourseFormModal(BuildContext context, double deviceHeight, int selectedIndexm) {
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -59,10 +54,7 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return ExternalPassedCoursesModal(
-          // refreshParent: refreshParent,
-          deviceHeight: deviceHeight,
-        );
+        return ExternalCourseCreateModal();
       },
     );
   }
@@ -83,10 +75,14 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
           onPressed: () => Navigator.of(context).pop(),
         ),
         actions: [
-          IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1, refreshParent), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
+          IconButton(onPressed: () => _showExternalCourseFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: _isLoading ? const Center(child: Spinner(size: 35)) : ExternalPassedCoursesInfo(externalCourses: Provider.of<ExternalPassedCoursesProvider>(context, listen: false).externalCourses),
+      body: _isLoading
+          ? const Center(child: Spinner(size: 35))
+          : ExternalPassedCoursesInfo(
+              externalCourses: Provider.of<ExternalPassedCoursesProvider>(context, listen: false).externalCourses,
+            ),
     );
   }
 }
