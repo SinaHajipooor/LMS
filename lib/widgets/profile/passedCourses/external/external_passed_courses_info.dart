@@ -143,15 +143,17 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
                           ],
                         ),
                       ),
-                      DataCell(IconButton(
-                        icon: const Icon(Icons.remove_red_eye, color: Colors.orange, size: 20),
-                        onPressed: () => _showExternalPassedCoursesInfoModal(
-                          context,
-                          MediaQuery.of(context).size.height,
-                          widget.externalCourses[index]['id'],
-                          2,
+                      DataCell(
+                        IconButton(
+                          icon: const Icon(Icons.remove_red_eye, color: Colors.orange, size: 20),
+                          onPressed: () => _showExternalPassedCoursesInfoModal(
+                            context,
+                            MediaQuery.of(context).size.height,
+                            widget.externalCourses[index]['id'],
+                            2,
+                          ),
                         ),
-                      )),
+                      ),
                     ],
                   ),
                 ),

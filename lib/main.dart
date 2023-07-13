@@ -10,7 +10,7 @@ import 'package:lms/screens/auth/auth_screen.dart';
 import 'package:lms/screens/course/course_shipping_screen.dart';
 import 'package:lms/screens/course/simple_course_detail_screen.dart';
 import 'package:lms/screens/exam/exam_result_screen.dart';
-import 'package:lms/screens/profile/activities_info_screen.dart';
+import 'package:lms/screens/profile/activityHistory/activities_info_screen.dart';
 import 'package:lms/screens/profile/compilations_and_translations_screen.dart';
 import 'package:lms/screens/profile/passedCourses/external_passed_courses_screen.dart';
 import 'package:lms/screens/profile/passedCourses/internal_passed_courses_screen.dart';

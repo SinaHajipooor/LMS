@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
-import 'package:lms/screens/profile/activities_info_screen.dart';
+import 'package:lms/screens/profile/activityHistory/activities_info_screen.dart';
 import 'package:lms/screens/profile/compilations_and_translations_screen.dart';
 import 'package:lms/screens/profile/passedCourses/external_passed_courses_screen.dart';
 import 'package:lms/screens/profile/passedCourses/internal_passed_courses_screen.dart';
