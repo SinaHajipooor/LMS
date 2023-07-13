@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lms/providers/Profile/PassedCourses/ExternalPassedCoursesProvider.dart';
 import 'package:lms/widgets/elements/spinner.dart';
-import 'package:lms/widgets/profile/passedCourses/external/external_passed_course_details_modal.dart';
+import 'package:lms/widgets/profile/passedCourses/new/external_course_modal.dart';
 import 'package:provider/provider.dart';
 
 class ExternalPassedCoursesInfo extends StatefulWidget {
@@ -15,7 +15,12 @@ class ExternalPassedCoursesInfo extends StatefulWidget {
 class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
   bool _isLoading = false;
 
-  _showExternalPassedCoursesInfoModal(BuildContext context, double deviceHeight, int externalCourseId, int useCase, Map<String, dynamic> externalCourseDetails, refreshParent) {
+  _showExternalPassedCoursesInfoModal(
+    BuildContext context,
+    double deviceHeight,
+    int externalCourseId,
+    int useCase,
+  ) {
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -26,11 +31,12 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return ExternalPassedCourseDetailsModal(
-          refreshParent: refreshParent,
-          deviceHeight: deviceHeight,
+        return ExternalCourseModal(
+          title: useCase == 1 ? 'ویرایش دوره گذرانده شده خارج مرکز' : 'جزئیات دوره گذرانده شده خارج مرکز',
           externalCourseId: externalCourseId,
-          useCase: useCase,
+          isEditing: useCase == 1,
+          isShowing: useCase == 2,
+          isCreating: false,
         );
       },
     );
@@ -107,7 +113,12 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
                                     child: IconButton(
                                       icon: const Icon(Icons.edit, color: Colors.white, size: 15),
                                       onPressed: () {
-                                        _showExternalPassedCoursesInfoModal(context, MediaQuery.of(context).size.height, widget.externalCourses[index]['id'], 2, widget.externalCourses[index], refreshParent);
+                                        _showExternalPassedCoursesInfoModal(
+                                          context,
+                                          MediaQuery.of(context).size.height,
+                                          widget.externalCourses[index]['id'],
+                                          1,
+                                        );
                                       },
                                     ),
                                   ),
@@ -134,7 +145,12 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
                       ),
                       DataCell(IconButton(
                         icon: const Icon(Icons.remove_red_eye, color: Colors.orange, size: 20),
-                        onPressed: () => _showExternalPassedCoursesInfoModal(context, MediaQuery.of(context).size.height, widget.externalCourses[index]['id'], 1, widget.externalCourses[index], refreshParent),
+                        onPressed: () => _showExternalPassedCoursesInfoModal(
+                          context,
+                          MediaQuery.of(context).size.height,
+                          widget.externalCourses[index]['id'],
+                          2,
+                        ),
                       )),
                     ],
                   ),

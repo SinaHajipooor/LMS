@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +9,19 @@ import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// ignore: must_be_immutable
 class ExternalCourseForm extends StatefulWidget {
-  const ExternalCourseForm({super.key});
+  final bool isEditing;
+  final bool isCreating;
+  final bool isShowing;
+  int? externalCourseId;
+  ExternalCourseForm({
+    super.key,
+    this.externalCourseId,
+    required this.isEditing,
+    required this.isCreating,
+    required this.isShowing,
+  });
 
   @override
   State<ExternalCourseForm> createState() => _ExternalCourseFormState();
@@ -19,19 +29,27 @@ class ExternalCourseForm extends StatefulWidget {
 
 class _ExternalCourseFormState extends State<ExternalCourseForm> {
   //------------------- state ----------------------
+  Map<String, dynamic> externalCourseDetails = {};
   final TextEditingController titleController = TextEditingController();
   final TextEditingController instituteController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
   final TextEditingController durationController = TextEditingController();
   String startedDate = '';
   String endedDate = '';
-  bool isRelated = false;
-  bool hasCertificate = false;
-  bool status = false;
+  String isRelated = '0';
+  String hasCertificate = '0';
+  String status = '0';
   File? filePath;
   bool _isLoading = false;
   //------------------- lifecycle ----------------------
 
+  @override
+  void initState() {
+    if (widget.isEditing || widget.isShowing) {
+      fetchExternalCourseInfo();
+    }
+    super.initState();
+  }
   //------------------- methods ----------------------
 
   Future<void> _selectStartedDate(BuildContext context) async {
@@ -88,6 +106,26 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
       print(error);
       // Handle the error
     }
+  }
+
+  Future<void> fetchExternalCourseInfo() async {
+    setState(() {
+      _isLoading = true;
+    });
+    await Provider.of<ExternalPassedCoursesProvider>(context, listen: false).fetchExternalCourseDetails(widget.externalCourseId!);
+    setState(() {
+      externalCourseDetails = Provider.of<ExternalPassedCoursesProvider>(context, listen: false).externalCourseDetails;
+      titleController.text = externalCourseDetails['title'];
+      instituteController.text = externalCourseDetails['institute_title'];
+      addressController.text = externalCourseDetails['address'];
+      durationController.text = externalCourseDetails['duration'];
+      startedDate = externalCourseDetails['start_date'];
+      endedDate = externalCourseDetails['end_date'];
+      isRelated = externalCourseDetails['is_related'];
+      status = externalCourseDetails['status'];
+      hasCertificate = externalCourseDetails['has_certificate'];
+      _isLoading = false;
+    });
   }
 
   Future<void> addExternalCourse() async {
@@ -269,10 +307,10 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
                                         Text('وضعیت', style: theme.bodySmall),
                                         CupertinoSwitch(
                                           activeColor: Colors.blue,
-                                          value: status,
+                                          value: status == '0' ? false : true,
                                           onChanged: (bool value) {
                                             setState(() {
-                                              status = value;
+                                              status = value == false ? '0' : '1';
                                             });
                                           },
                                         ),
@@ -283,10 +321,10 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
                                         Text('فعالیت مرتبط', style: theme.bodySmall),
                                         CupertinoSwitch(
                                           activeColor: Colors.blue,
-                                          value: isRelated,
+                                          value: isRelated == '0' ? false : true,
                                           onChanged: (bool value) {
                                             setState(() {
-                                              isRelated = value;
+                                              isRelated = value == false ? '0' : '1';
                                             });
                                           },
                                         ),
@@ -297,10 +335,10 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
                                         Text('گواهینامه', style: theme.bodySmall),
                                         CupertinoSwitch(
                                           activeColor: Colors.blue,
-                                          value: hasCertificate,
+                                          value: hasCertificate == '0' ? false : true,
                                           onChanged: (bool value) {
                                             setState(() {
-                                              hasCertificate = value;
+                                              hasCertificate = value == false ? '0' : '1';
                                             });
                                           },
                                         ),
@@ -316,36 +354,52 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
                     ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 5),
+          Visibility(
+            visible: widget.isCreating || widget.isEditing,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10, bottom: 5),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
+                        ),
+                        child: const Text('انصراف'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: ElevatedButton(
+                        onPressed: () => addExternalCourse(),
+                        child: const Text('ذخیره'),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Visibility(
+              child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
               children: [
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
-                      ),
-                      child: const Text('انصراف'),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: ElevatedButton(
-                      onPressed: () => addExternalCourse(),
-                      child: const Text('ذخیره'),
-                    ),
-                  ),
-                ),
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: const Text('بستن'),
+                ))
               ],
             ),
-          ),
+          ))
         ],
       ),
     );

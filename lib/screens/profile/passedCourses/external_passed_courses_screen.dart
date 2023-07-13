@@ -5,7 +5,7 @@ import 'package:lms/providers/Profile/PassedCourses/ExternalPassedCoursesProvide
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_info.dart';
 import 'package:lms/widgets/profile/passedCourses/external/external_passed_courses_modal.dart';
-import 'package:lms/widgets/profile/passedCourses/new/external_course_create_modal.dart';
+import 'package:lms/widgets/profile/passedCourses/new/external_course_modal.dart';
 import 'package:provider/provider.dart';
 
 class ExternalPassedCoursesScreen extends StatefulWidget {
@@ -54,7 +54,12 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return ExternalCourseCreateModal();
+        return ExternalCourseModal(
+          isCreating: true,
+          isEditing: false,
+          isShowing: false,
+          title: 'ایجاد دوره گذرانده شده خارج مرکز',
+        );
       },
     );
   }

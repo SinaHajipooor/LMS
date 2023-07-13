@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:lms/widgets/profile/passedCourses/new/external_course_from.dart';
 
-class ExternalCourseCreateModal extends StatefulWidget {
-  const ExternalCourseCreateModal({super.key});
+// ignore: must_be_immutable
+class ExternalCourseModal extends StatefulWidget {
+  int? externalCourseId;
+  final String title;
+  final bool isEditing;
+  final bool isShowing;
+  final bool isCreating;
+  ExternalCourseModal({
+    super.key,
+    this.externalCourseId,
+    required this.title,
+    required this.isEditing,
+    required this.isShowing,
+    required this.isCreating,
+  });
 
   @override
-  State<ExternalCourseCreateModal> createState() => _ExternalCourseCreateModalState();
+  State<ExternalCourseModal> createState() => _ExternalCourseModalState();
 }
 
-class _ExternalCourseCreateModalState extends State<ExternalCourseCreateModal> {
+class _ExternalCourseModalState extends State<ExternalCourseModal> {
   //---------------- state ------------------
   final ScrollController _scrollController = ScrollController();
 
@@ -45,12 +58,18 @@ class _ExternalCourseCreateModalState extends State<ExternalCourseCreateModal> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   alignment: Alignment.center,
                   child: Text(
-                    'ایجاد دوره گذرانده شده خارج مرکز',
+                    widget.title,
                     style: theme.textTheme.titleMedium!.apply(color: Colors.blue),
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Expanded(child: ExternalCourseForm()),
+                Expanded(
+                    child: ExternalCourseForm(
+                  externalCourseId: widget.externalCourseId,
+                  isEditing: widget.isEditing,
+                  isCreating: widget.isCreating,
+                  isShowing: widget.isShowing,
+                )),
               ],
             ),
           ),
