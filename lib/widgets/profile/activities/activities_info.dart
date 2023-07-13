@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lms/providers/Profile/ActivityHistory/ActivityHistoryProvider.dart';
 import 'package:lms/widgets/elements/spinner.dart';
+import 'package:lms/widgets/profile/activities/activities_info_modal.dart';
 import 'package:provider/provider.dart';
 
 class ActivitiesInfo extends StatefulWidget {
@@ -24,6 +25,34 @@ class _ActivitiesInfoState extends State<ActivitiesInfo> {
   }
 
   // -------------- methods ---------------
+
+  _showActivityModal(
+    BuildContext context,
+    double deviceHeight,
+    int activityId,
+    int useCase,
+  ) {
+    showModalBottomSheet(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+      ),
+      isScrollControlled: true,
+      context: context,
+      builder: (BuildContext context) {
+        return ActivitiesInfoModal(
+          deviceHeight: MediaQuery.of(context).size.height,
+          title: useCase == 1 ? 'ویرایش فعالیت‌ها و تجارب' : 'جزئیات فعالیت‌ها و تجارب',
+          activityId: activityId,
+          isEditing: useCase == 1,
+          isShowing: useCase == 2,
+          isCreating: false,
+        );
+      },
+    );
+  }
 
   Future<void> fetchAllActivities() async {
     await Provider.of<ActivityHistoryProvider>(context, listen: false).fetchAllActivities();
