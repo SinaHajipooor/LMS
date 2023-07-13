@@ -82,11 +82,7 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
           IconButton(onPressed: () => _showExternalCourseFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: _isLoading
-          ? const Center(child: Spinner(size: 35))
-          : ExternalPassedCoursesInfo(
-              externalCourses: Provider.of<ExternalPassedCoursesProvider>(context, listen: false).externalCourses,
-            ),
+      body: _isLoading ? const Center(child: Spinner(size: 35)) : const ExternalPassedCoursesInfo(),
     );
   }
 }

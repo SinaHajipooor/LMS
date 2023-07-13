@@ -5,15 +5,33 @@ import 'package:lms/widgets/profile/passedCourses/external/external_course_modal
 import 'package:provider/provider.dart';
 
 class ExternalPassedCoursesInfo extends StatefulWidget {
-  final List<dynamic> externalCourses;
-  const ExternalPassedCoursesInfo({super.key, required this.externalCourses});
+  const ExternalPassedCoursesInfo({
+    super.key,
+  });
 
   @override
   State<ExternalPassedCoursesInfo> createState() => _ExternalPassedCoursesInfoState();
 }
 
 class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
-  bool _isLoading = false;
+// ---------------- state -----------------
+  bool _isLoading = true;
+  List<dynamic> externalCoursesList = [];
+// ---------------- lifecycle -----------------
+  @override
+  void didChangeDependencies() {
+    fetchAllExternalCourses();
+    super.didChangeDependencies();
+  }
+
+// ---------------- methods -----------------
+  Future<void> fetchAllExternalCourses() async {
+    await Provider.of<ExternalPassedCoursesProvider>(context, listen: false).fetchAllExternalCourses();
+    setState(() {
+      externalCoursesList = Provider.of<ExternalPassedCoursesProvider>(context, listen: false).externalCourses;
+      _isLoading = false;
+    });
+  }
 
   _showExternalPassedCoursesInfoModal(
     BuildContext context,
@@ -42,22 +60,16 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
     );
   }
 
-  void refreshParent() {
-    setState(() {
-      // Update any necessary state variables in the parent widget
-    });
-  }
-
-  void deleteExternalCourse(int id) async {
+  Future<void> deleteExternalCourse(int activityId, int index) async {
     Navigator.of(context).pop();
+    final externalCoursesCopy = List.from(externalCoursesList);
+    externalCoursesCopy.removeAt(index);
+    await Provider.of<ExternalPassedCoursesProvider>(context, listen: false).deleteExternalCourse(activityId);
     setState(() {
-      _isLoading = true;
-    });
-    await Provider.of<ExternalPassedCoursesProvider>(context, listen: false).deleteExternalCourse(id);
-    setState(() {
-      _isLoading = false;
+      externalCoursesList = externalCoursesCopy;
     });
   }
+// ---------------- UI -----------------
 
   @override
   Widget build(BuildContext context) {
@@ -84,15 +96,15 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
                   DataColumn(label: Center(child: Text('نمایش', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
                 ],
                 rows: List<DataRow>.generate(
-                  widget.externalCourses.length,
+                  externalCoursesList.length,
                   (index) => DataRow(
                     cells: [
-                      DataCell(Center(child: Text(widget.externalCourses[index]['title'] ?? ''))),
-                      DataCell(Center(child: Text(widget.externalCourses[index]['institute_title'] ?? ''))),
-                      DataCell(Center(child: Text(widget.externalCourses[index]['address'] ?? ''))),
-                      DataCell(Center(child: Text(widget.externalCourses[index]['start_date'] ?? ''))),
-                      DataCell(Center(child: Text(widget.externalCourses[index]['end_date'] ?? ''))),
-                      DataCell(Center(child: Text(widget.externalCourses[index]['duration'] ?? ''))),
+                      DataCell(Center(child: Text(externalCoursesList[index]['title'] ?? ''))),
+                      DataCell(Center(child: Text(externalCoursesList[index]['institute_title'] ?? ''))),
+                      DataCell(Center(child: Text(externalCoursesList[index]['address'] ?? ''))),
+                      DataCell(Center(child: Text(externalCoursesList[index]['start_date'] ?? ''))),
+                      DataCell(Center(child: Text(externalCoursesList[index]['end_date'] ?? ''))),
+                      DataCell(Center(child: Text(externalCoursesList[index]['duration'] ?? ''))),
                       DataCell(
                         PopupMenuButton(
                           icon: const Icon(Icons.more_vert, size: 19),
@@ -116,7 +128,7 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
                                         _showExternalPassedCoursesInfoModal(
                                           context,
                                           MediaQuery.of(context).size.height,
-                                          widget.externalCourses[index]['id'],
+                                          externalCoursesList[index]['id'],
                                           1,
                                         );
                                       },
@@ -125,7 +137,7 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
                                   CircleAvatar(
                                     radius: 15,
                                     backgroundColor: Colors.red,
-                                    child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () => deleteExternalCourse(widget.externalCourses[index]['id'])),
+                                    child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () => deleteExternalCourse(externalCoursesList[index]['id'], index)),
                                   ),
                                   CircleAvatar(
                                     radius: 15,
@@ -149,7 +161,7 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
                           onPressed: () => _showExternalPassedCoursesInfoModal(
                             context,
                             MediaQuery.of(context).size.height,
-                            widget.externalCourses[index]['id'],
+                            externalCoursesList[index]['id'],
                             2,
                           ),
                         ),

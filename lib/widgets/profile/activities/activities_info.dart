@@ -22,6 +22,7 @@ class _ActivitiesInfoState extends State<ActivitiesInfo> {
     fetchAllActivities();
     super.didChangeDependencies();
   }
+
   // -------------- methods ---------------
 
   Future<void> fetchAllActivities() async {
@@ -34,7 +35,6 @@ class _ActivitiesInfoState extends State<ActivitiesInfo> {
 
   Future<void> deleteActivity(int activityId, int index) async {
     Navigator.of(context).pop();
-
     final activitiesCopy = List.from(activities);
     activitiesCopy.removeAt(index);
     await Provider.of<ActivityHistoryProvider>(context, listen: false).deleteActivity(activityId);
