@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:lms/widgets/profile/activities/activites_info_form.dart';
 
+// ignore: must_be_immutable
 class ActivitiesInfoModal extends StatefulWidget {
   final double deviceHeight;
-  // final int selectedIndex;
+  int? activityId;
+  final bool isEditing;
+  final bool isCreating;
+  final bool isShowing;
+  final String title;
 
-  const ActivitiesInfoModal({
+  ActivitiesInfoModal({
     required this.deviceHeight,
-    // required this.selectedIndex,
     Key? key,
+    this.activityId,
+    required this.isEditing,
+    required this.isCreating,
+    required this.isShowing,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -50,7 +59,7 @@ class _ActivitiesInfoModalState extends State<ActivitiesInfoModal> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   alignment: Alignment.center,
                   child: Text(
-                    'ایجاد سوابق  فعالیت‌ها و تجارب',
+                    widget.title,
                     style: theme.textTheme.titleMedium!.apply(color: Colors.blue),
                   ),
                 ),
