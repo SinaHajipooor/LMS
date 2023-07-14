@@ -31,4 +31,18 @@ class UniversityTeachingProvider with ChangeNotifier {
       rethrow;
     }
   }
+
+  Future<void> deleteUniversityTeaching(int universityTeachingId) async {
+    try {
+      final response = await http.delete(
+        Uri.parse(_baseUrl + '/destroy/$universityTeachingId'),
+        headers: <String, String>{'Content-Type': 'application/json'},
+      );
+      if (response.statusCode != 200) throw Exception('failed to delete university teaching');
+      notifyListeners();
+    } catch (error) {
+      print(error);
+      rethrow;
+    }
+  }
 }

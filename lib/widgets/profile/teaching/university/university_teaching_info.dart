@@ -58,6 +58,15 @@ class _UniversityTeachingInfoState extends State<UniversityTeachingInfo> {
     });
   }
 
+  Future<void> deleteUniversityTeaching(int universityTeachingId, int index) async {
+    Navigator.of(context).pop();
+    final universityTeachingsCopy = List.from(universityTeachings);
+    universityTeachingsCopy.removeAt(index);
+    await Provider.of<UniversityTeachingProvider>(context, listen: false).deleteUniversityTeaching(universityTeachingId);
+    setState(() {
+      universityTeachings = universityTeachingsCopy;
+    });
+  }
   // --------------- UI -----------------
 
   @override
@@ -116,7 +125,7 @@ class _UniversityTeachingInfoState extends State<UniversityTeachingInfo> {
                                 CircleAvatar(
                                   radius: 15,
                                   backgroundColor: Colors.red,
-                                  child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () {}),
+                                  child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () => deleteUniversityTeaching(universityTeachings[index]['id'], index)),
                                 ),
                                 CircleAvatar(
                                   radius: 15,
