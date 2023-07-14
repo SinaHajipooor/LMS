@@ -10,6 +10,7 @@ import 'package:lms/widgets/elements/text_input.dart';
 import 'package:lms/widgets/elements/three_line_input.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
 class UniversityTeachingForm extends StatefulWidget {
@@ -126,6 +127,27 @@ class _UniversityTeachingFormState extends State<UniversityTeachingForm> {
       academicFeildId = universityTeachingDetails['academic_field'] ?? 'رشته اولی';
       _isLoading = false;
     });
+  }
+
+  Future<void> addUniversityTeaching() async {
+    setState(() {
+      _isLoading = true;
+    });
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getString('userId');
+    final universityTeachingInfo = {
+      'user_id': userId,
+      'title': titleController.text,
+      'start_date': startedDate,
+      'end_date': endedDate,
+      'activity_description': descriptionController.text,
+      'status': status,
+      'is_related': isRelated,
+      'is_current': isCurrent,
+      'academic_field_id': academicFeildId,
+    };
+    await Provider.of<UniversityTeachingProvider>(context, listen: false).addUniversityTeaching(universityTeachingInfo, filePath!);
+    Navigator.of(context).pop();
   }
   // --------------- UI ----------------
 
@@ -347,7 +369,7 @@ class _UniversityTeachingFormState extends State<UniversityTeachingForm> {
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: ElevatedButton(
                         onPressed: () {
-                          widget.isCreating ? () {} : () {};
+                          widget.isCreating ? addUniversityTeaching() : () {};
                         },
                         child: const Text('ذخیره'),
                       ),

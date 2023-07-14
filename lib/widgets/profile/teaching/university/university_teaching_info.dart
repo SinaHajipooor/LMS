@@ -67,6 +67,7 @@ class _UniversityTeachingInfoState extends State<UniversityTeachingInfo> {
       universityTeachings = universityTeachingsCopy;
     });
   }
+
   // --------------- UI -----------------
 
   @override
