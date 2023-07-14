@@ -84,6 +84,41 @@ class ActivityHistoryProvider with ChangeNotifier {
     }
   }
 
+  Future<void> editActivity(int activityId, Map<String, dynamic> activityInfo, File file) async {
+    try {
+      var request = http.MultipartRequest('POST', Uri.parse(_baseUrl + '/update/$activityId'));
+      request.fields['_method'] = 'put';
+      request.fields['user_id'] = activityInfo['user_id'];
+      request.fields['title'] = activityInfo['title'];
+      request.fields['institute_title'] = 'nothing';
+      request.fields['has_certificate'] = '0';
+      request.fields['address'] = activityInfo['address'];
+      request.fields['start_date'] = activityInfo['start_date'];
+      request.fields['end_date'] = activityInfo['end_date'];
+      request.fields['position'] = activityInfo['position'];
+      request.fields['status'] = activityInfo['status'];
+      request.fields['is_related'] = activityInfo['is_related'];
+      request.fields['current_position'] = activityInfo['current_position'];
+      request.fields['work_type_id'] = activityInfo['work_type_id'];
+
+      request.files.add(await http.MultipartFile.fromPath('file', file.path));
+      // Send the request
+      var response = await request.send();
+
+      // Get the response
+      if (response.statusCode == 200) {
+        print('activity edited successfully');
+        notifyListeners();
+      } else {
+        print(response.statusCode);
+        throw Exception('Failed to edit external course');
+      }
+    } catch (error) {
+      print(error);
+      rethrow;
+    }
+  }
+
   Future<void> deleteActivity(int activityId) async {
     try {
       final response = await http.delete(

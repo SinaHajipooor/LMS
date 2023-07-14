@@ -156,6 +156,30 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
     Navigator.of(context).pop();
   }
 
+  Future<void> editActivity() async {
+    print('... editing');
+    setState(() {
+      _isLoading = true;
+    });
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getString('userId');
+    final activityInfo = {
+      'user_id': userId,
+      'title': titleController.text,
+      'address': addressController.text,
+      'start_date': startedDate,
+      'end_date': endedDate,
+      'position': positionController.text,
+      'status': status,
+      'current_position': isCurrentPostion,
+      'is_related': isRelated,
+      'work_type_id': '1',
+    };
+
+    await Provider.of<ActivityHistoryProvider>(context, listen: false).editActivity(widget.activityId!, activityInfo, filePath!);
+    Navigator.of(context).pop();
+  }
+
 // --------------- UI -----------------
   @override
   Widget build(BuildContext context) {
@@ -383,7 +407,7 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: ElevatedButton(
                       onPressed: () {
-                        widget.isCreating ? addAcitivity() : () {};
+                        widget.isCreating ? addAcitivity() : editActivity();
                       },
                       child: const Text('ذخیره'),
                     ),
