@@ -72,6 +72,35 @@ class UniversityTeachingProvider with ChangeNotifier {
     }
   }
 
+  Future<void> editUniversityTeaching(int universityTeachingId, Map<String, dynamic> universityTeachingInfo, File file) async {
+    try {
+      var request = http.MultipartRequest('POST', Uri.parse(_baseUrl + '/update/$universityTeachingId'));
+      request.fields['_method'] = 'put';
+      request.fields['user_id'] = universityTeachingInfo['user_id'];
+      request.fields['title'] = universityTeachingInfo['title'];
+      request.fields['start_date'] = universityTeachingInfo['start_date'];
+      request.fields['end_date'] = universityTeachingInfo['end_date'];
+      request.fields['activity_description'] = universityTeachingInfo['activity_description'];
+      request.fields['status'] = universityTeachingInfo['status'];
+      request.fields['is_related'] = universityTeachingInfo['is_related'];
+      request.fields['is_current'] = universityTeachingInfo['is_current'];
+      request.fields['academic_field_id'] = '1';
+
+      request.files.add(await http.MultipartFile.fromPath('file', file.path));
+      var response = await request.send();
+      // Get the response
+      if (response.statusCode == 200) {
+        print('university teaching0 added successfully');
+        notifyListeners();
+      } else {
+        throw Exception('Failed to add university teaching');
+      }
+    } catch (error) {
+      print(error);
+      rethrow;
+    }
+  }
+
   Future<void> deleteUniversityTeaching(int universityTeachingId) async {
     try {
       final response = await http.delete(

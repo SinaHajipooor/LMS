@@ -149,6 +149,27 @@ class _UniversityTeachingFormState extends State<UniversityTeachingForm> {
     await Provider.of<UniversityTeachingProvider>(context, listen: false).addUniversityTeaching(universityTeachingInfo, filePath!);
     Navigator.of(context).pop();
   }
+
+  Future<void> editUniversityTeaching() async {
+    setState(() {
+      _isLoading = true;
+    });
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getString('userId');
+    final universityTeachingInfo = {
+      'user_id': userId,
+      'title': titleController.text,
+      'start_date': startedDate,
+      'end_date': endedDate,
+      'activity_description': descriptionController.text,
+      'status': status,
+      'is_related': isRelated,
+      'is_current': isCurrent,
+      'academic_field_id': academicFeildId,
+    };
+    await Provider.of<UniversityTeachingProvider>(context, listen: false).editUniversityTeaching(widget.universityTeachingId!, universityTeachingInfo, filePath!);
+    Navigator.of(context).pop();
+  }
   // --------------- UI ----------------
 
   @override
@@ -369,7 +390,7 @@ class _UniversityTeachingFormState extends State<UniversityTeachingForm> {
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: ElevatedButton(
                         onPressed: () {
-                          widget.isCreating ? addUniversityTeaching() : () {};
+                          widget.isCreating ? addUniversityTeaching() : editUniversityTeaching();
                         },
                         child: const Text('ذخیره'),
                       ),
