@@ -19,6 +19,7 @@ class ThemeHelper with ChangeNotifier {
         bodyMedium: TextStyle(fontSize: 12),
         bodySmall: TextStyle(fontSize: 11),
       ),
+      popupMenuTheme: const PopupMenuThemeData(color: Colors.white),
       appBarTheme: const AppBarTheme(
         toolbarTextStyle: TextStyle(color: Colors.black),
         color: Colors.white,
@@ -55,6 +56,7 @@ class ThemeHelper with ChangeNotifier {
       dialogBackgroundColor: const Color.fromARGB(255, 41, 46, 54),
       bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Color.fromARGB(255, 41, 46, 54)),
       scaffoldBackgroundColor: const Color.fromARGB(255, 41, 46, 54),
+      popupMenuTheme: const PopupMenuThemeData(color: Color.fromARGB(255, 41, 46, 54)),
       cardTheme: const CardTheme(
         color: Color.fromARGB(255, 46, 52, 64),
       ),

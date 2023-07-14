@@ -269,6 +269,7 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
                         ),
                         const SizedBox(height: 15),
                         Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Expanded(child: TextInput(controller: positionController, label: 'سمت', onChanged: (value) {}, keyboardType: TextInputType.number)),
                             Expanded(
