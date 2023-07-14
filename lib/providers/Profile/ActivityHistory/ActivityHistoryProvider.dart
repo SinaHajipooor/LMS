@@ -31,6 +31,24 @@ class ActivityHistoryProvider with ChangeNotifier {
     }
   }
 
+  Future<void> fetchActivityDetails(int activityId) async {
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getString('userId');
+    try {
+      final response = await http.get(
+        Uri.parse(_baseUrl + '/show/$activityId?user_id=$userId'),
+        headers: <String, String>{'Content-Type': 'application/json'},
+      );
+      if (response.statusCode != 200) throw Exception('failed to fetch activity details');
+      final Map<String, dynamic>? responseData = jsonDecode(response.body) as Map<String, dynamic>?;
+      _activityDetails = responseData?['result'];
+      notifyListeners();
+    } catch (error) {
+      print(error);
+      rethrow;
+    }
+  }
+
   Future<void> deleteActivity(int activityId) async {
     try {
       final response = await http.delete(

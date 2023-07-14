@@ -187,6 +187,7 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
               child: _isLoading
                   ? const Center(child: Spinner(size: 25))
                   : SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
                       child: Column(
                         children: [
                           Row(
@@ -414,19 +415,20 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
             ),
           ),
           Visibility(
-              visible: widget.isShowing,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: ElevatedButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('بستن'),
-                    ))
-                  ],
-                ),
-              ))
+            visible: widget.isShowing,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: ElevatedButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: const Text('بستن'),
+                  ))
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );

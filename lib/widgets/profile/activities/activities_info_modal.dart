@@ -64,34 +64,13 @@ class _ActivitiesInfoModalState extends State<ActivitiesInfoModal> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Expanded(child: ActivitiesInfoForm()),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
-                          ),
-                          child: const Text('انصراف'),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: const Text('ذخیره'),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                Expanded(
+                    child: ActivitiesInfoForm(
+                  isCreating: widget.isCreating,
+                  isEditing: widget.isEditing,
+                  isShowing: widget.isShowing,
+                  activityId: widget.activityId,
+                )),
               ],
             ),
           ),

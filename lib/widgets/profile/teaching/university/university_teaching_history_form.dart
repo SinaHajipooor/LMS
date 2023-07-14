@@ -247,7 +247,7 @@ class _UniversityTeachingHistoryFormState extends State<UniversityTeachingHistor
                 ],
               ),
               const SizedBox(height: 10),
-              ThreeLineInput(value: '', label: 'توضیحات', onChanged: (value) {}),
+              ThreeLineInput(controller: titleController, label: 'توضیحات', onChanged: (value) {}),
               const SizedBox(height: 15),
             ],
           ),

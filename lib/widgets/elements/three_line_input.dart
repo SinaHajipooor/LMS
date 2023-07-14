@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 
-class ThreeLineInput extends StatelessWidget {
-  final String value;
+// ignore: must_be_immutable
+class ThreeLineInput extends StatefulWidget {
   final String label;
   final Function(String) onChanged;
-
-  const ThreeLineInput({
+  final TextEditingController controller;
+  bool? editable;
+  ThreeLineInput({
     Key? key,
-    required this.value,
+    this.editable,
+    required this.controller,
     required this.label,
     required this.onChanged,
   }) : super(key: key);
 
+  @override
+  State<ThreeLineInput> createState() => _ThreeLineInputState();
+}
+
+class _ThreeLineInputState extends State<ThreeLineInput> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -22,7 +29,7 @@ class ThreeLineInput extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 15),
           child: Text(
-            label,
+            widget.label,
             style: theme.textTheme.bodySmall,
           ),
         ),
@@ -34,13 +41,14 @@ class ThreeLineInput extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: TextFormField(
+              enabled: widget.editable ?? true,
+              controller: widget.controller,
               style: theme.textTheme.bodyMedium,
               decoration: const InputDecoration(
                 border: InputBorder.none,
               ),
-              onChanged: (value) => onChanged('$value\n${value.split('\n')[1]}\n${value.split('\n')[2]}'),
-              controller: TextEditingController(text: value.split('\n').length == 3 ? value : '$value\n\n'),
-              maxLines: 4,
+              onChanged: widget.onChanged,
+              maxLines: 3,
             ),
           ),
         ),

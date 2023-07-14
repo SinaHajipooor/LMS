@@ -147,7 +147,7 @@ class _CompilationsFormState extends State<CompilationsForm> {
                 ],
               ),
               const SizedBox(height: 15),
-              ThreeLineInput(value: description, label: 'توضیحات', onChanged: (value) {}),
+              ThreeLineInput(controller: titleController, label: 'توضیحات', onChanged: (value) {}),
               const SizedBox(height: 15),
             ],
           ),

@@ -13,7 +13,7 @@ class StudentFilesForm extends StatefulWidget {
 
 class _StudentFilesFormState extends State<StudentFilesForm> {
   // ------------------- state --------------------
-
+  TextEditingController descriptionController = TextEditingController();
   File? _selectedFile;
 
   // ------------------- methods --------------------
@@ -74,7 +74,7 @@ class _StudentFilesFormState extends State<StudentFilesForm> {
           ),
         ),
         const SizedBox(height: 5),
-        ThreeLineInput(value: '', label: 'توضیحات', onChanged: (value) {}),
+        ThreeLineInput(controller: descriptionController, label: 'توضیحات', onChanged: (value) {}),
         const SizedBox(height: 5),
       ],
     );

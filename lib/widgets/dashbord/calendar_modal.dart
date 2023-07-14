@@ -51,7 +51,7 @@ class _CalendarModalState extends State<CalendarModal> {
                 ],
               ),
               const SizedBox(height: 15),
-              ThreeLineInput(value: 'سلام این پیام برای تست فیلد توضیحات در این ویجت می باشدسلام این پیام برای تست فیلد توضیحات در این ویجت می باشدسلام این پیام برای تست فیلد توضیحات در این ویجت می باشدسلام این پیام برای تست ف ویجت می باشد', label: 'توضیحات', onChanged: (value) {}),
+              ThreeLineInput(controller: titleController, label: 'توضیحات', onChanged: (value) {}),
               const SizedBox(height: 15),
             ],
           ),

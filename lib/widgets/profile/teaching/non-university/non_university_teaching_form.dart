@@ -244,7 +244,7 @@ class _NonUniversityTeachingFormState extends State<NonUniversityTeachingForm> {
                 ],
               ),
               const SizedBox(height: 15),
-              ThreeLineInput(value: '', label: 'توضیحات', onChanged: (value) {}),
+              ThreeLineInput(controller: titleController, label: 'توضیحات', onChanged: (value) {}),
               const SizedBox(height: 15),
             ],
           ),
