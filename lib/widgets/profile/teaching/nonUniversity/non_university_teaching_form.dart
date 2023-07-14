@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/providers/Profile/Teaching/NonUniversityTeachingProvider.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/elements/text_input.dart';
 import 'package:lms/widgets/elements/three_line_input.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class NonUniversityTeachingForm extends StatefulWidget {
@@ -30,6 +32,7 @@ class _NonUniversityTeachingFormState extends State<NonUniversityTeachingForm> {
   //-------------- state ------------------
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+  Map<String, dynamic> nonUniversityTeachingDetails = {};
   bool _isLoading = false;
   File? filePath;
   String startedDate = '';
@@ -38,6 +41,14 @@ class _NonUniversityTeachingFormState extends State<NonUniversityTeachingForm> {
   String isRelated = '0';
   String isCurrent = '0';
   //-------------- lifecycle ------------------
+  @override
+  void initState() {
+    if (widget.isEditing || widget.isShowing) {
+      fetchNonUniversityTeachingDetails();
+    }
+    super.initState();
+  }
+
   //-------------- methods ------------------
   Future<void> _selectStartedDate(BuildContext context) async {
     final Jalali? picked = await showPersianDatePicker(
@@ -93,6 +104,30 @@ class _NonUniversityTeachingFormState extends State<NonUniversityTeachingForm> {
       // Handle the error
     }
   }
+
+  Future<void> fetchNonUniversityTeachingDetails() async {
+    setState(() {
+      _isLoading = true;
+    });
+    await Provider.of<NonUniversityTeachingProvider>(context, listen: false).fetchNonUniversityTeachingDetails(widget.nonUniversityTeachingId!);
+    setState(() {
+      nonUniversityTeachingDetails = Provider.of<NonUniversityTeachingProvider>(context, listen: false).nonUniverstyTeachingDetails;
+      titleController.text = nonUniversityTeachingDetails['title'];
+      descriptionController.text = nonUniversityTeachingDetails['activity_description'] ?? '';
+      startedDate = nonUniversityTeachingDetails['start_date'].replaceAll('/', '-');
+      endedDate = nonUniversityTeachingDetails['end_date'].replaceAll('/', '-');
+      status = nonUniversityTeachingDetails['status'] == false ? '0' : '1';
+      isRelated = nonUniversityTeachingDetails['is_related'] == false ? '0' : '1';
+      isCurrent = nonUniversityTeachingDetails['is_current'] == false ? '0' : '1';
+
+      _isLoading = false;
+    });
+  }
+
+  Future<void> addNonUniversityTeaching() async {}
+
+  Future<void> editNonUniversityTeaching() async {}
+
   //-------------- UI ------------------
 
   @override

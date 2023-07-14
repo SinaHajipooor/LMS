@@ -146,7 +146,7 @@ class _NonUniversityTeachingInfoState extends State<NonUniversityTeachingInfo> {
                     DataCell(
                       IconButton(
                         icon: const Icon(Icons.remove_red_eye, color: Colors.orange, size: 20),
-                        onPressed: () => {},
+                        onPressed: () => _showNonUniversityTeachingModal(context, nonUniversityTeachings[index]['id'], 2),
                       ),
                     )
                   ]),
