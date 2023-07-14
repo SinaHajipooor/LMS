@@ -9,6 +9,7 @@ import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/elements/three_line_input.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../elements/text_input.dart';
 
 // ignore: must_be_immutable
@@ -43,7 +44,7 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
   String status = '0';
   String isRelated = '0';
   String isCurrentPostion = '0';
-  String workType = '';
+  String workType = '0';
   bool _isLoading = false;
 
 // --------------- lifecycle -----------------
@@ -131,6 +132,28 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
       print(error);
       // Handle the error
     }
+  }
+
+  Future<void> addAcitivity() async {
+    setState(() {
+      _isLoading = true;
+    });
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getString('userId');
+    final activityInfo = {
+      'user_id': userId,
+      'title': titleController.text,
+      'address': addressController.text,
+      'start_date': startedDate,
+      'end_date': endedDate,
+      'position': positionController.text,
+      'status': status,
+      'current_position': isCurrentPostion,
+      'is_related': isRelated,
+      'work_type_id': workType,
+    };
+    await Provider.of<ActivityHistoryProvider>(context, listen: false).addActivity(activityInfo, filePath!);
+    Navigator.of(context).pop();
   }
 
 // --------------- UI -----------------
@@ -230,7 +253,7 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
                                 items: const ['تمام وقت', 'پاره وقت'],
                                 onChanged: (value) {
                                   setState(() {
-                                    workType = value;
+                                    workType = value == 'تمام وقت' ? '1' : '0';
                                   });
                                 },
                               ),
@@ -358,7 +381,9 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        widget.isCreating ? addAcitivity() : () {};
+                      },
                       child: const Text('ذخیره'),
                     ),
                   ),
