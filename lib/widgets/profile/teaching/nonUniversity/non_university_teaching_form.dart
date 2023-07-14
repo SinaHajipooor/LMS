@@ -9,6 +9,7 @@ import 'package:lms/widgets/elements/text_input.dart';
 import 'package:lms/widgets/elements/three_line_input.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
 class NonUniversityTeachingForm extends StatefulWidget {
@@ -124,7 +125,25 @@ class _NonUniversityTeachingFormState extends State<NonUniversityTeachingForm> {
     });
   }
 
-  Future<void> addNonUniversityTeaching() async {}
+  Future<void> addNonUniversityTeaching() async {
+    setState(() {
+      _isLoading = true;
+    });
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getString('userId');
+    final nonUniversityTeachingInfo = {
+      'user_id': userId,
+      'title': titleController.text,
+      'start_date': startedDate,
+      'end_date': endedDate,
+      'activity_description': descriptionController.text,
+      'status': status,
+      'is_related': isRelated,
+      'is_current': isCurrent,
+    };
+    await Provider.of<NonUniversityTeachingProvider>(context, listen: false).addNonUniversityTeaching(nonUniversityTeachingInfo, filePath!);
+    Navigator.of(context).pop();
+  }
 
   Future<void> editNonUniversityTeaching() async {}
 
@@ -339,7 +358,9 @@ class _NonUniversityTeachingFormState extends State<NonUniversityTeachingForm> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        widget.isCreating ? addNonUniversityTeaching() : editNonUniversityTeaching();
+                      },
                       child: const Text('ذخیره'),
                     ),
                   ),
