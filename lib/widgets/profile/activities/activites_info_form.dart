@@ -249,6 +249,7 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
                             Expanded(child: TextInput(controller: positionController, label: 'سمت', onChanged: (value) {}, keyboardType: TextInputType.number)),
                             Expanded(
                               child: CustomDropdown(
+                                initialValue: widget.isEditing || widget.isShowing ? workType : null,
                                 placeholder: 'نوع همکاری',
                                 items: const ['تمام وقت', 'پاره وقت'],
                                 onChanged: (value) {
