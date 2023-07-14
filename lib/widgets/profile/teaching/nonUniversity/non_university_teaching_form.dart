@@ -145,7 +145,25 @@ class _NonUniversityTeachingFormState extends State<NonUniversityTeachingForm> {
     Navigator.of(context).pop();
   }
 
-  Future<void> editNonUniversityTeaching() async {}
+  Future<void> editNonUniversityTeaching() async {
+    setState(() {
+      _isLoading = true;
+    });
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getString('userId');
+    final nonUniversityTeachingInfo = {
+      'user_id': userId,
+      'title': titleController.text,
+      'start_date': startedDate,
+      'end_date': endedDate,
+      'activity_description': descriptionController.text,
+      'status': status,
+      'is_related': isRelated,
+      'is_current': isCurrent,
+    };
+    await Provider.of<NonUniversityTeachingProvider>(context, listen: false).editNonUniversityTeaching(widget.nonUniversityTeachingId!, nonUniversityTeachingInfo, filePath!);
+    Navigator.of(context).pop();
+  }
 
   //-------------- UI ------------------
 
