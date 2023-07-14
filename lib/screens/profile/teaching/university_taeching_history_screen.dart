@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/widgets/profile/teaching/university/university_teaching_info.dart';
+import 'package:lms/widgets/profile/teaching/university/university_teaching_modal.dart';
 import 'package:provider/provider.dart';
 
 class UniversityTeachingHistoryScreen extends StatefulWidget {
@@ -27,7 +28,7 @@ class _UniversityTeachingHistoryScreenState extends State<UniversityTeachingHist
     InternetConnectivityHelper.checkInternetConnectivity(context);
   }
 
-  _showJobinfoFormModal(BuildContext context, double deviceHeight, int selectedIndex) {
+  _showUniversityTeachinModal(BuildContext context, double deviceHeight, int selectedIndex) {
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -38,7 +39,13 @@ class _UniversityTeachingHistoryScreenState extends State<UniversityTeachingHist
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return Column();
+        return UniversityTeachingModal(
+          title: 'ایجاد سوابق تدریس دانشگاهی',
+          isCreating: true,
+          isEditing: false,
+          isShowing: false,
+          deviceHeight: deviceHeight,
+        );
       },
     );
   }
@@ -59,7 +66,7 @@ class _UniversityTeachingHistoryScreenState extends State<UniversityTeachingHist
           onPressed: () => Navigator.of(context).pop(),
         ),
         actions: [
-          IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
+          IconButton(onPressed: () => _showUniversityTeachinModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
       body: const UniversityTeachingInfo(),

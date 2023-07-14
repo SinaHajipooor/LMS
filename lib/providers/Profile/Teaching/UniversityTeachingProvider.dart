@@ -11,7 +11,7 @@ class UniversityTeachingProvider with ChangeNotifier {
   Map<String, dynamic>? _universityTeachingDetails;
   // ---------------- getter ----------------
   List get universityTeachings => _universityTeachings;
-  Map<String, dynamic>? get universityTeachingDetails => _universityTeachingDetails!;
+  Map<String, dynamic> get universityTeachingDetails => _universityTeachingDetails!;
   // ---------------- methods ----------------
 
   Future<void> fetchAllUniversityTeachings() async {
@@ -25,6 +25,22 @@ class UniversityTeachingProvider with ChangeNotifier {
       if (response.statusCode != 200) throw Exception('failed to fetch all university teachings');
       final Map<String, dynamic>? responseData = jsonDecode(response.body) as Map<String, dynamic>?;
       _universityTeachings = responseData?['result']['data'];
+      notifyListeners();
+    } catch (error) {
+      print(error);
+      rethrow;
+    }
+  }
+
+  Future<void> fetchUniversityTeachingDetails(int universityTeachingId) async {
+    try {
+      final response = await http.get(
+        Uri.parse(_baseUrl + '/show/$universityTeachingId'),
+        headers: <String, String>{'Content-Type': 'application/json'},
+      );
+      if (response.statusCode != 200) throw Exception('failed to fetch university twaching details');
+      final Map<String, dynamic>? responseData = jsonDecode(response.body) as Map<String, dynamic>?;
+      _universityTeachingDetails = responseData?['result'];
       notifyListeners();
     } catch (error) {
       print(error);
