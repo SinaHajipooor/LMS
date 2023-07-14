@@ -16,9 +16,9 @@ import 'package:lms/screens/profile/passedCourses/external_passed_courses_screen
 import 'package:lms/screens/profile/passedCourses/internal_passed_courses_screen.dart';
 import 'package:lms/screens/profile/teaching/non_university_teaching_history_screen.dart';
 import 'package:lms/screens/profile/teaching/university_taeching_history_screen.dart';
-import 'package:lms/screens/profile/user_birth_certificate_form.dart';
-import 'package:lms/screens/profile/user_education_screen.dart';
-import 'package:lms/screens/profile/user_job_info_screen.dart';
+import 'package:lms/screens/profile/user/user_birth_certificate_form.dart';
+import 'package:lms/screens/profile/user/user_education_screen.dart';
+import 'package:lms/screens/profile/user/user_job_info_screen.dart';
 import 'package:lms/screens/profile/user_profile_screen.dart';
 import 'package:lms/screens/root/splash_screen.dart';
 import 'package:lms/screens/teachers/presence_screen.dart';

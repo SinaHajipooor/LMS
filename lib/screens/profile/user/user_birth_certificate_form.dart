@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
-import '../../widgets/elements/text_input.dart';
-import '../../widgets/elements/custom_dropdown.dart';
+import '../../../widgets/elements/text_input.dart';
+import '../../../widgets/elements/custom_dropdown.dart';
 
 class UserBirthCertificateScreen extends StatefulWidget {
 // --------------- feilds -----------------

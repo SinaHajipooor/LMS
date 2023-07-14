@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
-import 'package:lms/widgets/profile/user_info_card.dart';
-import 'package:lms/widgets/profile/user_info_list.dart';
+import 'package:lms/widgets/profile/user/user_info_card.dart';
+import 'package:lms/widgets/profile/user/user_info_list.dart';
 import 'package:provider/provider.dart';
 
 class UserProfileScreen extends StatefulWidget {

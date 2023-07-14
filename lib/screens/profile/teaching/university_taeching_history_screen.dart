@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
-import 'package:lms/widgets/profile/teaching/university/university_teaching_hiostory_modal.dart';
-import 'package:lms/widgets/profile/teaching/university/university_teaching_history.dart';
 import 'package:provider/provider.dart';
 
 class UniversityTeachingHistoryScreen extends StatefulWidget {
@@ -39,7 +37,7 @@ class _UniversityTeachingHistoryScreenState extends State<UniversityTeachingHist
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return UniversityTeachingHistoryModal(deviceHeight: deviceHeight);
+        return Column();
       },
     );
   }
@@ -63,7 +61,7 @@ class _UniversityTeachingHistoryScreenState extends State<UniversityTeachingHist
           IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: const UniversityTeachingHistory(),
+      // body: const UniversityTeachingHistory(),
     );
   }
 }

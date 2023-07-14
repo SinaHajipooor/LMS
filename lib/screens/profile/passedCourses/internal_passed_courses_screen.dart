@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/widgets/profile/passedCourses/internal/internal_passed_courses_info.dart';
-import 'package:lms/widgets/profile/job_info_form_modal.dart';
+import 'package:lms/widgets/profile/user/job_info_form_modal.dart';
 import 'package:provider/provider.dart';
 
 class InternalPassedCoursesScreen extends StatefulWidget {
