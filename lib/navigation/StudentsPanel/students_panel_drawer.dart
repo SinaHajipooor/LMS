@@ -4,7 +4,7 @@ import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/navigation/TeachersPanel/teachers_bottom_tabs.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/root/landing_screen.dart';
-import 'package:lms/screens/profile/user_profile_screen.dart';
+import 'package:lms/screens/profile/user/user_profile_screen.dart';
 import 'package:provider/provider.dart';
 
 class StudentsPanelDrawer extends StatefulWidget {
