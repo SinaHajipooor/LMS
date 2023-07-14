@@ -5,6 +5,7 @@ import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/providers/Profile/ActivityHistory/ActivityHistoryProvider.dart';
 import 'package:lms/providers/Profile/PassedCourses/ExternalPassedCoursesProvider.dart';
+import 'package:lms/providers/Profile/Teaching/UniversityTeachingProvider.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
 import 'package:lms/screens/auth/auth_screen.dart';
 import 'package:lms/screens/course/course_shipping_screen.dart';
@@ -16,10 +17,10 @@ import 'package:lms/screens/profile/passedCourses/external_passed_courses_screen
 import 'package:lms/screens/profile/passedCourses/internal_passed_courses_screen.dart';
 import 'package:lms/screens/profile/teaching/non_university_teaching_history_screen.dart';
 import 'package:lms/screens/profile/teaching/university_taeching_history_screen.dart';
-import 'package:lms/screens/profile/user_birth_certificate_form.dart';
-import 'package:lms/screens/profile/user_education_screen.dart';
-import 'package:lms/screens/profile/user_job_info_screen.dart';
-import 'package:lms/screens/profile/user_profile_screen.dart';
+import 'package:lms/screens/profile/user/user_birth_certificate_form.dart';
+import 'package:lms/screens/profile/user/user_education_screen.dart';
+import 'package:lms/screens/profile/user/user_job_info_screen.dart';
+import 'package:lms/screens/profile/user/user_profile_screen.dart';
 import 'package:lms/screens/root/splash_screen.dart';
 import 'package:lms/screens/teachers/presence_screen.dart';
 import 'package:provider/provider.dart';
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => ExternalPassedCoursesProvider()),
         ChangeNotifierProvider(create: (_) => ActivityHistoryProvider()),
+        ChangeNotifierProvider(create: (_) => UniversityTeachingProvider()),
         ChangeNotifierProvider(create: (_) => LandingProvider()),
         ChangeNotifierProvider(create: (_) => ElectronicCourseProvider()),
         ChangeNotifierProvider(create: (_) => SimpleCourseProvider()),

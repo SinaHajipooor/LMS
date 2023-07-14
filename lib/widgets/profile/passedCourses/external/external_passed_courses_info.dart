@@ -79,11 +79,12 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
             child: Card(
+              color: Theme.of(context).cardTheme.color,
               elevation: 0,
               child: DataTable(
                 dividerThickness: 0.5,
                 horizontalMargin: 0,
-                headingRowColor: MaterialStateColor.resolveWith((states) => Colors.grey.shade100),
+                headingRowColor: MaterialStateColor.resolveWith((states) => Theme.of(context).scaffoldBackgroundColor),
                 dataRowHeight: 50,
                 columns: const [
                   DataColumn(label: Center(child: Text('عنوان', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),

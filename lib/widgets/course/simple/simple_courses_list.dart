@@ -51,8 +51,7 @@ class _SimpleCoursesListState extends State<SimpleCoursesList> {
         coursePrice: electronicCourses[i]['final_amount'] ?? '_',
         courseTime: electronicCourses[i]['time'] ?? '_',
         courseImage: electronicCourses[i]['main_image'] ?? '',
-        teacherAvatar: electronicCourses[i]['teacher']['avatar'] ?? '',
-        teacherName: electronicCourses[i]['teacher']['name'] ?? '_',
+        teacherName: electronicCourses[i]['teacher']?['name'] ?? '_',
         meetings: electronicCourses[i]['meetings'] ?? 0,
       ),
     );

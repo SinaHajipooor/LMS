@@ -84,7 +84,7 @@ class _ActivitiesInfoState extends State<ActivitiesInfo> {
               child: DataTable(
                 dividerThickness: 0.5,
                 horizontalMargin: 0,
-                headingRowColor: MaterialStateColor.resolveWith((states) => Colors.grey.shade100),
+                headingRowColor: MaterialStateColor.resolveWith((states) => Theme.of(context).appBarTheme.backgroundColor!),
                 dataRowHeight: 50,
                 columns: const [
                   DataColumn(label: Center(child: Text('عنوان', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),

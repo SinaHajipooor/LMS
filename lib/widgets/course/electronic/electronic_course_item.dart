@@ -9,7 +9,7 @@ class ElectronicCourseItem extends StatelessWidget {
   final String coursePrice;
   final String courseTime;
   final String courseImage;
-  final String teacherAvatar;
+
   final String teacherName;
   final int courseSessions;
   const ElectronicCourseItem({
@@ -20,7 +20,6 @@ class ElectronicCourseItem extends StatelessWidget {
     required this.coursePrice,
     required this.courseTime,
     required this.courseImage,
-    required this.teacherAvatar,
     required this.teacherName,
     required this.courseSessions,
   });

@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:lms/widgets/profile/activities/activites_info_form.dart';
+import 'package:lms/widgets/profile/teaching/university/university_teaching_form.dart';
 
 // ignore: must_be_immutable
-class ActivitiesInfoModal extends StatefulWidget {
-  final double deviceHeight;
-  int? activityId;
-  final bool isEditing;
-  final bool isCreating;
-  final bool isShowing;
+class UniversityTeachingModal extends StatefulWidget {
   final String title;
-
-  ActivitiesInfoModal({
-    required this.deviceHeight,
-    Key? key,
-    this.activityId,
-    required this.isEditing,
-    required this.isCreating,
-    required this.isShowing,
+  final double deviceHeight;
+  final bool isCreating;
+  final bool isEditing;
+  final bool isShowing;
+  int? universityTeachingId;
+  UniversityTeachingModal({
+    super.key,
+    this.universityTeachingId,
     required this.title,
-  }) : super(key: key);
+    required this.isCreating,
+    required this.isEditing,
+    required this.isShowing,
+    required this.deviceHeight,
+  });
 
   @override
-  // ignore: library_private_types_in_public_api
-  _ActivitiesInfoModalState createState() => _ActivitiesInfoModalState();
+  State<UniversityTeachingModal> createState() => _UniversityTeachingModalState();
 }
 
-class _ActivitiesInfoModalState extends State<ActivitiesInfoModal> {
+class _UniversityTeachingModalState extends State<UniversityTeachingModal> {
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -51,7 +49,7 @@ class _ActivitiesInfoModalState extends State<ActivitiesInfoModal> {
             bottom: keyboardOffset + MediaQuery.of(context).padding.bottom,
           ),
           child: SizedBox(
-            height: widget.deviceHeight * 0.65,
+            height: widget.deviceHeight * 0.55,
             child: Column(
               children: [
                 Container(
@@ -65,11 +63,11 @@ class _ActivitiesInfoModalState extends State<ActivitiesInfoModal> {
                 ),
                 const SizedBox(height: 20),
                 Expanded(
-                    child: ActivitiesInfoForm(
+                    child: UniversityTeachingForm(
                   isCreating: widget.isCreating,
                   isEditing: widget.isEditing,
                   isShowing: widget.isShowing,
-                  activityId: widget.activityId,
+                  universityTeachingId: widget.universityTeachingId,
                 )),
               ],
             ),
