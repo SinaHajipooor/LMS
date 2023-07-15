@@ -8,10 +8,12 @@ class NonUniversityTeachingModal extends StatefulWidget {
   final bool isCreating;
   final bool isEditing;
   final bool isShowing;
+  final Function() fetchAllNonUniversityTeachings;
   int? nonUniversityTeachingId;
   NonUniversityTeachingModal({
     super.key,
     required this.title,
+    required this.fetchAllNonUniversityTeachings,
     required this.deviceHeight,
     required this.isCreating,
     required this.isEditing,
@@ -63,6 +65,7 @@ class _NonUniversityTeachingModalState extends State<NonUniversityTeachingModal>
                 const SizedBox(height: 20),
                 Expanded(
                     child: NonUniversityTeachingForm(
+                  fetchAllNonUniversityTeachings: widget.fetchAllNonUniversityTeachings,
                   isCreating: widget.isCreating,
                   isEditing: widget.isEditing,
                   isShowing: widget.isShowing,

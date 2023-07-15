@@ -16,11 +16,13 @@ class NonUniversityTeachingForm extends StatefulWidget {
   final bool isCreating;
   final bool isEditing;
   final bool isShowing;
+  final Function() fetchAllNonUniversityTeachings;
   int? nonUniversityTeachingId;
   NonUniversityTeachingForm({
     super.key,
     this.nonUniversityTeachingId,
     required this.isCreating,
+    required this.fetchAllNonUniversityTeachings,
     required this.isEditing,
     required this.isShowing,
   });
@@ -142,6 +144,7 @@ class _NonUniversityTeachingFormState extends State<NonUniversityTeachingForm> {
       'is_current': isCurrent,
     };
     await Provider.of<NonUniversityTeachingProvider>(context, listen: false).addNonUniversityTeaching(nonUniversityTeachingInfo, filePath!);
+    widget.fetchAllNonUniversityTeachings();
     Navigator.of(context).pop();
   }
 
@@ -162,6 +165,7 @@ class _NonUniversityTeachingFormState extends State<NonUniversityTeachingForm> {
       'is_current': isCurrent,
     };
     await Provider.of<NonUniversityTeachingProvider>(context, listen: false).editNonUniversityTeaching(widget.nonUniversityTeachingId!, nonUniversityTeachingInfo, filePath!);
+    widget.fetchAllNonUniversityTeachings();
     Navigator.of(context).pop();
   }
 
