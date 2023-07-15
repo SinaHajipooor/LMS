@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:lms/providers/Profile/Teaching/NonUniversityTeachingProvider.dart';
+import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/profile/teaching/nonUniversity/non_university_teaching_info.dart';
 import 'package:lms/widgets/profile/teaching/nonUniversity/non_university_teaching_modal.dart';
 import 'package:provider/provider.dart';
@@ -14,18 +16,40 @@ class NonUniversityTeachingHistoryScreen extends StatefulWidget {
 }
 
 class _NonUniversityTeachingHistoryScreenState extends State<NonUniversityTeachingHistoryScreen> {
+  //--------------- state -------------
+  bool _isLoading = true;
+  List<dynamic> nonUniversityTeachings = [];
   // ----------- lifecycle -------------
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _checkInternetConnectivity(context);
     });
+    fetchAllNonUniversityTeachings();
     super.initState();
   }
 
   // --------------- methods -----------------
   void _checkInternetConnectivity(BuildContext context) {
     InternetConnectivityHelper.checkInternetConnectivity(context);
+  }
+
+  Future<void> fetchAllNonUniversityTeachings() async {
+    await Provider.of<NonUniversityTeachingProvider>(context, listen: false).fetchAllNonUniversityTeachings();
+    setState(() {
+      nonUniversityTeachings = Provider.of<NonUniversityTeachingProvider>(context, listen: false).nonUniversityTeachings;
+      _isLoading = false;
+    });
+  }
+
+  Future<void> deleteNonUniversityTeaching(int nonUniversityTeachingId, int index) async {
+    Navigator.of(context).pop();
+    final universityTeachingsCopy = List.from(nonUniversityTeachings);
+    universityTeachingsCopy.removeAt(index);
+    await Provider.of<NonUniversityTeachingProvider>(context, listen: false).deleteNonUniversityTeaching(nonUniversityTeachingId);
+    setState(() {
+      nonUniversityTeachings = universityTeachingsCopy;
+    });
   }
 
   _showNonUniversityTeachingModal(BuildContext context, double deviceHeight, int selectedIndex) {
@@ -40,6 +64,7 @@ class _NonUniversityTeachingHistoryScreenState extends State<NonUniversityTeachi
       context: context,
       builder: (BuildContext context) {
         return NonUniversityTeachingModal(
+          fetchAllNonUniversityTeachings: fetchAllNonUniversityTeachings,
           deviceHeight: deviceHeight,
           isCreating: true,
           isEditing: false,
@@ -69,7 +94,13 @@ class _NonUniversityTeachingHistoryScreenState extends State<NonUniversityTeachi
           IconButton(onPressed: () => _showNonUniversityTeachingModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: const NonUniversityTeachingInfo(),
+      body: _isLoading
+          ? const Center(child: Spinner(size: 35))
+          : NonUniversityTeachingInfo(
+              deleteNonUniversityTeaching: deleteNonUniversityTeaching,
+              fetchAllNonUniversityTeachings: fetchAllNonUniversityTeachings,
+              nonUniversityTeachings: nonUniversityTeachings,
+            ),
     );
   }
 }

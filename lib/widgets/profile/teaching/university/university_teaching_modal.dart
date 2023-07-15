@@ -8,11 +8,13 @@ class UniversityTeachingModal extends StatefulWidget {
   final bool isCreating;
   final bool isEditing;
   final bool isShowing;
+  final Function() fetchAllUniversityTeachings;
   int? universityTeachingId;
   UniversityTeachingModal({
     super.key,
     this.universityTeachingId,
     required this.title,
+    required this.fetchAllUniversityTeachings,
     required this.isCreating,
     required this.isEditing,
     required this.isShowing,
@@ -64,6 +66,7 @@ class _UniversityTeachingModalState extends State<UniversityTeachingModal> {
                 const SizedBox(height: 20),
                 Expanded(
                     child: UniversityTeachingForm(
+                  fetchAllUniversityTeachings: widget.fetchAllUniversityTeachings,
                   isCreating: widget.isCreating,
                   isEditing: widget.isEditing,
                   isShowing: widget.isShowing,

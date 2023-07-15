@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:lms/providers/Profile/Teaching/UniversityTeachingProvider.dart';
+import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/profile/teaching/university/university_teaching_info.dart';
 import 'package:lms/widgets/profile/teaching/university/university_teaching_modal.dart';
 import 'package:provider/provider.dart';
@@ -14,18 +16,40 @@ class UniversityTeachingHistoryScreen extends StatefulWidget {
 }
 
 class _UniversityTeachingHistoryScreenState extends State<UniversityTeachingHistoryScreen> {
+  //---------- state ---------------
+  List<dynamic> universityTeachings = [];
+  bool _isLoading = true;
   // ----------- lifecycle -------------
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _checkInternetConnectivity(context);
     });
+    fetchAllUniveristyTeachings();
     super.initState();
   }
 
   // --------------- methods -----------------
   void _checkInternetConnectivity(BuildContext context) {
     InternetConnectivityHelper.checkInternetConnectivity(context);
+  }
+
+  Future<void> fetchAllUniveristyTeachings() async {
+    await Provider.of<UniversityTeachingProvider>(context, listen: false).fetchAllUniversityTeachings();
+    setState(() {
+      universityTeachings = Provider.of<UniversityTeachingProvider>(context, listen: false).universityTeachings;
+      _isLoading = false;
+    });
+  }
+
+  Future<void> deleteUniversityTeaching(int id, int index) async {
+    Navigator.of(context).pop();
+    final universityTeachingsCopy = List.from(universityTeachings);
+    universityTeachingsCopy.removeAt(index);
+    await Provider.of<UniversityTeachingProvider>(context, listen: false).deleteUniversityTeaching(id);
+    setState(() {
+      universityTeachings = universityTeachingsCopy;
+    });
   }
 
   _showUniversityTeachinModal(BuildContext context, double deviceHeight, int selectedIndex) {
@@ -40,6 +64,7 @@ class _UniversityTeachingHistoryScreenState extends State<UniversityTeachingHist
       context: context,
       builder: (BuildContext context) {
         return UniversityTeachingModal(
+          fetchAllUniversityTeachings: fetchAllUniveristyTeachings,
           title: 'ایجاد سوابق تدریس دانشگاهی',
           isCreating: true,
           isEditing: false,
@@ -69,7 +94,13 @@ class _UniversityTeachingHistoryScreenState extends State<UniversityTeachingHist
           IconButton(onPressed: () => _showUniversityTeachinModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: const UniversityTeachingInfo(),
+      body: _isLoading
+          ? const Center(child: Spinner(size: 35))
+          : UniversityTeachingInfo(
+              deleteUniversityTeaching: deleteUniversityTeaching,
+              fetchAllUniversityTeachings: fetchAllUniveristyTeachings,
+              universityTeachings: universityTeachings,
+            ),
     );
   }
 }

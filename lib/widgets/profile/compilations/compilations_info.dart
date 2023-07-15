@@ -76,49 +76,25 @@ class _CompilationsInfoState extends State<CompilationsInfo> {
                 DataCell(Center(child: Text(widget.compilations[index]['publish_place'] ?? ''))),
                 DataCell(Center(child: Text(widget.compilations[index]['year'] ?? ''))),
                 DataCell(Center(child: Text(widget.compilations[index]['is_related'] == false ? 'خیر' : 'بلی'))),
-                DataCell(
-                  PopupMenuButton(
-                    icon: const Icon(Icons.more_vert, size: 19),
-                    elevation: 2,
-                    onSelected: (value) {
-                      print(value);
-                    },
-                    itemBuilder: (BuildContext context) => [
-                      PopupMenuItem(
-                          child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Wrap(
-                          spacing: 8,
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: Colors.orange,
-                              radius: 15,
-                              child: IconButton(
-                                icon: const Icon(Icons.edit, color: Colors.white, size: 15),
-                                onPressed: () => _showCompilationsModal(context, widget.compilations[index]['id'], 1),
-                              ),
-                            ),
-                            CircleAvatar(
-                              radius: 15,
-                              backgroundColor: Colors.red,
-                              child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () => widget.deleteCompilation(widget.compilations[index]['id'], index)),
-                            ),
-                            CircleAvatar(
-                              radius: 15,
-                              backgroundColor: Colors.blue,
-                              child: Center(
-                                child: IconButton(
-                                  icon: const Icon(Icons.file_copy_outlined, color: Colors.white, size: 15),
-                                  onPressed: () {},
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )),
-                    ],
-                  ),
-                ),
+                DataCell(Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.orange,
+                      radius: 15,
+                      child: IconButton(
+                        icon: const Icon(Icons.edit, color: Colors.white, size: 15),
+                        onPressed: () => _showCompilationsModal(context, widget.compilations[index]['id'], 1),
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    CircleAvatar(
+                      radius: 15,
+                      backgroundColor: Colors.red,
+                      child: Center(child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () => widget.deleteCompilation(widget.compilations[index]['id'], index))),
+                    ),
+                  ],
+                )),
                 DataCell(
                   IconButton(icon: const Icon(Icons.remove_red_eye, color: Colors.orange, size: 20), onPressed: () => _showCompilationsModal(context, widget.compilations[index]['id'], 2)),
                 ),
