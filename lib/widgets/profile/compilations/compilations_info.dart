@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lms/providers/Profile/Compilations/CompilationsProvider.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/profile/compilations/compilations_modal.dart';
+import 'package:provider/provider.dart';
 
 class CompilationsInfo extends StatefulWidget {
   const CompilationsInfo({super.key});
@@ -11,11 +13,12 @@ class CompilationsInfo extends StatefulWidget {
 
 class _CompilationsInfoState extends State<CompilationsInfo> {
   // -------------- state ---------------
-  bool _isLoading = false;
+  bool _isLoading = true;
   List<dynamic> compilations = [];
   // -------------- lifecycle ---------------
   @override
   void didChangeDependencies() {
+    fetchAllCompilations();
     super.didChangeDependencies();
   }
 
@@ -47,7 +50,19 @@ class _CompilationsInfoState extends State<CompilationsInfo> {
     );
   }
 
-  Future<void> fetchAllCompilations() async {}
+  Future<void> fetchAllCompilations() async {
+    await Provider.of<CompilationsProvider>(context, listen: false).fetchAllCompilations();
+    setState(() {
+      compilations = Provider.of<CompilationsProvider>(context, listen: false).compilations;
+      _isLoading = false;
+    });
+  }
+
+//   Future<void> deleteCompilation(int compilationId, int index) async {
+//     Navigator.of(context).pop();
+//  final compilationCopy =
+//   }
+
   // -------------- UI ---------------
 
   @override
@@ -62,7 +77,7 @@ class _CompilationsInfoState extends State<CompilationsInfo> {
               child: DataTable(
                 dividerThickness: 0.5,
                 horizontalMargin: 0,
-                headingRowColor: MaterialStateColor.resolveWith((states) => Colors.grey.shade100),
+                headingRowColor: MaterialStateColor.resolveWith((states) => Theme.of(context).appBarTheme.backgroundColor!),
                 dataRowHeight: 50,
                 columns: const [
                   DataColumn(label: Center(child: Text('عنوان', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),

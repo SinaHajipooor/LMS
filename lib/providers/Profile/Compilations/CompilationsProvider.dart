@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 class CompilationsProvider with ChangeNotifier {
   // ------------------ feilds -----------------
-  static const _baseUrl = 'http://192.168.2.136:81/api/profile/compilation-record';
+  static const _baseUrl = 'http://45.149.77.156:8081/api/profile/compilation-record';
   List _compilations = [];
   Map<String, dynamic>? _compilationDetails;
   // ------------------ getter -----------------
