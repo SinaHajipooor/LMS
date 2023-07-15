@@ -9,10 +9,12 @@ class CompilationsModal extends StatefulWidget {
   final bool isShowing;
   int? compilationId;
   final double deviceHeight;
+  final Function() fetchAllCompilations;
 
   CompilationsModal({
     super.key,
     this.compilationId,
+    required this.fetchAllCompilations,
     required this.deviceHeight,
     required this.title,
     required this.isEditing,
@@ -69,6 +71,7 @@ class _CompilationsModalState extends State<CompilationsModal> {
                   isEditing: widget.isEditing,
                   isShowing: widget.isShowing,
                   compilationId: widget.compilationId,
+                  fetchAllCompilations: widget.fetchAllCompilations,
                 )),
               ],
             ),
