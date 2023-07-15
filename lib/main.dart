@@ -4,6 +4,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/providers/Profile/ActivityHistory/ActivityHistoryProvider.dart';
+import 'package:lms/providers/Profile/Compilations/CompilationsProvider.dart';
 import 'package:lms/providers/Profile/PassedCourses/ExternalPassedCoursesProvider.dart';
 import 'package:lms/providers/Profile/Teaching/NonUniversityTeachingProvider.dart';
 import 'package:lms/providers/Profile/Teaching/UniversityTeachingProvider.dart';
@@ -13,7 +14,7 @@ import 'package:lms/screens/course/course_shipping_screen.dart';
 import 'package:lms/screens/course/simple_course_detail_screen.dart';
 import 'package:lms/screens/exam/exam_result_screen.dart';
 import 'package:lms/screens/profile/activityHistory/activities_info_screen.dart';
-import 'package:lms/screens/profile/compilations_and_translations_screen.dart';
+import 'package:lms/screens/profile/compilations/compilations_and_translations_screen.dart';
 import 'package:lms/screens/profile/passedCourses/external_passed_courses_screen.dart';
 import 'package:lms/screens/profile/passedCourses/internal_passed_courses_screen.dart';
 import 'package:lms/screens/profile/teaching/non_university_teaching_history_screen.dart';
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ActivityHistoryProvider()),
         ChangeNotifierProvider(create: (_) => UniversityTeachingProvider()),
         ChangeNotifierProvider(create: (_) => NonUniversityTeachingProvider()),
+        ChangeNotifierProvider(create: (_) => CompilationsProvider()),
         ChangeNotifierProvider(create: (_) => LandingProvider()),
         ChangeNotifierProvider(create: (_) => ElectronicCourseProvider()),
         ChangeNotifierProvider(create: (_) => SimpleCourseProvider()),
