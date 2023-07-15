@@ -8,6 +8,7 @@ class ExternalCourseModal extends StatefulWidget {
   final bool isEditing;
   final bool isShowing;
   final bool isCreating;
+  final Function() fetchAllExternalCourses;
   ExternalCourseModal({
     super.key,
     this.externalCourseId,
@@ -15,6 +16,7 @@ class ExternalCourseModal extends StatefulWidget {
     required this.isEditing,
     required this.isShowing,
     required this.isCreating,
+    required this.fetchAllExternalCourses,
   });
 
   @override
@@ -65,6 +67,7 @@ class _ExternalCourseModalState extends State<ExternalCourseModal> {
                 const SizedBox(height: 20),
                 Expanded(
                     child: ExternalCourseForm(
+                  fetchAllExternalCourses: widget.fetchAllExternalCourses,
                   externalCourseId: widget.externalCourseId,
                   isEditing: widget.isEditing,
                   isCreating: widget.isCreating,

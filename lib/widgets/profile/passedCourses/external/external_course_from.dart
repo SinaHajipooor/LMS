@@ -14,10 +14,12 @@ class ExternalCourseForm extends StatefulWidget {
   final bool isEditing;
   final bool isCreating;
   final bool isShowing;
+  final Function() fetchAllExternalCourses;
   int? externalCourseId;
   ExternalCourseForm({
     super.key,
     this.externalCourseId,
+    required this.fetchAllExternalCourses,
     required this.isEditing,
     required this.isCreating,
     required this.isShowing,
@@ -146,6 +148,7 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
       'has_certificate': hasCertificate,
     };
     await Provider.of<ExternalPassedCoursesProvider>(context, listen: false).addExternalCourse(externalCourseInfo, filePath!);
+    widget.fetchAllExternalCourses();
     Navigator.of(context).pop();
   }
 
@@ -170,6 +173,7 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
     };
 
     await Provider.of<ExternalPassedCoursesProvider>(context, listen: false).editExternalCourse(widget.externalCourseId!, externalCourseInfo, filePath!);
+    widget.fetchAllExternalCourses();
     Navigator.of(context).pop();
   }
 
