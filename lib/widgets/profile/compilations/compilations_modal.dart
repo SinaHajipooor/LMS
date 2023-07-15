@@ -50,7 +50,7 @@ class _CompilationsModalState extends State<CompilationsModal> {
             bottom: keyboardOffset + MediaQuery.of(context).padding.bottom,
           ),
           child: SizedBox(
-            height: widget.deviceHeight * 0.65,
+            height: widget.deviceHeight * 0.6,
             child: Column(
               children: [
                 Container(
