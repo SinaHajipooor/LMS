@@ -29,12 +29,12 @@ class _CompilationsFormState extends State<CompilationsForm> {
   TextEditingController titleController = TextEditingController();
   TextEditingController publishPlaceController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+  TextEditingController yearController = TextEditingController();
   String language = '';
   String compilationType = '';
   String status = '0';
   String isRelated = '0';
   File? filePath;
-  String year = '';
   bool _isLoading = false;
   Map<String, dynamic> compilationDetails = {};
 // --------------- lifecycle -----------------
@@ -73,31 +73,32 @@ class _CompilationsFormState extends State<CompilationsForm> {
       compilationType = compilationDetails['compilation_type'] ?? '';
       status = compilationDetails['status'] == false ? '0' : '1';
       isRelated = compilationDetails['is_related'] == false ? '0' : '1';
-      year = compilationDetails['year'] ?? '';
+      yearController.text = compilationDetails['year'] ?? '';
       _isLoading = false;
     });
   }
 
-  // Future<void> addCompilation() async {
-  //   setState(() {
-  //     _isLoading = true;
-  //   });
-  //   final prefs = await SharedPreferences.getInstance();
-  //   final userId = prefs.getString('userId');
-  //   final compilationInfo = {
-  //     'user_id': userId,
-  //     'title': titleController.text,
-  //     'compilation_type_id': '1',
-  //     'language_id': '1',
-  //     'publish_place': publishPlaceController.text,
-  //     'year': year,
-  //     'status': status,
-  //     'is_related': isRelated,
-  //     'description': descriptionController.text,
-  //   };
-  //   await Provider.of<CompilationsProvider>(context, listen: false).addCompilation(compilationInfo, filePath!);
-  //   Navigator.of(context).pop();
-  // }
+  Future<void> addCompilation() async {
+    setState(() {
+      _isLoading = true;
+    });
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getString('userId');
+    final compilationInfo = {
+      'user_id': userId,
+      'title': titleController.text,
+      'compilation_type_id': '1',
+      'language_id': '1',
+      'publish_place': publishPlaceController.text,
+      'year': yearController.text,
+      'status': status,
+      'is_related': isRelated,
+      'description': descriptionController.text,
+    };
+
+    await Provider.of<CompilationsProvider>(context, listen: false).addCompilation(compilationInfo, filePath!);
+    Navigator.of(context).pop();
+  }
 
 // --------------- UI -----------------
   @override
@@ -130,8 +131,8 @@ class _CompilationsFormState extends State<CompilationsForm> {
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Expanded(child: TextInput(label: 'سال انتشار', onChanged: (value) {}, controller: titleController, keyboardType: TextInputType.number)),
-                              Expanded(child: TextInput(label: 'محل انتشار', onChanged: (value) {}, controller: titleController, keyboardType: TextInputType.name)),
+                              Expanded(child: TextInput(label: 'سال انتشار', onChanged: (value) {}, controller: yearController, keyboardType: TextInputType.number)),
+                              Expanded(child: TextInput(label: 'محل انتشار', onChanged: (value) {}, controller: publishPlaceController, keyboardType: TextInputType.name)),
                             ],
                           ),
                           const SizedBox(height: 15),
@@ -206,7 +207,7 @@ class _CompilationsFormState extends State<CompilationsForm> {
                             ],
                           ),
                           const SizedBox(height: 15),
-                          ThreeLineInput(controller: titleController, label: 'توضیحات', onChanged: (value) {}),
+                          ThreeLineInput(controller: descriptionController, label: 'توضیحات', onChanged: (value) {}),
                           const SizedBox(height: 15),
                         ],
                       ),
@@ -237,7 +238,9 @@ class _CompilationsFormState extends State<CompilationsForm> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          widget.isCreating ? addCompilation() : () {};
+                        },
                         child: const Text('ذخیره'),
                       ),
                     ),

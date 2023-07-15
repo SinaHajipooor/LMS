@@ -56,8 +56,9 @@ class CompilationsProvider with ChangeNotifier {
     try {
       var request = http.MultipartRequest('POST', Uri.parse(_baseUrl + '/store'));
       request.fields['user_id'] = compilationInfo['user_id'];
-      request.fields['compilation_type'] = compilationInfo['compilation_type'];
-      request.fields['language'] = compilationInfo['language'];
+      request.fields['compilation_type_id'] = compilationInfo['compilation_type_id'];
+      request.fields['title'] = compilationInfo['title'];
+      request.fields['language_id'] = compilationInfo['language_id'];
       request.fields['publish_place'] = compilationInfo['publish_place'];
       request.fields['year'] = compilationInfo['year'];
       request.fields['description'] = compilationInfo['description'];
