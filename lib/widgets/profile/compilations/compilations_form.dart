@@ -16,8 +16,16 @@ class CompilationsForm extends StatefulWidget {
   final bool isEditing;
   final bool isCreating;
   final bool isShowing;
+  final Function() fetchAllCompilations;
   int? compilationId;
-  CompilationsForm({super.key, this.compilationId, required this.isEditing, required this.isCreating, required this.isShowing});
+  CompilationsForm({
+    super.key,
+    required this.fetchAllCompilations,
+    this.compilationId,
+    required this.isEditing,
+    required this.isCreating,
+    required this.isShowing,
+  });
 
   @override
   State<CompilationsForm> createState() => _CompilationsFormState();
@@ -95,8 +103,8 @@ class _CompilationsFormState extends State<CompilationsForm> {
       'is_related': isRelated,
       'description': descriptionController.text,
     };
-
     await Provider.of<CompilationsProvider>(context, listen: false).addCompilation(compilationInfo, filePath!);
+    widget.fetchAllCompilations();
     Navigator.of(context).pop();
   }
 
@@ -118,6 +126,7 @@ class _CompilationsFormState extends State<CompilationsForm> {
       'description': descriptionController.text,
     };
     await Provider.of<CompilationsProvider>(context, listen: false).editCompilation(widget.compilationId!, compilationInfo, filePath!);
+    widget.fetchAllCompilations();
     Navigator.of(context).pop();
   }
 

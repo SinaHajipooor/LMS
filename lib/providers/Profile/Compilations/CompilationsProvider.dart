@@ -93,6 +93,7 @@ class CompilationsProvider with ChangeNotifier {
       request.fields['description'] = compilationInfo['description'];
       request.fields['status'] = compilationInfo['status'];
       request.fields['is_related'] = compilationInfo['is_related'];
+
       request.files.add(await http.MultipartFile.fromPath('file', file.path));
       // Send the request
       var response = await request.send();
