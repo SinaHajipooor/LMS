@@ -18,6 +18,7 @@ class ActivitiesInfoScreen extends StatefulWidget {
 class _ActivitiesInfoScreenState extends State<ActivitiesInfoScreen> {
   // ----------- state -------------
   bool _isLoading = true;
+  List<dynamic> activities = [];
   // ----------- lifecycle -------------
 
   @override
@@ -38,6 +39,17 @@ class _ActivitiesInfoScreenState extends State<ActivitiesInfoScreen> {
     await Provider.of<ActivityHistoryProvider>(context, listen: false).fetchAllActivities();
     setState(() {
       _isLoading = false;
+      activities = Provider.of<ActivityHistoryProvider>(context, listen: false).activities;
+    });
+  }
+
+  Future<void> deleteActivity(int activityId, int index) async {
+    Navigator.of(context).pop();
+    final activitiesCopy = List.from(activities);
+    activitiesCopy.removeAt(index);
+    await Provider.of<ActivityHistoryProvider>(context, listen: false).deleteActivity(activityId);
+    setState(() {
+      activities = activitiesCopy;
     });
   }
 
@@ -53,6 +65,7 @@ class _ActivitiesInfoScreenState extends State<ActivitiesInfoScreen> {
       context: context,
       builder: (BuildContext context) {
         return ActivitiesInfoModal(
+          fetchAllActivities: fetchAllActivities,
           isCreating: true,
           isEditing: false,
           isShowing: false,
@@ -82,11 +95,7 @@ class _ActivitiesInfoScreenState extends State<ActivitiesInfoScreen> {
           IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: _isLoading
-          ? const Center(child: Spinner(size: 35))
-          : ActivitiesInfo(
-              // activitesList: Provider.of<ActivityHistoryProvider>(context, listen: false).activities,
-              ),
+      body: _isLoading ? const Center(child: Spinner(size: 35)) : ActivitiesInfo(activities: activities, fetchAllActivities: fetchAllActivities, deleteActivity: deleteActivity),
     );
   }
 }

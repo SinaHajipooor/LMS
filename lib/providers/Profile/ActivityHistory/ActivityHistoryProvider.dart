@@ -56,16 +56,15 @@ class ActivityHistoryProvider with ChangeNotifier {
 
       request.fields['user_id'] = activityInfo['user_id'];
       request.fields['title'] = activityInfo['title'];
-      request.fields['institute_title'] = 'nothing';
-      request.fields['has_certificate'] = '0';
       request.fields['address'] = activityInfo['address'];
       request.fields['start_date'] = activityInfo['start_date'];
       request.fields['end_date'] = activityInfo['end_date'];
+      request.fields['description'] = activityInfo['description'];
       request.fields['position'] = activityInfo['position'];
       request.fields['status'] = activityInfo['status'];
       request.fields['is_related'] = activityInfo['is_related'];
       request.fields['current_position'] = activityInfo['current_position'];
-      request.fields['work_type_id'] = activityInfo['work_type_id'];
+      request.fields['work_type'] = '1';
 
       request.files.add(await http.MultipartFile.fromPath('file', file.path));
       // Send the request
@@ -75,7 +74,10 @@ class ActivityHistoryProvider with ChangeNotifier {
         print('activity added successfully');
         notifyListeners();
       } else {
-        throw Exception('Failed to add external course');
+        print(response.statusCode);
+        print(response.stream.bytesToString());
+
+        throw Exception('Failed to add activity');
       }
     } catch (error) {
       print(error);
@@ -89,16 +91,15 @@ class ActivityHistoryProvider with ChangeNotifier {
       request.fields['_method'] = 'put';
       request.fields['user_id'] = activityInfo['user_id'];
       request.fields['title'] = activityInfo['title'];
-      request.fields['institute_title'] = 'nothing';
-      request.fields['has_certificate'] = '0';
       request.fields['address'] = activityInfo['address'];
       request.fields['start_date'] = activityInfo['start_date'];
       request.fields['end_date'] = activityInfo['end_date'];
+      request.fields['description'] = activityInfo['description'];
       request.fields['position'] = activityInfo['position'];
       request.fields['status'] = activityInfo['status'];
       request.fields['is_related'] = activityInfo['is_related'];
       request.fields['current_position'] = activityInfo['current_position'];
-      request.fields['work_type_id'] = activityInfo['work_type_id'];
+      request.fields['work_type'] = activityInfo['work_type'];
 
       request.files.add(await http.MultipartFile.fromPath('file', file.path));
       // Send the request
@@ -110,6 +111,7 @@ class ActivityHistoryProvider with ChangeNotifier {
         notifyListeners();
       } else {
         print(response.statusCode);
+        print(response.stream.bytesToString());
         throw Exception('Failed to edit external course');
       }
     } catch (error) {

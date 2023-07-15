@@ -17,9 +17,11 @@ class ActivitiesInfoForm extends StatefulWidget {
   final bool isCreating;
   final bool isEditing;
   final bool isShowing;
+  final Function() fetchAllActivities;
   int? activityId;
   ActivitiesInfoForm({
     super.key,
+    required this.fetchAllActivities,
     required this.isCreating,
     required this.isEditing,
     required this.isShowing,
@@ -143,6 +145,7 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
     final activityInfo = {
       'user_id': userId,
       'title': titleController.text,
+      'description': descriptionController.text,
       'address': addressController.text,
       'start_date': startedDate,
       'end_date': endedDate,
@@ -150,9 +153,10 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
       'status': status,
       'current_position': isCurrentPostion,
       'is_related': isRelated,
-      'work_type_id': workType,
+      'work_type': '1',
     };
     await Provider.of<ActivityHistoryProvider>(context, listen: false).addActivity(activityInfo, filePath!);
+    widget.fetchAllActivities();
     Navigator.of(context).pop();
   }
 
@@ -166,6 +170,7 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
     final activityInfo = {
       'user_id': userId,
       'title': titleController.text,
+      'description': descriptionController.text,
       'address': addressController.text,
       'start_date': startedDate,
       'end_date': endedDate,
@@ -173,10 +178,11 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
       'status': status,
       'current_position': isCurrentPostion,
       'is_related': isRelated,
-      'work_type_id': '1',
+      'work_type': '1',
     };
 
     await Provider.of<ActivityHistoryProvider>(context, listen: false).editActivity(widget.activityId!, activityInfo, filePath!);
+    widget.fetchAllActivities();
     Navigator.of(context).pop();
   }
 
@@ -198,8 +204,8 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
                       children: [
                         Row(
                           children: [
-                            Expanded(child: TextInput(controller: titleController, label: 'عنوان', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                            Expanded(child: TextInput(controller: addressController, label: 'آدرس', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                            Expanded(child: TextInput(controller: titleController, label: 'عنوان', onChanged: (value) {}, keyboardType: TextInputType.name)),
+                            Expanded(child: TextInput(controller: addressController, label: 'آدرس', onChanged: (value) {}, keyboardType: TextInputType.name)),
                           ],
                         ),
                         const SizedBox(height: 15),
@@ -271,7 +277,7 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Expanded(child: TextInput(controller: positionController, label: 'سمت', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                            Expanded(child: TextInput(controller: positionController, label: 'سمت', onChanged: (value) {}, keyboardType: TextInputType.name)),
                             Expanded(
                               child: CustomDropdown(
                                 initialValue: widget.isEditing || widget.isShowing ? workType : null,

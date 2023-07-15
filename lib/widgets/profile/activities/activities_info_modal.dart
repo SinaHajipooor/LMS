@@ -9,9 +9,11 @@ class ActivitiesInfoModal extends StatefulWidget {
   final bool isCreating;
   final bool isShowing;
   final String title;
+  final Function() fetchAllActivities;
 
   ActivitiesInfoModal({
     required this.deviceHeight,
+    required this.fetchAllActivities,
     Key? key,
     this.activityId,
     required this.isEditing,
@@ -66,6 +68,7 @@ class _ActivitiesInfoModalState extends State<ActivitiesInfoModal> {
                 const SizedBox(height: 20),
                 Expanded(
                     child: ActivitiesInfoForm(
+                  fetchAllActivities: widget.fetchAllActivities,
                   isCreating: widget.isCreating,
                   isEditing: widget.isEditing,
                   isShowing: widget.isShowing,
