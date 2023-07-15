@@ -17,11 +17,13 @@ class UniversityTeachingForm extends StatefulWidget {
   final bool isCreating;
   final bool isEditing;
   final bool isShowing;
+  final Function() fetchAllUniversityTeachings;
   int? universityTeachingId;
 
   UniversityTeachingForm({
     super.key,
     this.universityTeachingId,
+    required this.fetchAllUniversityTeachings,
     required this.isCreating,
     required this.isEditing,
     required this.isShowing,
@@ -147,6 +149,7 @@ class _UniversityTeachingFormState extends State<UniversityTeachingForm> {
       'academic_field_id': academicFeildId,
     };
     await Provider.of<UniversityTeachingProvider>(context, listen: false).addUniversityTeaching(universityTeachingInfo, filePath!);
+    widget.fetchAllUniversityTeachings();
     Navigator.of(context).pop();
   }
 
@@ -168,6 +171,7 @@ class _UniversityTeachingFormState extends State<UniversityTeachingForm> {
       'academic_field_id': academicFeildId,
     };
     await Provider.of<UniversityTeachingProvider>(context, listen: false).editUniversityTeaching(widget.universityTeachingId!, universityTeachingInfo, filePath!);
+    widget.fetchAllUniversityTeachings();
     Navigator.of(context).pop();
   }
   // --------------- UI ----------------
