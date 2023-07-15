@@ -58,10 +58,15 @@ class _CompilationsInfoState extends State<CompilationsInfo> {
     });
   }
 
-//   Future<void> deleteCompilation(int compilationId, int index) async {
-//     Navigator.of(context).pop();
-//  final compilationCopy =
-//   }
+  Future<void> deleteCompilation(int compilationId, int index) async {
+    Navigator.of(context).pop();
+    final compilationCopy = List.from(compilations);
+    compilationCopy.removeAt(index);
+    await Provider.of<CompilationsProvider>(context, listen: false).deleteCompilation(compilationId);
+    setState(() {
+      compilations = compilationCopy;
+    });
+  }
 
   // -------------- UI ---------------
 
@@ -124,7 +129,7 @@ class _CompilationsInfoState extends State<CompilationsInfo> {
                                   CircleAvatar(
                                     radius: 15,
                                     backgroundColor: Colors.red,
-                                    child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () {}),
+                                    child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () => deleteCompilation(compilations[index]['id'], index)),
                                   ),
                                   CircleAvatar(
                                     radius: 15,
