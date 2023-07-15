@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lms/widgets/profile/teaching/nonUniversity/non_university_teaching_modal.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NonUniversityTeachingInfo extends StatefulWidget {
   final List<dynamic> nonUniversityTeachings;
@@ -12,15 +13,6 @@ class NonUniversityTeachingInfo extends StatefulWidget {
 }
 
 class _NonUniversityTeachingInfoState extends State<NonUniversityTeachingInfo> {
-  // // --------------- state -----------------
-  // bool _isLoading = true;
-  // List<dynamic> nonUniversityTeachings = [];
-  // // --------------- lifecycle -----------------
-  // @override
-  // void didChangeDependencies() {
-  //   fetchAllNonUniversityTeachings();
-  //   super.didChangeDependencies();
-  // }
   // // --------------- methods -----------------
 
   _showNonUniversityTeachingModal(
@@ -51,23 +43,14 @@ class _NonUniversityTeachingInfoState extends State<NonUniversityTeachingInfo> {
     );
   }
 
-  // Future<void> fetchAllNonUniversityTeachings() async {
-  //   await Provider.of<NonUniversityTeachingProvider>(context, listen: false).fetchAllNonUniversityTeachings();
-  //   setState(() {
-  //     nonUniversityTeachings = Provider.of<NonUniversityTeachingProvider>(context, listen: false).nonUniversityTeachings;
-  //     _isLoading = false;
-  //   });
-  // }
+  Future<void> _launchURL(String url) async {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
-  // Future<void> deleteNonUniversityTeaching(int nonUniversityTeachingId, int index) async {
-  //   Navigator.of(context).pop();
-  //   final universityTeachingsCopy = List.from(nonUniversityTeachings);
-  //   universityTeachingsCopy.removeAt(index);
-  //   await Provider.of<NonUniversityTeachingProvider>(context, listen: false).deleteNonUniversityTeaching(nonUniversityTeachingId);
-  //   setState(() {
-  //     nonUniversityTeachings = universityTeachingsCopy;
-  //   });
-  // }
   // --------------- UI -----------------
 
   @override
@@ -99,49 +82,25 @@ class _NonUniversityTeachingInfoState extends State<NonUniversityTeachingInfo> {
               DataCell(Center(child: Text(widget.nonUniversityTeachings[index]['start_date'] ?? ''))),
               DataCell(Center(child: Text(widget.nonUniversityTeachings[index]['end_date'] ?? ''))),
               DataCell(Center(child: Text(widget.nonUniversityTeachings[index]['is_current'] == false ? 'خیر' : 'بلی'))),
-              DataCell(
-                PopupMenuButton(
-                  icon: const Icon(Icons.more_vert, size: 19),
-                  elevation: 2,
-                  onSelected: (value) {
-                    print(value);
-                  },
-                  itemBuilder: (BuildContext context) => [
-                    PopupMenuItem(
-                        child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Wrap(
-                        spacing: 8,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.orange,
-                            radius: 15,
-                            child: IconButton(
-                              icon: const Icon(Icons.edit, color: Colors.white, size: 15),
-                              onPressed: () => _showNonUniversityTeachingModal(context, widget.nonUniversityTeachings[index]['id'], 1),
-                            ),
-                          ),
-                          CircleAvatar(
-                            radius: 15,
-                            backgroundColor: Colors.red,
-                            child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () => widget.deleteNonUniversityTeaching(widget.nonUniversityTeachings[index]['id'], index)),
-                          ),
-                          CircleAvatar(
-                            radius: 15,
-                            backgroundColor: Colors.blue,
-                            child: Center(
-                              child: IconButton(
-                                icon: const Icon(Icons.file_copy_outlined, color: Colors.white, size: 15),
-                                onPressed: () {},
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
-                  ],
-                ),
-              ),
+              DataCell(Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Colors.orange,
+                    radius: 15,
+                    child: IconButton(
+                      icon: const Icon(Icons.edit, color: Colors.white, size: 15),
+                      onPressed: () => _showNonUniversityTeachingModal(context, widget.nonUniversityTeachings[index]['id'], 1),
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  CircleAvatar(
+                    radius: 15,
+                    backgroundColor: Colors.red,
+                    child: Center(child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () => widget.deleteNonUniversityTeaching(widget.nonUniversityTeachings[index]['id'], index))),
+                  ),
+                ],
+              )),
               DataCell(
                 IconButton(
                   icon: const Icon(Icons.remove_red_eye, color: Colors.orange, size: 20),

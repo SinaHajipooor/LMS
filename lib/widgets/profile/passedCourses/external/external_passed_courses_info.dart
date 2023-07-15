@@ -22,7 +22,6 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
 
   _showExternalPassedCoursesInfoModal(
     BuildContext context,
-    double deviceHeight,
     int externalCourseId,
     int useCase,
   ) {
@@ -83,62 +82,30 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
                 DataCell(Center(child: Text(widget.externalCourses[index]['start_date'] ?? ''))),
                 DataCell(Center(child: Text(widget.externalCourses[index]['end_date'] ?? ''))),
                 DataCell(Center(child: Text(widget.externalCourses[index]['duration'] ?? ''))),
-                DataCell(
-                  PopupMenuButton(
-                    icon: const Icon(Icons.more_vert, size: 19),
-                    elevation: 2,
-                    onSelected: (value) {
-                      print(value);
-                    },
-                    itemBuilder: (BuildContext context) => [
-                      PopupMenuItem(
-                          child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Wrap(
-                          spacing: 8,
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: Colors.orange,
-                              radius: 15,
-                              child: IconButton(
-                                icon: const Icon(Icons.edit, color: Colors.white, size: 15),
-                                onPressed: () {
-                                  _showExternalPassedCoursesInfoModal(
-                                    context,
-                                    MediaQuery.of(context).size.height,
-                                    widget.externalCourses[index]['id'],
-                                    1,
-                                  );
-                                },
-                              ),
-                            ),
-                            CircleAvatar(
-                              radius: 15,
-                              backgroundColor: Colors.red,
-                              child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () => widget.deleteExternalCourse(widget.externalCourses[index]['id'], index)),
-                            ),
-                            CircleAvatar(
-                              radius: 15,
-                              backgroundColor: Colors.blue,
-                              child: Center(
-                                child: IconButton(
-                                  icon: const Icon(Icons.file_copy_outlined, color: Colors.white, size: 15),
-                                  onPressed: () {},
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )),
-                    ],
-                  ),
-                ),
+                DataCell(Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.orange,
+                      radius: 15,
+                      child: IconButton(
+                        icon: const Icon(Icons.edit, color: Colors.white, size: 15),
+                        onPressed: () => _showExternalPassedCoursesInfoModal(context, widget.externalCourses[index]['id'], 1),
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    CircleAvatar(
+                      radius: 15,
+                      backgroundColor: Colors.red,
+                      child: Center(child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () => widget.deleteExternalCourse(widget.externalCourses[index]['id'], index))),
+                    ),
+                  ],
+                )),
                 DataCell(
                   IconButton(
                     icon: const Icon(Icons.remove_red_eye, color: Colors.orange, size: 20),
                     onPressed: () => _showExternalPassedCoursesInfoModal(
                       context,
-                      MediaQuery.of(context).size.height,
                       widget.externalCourses[index]['id'],
                       2,
                     ),

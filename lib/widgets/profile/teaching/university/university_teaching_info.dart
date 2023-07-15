@@ -17,15 +17,6 @@ class UniversityTeachingInfo extends StatefulWidget {
 }
 
 class _UniversityTeachingInfoState extends State<UniversityTeachingInfo> {
-  // // --------------- state -----------------
-  // bool _isLoading = true;
-  // List<dynamic> universityTeachings = [];
-  // // --------------- lifecycle -----------------
-  // @override
-  // void didChangeDependencies() {
-  //   fetchAllUniversityTeachings();
-  //   super.didChangeDependencies();
-  // }
   // // --------------- methods -----------------
 
   _showUniversityTeachingModal(
@@ -55,24 +46,6 @@ class _UniversityTeachingInfoState extends State<UniversityTeachingInfo> {
       },
     );
   }
-
-  // Future<void> fetchAllUniversityTeachings() async {
-  //   await Provider.of<UniversityTeachingProvider>(context, listen: false).fetchAllUniversityTeachings();
-  //   setState(() {
-  //     universityTeachings = Provider.of<UniversityTeachingProvider>(context, listen: false).universityTeachings;
-  //     _isLoading = false;
-  //   });
-  // }
-
-  // Future<void> deleteUniversityTeaching(int universityTeachingId, int index) async {
-  //   Navigator.of(context).pop();
-  //   final universityTeachingsCopy = List.from(universityTeachings);
-  //   universityTeachingsCopy.removeAt(index);
-  //   await Provider.of<UniversityTeachingProvider>(context, listen: false).deleteUniversityTeaching(universityTeachingId);
-  //   setState(() {
-  //     universityTeachings = universityTeachingsCopy;
-  //   });
-  // }
 
   // --------------- UI -----------------
 
@@ -105,49 +78,25 @@ class _UniversityTeachingInfoState extends State<UniversityTeachingInfo> {
               DataCell(Center(child: Text(widget.universityTeachings[index]['start_date'] ?? ''))),
               DataCell(Center(child: Text(widget.universityTeachings[index]['end_date'] ?? ''))),
               DataCell(Center(child: Text(widget.universityTeachings[index]['is_current'] == false ? 'خیر' : 'بلی'))),
-              DataCell(
-                PopupMenuButton(
-                  icon: const Icon(Icons.more_vert, size: 19),
-                  elevation: 2,
-                  onSelected: (value) {
-                    print(value);
-                  },
-                  itemBuilder: (BuildContext context) => [
-                    PopupMenuItem(
-                        child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Wrap(
-                        spacing: 8,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.orange,
-                            radius: 15,
-                            child: IconButton(
-                              icon: const Icon(Icons.edit, color: Colors.white, size: 15),
-                              onPressed: () => _showUniversityTeachingModal(context, widget.universityTeachings[index]['id'], 1),
-                            ),
-                          ),
-                          CircleAvatar(
-                            radius: 15,
-                            backgroundColor: Colors.red,
-                            child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () => widget.deleteUniversityTeaching(widget.universityTeachings[index]['id'], index)),
-                          ),
-                          CircleAvatar(
-                            radius: 15,
-                            backgroundColor: Colors.blue,
-                            child: Center(
-                              child: IconButton(
-                                icon: const Icon(Icons.file_copy_outlined, color: Colors.white, size: 15),
-                                onPressed: () {},
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
-                  ],
-                ),
-              ),
+              DataCell(Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Colors.orange,
+                    radius: 15,
+                    child: IconButton(
+                      icon: const Icon(Icons.edit, color: Colors.white, size: 15),
+                      onPressed: () => _showUniversityTeachingModal(context, widget.universityTeachings[index]['id'], 1),
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  CircleAvatar(
+                    radius: 15,
+                    backgroundColor: Colors.red,
+                    child: Center(child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () => widget.deleteUniversityTeaching(widget.universityTeachings[index]['id'], index))),
+                  ),
+                ],
+              )),
               DataCell(
                 IconButton(
                   icon: const Icon(Icons.remove_red_eye, color: Colors.orange, size: 20),
