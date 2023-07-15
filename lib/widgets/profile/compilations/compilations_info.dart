@@ -99,11 +99,11 @@ class _CompilationsInfoState extends State<CompilationsInfo> {
                   (index) => DataRow(
                     cells: [
                       DataCell(Center(child: Text(compilations[index]['title'] ?? ''))),
-                      DataCell(Center(child: Text(compilations[index]['title'] ?? ''))),
-                      DataCell(Center(child: Text(compilations[index]['title'] ?? ''))),
-                      DataCell(Center(child: Text(compilations[index]['title'] ?? ''))),
-                      DataCell(Center(child: Text(compilations[index]['title'] ?? ''))),
-                      DataCell(Center(child: Text(compilations[index]['title'] ?? ''))),
+                      DataCell(Center(child: Text(compilations[index]['compilation_type'] ?? ''))),
+                      DataCell(Center(child: Text(compilations[index]['language'] ?? ''))),
+                      DataCell(Center(child: Text(compilations[index]['publish_place'] ?? ''))),
+                      DataCell(Center(child: Text(compilations[index]['year'] ?? ''))),
+                      DataCell(Center(child: Text(compilations[index]['is_related'] == false ? 'خیر' : 'بلی'))),
                       DataCell(
                         PopupMenuButton(
                           icon: const Icon(Icons.more_vert, size: 19),

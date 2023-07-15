@@ -70,7 +70,6 @@ class ActivityHistoryProvider with ChangeNotifier {
       request.files.add(await http.MultipartFile.fromPath('file', file.path));
       // Send the request
       var response = await request.send();
-
       // Get the response
       if (response.statusCode == 200) {
         print('activity added successfully');
