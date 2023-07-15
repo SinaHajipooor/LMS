@@ -50,7 +50,7 @@ class _CompilationsModalState extends State<CompilationsModal> {
             bottom: keyboardOffset + MediaQuery.of(context).padding.bottom,
           ),
           child: SizedBox(
-            height: widget.deviceHeight * 0.6,
+            height: widget.deviceHeight * 0.65,
             child: Column(
               children: [
                 Container(
@@ -58,39 +58,18 @@ class _CompilationsModalState extends State<CompilationsModal> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   alignment: Alignment.center,
                   child: Text(
-                    'ایجاد تالیفات و ترجمات',
+                    widget.title,
                     style: theme.textTheme.titleMedium!.apply(color: Colors.blue),
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Expanded(child: CompilationsForm()),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
-                          ),
-                          child: const Text('انصراف'),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: const Text('ذخیره'),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                Expanded(
+                    child: CompilationsForm(
+                  isCreating: widget.isCreating,
+                  isEditing: widget.isEditing,
+                  isShowing: widget.isShowing,
+                  compilationId: widget.compilationId,
+                )),
               ],
             ),
           ),
