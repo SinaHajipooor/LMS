@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:lms/widgets/profile/compilations/compilations_form.dart';
 
+// ignore: must_be_immutable
 class CompilationsModal extends StatefulWidget {
+  final String title;
+  final bool isEditing;
+  final bool isCreating;
+  final bool isShowing;
+  int? compilationId;
   final double deviceHeight;
 
-  const CompilationsModal({super.key, required this.deviceHeight});
+  CompilationsModal({
+    super.key,
+    this.compilationId,
+    required this.deviceHeight,
+    required this.title,
+    required this.isEditing,
+    required this.isCreating,
+    required this.isShowing,
+  });
 
   @override
   State<CompilationsModal> createState() => _CompilationsModalState();

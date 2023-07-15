@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
-import 'package:lms/widgets/profile/compilations/compilations_and_translations.dart';
+import 'package:lms/widgets/profile/compilations/compilations_info.dart';
 import 'package:lms/widgets/profile/compilations/compilations_modal.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +28,7 @@ class _CompilationsAndTranslationsScreenState extends State<CompilationsAndTrans
     InternetConnectivityHelper.checkInternetConnectivity(context);
   }
 
-  _showJobinfoFormModal(BuildContext context, double deviceHeight, int selectedIndex) {
+  _showCompilationsmModal(BuildContext ontext, double deviceHeight) {
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -39,7 +39,13 @@ class _CompilationsAndTranslationsScreenState extends State<CompilationsAndTrans
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return CompilationsModal(deviceHeight: deviceHeight);
+        return CompilationsModal(
+          deviceHeight: deviceHeight,
+          isCreating: true,
+          isEditing: false,
+          isShowing: false,
+          title: 'ایجاد تالیفات و ترجمات',
+        );
       },
     );
   }
@@ -60,10 +66,10 @@ class _CompilationsAndTranslationsScreenState extends State<CompilationsAndTrans
           onPressed: () => Navigator.of(context).pop(),
         ),
         actions: [
-          IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
+          IconButton(onPressed: () => _showCompilationsmModal(context, deviceSize.height), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: const CompilationsAndTranslations(),
+      body: const CompilationsInfo(),
     );
   }
 }
