@@ -100,6 +100,27 @@ class _CompilationsFormState extends State<CompilationsForm> {
     Navigator.of(context).pop();
   }
 
+  Future<void> editCompilation() async {
+    setState(() {
+      _isLoading = true;
+    });
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getString('userId');
+    final compilationInfo = {
+      'user_id': userId,
+      'title': titleController.text,
+      'compilation_type_id': '1',
+      'language_id': '1',
+      'publish_place': publishPlaceController.text,
+      'year': yearController.text,
+      'status': status,
+      'is_related': isRelated,
+      'description': descriptionController.text,
+    };
+    await Provider.of<CompilationsProvider>(context, listen: false).editCompilation(widget.compilationId!, compilationInfo, filePath!);
+    Navigator.of(context).pop();
+  }
+
 // --------------- UI -----------------
   @override
   Widget build(BuildContext context) {
@@ -239,7 +260,7 @@ class _CompilationsFormState extends State<CompilationsForm> {
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: ElevatedButton(
                         onPressed: () {
-                          widget.isCreating ? addCompilation() : () {};
+                          widget.isCreating ? addCompilation() : editCompilation();
                         },
                         child: const Text('ذخیره'),
                       ),
