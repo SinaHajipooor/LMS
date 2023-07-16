@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/widgets/profile/activities/activities_info_modal.dart';
+import 'package:provider/provider.dart';
 
 class ActivitiesInfo extends StatefulWidget {
   final List activities;
@@ -114,6 +116,7 @@ class _ActivitiesInfoState extends State<ActivitiesInfo> {
   // }
   @override
   Widget build(BuildContext context) {
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
     final theme = Theme.of(context).textTheme;
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
@@ -121,7 +124,7 @@ class _ActivitiesInfoState extends State<ActivitiesInfo> {
       itemBuilder: (context, index) {
         return ListTile(
           leading: CircleAvatar(
-            backgroundColor: Theme.of(context).cardTheme.color,
+            backgroundColor: themeMode == ThemeMode.dark ? Theme.of(context).cardTheme.color : Colors.grey[300],
             child: Text((index + 1).toString()), // Displaying index number in CircleAvatar
           ),
           title: Text(
