@@ -53,42 +53,46 @@ class _CompilationsInfoState extends State<CompilationsInfo> {
       physics: const BouncingScrollPhysics(),
       itemCount: widget.compilations.length,
       itemBuilder: (context, index) {
-        return ListTile(
-          leading: CircleAvatar(
-            backgroundColor: themeMode == ThemeMode.dark ? Theme.of(context).cardTheme.color : Colors.grey[300],
-            child: Text((index + 1).toString()),
-          ),
-          title: Text(
-            widget.compilations[index]['title'],
-            style: theme.bodyMedium!.copyWith(fontSize: 14),
-          ),
-          subtitle: Text(widget.compilations[index]['publish_place'], style: theme.bodySmall!.copyWith(fontSize: 11)),
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircleAvatar(
-                backgroundColor: Colors.orange,
-                radius: 15,
-                child: IconButton(
-                  icon: const Icon(Icons.edit, color: Colors.white, size: 15),
-                  onPressed: () => _showCompilationsModal(context, widget.compilations[index]['id'], 1),
-                ),
-              ),
-              const SizedBox(width: 5),
-              InkWell(
-                onTap: () => widget.deleteCompilation(widget.compilations[index]['id'], index),
-                child: CircleAvatar(
+        return Card(
+          elevation: 0.5,
+          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundColor: themeMode == ThemeMode.dark ? Theme.of(context).scaffoldBackgroundColor : Colors.grey[300],
+              child: Text((index + 1).toString()),
+            ),
+            title: Text(
+              widget.compilations[index]['title'],
+              style: theme.bodyMedium!.copyWith(fontSize: 14),
+            ),
+            subtitle: Text(widget.compilations[index]['publish_place'], style: theme.bodySmall!.copyWith(fontSize: 11)),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircleAvatar(
+                  backgroundColor: Colors.orange,
                   radius: 15,
-                  backgroundColor: Colors.red,
-                  child: Center(
-                    child: IconButton(
-                      icon: const Icon(Icons.delete, color: Colors.white, size: 15),
-                      onPressed: () => widget.deleteCompilation(widget.compilations[index]['id'], index),
+                  child: IconButton(
+                    icon: const Icon(Icons.edit, color: Colors.white, size: 15),
+                    onPressed: () => _showCompilationsModal(context, widget.compilations[index]['id'], 1),
+                  ),
+                ),
+                const SizedBox(width: 5),
+                InkWell(
+                  onTap: () => widget.deleteCompilation(widget.compilations[index]['id'], index),
+                  child: CircleAvatar(
+                    radius: 15,
+                    backgroundColor: Colors.red,
+                    child: Center(
+                      child: IconButton(
+                        icon: const Icon(Icons.delete, color: Colors.white, size: 15),
+                        onPressed: () => widget.deleteCompilation(widget.compilations[index]['id'], index),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

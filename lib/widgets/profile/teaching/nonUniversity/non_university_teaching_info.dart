@@ -55,67 +55,6 @@ class _NonUniversityTeachingInfoState extends State<NonUniversityTeachingInfo> {
 
   // --------------- UI -----------------
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   return SingleChildScrollView(
-  //     scrollDirection: Axis.horizontal,
-  //     physics: const BouncingScrollPhysics(),
-  //     child: Card(
-  //       elevation: 0,
-  //       child: DataTable(
-  //         dividerThickness: 0.5,
-  //         horizontalMargin: 0,
-  //         headingRowColor: MaterialStateColor.resolveWith((states) => Theme.of(context).appBarTheme.backgroundColor!),
-  //         dataRowHeight: 50,
-  //         columns: const [
-  //           DataColumn(label: Center(child: Text('عنوان', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-  //           DataColumn(label: Center(child: Text('مطالب ارائه شده', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-  //           DataColumn(label: Center(child: Text('زمان شروع', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-  //           DataColumn(label: Center(child: Text('زمان پایان', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-  //           DataColumn(label: Center(child: Text('فعالیت جاری', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-  //           DataColumn(label: Center(child: Text('عملیات', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-  //           DataColumn(label: Center(child: Text('نمایش', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-  //         ],
-  //         rows: List<DataRow>.generate(
-  //           widget.nonUniversityTeachings.length,
-  //           (index) => DataRow(cells: [
-  //             DataCell(Center(child: Text(widget.nonUniversityTeachings[index]['title'] ?? ''))),
-  //             DataCell(Center(child: Text(widget.nonUniversityTeachings[index]['activity_description'] ?? ''))),
-  //             DataCell(Center(child: Text(widget.nonUniversityTeachings[index]['start_date'] ?? ''))),
-  //             DataCell(Center(child: Text(widget.nonUniversityTeachings[index]['end_date'] ?? ''))),
-  //             DataCell(Center(child: Text(widget.nonUniversityTeachings[index]['is_current'] == false ? 'خیر' : 'بلی'))),
-  //             DataCell(Row(
-  //               mainAxisAlignment: MainAxisAlignment.spaceAround,
-  //               children: [
-  //                 CircleAvatar(
-  //                   backgroundColor: Colors.orange,
-  //                   radius: 15,
-  //                   child: IconButton(
-  //                     icon: const Icon(Icons.edit, color: Colors.white, size: 15),
-  //                     onPressed: () => _showNonUniversityTeachingModal(context, widget.nonUniversityTeachings[index]['id'], 1),
-  //                   ),
-  //                 ),
-  //                 const SizedBox(width: 4),
-  //                 CircleAvatar(
-  //                   radius: 15,
-  //                   backgroundColor: Colors.red,
-  //                   child: Center(child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () => widget.deleteNonUniversityTeaching(widget.nonUniversityTeachings[index]['id'], index))),
-  //                 ),
-  //               ],
-  //             )),
-  //             DataCell(
-  //               IconButton(
-  //                 icon: const Icon(Icons.remove_red_eye, color: Colors.orange, size: 20),
-  //                 onPressed: () => _showNonUniversityTeachingModal(context, widget.nonUniversityTeachings[index]['id'], 2),
-  //               ),
-  //             )
-  //           ]),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     final themeMode = Provider.of<MyThemeModel>(context).themeMode;
@@ -124,42 +63,46 @@ class _NonUniversityTeachingInfoState extends State<NonUniversityTeachingInfo> {
       physics: const BouncingScrollPhysics(),
       itemCount: widget.nonUniversityTeachings.length,
       itemBuilder: (context, index) {
-        return ListTile(
-          leading: CircleAvatar(
-            backgroundColor: themeMode == ThemeMode.dark ? Theme.of(context).cardTheme.color : Colors.grey[300],
-            child: Text((index + 1).toString()),
-          ),
-          title: Text(
-            widget.nonUniversityTeachings[index]['title'],
-            style: theme.bodyMedium!.copyWith(fontSize: 14),
-          ),
-          subtitle: Text(widget.nonUniversityTeachings[index]['activity_description'], style: theme.bodySmall!.copyWith(fontSize: 11)),
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircleAvatar(
-                backgroundColor: Colors.orange,
-                radius: 15,
-                child: IconButton(
-                  icon: const Icon(Icons.edit, color: Colors.white, size: 15),
-                  onPressed: () => _showNonUniversityTeachingModal(context, widget.nonUniversityTeachings[index]['id'], 1),
-                ),
-              ),
-              const SizedBox(width: 5),
-              InkWell(
-                onTap: () => widget.deleteNonUniversityTeaching(widget.nonUniversityTeachings[index]['id'], index),
-                child: CircleAvatar(
+        return Card(
+          elevation: 0.5,
+          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundColor: themeMode == ThemeMode.dark ? Theme.of(context).scaffoldBackgroundColor : Colors.grey[300],
+              child: Text((index + 1).toString()),
+            ),
+            title: Text(
+              widget.nonUniversityTeachings[index]['title'],
+              style: theme.bodyMedium!.copyWith(fontSize: 14),
+            ),
+            subtitle: Text(widget.nonUniversityTeachings[index]['activity_description'], style: theme.bodySmall!.copyWith(fontSize: 11)),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircleAvatar(
+                  backgroundColor: Colors.orange,
                   radius: 15,
-                  backgroundColor: Colors.red,
-                  child: Center(
-                    child: IconButton(
-                      icon: const Icon(Icons.delete, color: Colors.white, size: 15),
-                      onPressed: () => widget.deleteNonUniversityTeaching(widget.nonUniversityTeachings[index]['id'], index),
+                  child: IconButton(
+                    icon: const Icon(Icons.edit, color: Colors.white, size: 15),
+                    onPressed: () => _showNonUniversityTeachingModal(context, widget.nonUniversityTeachings[index]['id'], 1),
+                  ),
+                ),
+                const SizedBox(width: 5),
+                InkWell(
+                  onTap: () => widget.deleteNonUniversityTeaching(widget.nonUniversityTeachings[index]['id'], index),
+                  child: CircleAvatar(
+                    radius: 15,
+                    backgroundColor: Colors.red,
+                    child: Center(
+                      child: IconButton(
+                        icon: const Icon(Icons.delete, color: Colors.white, size: 15),
+                        onPressed: () => widget.deleteNonUniversityTeaching(widget.nonUniversityTeachings[index]['id'], index),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
