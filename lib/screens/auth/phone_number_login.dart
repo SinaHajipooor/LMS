@@ -57,7 +57,7 @@ class _PhoneNumberLoginState extends State<PhoneNumberLogin> {
                         'لطفا شماره موبایل خود را وارد کنید',
                         style: theme.bodySmall!.copyWith(fontSize: 12),
                       ),
-                      const SizedBox(height: 58),
+                      const SizedBox(height: 30),
                       Form(
                         key: _formKey,
                         child: TextFormField(

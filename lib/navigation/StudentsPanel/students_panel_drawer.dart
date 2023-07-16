@@ -19,7 +19,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
     AwesomeDialog(
       context: context,
       dialogType: DialogType.warning,
-      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      dialogBackgroundColor: Theme.of(context).dialogBackgroundColor,
       title: 'خروج از حساب',
       titleTextStyle: Theme.of(context).textTheme.titleMedium!.apply(color: Colors.red),
       desc: 'آیا مطمعن هستید که از حساب خود خارج می‌شوید ؟',
