@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/widgets/profile/activities/activities_info_modal.dart';
+import 'package:provider/provider.dart';
 
 class ActivitiesInfo extends StatefulWidget {
   final List activities;
@@ -17,16 +19,6 @@ class ActivitiesInfo extends StatefulWidget {
 }
 
 class _ActivitiesInfoState extends State<ActivitiesInfo> {
-  // -------------- state ---------------
-  // bool _isLoading = false;
-  // List<dynamic> activities = [];
-  // -------------- lifecycle ---------------
-  // @override
-  // void didChangeDependencies() {
-  //   fetchAllActivities();
-  //   super.didChangeDependencies();
-  // }
-
   // -------------- methods ---------------
 
   _showActivityModal(
@@ -57,110 +49,64 @@ class _ActivitiesInfoState extends State<ActivitiesInfo> {
     );
   }
 
-  // Future<void> fetchAllActivities() async {
-  //   await Provider.of<ActivityHistoryProvider>(context, listen: false).fetchAllActivities();
-  //   setState(() {
-  //     activities = Provider.of<ActivityHistoryProvider>(context, listen: false).activities;
-  //     _isLoading = false;
-  //   });
-  // }
-
-  // Future<void> deleteActivity(int activityId, int index) async {
-  //   Navigator.of(context).pop();
-  //   final activitiesCopy = List.from(activities);
-  //   activitiesCopy.removeAt(index);
-  //   await Provider.of<ActivityHistoryProvider>(context, listen: false).deleteActivity(activityId);
-  //   setState(() {
-  //     activities = activitiesCopy;
-  //   });
-  // }
   // -------------- UI ---------------
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
+    final theme = Theme.of(context).textTheme;
+    return ListView.builder(
       physics: const BouncingScrollPhysics(),
-      child: Card(
-        elevation: 0,
-        child: DataTable(
-          dividerThickness: 0.5,
-          horizontalMargin: 0,
-          headingRowColor: MaterialStateColor.resolveWith((states) => Theme.of(context).appBarTheme.backgroundColor!),
-          dataRowHeight: 50,
-          columns: const [
-            DataColumn(label: Center(child: Text('عنوان', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-            DataColumn(label: Center(child: Text('آدرس', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-            DataColumn(label: Center(child: Text('سمت', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-            DataColumn(label: Center(child: Text('زمان شروع', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-            DataColumn(label: Center(child: Text('زمان پایان', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-            DataColumn(label: Center(child: Text('فعالیت جاری', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-            DataColumn(label: Center(child: Text('نوع همکاری', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-            DataColumn(label: Center(child: Text('عملیات', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-            DataColumn(label: Center(child: Text('نمایش', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)))),
-          ],
-          rows: List<DataRow>.generate(
-            widget.activities.length,
-            (index) => DataRow(
-              cells: [
-                DataCell(Center(child: Text(widget.activities[index]['title'] ?? ''))),
-                DataCell(Center(child: Text(widget.activities[index]['address'] ?? ''))),
-                DataCell(Center(child: Text(widget.activities[index]['position'] ?? ''))),
-                DataCell(Center(child: Text(widget.activities[index]['start_date'] ?? ''))),
-                DataCell(Center(child: Text(widget.activities[index]['end_date'] ?? ''))),
-                DataCell(Center(child: Text(widget.activities[index]['current_position'] == false ? 'خیر' : 'بلی'))),
-                DataCell(Center(child: Text(widget.activities[index]['work_type'] ?? ''))),
-                DataCell(
-                  PopupMenuButton(
-                    icon: const Icon(Icons.more_vert, size: 19),
-                    elevation: 2,
-                    onSelected: (value) {
-                      print(value);
-                    },
-                    itemBuilder: (BuildContext context) => [
-                      PopupMenuItem(
-                          child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Wrap(
-                          spacing: 8,
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: Colors.orange,
-                              radius: 15,
-                              child: IconButton(
-                                icon: const Icon(Icons.edit, color: Colors.white, size: 15),
-                                onPressed: () => _showActivityModal(context, widget.activities[index]['id'], 1),
-                              ),
-                            ),
-                            CircleAvatar(
-                              radius: 15,
-                              backgroundColor: Colors.red,
-                              child: IconButton(icon: const Icon(Icons.delete, color: Colors.white, size: 15), onPressed: () => widget.deleteActivity(widget.activities[index]['id'], index)),
-                            ),
-                            CircleAvatar(
-                              radius: 15,
-                              backgroundColor: Colors.blue,
-                              child: Center(
-                                child: IconButton(
-                                  icon: const Icon(Icons.file_copy_outlined, color: Colors.white, size: 15),
-                                  onPressed: () {},
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )),
-                    ],
+      itemCount: widget.activities.length,
+      itemBuilder: (context, index) {
+        return Card(
+          elevation: 0.5,
+          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundColor: themeMode == ThemeMode.dark ? Theme.of(context).scaffoldBackgroundColor : Colors.grey[300],
+              child: Text((index + 1).toString()), // Displaying index number in CircleAvatar
+            ),
+            title: Text(
+              widget.activities[index]['title'],
+              style: theme.bodyMedium!.copyWith(fontSize: 14),
+            ),
+            subtitle: Text(widget.activities[index]['position'], style: theme.bodySmall!.copyWith(fontSize: 11)),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                InkWell(
+                  onTap: () => _showActivityModal(context, widget.activities[index]['id'], 1),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.orange,
+                    radius: 15,
+                    child: Image.asset(
+                      'assets/images/icons/edit2.png',
+                      color: Colors.white,
+                      width: 18,
+                      height: 18,
+                    ),
                   ),
                 ),
-                DataCell(
-                  IconButton(icon: const Icon(Icons.remove_red_eye, color: Colors.orange, size: 20), onPressed: () => _showActivityModal(context, widget.activities[index]['id'], 2)),
+                const SizedBox(width: 5),
+                InkWell(
+                  onTap: () => widget.deleteActivity(widget.activities[index]['id'], index),
+                  child: CircleAvatar(
+                    radius: 15,
+                    backgroundColor: Colors.red,
+                    child: Image.asset(
+                      'assets/images/icons/delete.png',
+                      width: 18,
+                      height: 18,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

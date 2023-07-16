@@ -39,7 +39,6 @@ class _CompilationsAndTranslationsScreenState extends State<CompilationsAndTrans
   }
 
   Future<void> deleteCompilation(int compilationId, int index) async {
-    Navigator.of(context).pop();
     final compilationCopy = List.from(compilations);
     compilationCopy.removeAt(index);
     await Provider.of<CompilationsProvider>(context, listen: false).deleteCompilation(compilationId);

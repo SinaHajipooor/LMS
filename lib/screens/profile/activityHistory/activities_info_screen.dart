@@ -44,7 +44,6 @@ class _ActivitiesInfoScreenState extends State<ActivitiesInfoScreen> {
   }
 
   Future<void> deleteActivity(int activityId, int index) async {
-    Navigator.of(context).pop();
     final activitiesCopy = List.from(activities);
     activitiesCopy.removeAt(index);
     await Provider.of<ActivityHistoryProvider>(context, listen: false).deleteActivity(activityId);
@@ -85,7 +84,7 @@ class _ActivitiesInfoScreenState extends State<ActivitiesInfoScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
-        backgroundColor: theme.appBarTheme.backgroundColor,
+        backgroundColor: theme.dialogBackgroundColor,
         title: Text('سوابق فعالیت‌ها و تجارب', style: theme.textTheme.titleMedium),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: theme.appBarTheme.iconTheme!.color),
