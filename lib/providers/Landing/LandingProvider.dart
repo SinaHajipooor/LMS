@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:lms/http/Api.dart';
 
 class LandingProvider with ChangeNotifier {
 // ---------------- feilds ------------------
-  static const _baseUrl = 'http://45.149.77.156:8081/api/landing';
+  static final String _baseUrl = '${Api.instance.baseUrl}8081/api/landing';
   List _slides = [];
   List _news = [];
   List _announcements = [];

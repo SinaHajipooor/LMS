@@ -2,13 +2,14 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:lms/http/Api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ElectronicCourseProvider with ChangeNotifier {
   // ------------------- feilds --------------------
-  static const _baseUrl = 'http://45.149.77.156:8082/api/course/electronic';
-  static const _courseDetailUrl = 'http://45.149.77.156:8082/api/course/electronic/show';
-  static const _courseShippingUrl = 'http://45.149.77.156:8082/api/course/electronic/shipping';
+  static final _baseUrl = '${Api.instance.baseUrl}8082/api/course/electronic';
+  static final _courseDetailUrl = '${Api.instance.baseUrl}8082/api/course/electronic/show';
+  static final _courseShippingUrl = '${Api.instance.baseUrl}8082/api/course/electronic/shipping';
   List _allCourses = [];
   List _courseGroups = [];
   Map<String, dynamic>? _courseDetails;

@@ -2,12 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:lms/http/Api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
 class ActivityHistoryProvider with ChangeNotifier {
   // ------------------- feilds --------------------
-  static const _baseUrl = 'http://45.149.77.156:8081/api/profile/activity-history';
+  static final _baseUrl = '${Api.instance.baseUrl}8081/api/profile/activity-history';
   List _activities = [];
   Map<String, dynamic>? _activityDetails;
   // ------------------- getter --------------------

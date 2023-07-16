@@ -2,12 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:lms/http/Api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TeachersPanelProvider with ChangeNotifier {
   // --------------- feilds ------------------
-  static const _baseUrl = 'http://45.149.77.156:8081/api';
-  static const _teacherCurrentCoursesUrl = _baseUrl + '/lms/teacher/courses?teacher_id=';
+  static final _baseUrl = '${Api.instance.baseUrl}8081/api';
+  static final _teacherCurrentCoursesUrl = _baseUrl + '/lms/teacher/courses?teacher_id=';
   static const _allTeacherCoursesUrl = '';
   List _teacherCurrentCourses = [];
   List _allTeacherCourses = [];

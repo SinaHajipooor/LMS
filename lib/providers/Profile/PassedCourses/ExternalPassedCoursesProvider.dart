@@ -3,11 +3,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:lms/http/Api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ExternalPassedCoursesProvider with ChangeNotifier {
   // ------------------- feilds --------------------
-  static const _externalCoursesUrl = 'http://45.149.77.156:8081/api/profile/course/external';
+  static final _externalCoursesUrl = '${Api.instance.baseUrl}8081/api/profile/course/external';
   List _externalCourses = [];
   Map<String, dynamic>? _externalCourseDetails;
   // ------------------- getter --------------------

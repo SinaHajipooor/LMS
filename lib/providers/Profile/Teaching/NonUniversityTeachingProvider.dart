@@ -2,12 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:lms/http/Api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
 class NonUniversityTeachingProvider with ChangeNotifier {
   // ---------------  feilds -----------------
-  static const _baseUrl = 'http://45.149.77.156:8081/api/profile/teach/history';
+  static final _baseUrl = '${Api.instance.baseUrl}8081/api/profile/teach/history';
   List _nonUniversityTeachings = [];
   Map<String, dynamic>? _nonUniversityTeachingDetails;
   // ---------------  getter -----------------

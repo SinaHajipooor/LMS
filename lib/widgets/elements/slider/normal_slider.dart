@@ -31,7 +31,7 @@ class NormalSlider extends StatelessWidget {
             autoPlayCurve: Curves.fastOutSlowIn,
             enableInfiniteScroll: true,
             autoPlayAnimationDuration: const Duration(milliseconds: 800),
-            viewportFraction: 0.95,
+            viewportFraction: 0.94,
           ),
           items: slideImages.map((item) {
             return Builder(

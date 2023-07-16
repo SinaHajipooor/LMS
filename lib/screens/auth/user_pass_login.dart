@@ -57,7 +57,7 @@ class _UserPassLoginState extends State<UserPassLogin> {
                       'اطلاعات کاربری خود را وارد کنید',
                       style: theme.bodySmall!.copyWith(fontSize: 12),
                     ),
-                    const SizedBox(height: 26),
+                    const SizedBox(height: 15),
                     TextFormField(
                       style: theme.bodyMedium!.copyWith(fontSize: 17),
                       validator: (value) {
@@ -116,7 +116,7 @@ class _UserPassLoginState extends State<UserPassLogin> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 58),
+                    const SizedBox(height: 35),
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
