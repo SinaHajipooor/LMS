@@ -76,16 +76,29 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
               Positioned(
                 top: 16.0,
                 left: 12.0,
-                child: InkWell(
-                  onTap: () {
-                    Provider.of<MyThemeModel>(context, listen: false).toggleTheme();
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 500), // Set the duration of the animation
+                  transitionBuilder: (Widget child, Animation<double> animation) {
+                    final offsetAnimation = Tween<Offset>(
+                      begin: const Offset(1, 0), // Set the initial offset for the animation
+                      end: Offset.zero, // Set the final offset for the animation
+                    ).animate(animation);
+                    return SlideTransition(
+                      position: offsetAnimation,
+                      child: child,
+                    );
                   },
-                  child: Image.asset(
-                    themeMode == ThemeMode.light ? 'assets/images/icons/night.png' : 'assets/images/icons/sun.png',
+                  child: InkWell(
                     key: ValueKey(themeMode), // Update when the theme changes
-                    color: Colors.white,
-                    width: 30,
-                    height: 30,
+                    onTap: () {
+                      Provider.of<MyThemeModel>(context, listen: false).toggleTheme();
+                    },
+                    child: Image.asset(
+                      themeMode == ThemeMode.light ? 'assets/images/icons/night.png' : 'assets/images/icons/sun.png',
+                      color: Colors.white,
+                      width: 30,
+                      height: 30,
+                    ),
                   ),
                 ),
               ),
