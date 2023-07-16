@@ -25,7 +25,7 @@ class _AnnoucementSliderState extends State<AnnoucementSlider> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              margin: const EdgeInsets.only(right: 12),
+              margin: const EdgeInsets.only(right: 20),
               child: Text('اطلاعیه های اخیر', style: theme.textTheme.titleMedium),
             ),
             IconButton(
@@ -41,13 +41,15 @@ class _AnnoucementSliderState extends State<AnnoucementSlider> {
           child: CarouselSlider(
             carouselController: _controller,
             options: CarouselOptions(
+              autoPlayInterval: const Duration(seconds: 5),
               height: 175,
-              autoPlay: false,
+              autoPlay: true,
+              padEnds: true,
               aspectRatio: 16 / 9,
               autoPlayCurve: Curves.fastOutSlowIn,
               enableInfiniteScroll: true,
               autoPlayAnimationDuration: const Duration(milliseconds: 600),
-              viewportFraction: 0.5,
+              viewportFraction: 0.45,
             ),
             items: widget.announcements.map((item) {
               return Builder(

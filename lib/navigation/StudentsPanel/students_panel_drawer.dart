@@ -77,7 +77,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
                 top: 16.0,
                 left: 12.0,
                 child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 500), // Set the duration of the animation
+                  duration: const Duration(milliseconds: 300), // Set the duration of the animation
                   transitionBuilder: (Widget child, Animation<double> animation) {
                     final offsetAnimation = Tween<Offset>(
                       begin: const Offset(1, 0), // Set the initial offset for the animation
