@@ -2,12 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:lms/http/Api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
 class CompilationsProvider with ChangeNotifier {
   // ------------------ feilds -----------------
-  static const _baseUrl = 'http://45.149.77.156:8081/api/profile/compilation-record';
+  static final _baseUrl = '${Api.instance.baseUrl}8081/api/profile/compilation-record';
   List _compilations = [];
   Map<String, dynamic>? _compilationDetails;
   // ------------------ getter -----------------
