@@ -33,72 +33,75 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
     final themeMode = Provider.of<MyThemeModel>(context).themeMode;
+    final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            const SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 25, top: 0),
-              child: Image.asset(
-                'assets/images/avatar-edu.png',
-                width: 130,
-                height: 130,
-                color: themeMode == ThemeMode.dark ? Colors.white : Colors.black,
+            const SizedBox(height: 10),
+            SizedBox(
+              height: deviceSize.height / 6,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 25, top: 0),
+                child: Image.asset(
+                  'assets/images/avatar-edu.png',
+                  width: 130,
+                  height: 130,
+                  color: themeMode == ThemeMode.dark ? Colors.white : Colors.black,
+                ),
               ),
             ),
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(32),
-                    topRight: Radius.circular(32),
-                  ),
-                  color: themeData.colorScheme.primary,
+            Container(
+              height: (deviceSize.height / 6) * 4,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(32),
+                  topRight: Radius.circular(32),
                 ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 60,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          TextButton(
-                            onPressed: () {
-                              setState(() {
-                                currentTab = 0;
-                              });
-                            },
-                            child: Text('نام کاربری و رمزعبور', style: TextStyle(color: currentTab == 0 ? Colors.white : Colors.white54, fontSize: currentTab == 0 ? 15 : 13)),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              setState(() {
-                                currentTab = 1;
-                              });
-                            },
-                            child: Text(
-                              'شماره موبایل'.toUpperCase(),
-                              style: TextStyle(color: currentTab == 1 ? Colors.white : Colors.white54, fontSize: currentTab == 1 ? 15 : 13),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: themeData.scaffoldBackgroundColor,
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(32),
-                            topRight: Radius.circular(32),
+                color: themeData.colorScheme.primary,
+              ),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 60,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              currentTab = 0;
+                            });
+                          },
+                          child: Text('نام کاربری و رمزعبور', style: TextStyle(color: currentTab == 0 ? Colors.white : Colors.white54, fontSize: currentTab == 0 ? 15 : 13)),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              currentTab = 1;
+                            });
+                          },
+                          child: Text(
+                            'شماره موبایل'.toUpperCase(),
+                            style: TextStyle(color: currentTab == 1 ? Colors.white : Colors.white54, fontSize: currentTab == 1 ? 15 : 13),
                           ),
                         ),
-                        child: currentTab == 0 ? const UserPassLogin() : const PhoneNumberLogin(),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: themeData.scaffoldBackgroundColor,
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(32),
+                          topRight: Radius.circular(32),
+                        ),
                       ),
-                    )
-                  ],
-                ),
+                      child: currentTab == 0 ? const UserPassLogin() : const PhoneNumberLogin(),
+                    ),
+                  )
+                ],
               ),
             ),
           ],
