@@ -45,7 +45,6 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
   }
 
   Future<void> deleteExternalCourse(int id, int index) async {
-    Navigator.of(context).pop();
     final externalCoursesCopy = List.from(externalCourses);
     externalCoursesCopy.removeAt(index);
     await Provider.of<ExternalPassedCoursesProvider>(context, listen: false).deleteExternalCourse(id);

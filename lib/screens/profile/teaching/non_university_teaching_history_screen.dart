@@ -43,7 +43,6 @@ class _NonUniversityTeachingHistoryScreenState extends State<NonUniversityTeachi
   }
 
   Future<void> deleteNonUniversityTeaching(int nonUniversityTeachingId, int index) async {
-    Navigator.of(context).pop();
     final universityTeachingsCopy = List.from(nonUniversityTeachings);
     universityTeachingsCopy.removeAt(index);
     await Provider.of<NonUniversityTeachingProvider>(context, listen: false).deleteNonUniversityTeaching(nonUniversityTeachingId);

@@ -76,6 +76,6 @@ class InternetConnectivityHelper {
     var connectivityResult = await Connectivity().checkConnectivity();
     if (connectivityResult == ConnectivityResult.none) {
       showConnectionDialog(context);
-    }
+    } else {}
   }
 }

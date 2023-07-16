@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ExternalPassedCoursesProvider with ChangeNotifier {
   // ------------------- feilds --------------------
-  static final _externalCoursesUrl = '${Api.instance.baseUrl}8081/api/profile/course/external';
+  static final _externalCoursesUrl = '${Api.instance.baseUrl}81/api/profile/course/external';
   List _externalCourses = [];
   Map<String, dynamic>? _externalCourseDetails;
   // ------------------- getter --------------------
