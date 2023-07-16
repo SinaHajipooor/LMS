@@ -77,8 +77,8 @@ class LandingAppBar extends StatelessWidget {
                           child: Image.asset(
                             themeMode == ThemeMode.light ? 'assets/images/icons/night.png' : 'assets/images/icons/sun.png',
                             color: themeMode == ThemeMode.dark ? Colors.white : Colors.black,
-                            width: themeMode == ThemeMode.dark ? 20 : 28,
-                            height: themeMode == ThemeMode.dark ? 20 : 28,
+                            width: themeMode == ThemeMode.dark ? 20 : 30,
+                            height: themeMode == ThemeMode.dark ? 20 : 30,
                           ),
                         ),
                       ),
