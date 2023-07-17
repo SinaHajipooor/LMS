@@ -35,7 +35,8 @@ class TeacherItem extends StatelessWidget {
                   padding: const EdgeInsets.all(5),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(17),
-                    child: Image.asset('assets/images/avatar.png'),
+                    // child: Image.asset('assets/images/avatar.png'),
+                    child: Image.network('http://45.149.77.156:8080/portal-assets/img/team/team-2.jpg'),
                   ),
                 ),
               ),
