@@ -5,7 +5,8 @@ import 'package:lms/widgets/elements/user_information_input.dart';
 import 'package:provider/provider.dart';
 
 class UserInfoCard extends StatefulWidget {
-  const UserInfoCard({super.key});
+  final Map<String, dynamic> userIdentityInfo;
+  const UserInfoCard({super.key, required this.userIdentityInfo});
 
   @override
   State<UserInfoCard> createState() => _UserInfoCardState();
@@ -80,7 +81,22 @@ class _UserInfoCardState extends State<UserInfoCard> {
                       width: 90,
                       height: 90,
                       color: Colors.grey,
-                      child: Image.asset('assets/images/avatar.png', fit: BoxFit.cover),
+                      child: Image.network(
+                        widget.userIdentityInfo['avatar'],
+                        errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                          return Image.asset(
+                            'assets/images/profile_placeholder.png',
+                          );
+                        },
+                        loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child; // Display the main image if it's already loaded
+                          }
+                          return Image.asset(
+                            'assets/images/profile_placeholder.png',
+                          );
+                        },
+                      ),
                     ),
                   ),
                   const SizedBox(height: 15),

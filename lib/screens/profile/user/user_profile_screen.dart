@@ -78,7 +78,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       top: deviceSize.height / 9,
                       left: 12,
                       right: 12,
-                      child: const UserInfoCard(),
+                      child: UserInfoCard(
+                        userIdentityInfo: userIdentityInfo,
+                      ),
                     ),
                     const UserInfoList(),
                   ],
