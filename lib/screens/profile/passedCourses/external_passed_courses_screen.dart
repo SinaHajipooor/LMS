@@ -51,6 +51,7 @@ class _ExternalPassedCoursesScreenState extends State<ExternalPassedCoursesScree
     setState(() {
       externalCourses = externalCoursesCopy;
     });
+    Navigator.of(context).pop();
   }
 
   _showExternalCourseFormModal(BuildContext context, double deviceHeight, int selectedIndexm) {

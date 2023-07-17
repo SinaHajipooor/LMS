@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/widgets/profile/passedCourses/external/external_course_modal.dart';
@@ -21,6 +22,35 @@ class ExternalPassedCoursesInfo extends StatefulWidget {
 
 class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
 // ---------------- methods -----------------
+
+  void showInputDialog(int activityId, int index) {
+    AwesomeDialog(
+      context: context,
+      dialogType: DialogType.warning,
+      animType: AnimType.scale,
+      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Text('این مورد را حذف می‌کنید ؟', style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 15)),
+      ),
+      btnOk: ElevatedButton(
+        onPressed: () {
+          widget.deleteExternalCourse(activityId, index);
+        },
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+        ),
+        child: const Text('حذف'),
+      ),
+      btnCancel: ElevatedButton(
+        onPressed: () => Navigator.of(context).pop(),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+        ),
+        child: const Text('لغو'),
+      ),
+    ).show();
+  }
 
   _showExternalPassedCoursesInfoModal(
     BuildContext context,
@@ -91,7 +121,7 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
                 ),
                 const SizedBox(width: 5),
                 InkWell(
-                  onTap: () => widget.deleteExternalCourse(widget.externalCourses[index]['id'], index),
+                  onTap: () => showInputDialog(widget.externalCourses[index]['id'], index),
                   child: CircleAvatar(
                     radius: 15,
                     backgroundColor: Colors.red,

@@ -45,6 +45,7 @@ class _CompilationsAndTranslationsScreenState extends State<CompilationsAndTrans
     setState(() {
       compilations = compilationCopy;
     });
+    Navigator.of(context).pop();
   }
 
   void _checkInternetConnectivity(BuildContext context) {
