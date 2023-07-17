@@ -7,6 +7,7 @@ import 'package:lms/providers/Profile/ActivityHistory/ActivityHistoryProvider.da
 import 'package:lms/providers/Profile/Compilations/CompilationsProvider.dart';
 import 'package:lms/providers/Profile/Identity/IdentityProvider.dart';
 import 'package:lms/providers/Profile/PassedCourses/ExternalPassedCoursesProvider.dart';
+import 'package:lms/providers/Profile/PassedCourses/InternalPassedCoursesProvider.dart';
 import 'package:lms/providers/Profile/Teaching/NonUniversityTeachingProvider.dart';
 import 'package:lms/providers/Profile/Teaching/UniversityTeachingProvider.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
@@ -27,7 +28,6 @@ import 'package:lms/screens/profile/user/user_profile_screen.dart';
 import 'package:lms/screens/root/splash_screen.dart';
 import 'package:lms/screens/teachers/presence_screen.dart';
 import 'package:provider/provider.dart';
-
 import 'providers/Landing/LandingProvider.dart';
 import 'providers/Course/ElectronicCourseProvider.dart';
 import 'screens/root/landing_screen.dart';
@@ -56,6 +56,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => IdentityProvider()),
+        ChangeNotifierProvider(create: (_) => InternalPassedCoursesProvider()),
         ChangeNotifierProvider(create: (_) => ExternalPassedCoursesProvider()),
         ChangeNotifierProvider(create: (_) => ActivityHistoryProvider()),
         ChangeNotifierProvider(create: (_) => UniversityTeachingProvider()),
