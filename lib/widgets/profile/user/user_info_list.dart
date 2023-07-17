@@ -12,7 +12,7 @@ import 'package:lms/screens/profile/teaching/university_taeching_history_screen.
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:lms/screens/profile/user/user_birth_certificate_form.dart';
 import 'package:lms/screens/profile/user/user_education_screen.dart';
-import 'package:lms/screens/profile/user/user_job_info_screen.dart';
+import 'package:lms/screens/profile/job/user_job_info_screen.dart';
 import 'package:provider/provider.dart';
 
 class UserInfoList extends StatefulWidget {

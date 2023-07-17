@@ -6,6 +6,7 @@ import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/providers/Profile/ActivityHistory/ActivityHistoryProvider.dart';
 import 'package:lms/providers/Profile/Compilations/CompilationsProvider.dart';
 import 'package:lms/providers/Profile/Identity/IdentityProvider.dart';
+import 'package:lms/providers/Profile/Job/JobProvider.dart';
 import 'package:lms/providers/Profile/PassedCourses/ExternalPassedCoursesProvider.dart';
 import 'package:lms/providers/Profile/PassedCourses/InternalPassedCoursesProvider.dart';
 import 'package:lms/providers/Profile/Teaching/NonUniversityTeachingProvider.dart';
@@ -23,7 +24,7 @@ import 'package:lms/screens/profile/teaching/non_university_teaching_history_scr
 import 'package:lms/screens/profile/teaching/university_taeching_history_screen.dart';
 import 'package:lms/screens/profile/user/user_birth_certificate_form.dart';
 import 'package:lms/screens/profile/user/user_education_screen.dart';
-import 'package:lms/screens/profile/user/user_job_info_screen.dart';
+import 'package:lms/screens/profile/job/user_job_info_screen.dart';
 import 'package:lms/screens/profile/user/user_profile_screen.dart';
 import 'package:lms/screens/root/splash_screen.dart';
 import 'package:lms/screens/teachers/presence_screen.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => IdentityProvider()),
+        ChangeNotifierProvider(create: (_) => JobProvider()),
         ChangeNotifierProvider(create: (_) => InternalPassedCoursesProvider()),
         ChangeNotifierProvider(create: (_) => ExternalPassedCoursesProvider()),
         ChangeNotifierProvider(create: (_) => ActivityHistoryProvider()),
