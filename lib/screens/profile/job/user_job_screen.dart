@@ -3,6 +3,7 @@ import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/providers/Profile/Job/JobProvider.dart';
 import 'package:lms/widgets/elements/spinner.dart';
+import 'package:lms/widgets/profile/job/job_info.dart';
 import 'package:lms/widgets/profile/user/job_info_form_modal.dart';
 import 'package:provider/provider.dart';
 
@@ -56,14 +57,15 @@ class _UserJobScreenState extends State<UserJobScreen> {
     });
   }
 
-//  Future<void> deleteJob(int jobId , int index) async {
-//     final jobsCopy = List.from(jobs);
-//     jobsCopy.removeAt(index);
-//     // await Provider.of<JobProvider>(context, listen: false).de;
-//     setState(() {
-
-//     });
-//  }
+  Future<void> deleteJob(int jobId, int index) async {
+    final jobsCopy = List.from(jobs);
+    jobsCopy.removeAt(index);
+    await Provider.of<JobProvider>(context, listen: false).deleteJob(jobId);
+    setState(() {
+      jobs = jobsCopy;
+    });
+    setState(() {});
+  }
   //--------------- UI -------------------
 
   @override
@@ -82,7 +84,13 @@ class _UserJobScreenState extends State<UserJobScreen> {
         ),
         actions: [IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 2), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white))],
       ),
-      body: Spinner(size: 20),
+      body: _isLoading
+          ? const Center(child: Spinner(size: 35))
+          : JobInfo(
+              deleteJob: deleteJob,
+              fetchAllJobs: fetchAllJobs,
+              jobs: jobs,
+            ),
     );
   }
 }
