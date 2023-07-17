@@ -6,6 +6,7 @@ import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/providers/Profile/ActivityHistory/ActivityHistoryProvider.dart';
 import 'package:lms/providers/Profile/Compilations/CompilationsProvider.dart';
+import 'package:lms/providers/Profile/Identity/IdentityProvider.dart';
 import 'package:lms/providers/Profile/PassedCourses/ExternalPassedCoursesProvider.dart';
 import 'package:lms/providers/Profile/Teaching/NonUniversityTeachingProvider.dart';
 import 'package:lms/providers/Profile/Teaching/UniversityTeachingProvider.dart';
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => IdentityProvider()),
         ChangeNotifierProvider(create: (_) => ExternalPassedCoursesProvider()),
         ChangeNotifierProvider(create: (_) => ActivityHistoryProvider()),
         ChangeNotifierProvider(create: (_) => UniversityTeachingProvider()),
