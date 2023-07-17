@@ -31,4 +31,18 @@ class JobProvider with ChangeNotifier {
       rethrow;
     }
   }
+
+  Future<void> deleteJob(int jobId) async {
+    try {
+      final response = await http.delete(
+        Uri.parse('$_baseUrl/destroy/$jobId'),
+        headers: <String, String>{'Content-Type': 'application/json'},
+      );
+      if (response.statusCode != 200) throw Exception('failed to delete job');
+      notifyListeners();
+    } catch (error) {
+      print(error);
+      rethrow;
+    }
+  }
 }

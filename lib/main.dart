@@ -24,7 +24,7 @@ import 'package:lms/screens/profile/teaching/non_university_teaching_history_scr
 import 'package:lms/screens/profile/teaching/university_taeching_history_screen.dart';
 import 'package:lms/screens/profile/user/user_birth_certificate_form.dart';
 import 'package:lms/screens/profile/user/user_education_screen.dart';
-import 'package:lms/screens/profile/job/user_job_info_screen.dart';
+import 'package:lms/screens/profile/job/user_job_screen.dart';
 import 'package:lms/screens/profile/user/user_profile_screen.dart';
 import 'package:lms/screens/root/splash_screen.dart';
 import 'package:lms/screens/teachers/presence_screen.dart';
@@ -109,7 +109,7 @@ class MyApp extends StatelessWidget {
                 CourseShippingScreen.routeName: (ctx) => const CourseShippingScreen(),
                 UserBirthCertificateScreen.routeName: (ctx) => const UserBirthCertificateScreen(),
                 UserEducationScreen.routeName: (ctx) => const UserEducationScreen(),
-                UserJobInfoScreen.routeName: (ctx) => const UserJobInfoScreen(),
+                UserJobScreen.routeName: (ctx) => const UserJobScreen(),
                 ActivitiesInfoScreen.routeName: (ctx) => const ActivitiesInfoScreen(),
                 InternalPassedCoursesScreen.routeName: (ctx) => const InternalPassedCoursesScreen(),
                 ExternalPassedCoursesScreen.routeName: (ctx) => const ExternalPassedCoursesScreen(),
