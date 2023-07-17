@@ -63,50 +63,53 @@ class _NonUniversityTeachingInfoState extends State<NonUniversityTeachingInfo> {
       physics: const BouncingScrollPhysics(),
       itemCount: widget.nonUniversityTeachings.length,
       itemBuilder: (context, index) {
-        return Card(
-          elevation: 0.5,
-          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-          child: ListTile(
-            leading: CircleAvatar(
-              backgroundColor: themeMode == ThemeMode.dark ? Theme.of(context).scaffoldBackgroundColor : Colors.grey[300],
-              child: Text((index + 1).toString()),
-            ),
-            title: Text(
-              widget.nonUniversityTeachings[index]['title'],
-              style: theme.bodyMedium!.copyWith(fontSize: 14),
-            ),
-            subtitle: Text(widget.nonUniversityTeachings[index]['activity_description'], style: theme.bodySmall!.copyWith(fontSize: 11)),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                InkWell(
-                  onTap: () => _showNonUniversityTeachingModal(context, widget.nonUniversityTeachings[index]['id'], 1),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.orange,
-                    radius: 15,
-                    child: Image.asset(
-                      'assets/images/icons/edit2.png',
-                      color: Colors.white,
-                      width: 18,
-                      height: 18,
+        return InkWell(
+          onTap: () => _showNonUniversityTeachingModal(context, widget.nonUniversityTeachings[index]['id'], 2),
+          child: Card(
+            elevation: 0.5,
+            margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundColor: themeMode == ThemeMode.dark ? Theme.of(context).scaffoldBackgroundColor : Colors.grey[300],
+                child: Text((index + 1).toString()),
+              ),
+              title: Text(
+                widget.nonUniversityTeachings[index]['title'],
+                style: theme.bodyMedium!.copyWith(fontSize: 14),
+              ),
+              subtitle: Text(widget.nonUniversityTeachings[index]['activity_description'], style: theme.bodySmall!.copyWith(fontSize: 11)),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  InkWell(
+                    onTap: () => _showNonUniversityTeachingModal(context, widget.nonUniversityTeachings[index]['id'], 1),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.orange,
+                      radius: 15,
+                      child: Image.asset(
+                        'assets/images/icons/edit2.png',
+                        color: Colors.white,
+                        width: 18,
+                        height: 18,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 5),
-                InkWell(
-                  onTap: () => widget.deleteNonUniversityTeaching(widget.nonUniversityTeachings[index]['id'], index),
-                  child: CircleAvatar(
-                    radius: 15,
-                    backgroundColor: Colors.red,
-                    child: Image.asset(
-                      'assets/images/icons/delete.png',
-                      width: 18,
-                      height: 18,
-                      color: Colors.white,
+                  const SizedBox(width: 5),
+                  InkWell(
+                    onTap: () => widget.deleteNonUniversityTeaching(widget.nonUniversityTeachings[index]['id'], index),
+                    child: CircleAvatar(
+                      radius: 15,
+                      backgroundColor: Colors.red,
+                      child: Image.asset(
+                        'assets/images/icons/delete.png',
+                        width: 18,
+                        height: 18,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
