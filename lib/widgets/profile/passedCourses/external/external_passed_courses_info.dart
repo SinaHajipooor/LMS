@@ -59,53 +59,51 @@ class _ExternalPassedCoursesInfoState extends State<ExternalPassedCoursesInfo> {
       physics: const BouncingScrollPhysics(),
       itemCount: widget.externalCourses.length,
       itemBuilder: (context, index) {
-        return InkWell(
-          onTap: () => _showExternalPassedCoursesInfoModal(context, widget.externalCourses[index]['id'], 2),
-          child: Card(
-            elevation: 0.5,
-            margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-            child: ListTile(
-              leading: CircleAvatar(
-                backgroundColor: themeMode == ThemeMode.dark ? Theme.of(context).scaffoldBackgroundColor : Colors.grey[300],
-                child: Text((index + 1).toString()),
-              ),
-              title: Text(
-                widget.externalCourses[index]['title'],
-                style: theme.bodyMedium!.copyWith(fontSize: 14),
-              ),
-              subtitle: Text(widget.externalCourses[index]['institute_title'], style: theme.bodySmall!.copyWith(fontSize: 11)),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  InkWell(
-                    onTap: () => _showExternalPassedCoursesInfoModal(context, widget.externalCourses[index]['id'], 1),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.orange,
-                      radius: 15,
-                      child: Image.asset(
-                        'assets/images/icons/edit2.png',
-                        color: Colors.white,
-                        width: 18,
-                        height: 18,
-                      ),
+        return Card(
+          elevation: 0.5,
+          margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+          child: ListTile(
+            onTap: () => _showExternalPassedCoursesInfoModal(context, widget.externalCourses[index]['id'], 2),
+            leading: CircleAvatar(
+              backgroundColor: themeMode == ThemeMode.dark ? Theme.of(context).scaffoldBackgroundColor : Colors.grey[300],
+              child: Text((index + 1).toString()),
+            ),
+            title: Text(
+              widget.externalCourses[index]['title'],
+              style: theme.bodyMedium!.copyWith(fontSize: 14),
+            ),
+            subtitle: Text(widget.externalCourses[index]['institute_title'], style: theme.bodySmall!.copyWith(fontSize: 11)),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                InkWell(
+                  onTap: () => _showExternalPassedCoursesInfoModal(context, widget.externalCourses[index]['id'], 1),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.orange,
+                    radius: 15,
+                    child: Image.asset(
+                      'assets/images/icons/edit2.png',
+                      color: Colors.white,
+                      width: 18,
+                      height: 18,
                     ),
                   ),
-                  const SizedBox(width: 5),
-                  InkWell(
-                    onTap: () => widget.deleteExternalCourse(widget.externalCourses[index]['id'], index),
-                    child: CircleAvatar(
-                      radius: 15,
-                      backgroundColor: Colors.red,
-                      child: Image.asset(
-                        'assets/images/icons/delete.png',
-                        width: 18,
-                        height: 18,
-                        color: Colors.white,
-                      ),
+                ),
+                const SizedBox(width: 5),
+                InkWell(
+                  onTap: () => widget.deleteExternalCourse(widget.externalCourses[index]['id'], index),
+                  child: CircleAvatar(
+                    radius: 15,
+                    backgroundColor: Colors.red,
+                    child: Image.asset(
+                      'assets/images/icons/delete.png',
+                      width: 18,
+                      height: 18,
+                      color: Colors.white,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );

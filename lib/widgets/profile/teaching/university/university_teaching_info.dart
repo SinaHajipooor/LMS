@@ -63,6 +63,7 @@ class _UniversityTeachingInfoState extends State<UniversityTeachingInfo> {
           elevation: 0.5,
           margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
           child: ListTile(
+            onTap: () => _showUniversityTeachingModal(context, widget.universityTeachings[index]['id'], 2),
             leading: CircleAvatar(
               backgroundColor: themeMode == ThemeMode.dark ? Theme.of(context).scaffoldBackgroundColor : Colors.grey[300],
               child: Text((index + 1).toString()),

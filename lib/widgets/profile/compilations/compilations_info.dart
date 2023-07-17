@@ -53,53 +53,51 @@ class _CompilationsInfoState extends State<CompilationsInfo> {
       physics: const BouncingScrollPhysics(),
       itemCount: widget.compilations.length,
       itemBuilder: (context, index) {
-        return InkWell(
-          onTap: () => _showCompilationsModal(context, widget.compilations[index]['id'], 2),
-          child: Card(
-            elevation: 0.5,
-            margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-            child: ListTile(
-              leading: CircleAvatar(
-                backgroundColor: themeMode == ThemeMode.dark ? Theme.of(context).scaffoldBackgroundColor : Colors.grey[300],
-                child: Text((index + 1).toString()),
-              ),
-              title: Text(
-                widget.compilations[index]['title'],
-                style: theme.bodyMedium!.copyWith(fontSize: 14),
-              ),
-              subtitle: Text(widget.compilations[index]['publish_place'], style: theme.bodySmall!.copyWith(fontSize: 11)),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  InkWell(
-                    onTap: () => _showCompilationsModal(context, widget.compilations[index]['id'], 1),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.orange,
-                      radius: 15,
-                      child: Image.asset(
-                        'assets/images/icons/edit2.png',
-                        color: Colors.white,
-                        width: 18,
-                        height: 18,
-                      ),
+        return Card(
+          elevation: 0.5,
+          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+          child: ListTile(
+            onTap: () => _showCompilationsModal(context, widget.compilations[index]['id'], 2),
+            leading: CircleAvatar(
+              backgroundColor: themeMode == ThemeMode.dark ? Theme.of(context).scaffoldBackgroundColor : Colors.grey[300],
+              child: Text((index + 1).toString()),
+            ),
+            title: Text(
+              widget.compilations[index]['title'],
+              style: theme.bodyMedium!.copyWith(fontSize: 14),
+            ),
+            subtitle: Text(widget.compilations[index]['publish_place'], style: theme.bodySmall!.copyWith(fontSize: 11)),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                InkWell(
+                  onTap: () => _showCompilationsModal(context, widget.compilations[index]['id'], 1),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.orange,
+                    radius: 15,
+                    child: Image.asset(
+                      'assets/images/icons/edit2.png',
+                      color: Colors.white,
+                      width: 18,
+                      height: 18,
                     ),
                   ),
-                  const SizedBox(width: 5),
-                  InkWell(
-                    onTap: () => widget.deleteCompilation(widget.compilations[index]['id'], index),
-                    child: CircleAvatar(
-                      radius: 15,
-                      backgroundColor: Colors.red,
-                      child: Image.asset(
-                        'assets/images/icons/delete.png',
-                        width: 18,
-                        height: 18,
-                        color: Colors.white,
-                      ),
+                ),
+                const SizedBox(width: 5),
+                InkWell(
+                  onTap: () => widget.deleteCompilation(widget.compilations[index]['id'], index),
+                  child: CircleAvatar(
+                    radius: 15,
+                    backgroundColor: Colors.red,
+                    child: Image.asset(
+                      'assets/images/icons/delete.png',
+                      width: 18,
+                      height: 18,
+                      color: Colors.white,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );
