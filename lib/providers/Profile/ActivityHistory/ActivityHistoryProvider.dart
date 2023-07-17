@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 
 class ActivityHistoryProvider with ChangeNotifier {
   // ------------------- feilds --------------------
-  static final _baseUrl = '${Api.instance.baseUrl}81/api/profile/activity-history';
+  static final _baseUrl = '${Api.instance.baseUrl}8081/api/profile/activity-history';
   List _activities = [];
   Map<String, dynamic>? _activityDetails;
   // ------------------- getter --------------------

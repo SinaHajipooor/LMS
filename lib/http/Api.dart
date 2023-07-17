@@ -1,6 +1,6 @@
 class Api {
   // ---------------- BASE URL ------------------
-  static const _baseUrl = 'http://192.168.2.136:';
+  static const _baseUrl = 'http://45.149.77.156:';
 //-------------- API INSTANCE -----------------
   static final Api _instance = Api._();
 // ----------------- getter --------------------

@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 
 class NonUniversityTeachingProvider with ChangeNotifier {
   // ---------------  feilds -----------------
-  static final _baseUrl = '${Api.instance.baseUrl}81/api/profile/teach/history';
+  static final _baseUrl = '${Api.instance.baseUrl}8081/api/profile/teach/history';
   List _nonUniversityTeachings = [];
   Map<String, dynamic>? _nonUniversityTeachingDetails;
   // ---------------  getter -----------------

@@ -212,63 +212,84 @@ class _ActivitiesInfoFormState extends State<ActivitiesInfoForm> {
                         Row(
                           children: [
                             Expanded(
-                              child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                elevation: 1,
-                                child: InkWell(
-                                  onTap: () {
-                                    _selectStartedDate(context);
-                                  },
-                                  child: Container(
-                                    width: double.infinity,
-                                    padding: const EdgeInsets.all(16),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        const Icon(Icons.calendar_today, size: 20),
-                                        const SizedBox(width: 16),
-                                        Text(
-                                          startedDate == '' ? 'تاریخ شروع' : startedDate,
-                                          style: theme.bodyMedium,
-                                        ),
-                                      ],
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 8),
+                                    child: Text(
+                                      'تاریخ شروع',
+                                      style: theme.bodySmall,
                                     ),
                                   ),
-                                ),
+                                  Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    elevation: 1,
+                                    child: InkWell(
+                                      onTap: () {
+                                        _selectStartedDate(context);
+                                      },
+                                      child: Container(
+                                        width: double.infinity,
+                                        padding: const EdgeInsets.all(16),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            const Icon(Icons.calendar_today, size: 20),
+                                            const SizedBox(width: 16),
+                                            Text(
+                                              startedDate,
+                                              style: theme.bodyMedium,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             Expanded(
-                              child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                elevation: 1,
-                                child: InkWell(
-                                  onTap: () {
-                                    _selectEndedDate(context);
-                                  },
-                                  child: Container(
-                                    width: double.infinity,
-                                    padding: const EdgeInsets.all(16),
-                                    decoration: BoxDecoration(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 8),
+                                    child: Text('تاریخ پایان', style: theme.bodySmall),
+                                  ),
+                                  Card(
+                                    shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8),
                                     ),
-                                    child: Row(
-                                      children: [
-                                        const Icon(Icons.calendar_today, size: 20),
-                                        const SizedBox(width: 16),
-                                        Text(
-                                          endedDate == '' ? 'تاریخ پایان' : endedDate,
-                                          style: theme.bodyMedium,
+                                    elevation: 1,
+                                    child: InkWell(
+                                      onTap: () {
+                                        _selectEndedDate(context);
+                                      },
+                                      child: Container(
+                                        width: double.infinity,
+                                        padding: const EdgeInsets.all(16),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(8),
                                         ),
-                                      ],
+                                        child: Row(
+                                          children: [
+                                            const Icon(Icons.calendar_today, size: 20),
+                                            const SizedBox(width: 16),
+                                            Text(
+                                              endedDate,
+                                              style: theme.bodyMedium,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
                             ),
                           ],

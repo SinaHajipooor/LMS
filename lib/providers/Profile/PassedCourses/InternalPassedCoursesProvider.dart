@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 class InternalPassedCoursesProvider with ChangeNotifier {
   // ------------------- feilds --------------------
-  static final _baseUrl = '${Api.instance.baseUrl}81/api/profile/course/internal';
+  static final _baseUrl = '${Api.instance.baseUrl}8081/api/profile/course/internal';
   List<dynamic> _internalPassedCourses = [];
   // ------------------- getter --------------------
   List get internalPassedCourses => _internalPassedCourses;

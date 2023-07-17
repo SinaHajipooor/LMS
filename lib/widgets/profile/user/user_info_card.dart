@@ -81,22 +81,23 @@ class _UserInfoCardState extends State<UserInfoCard> {
                       width: 90,
                       height: 90,
                       color: Colors.grey,
-                      child: Image.network(
-                        widget.userIdentityInfo['avatar'] ?? '',
-                        errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-                          return Image.asset(
-                            'assets/images/profile_placeholder.png',
-                          );
-                        },
-                        loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-                          if (loadingProgress == null) {
-                            return child; // Display the main image if it's already loaded
-                          }
-                          return Image.asset(
-                            'assets/images/profile_placeholder.png',
-                          );
-                        },
-                      ),
+                      // child: Image.network(
+                      //   widget.userIdentityInfo['avatar'] ?? '',
+                      //   errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                      //     return Image.asset(
+                      //       'assets/images/profile_placeholder.png',
+                      //     );
+                      //   },
+                      //   loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                      //     if (loadingProgress == null) {
+                      //       return child; // Display the main image if it's already loaded
+                      //     }
+                      //     return Image.asset(
+                      //       'assets/images/profile_placeholder.png',
+                      //     );
+                      //   },
+                      // ),
+                      child: Image.asset('assets/images/avatar.png'),
                     ),
                   ),
                   const SizedBox(height: 15),
