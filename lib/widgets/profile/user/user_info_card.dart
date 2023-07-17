@@ -82,7 +82,7 @@ class _UserInfoCardState extends State<UserInfoCard> {
                       height: 90,
                       color: Colors.grey,
                       child: Image.network(
-                        widget.userIdentityInfo['avatar'],
+                        widget.userIdentityInfo['avatar'] ?? '',
                         errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
                           return Image.asset(
                             'assets/images/profile_placeholder.png',

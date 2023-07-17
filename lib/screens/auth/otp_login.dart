@@ -96,7 +96,7 @@ class _OtpLoginState extends State<OtpLogin> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('به سیستم یادگیری الکترونیک خوش آمدید', style: theme.bodyLarge),
+                  Text('سامانه جامع آموزش مدیران و کارکنان دولت', style: theme.bodyLarge),
                   const SizedBox(height: 15),
                   Text.rich(
                     TextSpan(

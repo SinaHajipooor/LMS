@@ -18,7 +18,7 @@ class LandingAppBar extends StatelessWidget {
       collapsedHeight: 75,
       title: Center(
         child: Container(
-          margin: const EdgeInsets.only(right: 3, top: 20, bottom: 0),
+          margin: const EdgeInsets.only(right: 0, top: 20, bottom: 0),
           width: deviceSize.width,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -38,19 +38,19 @@ class LandingAppBar extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 16, 15, 0),
+                          padding: const EdgeInsets.fromLTRB(0, 16, 8, 0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('سیستم', style: theme.textTheme.bodySmall!.copyWith(fontSize: 11)),
+                              Text('سامانه جامع', style: theme.textTheme.bodySmall!.copyWith(fontSize: 11)),
                             ],
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 15, 16),
+                          padding: const EdgeInsets.fromLTRB(0, 0, 8, 16),
                           child: Text(
-                            "یادگیری الکترونیک",
-                            style: theme.textTheme.titleMedium!.copyWith(fontSize: 16),
+                            "آموزش مدیران و کارکنان دولت",
+                            style: theme.textTheme.titleMedium!.copyWith(fontSize: 15),
                           ),
                         ),
                       ],
