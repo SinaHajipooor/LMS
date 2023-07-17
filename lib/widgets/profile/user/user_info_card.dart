@@ -26,15 +26,15 @@ class _UserInfoCardState extends State<UserInfoCard> {
           const SizedBox(height: 15),
           Row(
             children: [
-              Expanded(child: UserInformationInput(value: 'سینا', label: 'نام', onChanged: (value) {})),
-              Expanded(child: UserInformationInput(value: 'حاجی‌پور', label: 'نام خانوادگی', onChanged: (value) {})),
+              Expanded(child: UserInformationInput(value: widget.userIdentityInfo['first_name'] ?? '', label: 'نام', onChanged: (value) {})),
+              Expanded(child: UserInformationInput(value: widget.userIdentityInfo['last_name'] ?? '', label: 'نام خانوادگی', onChanged: (value) {})),
             ],
           ),
           const SizedBox(height: 15),
           Row(
             children: [
-              Expanded(child: UserInformationInput(value: '0640821324', label: 'کدملی', onChanged: (value) {})),
-              Expanded(child: UserInformationInput(value: '09155613393', label: 'شماره موبایل', onChanged: (value) {})),
+              Expanded(child: UserInformationInput(value: widget.userIdentityInfo['username'] ?? '', label: 'کدملی', onChanged: (value) {})),
+              Expanded(child: UserInformationInput(value: widget.userIdentityInfo['mobile'] ?? '', label: 'شماره موبایل', onChanged: (value) {})),
             ],
           ),
           const SizedBox(height: 15),
@@ -100,7 +100,10 @@ class _UserInfoCardState extends State<UserInfoCard> {
                     ),
                   ),
                   const SizedBox(height: 15),
-                  Text('سیناحاجی‌پور', style: theme.textTheme.titleLarge),
+                  Text(
+                    '${widget.userIdentityInfo['first_name']} ${widget.userIdentityInfo['last_name']}',
+                    style: theme.textTheme.titleLarge,
+                  ),
                   const SizedBox(height: 5),
                   const Text('فراگیر', style: TextStyle(fontSize: 14, color: Colors.grey)),
                 ],

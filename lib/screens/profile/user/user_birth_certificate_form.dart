@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:persian_datetime_picker/persian_datetime_picker.dart';
+import 'package:lms/helpers/InternetConnectivityHelper.dart';
+import 'package:lms/providers/Profile/Identity/IdentityProvider.dart';
+import 'package:lms/widgets/elements/spinner.dart';
+import 'package:provider/provider.dart';
 import '../../../widgets/elements/text_input.dart';
 import '../../../widgets/elements/custom_dropdown.dart';
 
@@ -14,24 +17,45 @@ class UserBirthCertificateScreen extends StatefulWidget {
 }
 
 class _UserBirthCertificateScreenState extends State<UserBirthCertificateScreen> {
+// --------------- state -----------------
   TextEditingController titleController = TextEditingController();
+  TextEditingController latinNameController = TextEditingController();
+  TextEditingController officePhoneController = TextEditingController();
+  TextEditingController identityNumberController = TextEditingController();
+  TextEditingController fatherNameController = TextEditingController();
+  TextEditingController seriNumberController = TextEditingController();
+  TextEditingController serialNumberController = TextEditingController();
+  TextEditingController shabaNumberController = TextEditingController();
+  TextEditingController postalCodeController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+  TextEditingController homePhoneController = TextEditingController();
 
-  Future<void> _selectDate(BuildContext context) async {
-    final Jalali? picked = await showPersianDatePicker(
-      context: context,
-      initialDate: Jalali.now(),
-      firstDate: Jalali(1300, 1, 1),
-      lastDate: Jalali.now(),
-      locale: const Locale('fa'),
-    );
+  String startEmployeeDate = '';
+  String endEmployeeDate = '';
+  String birthDate = '';
+  bool _isLoading = true;
+  Map<String, dynamic> userIdentityInfo = {};
+// --------------- lifecycle -----------------
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkInternetConnectivity(context);
+    });
+    fetchAllUserIdentityInfo();
+    super.initState();
+  }
 
-    if (picked != null) {
-      // ignore: unused_local_variable
-      final String formattedDate = picked.toJalaliDateTime().substring(0, 10);
-      setState(() {
-        // _birthDate = formattedDate;
-      });
-    }
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
+  }
+
+// --------------- methods -----------------
+
+  Future<void> fetchAllUserIdentityInfo() async {
+    setState(() {
+      userIdentityInfo = Provider.of<IdentityProvider>(context, listen: false).identityInfo;
+      _isLoading = false;
+    });
   }
 
 // --------------- UI -----------------
@@ -48,209 +72,242 @@ class _UserBirthCertificateScreenState extends State<UserBirthCertificateScreen>
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            Row(
-              children: [
-                Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'جنسیت')),
-                Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'دین')),
-              ],
-            ),
-            const SizedBox(height: 17),
-            Row(
-              children: [
-                Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'شهرمحل تولد')),
-                Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'وضعیت پایان خدمت')),
-              ],
-            ),
-            const SizedBox(height: 17),
-            Row(
-              children: [
-                Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'شهر صادرکننده')),
-                Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'شهر')),
-              ],
-            ),
-            const SizedBox(height: 17),
-            Row(
-              children: [
-                Expanded(
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    elevation: 1,
-                    child: InkWell(
-                      onTap: () {
-                        _selectDate(context);
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.calendar_today, size: 20),
-                            const SizedBox(width: 16),
-                            Text(
-                              'شروع استخدام',
-                              style: theme.textTheme.bodyMedium,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    elevation: 1,
-                    child: InkWell(
-                      onTap: () {
-                        _selectDate(context);
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.calendar_today, size: 20),
-                            const SizedBox(width: 16),
-                            Text(
-                              'پایان استخدام',
-                              style: theme.textTheme.bodyMedium,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 17),
-            Row(
-              children: [
-                Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'آخرین شغل')),
-                Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'وضعیت استخدام')),
-              ],
-            ),
-            const SizedBox(height: 17),
-            Row(
-              children: [
-                Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'آخرین مدرک آموزشی')),
-                Expanded(
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    elevation: 1,
-                    child: InkWell(
-                      onTap: () {
-                        _selectDate(context);
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.calendar_today, size: 20),
-                            const SizedBox(width: 16),
-                            Text(
-                              'تاریخ تولد!',
-                              style: theme.textTheme.bodyMedium,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 17),
-            Row(
-              children: [
-                Expanded(child: TextInput(controller: titleController, keyboardType: TextInputType.name, label: 'نام لاتین', onChanged: (value) {})),
-                Expanded(child: TextInput(controller: titleController, label: 'تلفن محل‌کار', onChanged: (value) {}, keyboardType: TextInputType.number)),
-              ],
-            ),
-            const SizedBox(height: 17),
-            Row(
-              children: [
-                Expanded(child: TextInput(controller: titleController, label: 'شماره شناسنامه', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                Expanded(child: TextInput(controller: titleController, keyboardType: TextInputType.name, label: 'نام پدر', onChanged: (value) {})),
-              ],
-            ),
-            const SizedBox(height: 17),
-            Row(
-              children: [
-                Expanded(child: TextInput(controller: titleController, keyboardType: TextInputType.name, label: 'سری شناسنامه', onChanged: (value) {})),
-                Expanded(child: TextInput(controller: titleController, keyboardType: TextInputType.name, label: 'سریال‌شناسنامه', onChanged: (value) {})),
-              ],
-            ),
-            const SizedBox(height: 17),
-            Row(
-              children: [
-                Expanded(child: TextInput(controller: titleController, label: 'شماره‌شبا', onChanged: (value) {}, keyboardType: TextInputType.number)),
-                Expanded(child: TextInput(controller: titleController, label: 'کد‌پستی', onChanged: (value) {}, keyboardType: TextInputType.number)),
-              ],
-            ),
-            const SizedBox(height: 17),
-            Row(
-              children: [
-                Expanded(child: TextInput(controller: titleController, keyboardType: TextInputType.name, label: 'آدرس', onChanged: (value) {})),
-                Expanded(child: TextInput(controller: titleController, label: 'تلفن', onChanged: (value) {}, keyboardType: TextInputType.number)),
-              ],
-            ),
-            const SizedBox(height: 17),
-            SizedBox(
-              height: 52,
-              width: double.infinity,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: _isLoading
+          ? const Center(child: Spinner(size: 35))
+          : SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
                 children: [
-                  Expanded(
-                      child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 5),
-                    child: ElevatedButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
+                  const SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'جنسیت')),
+                      Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'دین')),
+                    ],
+                  ),
+                  const SizedBox(height: 17),
+                  Row(
+                    children: [
+                      Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'شهرمحل تولد')),
+                      Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'وضعیت پایان خدمت')),
+                    ],
+                  ),
+                  const SizedBox(height: 17),
+                  Row(
+                    children: [
+                      Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'شهر صادرکننده')),
+                      Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'شهر')),
+                    ],
+                  ),
+                  const SizedBox(height: 17),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 8),
+                              child: Text(
+                                'تاریخ شروع',
+                                style: theme.textTheme.bodySmall,
+                              ),
+                            ),
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              elevation: 1,
+                              child: InkWell(
+                                onTap: () {
+                                  // _selectStartedDate(context);
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.all(16),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      const Icon(Icons.calendar_today, size: 20),
+                                      const SizedBox(width: 16),
+                                      Text(
+                                        startEmployeeDate,
+                                        style: theme.textTheme.bodySmall,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      child: const Text('انصراف'),
-                    ),
-                  )),
-                  Expanded(
-                      child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 5),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 8),
+                              child: Text('تاریخ پایان', style: theme.textTheme.bodySmall),
+                            ),
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              elevation: 1,
+                              child: InkWell(
+                                onTap: () {
+                                  // _selectEndedDate(context);
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.all(16),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      const Icon(Icons.calendar_today, size: 20),
+                                      const SizedBox(width: 16),
+                                      Text(
+                                        endEmployeeDate,
+                                        style: theme.textTheme.bodySmall,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      child: const Text('ثبت'),
+                    ],
+                  ),
+                  const SizedBox(height: 17),
+                  Row(
+                    children: [
+                      Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'آخرین شغل')),
+                      Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'وضعیت استخدام')),
+                    ],
+                  ),
+                  const SizedBox(height: 17),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Expanded(child: CustomDropdown(items: const ['one', 'two', 'three'], onChanged: (value) {}, placeholder: 'آخرین مدرک آموزشی')),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 8),
+                              child: Text('تاریخ تولد', style: theme.textTheme.bodySmall),
+                            ),
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              elevation: 1,
+                              child: InkWell(
+                                onTap: () {
+                                  // _selectEndedDate(context);
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.all(16),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      const Icon(Icons.calendar_today, size: 20),
+                                      const SizedBox(width: 16),
+                                      Text(
+                                        endEmployeeDate,
+                                        style: theme.textTheme.bodySmall,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 17),
+                  Row(
+                    children: [
+                      Expanded(child: TextInput(controller: latinNameController, keyboardType: TextInputType.name, label: 'نام لاتین', onChanged: (value) {})),
+                      Expanded(child: TextInput(controller: officePhoneController, label: 'تلفن محل‌کار', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                    ],
+                  ),
+                  const SizedBox(height: 17),
+                  Row(
+                    children: [
+                      Expanded(child: TextInput(controller: identityNumberController, label: 'شماره شناسنامه', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                      Expanded(child: TextInput(controller: fatherNameController, keyboardType: TextInputType.name, label: 'نام پدر', onChanged: (value) {})),
+                    ],
+                  ),
+                  const SizedBox(height: 17),
+                  Row(
+                    children: [
+                      Expanded(child: TextInput(controller: seriNumberController, keyboardType: TextInputType.name, label: 'سری شناسنامه', onChanged: (value) {})),
+                      Expanded(child: TextInput(controller: serialNumberController, keyboardType: TextInputType.name, label: 'سریال‌شناسنامه', onChanged: (value) {})),
+                    ],
+                  ),
+                  const SizedBox(height: 17),
+                  Row(
+                    children: [
+                      Expanded(child: TextInput(controller: shabaNumberController, label: 'شماره‌شبا', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                      Expanded(child: TextInput(controller: postalCodeController, label: 'کد‌پستی', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                    ],
+                  ),
+                  const SizedBox(height: 17),
+                  Row(
+                    children: [
+                      Expanded(child: TextInput(controller: addressController, keyboardType: TextInputType.name, label: 'آدرس', onChanged: (value) {})),
+                      Expanded(child: TextInput(controller: homePhoneController, label: 'تلفن', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                    ],
+                  ),
+                  const SizedBox(height: 17),
+                  SizedBox(
+                    height: 52,
+                    width: double.infinity,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(
+                            child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 5),
+                          child: ElevatedButton(
+                            onPressed: () => Navigator.of(context).pop(),
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]!),
+                            ),
+                            child: const Text('انصراف'),
+                          ),
+                        )),
+                        Expanded(
+                            child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 5),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                            ),
+                            child: const Text('ثبت'),
+                          ),
+                        )),
+                      ],
                     ),
-                  )),
+                  ),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }
