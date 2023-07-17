@@ -49,6 +49,7 @@ class _UniversityTeachingHistoryScreenState extends State<UniversityTeachingHist
     setState(() {
       universityTeachings = universityTeachingsCopy;
     });
+    Navigator.of(context).pop();
   }
 
   _showUniversityTeachinModal(BuildContext context, double deviceHeight, int selectedIndex) {

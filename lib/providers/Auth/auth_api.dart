@@ -2,7 +2,7 @@ import 'package:lms/http/Api.dart';
 
 class AuthApi {
   // ---------------- BASE URL ------------------
-  static final _baseUrl = '${Api.instance.baseUrl}81/api';
+  static final _baseUrl = '${Api.instance.baseUrl}8081/api';
 //-------------- API INSTANCE -----------------
   static final AuthApi _instance = AuthApi._();
 //----------------- Auth ---------------------

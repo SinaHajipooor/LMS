@@ -50,6 +50,7 @@ class _ActivitiesInfoScreenState extends State<ActivitiesInfoScreen> {
     setState(() {
       activities = activitiesCopy;
     });
+    Navigator.of(context).pop();
   }
 
   _showJobinfoFormModal(BuildContext context, double deviceHeight, int selectedIndex) {

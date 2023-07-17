@@ -5,7 +5,7 @@ import 'package:lms/http/Api.dart';
 
 class LandingProvider with ChangeNotifier {
 // ---------------- feilds ------------------
-  static final _baseUrl = '${Api.instance.baseUrl}81/api/landing';
+  static final _baseUrl = '${Api.instance.baseUrl}8081/api/landing';
   List _slides = [];
   List _news = [];
   List _announcements = [];

@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/widgets/profile/teaching/nonUniversity/non_university_teaching_modal.dart';
@@ -16,6 +17,34 @@ class NonUniversityTeachingInfo extends StatefulWidget {
 
 class _NonUniversityTeachingInfoState extends State<NonUniversityTeachingInfo> {
   // // --------------- methods -----------------
+  void showInputDialog(int activityId, int index) {
+    AwesomeDialog(
+      context: context,
+      dialogType: DialogType.warning,
+      animType: AnimType.scale,
+      dialogBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Text('این مورد را حذف می‌کنید ؟', style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 15)),
+      ),
+      btnOk: ElevatedButton(
+        onPressed: () {
+          widget.deleteNonUniversityTeaching(activityId, index);
+        },
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+        ),
+        child: const Text('حذف'),
+      ),
+      btnCancel: ElevatedButton(
+        onPressed: () => Navigator.of(context).pop(),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+        ),
+        child: const Text('لغو'),
+      ),
+    ).show();
+  }
 
   _showNonUniversityTeachingModal(
     BuildContext context,
@@ -67,6 +96,7 @@ class _NonUniversityTeachingInfoState extends State<NonUniversityTeachingInfo> {
           elevation: 0.5,
           margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
           child: ListTile(
+            onTap: () => _showNonUniversityTeachingModal(context, widget.nonUniversityTeachings[index]['id'], 2),
             leading: CircleAvatar(
               backgroundColor: themeMode == ThemeMode.dark ? Theme.of(context).scaffoldBackgroundColor : Colors.grey[300],
               child: Text((index + 1).toString()),
@@ -94,7 +124,7 @@ class _NonUniversityTeachingInfoState extends State<NonUniversityTeachingInfo> {
                 ),
                 const SizedBox(width: 5),
                 InkWell(
-                  onTap: () => widget.deleteNonUniversityTeaching(widget.nonUniversityTeachings[index]['id'], index),
+                  onTap: () => showInputDialog(widget.nonUniversityTeachings[index]['id'], index),
                   child: CircleAvatar(
                     radius: 15,
                     backgroundColor: Colors.red,

@@ -49,6 +49,7 @@ class _NonUniversityTeachingHistoryScreenState extends State<NonUniversityTeachi
     setState(() {
       nonUniversityTeachings = universityTeachingsCopy;
     });
+    Navigator.of(context).pop();
   }
 
   _showNonUniversityTeachingModal(BuildContext context, double deviceHeight, int selectedIndex) {
