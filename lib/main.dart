@@ -1,4 +1,3 @@
-import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -6,7 +5,10 @@ import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/providers/Profile/ActivityHistory/ActivityHistoryProvider.dart';
 import 'package:lms/providers/Profile/Compilations/CompilationsProvider.dart';
+import 'package:lms/providers/Profile/Identity/IdentityProvider.dart';
+import 'package:lms/providers/Profile/Job/JobProvider.dart';
 import 'package:lms/providers/Profile/PassedCourses/ExternalPassedCoursesProvider.dart';
+import 'package:lms/providers/Profile/PassedCourses/InternalPassedCoursesProvider.dart';
 import 'package:lms/providers/Profile/Teaching/NonUniversityTeachingProvider.dart';
 import 'package:lms/providers/Profile/Teaching/UniversityTeachingProvider.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
@@ -22,12 +24,11 @@ import 'package:lms/screens/profile/teaching/non_university_teaching_history_scr
 import 'package:lms/screens/profile/teaching/university_taeching_history_screen.dart';
 import 'package:lms/screens/profile/user/user_birth_certificate_form.dart';
 import 'package:lms/screens/profile/user/user_education_screen.dart';
-import 'package:lms/screens/profile/user/user_job_info_screen.dart';
+import 'package:lms/screens/profile/job/user_job_screen.dart';
 import 'package:lms/screens/profile/user/user_profile_screen.dart';
 import 'package:lms/screens/root/splash_screen.dart';
 import 'package:lms/screens/teachers/presence_screen.dart';
 import 'package:provider/provider.dart';
-
 import 'providers/Landing/LandingProvider.dart';
 import 'providers/Course/ElectronicCourseProvider.dart';
 import 'screens/root/landing_screen.dart';
@@ -55,6 +56,9 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => IdentityProvider()),
+        ChangeNotifierProvider(create: (_) => JobProvider()),
+        ChangeNotifierProvider(create: (_) => InternalPassedCoursesProvider()),
         ChangeNotifierProvider(create: (_) => ExternalPassedCoursesProvider()),
         ChangeNotifierProvider(create: (_) => ActivityHistoryProvider()),
         ChangeNotifierProvider(create: (_) => UniversityTeachingProvider()),
@@ -68,57 +72,54 @@ class MyApp extends StatelessWidget {
       ],
       child: Consumer<MyThemeModel>(
         builder: (ctx, myThemeModel, _) {
-          return ThemeProvider(
-            initTheme: _themeHelper.getLightTheme(),
-            child: Builder(builder: (context) {
-              return MaterialApp(
-                locale: const Locale('fa', 'IR'),
-                localizationsDelegates: const [
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                supportedLocales: const [
-                  Locale('fa'),
-                  Locale('en', 'US'),
-                ],
-                title: 'LMS',
-                debugShowCheckedModeBanner: false,
-                themeMode: myThemeModel.themeMode,
-                theme: _themeHelper.getLightTheme(),
-                darkTheme: _themeHelper.getDarkTheme(),
-                home: const Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: SplashScreen(),
-                ),
-                routes: {
-                  SplashScreen.routeName: (ctx) => const SplashScreen(),
-                  LandingScreen.routeName: (ctx) => const LandingScreen(),
-                  HomeScreen.routeName: (ctx) => const HomeScreen(),
-                  StudentsDashbordScreen.routeName: (ctx) => StudentsDashbordScreen(),
-                  ExamScreen.routeName: (ctx) => const ExamScreen(),
-                  ExamResultScreen.routeName: (ctx) => const ExamResultScreen(),
-                  ElectronicCourseDetailScreen.routeName: (ctx) => const ElectronicCourseDetailScreen(),
-                  CourseAssessmentScreen.routeName: (ctx) => const CourseAssessmentScreen(),
-                  SimpleCoursesScreen.routeName: (ctx) => const SimpleCoursesScreen(),
-                  SimpleCourseDetailScreen.routeName: (ctx) => const SimpleCourseDetailScreen(),
-                  UserProfileScreen.routeName: (ctx) => const UserProfileScreen(),
-                  PresenceScreen.routeName: (ctx) => const PresenceScreen(),
-                  CourseShippingScreen.routeName: (ctx) => const CourseShippingScreen(),
-                  UserBirthCertificateScreen.routeName: (ctx) => const UserBirthCertificateScreen(),
-                  UserEducationScreen.routeName: (ctx) => const UserEducationScreen(),
-                  UserJobInfoScreen.routeName: (ctx) => const UserJobInfoScreen(),
-                  ActivitiesInfoScreen.routeName: (ctx) => const ActivitiesInfoScreen(),
-                  InternalPassedCoursesScreen.routeName: (ctx) => const InternalPassedCoursesScreen(),
-                  ExternalPassedCoursesScreen.routeName: (ctx) => const ExternalPassedCoursesScreen(),
-                  UniversityTeachingHistoryScreen.routeName: (ctx) => const UniversityTeachingHistoryScreen(),
-                  NonUniversityTeachingHistoryScreen.routeName: (ctx) => const NonUniversityTeachingHistoryScreen(),
-                  CompilationsAndTranslationsScreen.routeName: (ctx) => const CompilationsAndTranslationsScreen(),
-                  AuthScreen.routeName: (ctx) => const AuthScreen(),
-                },
-              );
-            }),
-          );
+          return Builder(builder: (context) {
+            return MaterialApp(
+              locale: const Locale('fa', 'IR'),
+              localizationsDelegates: const [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [
+                Locale('fa'),
+                Locale('en', 'US'),
+              ],
+              title: 'LMS',
+              debugShowCheckedModeBanner: false,
+              themeMode: myThemeModel.themeMode,
+              theme: _themeHelper.getLightTheme(),
+              darkTheme: _themeHelper.getDarkTheme(),
+              home: const Directionality(
+                textDirection: TextDirection.rtl,
+                child: SplashScreen(),
+              ),
+              routes: {
+                SplashScreen.routeName: (ctx) => const SplashScreen(),
+                LandingScreen.routeName: (ctx) => const LandingScreen(),
+                HomeScreen.routeName: (ctx) => const HomeScreen(),
+                StudentsDashbordScreen.routeName: (ctx) => StudentsDashbordScreen(),
+                ExamScreen.routeName: (ctx) => const ExamScreen(),
+                ExamResultScreen.routeName: (ctx) => const ExamResultScreen(),
+                ElectronicCourseDetailScreen.routeName: (ctx) => const ElectronicCourseDetailScreen(),
+                CourseAssessmentScreen.routeName: (ctx) => const CourseAssessmentScreen(),
+                SimpleCoursesScreen.routeName: (ctx) => const SimpleCoursesScreen(),
+                SimpleCourseDetailScreen.routeName: (ctx) => const SimpleCourseDetailScreen(),
+                UserProfileScreen.routeName: (ctx) => const UserProfileScreen(),
+                PresenceScreen.routeName: (ctx) => const PresenceScreen(),
+                CourseShippingScreen.routeName: (ctx) => const CourseShippingScreen(),
+                UserBirthCertificateScreen.routeName: (ctx) => const UserBirthCertificateScreen(),
+                UserEducationScreen.routeName: (ctx) => const UserEducationScreen(),
+                UserJobScreen.routeName: (ctx) => const UserJobScreen(),
+                ActivitiesInfoScreen.routeName: (ctx) => const ActivitiesInfoScreen(),
+                InternalPassedCoursesScreen.routeName: (ctx) => const InternalPassedCoursesScreen(),
+                ExternalPassedCoursesScreen.routeName: (ctx) => const ExternalPassedCoursesScreen(),
+                UniversityTeachingHistoryScreen.routeName: (ctx) => const UniversityTeachingHistoryScreen(),
+                NonUniversityTeachingHistoryScreen.routeName: (ctx) => const NonUniversityTeachingHistoryScreen(),
+                CompilationsAndTranslationsScreen.routeName: (ctx) => const CompilationsAndTranslationsScreen(),
+                AuthScreen.routeName: (ctx) => const AuthScreen(),
+              },
+            );
+          });
         },
       ),
     );

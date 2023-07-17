@@ -75,12 +75,17 @@ class _UniversityTeachingInfoState extends State<UniversityTeachingInfo> {
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                CircleAvatar(
-                  backgroundColor: Colors.orange,
-                  radius: 15,
-                  child: IconButton(
-                    icon: const Icon(Icons.edit, color: Colors.white, size: 15),
-                    onPressed: () => _showUniversityTeachingModal(context, widget.universityTeachings[index]['id'], 1),
+                InkWell(
+                  onTap: () => _showUniversityTeachingModal(context, widget.universityTeachings[index]['id'], 1),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.orange,
+                    radius: 15,
+                    child: Image.asset(
+                      'assets/images/icons/edit2.png',
+                      color: Colors.white,
+                      width: 18,
+                      height: 18,
+                    ),
                   ),
                 ),
                 const SizedBox(width: 5),
@@ -89,11 +94,11 @@ class _UniversityTeachingInfoState extends State<UniversityTeachingInfo> {
                   child: CircleAvatar(
                     radius: 15,
                     backgroundColor: Colors.red,
-                    child: Center(
-                      child: IconButton(
-                        icon: const Icon(Icons.delete, color: Colors.white, size: 15),
-                        onPressed: () => widget.deleteUniversityTeaching(widget.universityTeachings[index]['id'], index),
-                      ),
+                    child: Image.asset(
+                      'assets/images/icons/delete.png',
+                      width: 18,
+                      height: 18,
+                      color: Colors.white,
                     ),
                   ),
                 ),

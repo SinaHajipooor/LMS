@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:lms/providers/Profile/PassedCourses/InternalPassedCoursesProvider.dart';
+import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/profile/passedCourses/internal/internal_passed_courses_info.dart';
 import 'package:lms/widgets/profile/user/job_info_form_modal.dart';
 import 'package:provider/provider.dart';
@@ -14,12 +16,17 @@ class InternalPassedCoursesScreen extends StatefulWidget {
 }
 
 class _InternalPassedCoursesScreenState extends State<InternalPassedCoursesScreen> {
+  // ----------- state -------------
+  List<dynamic> internalPassedCourses = [];
+  bool _isLoading = true;
   // ----------- lifecycle -------------
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _checkInternetConnectivity(context);
     });
+    fetchAllInternalPassedCourses();
     super.initState();
   }
 
@@ -44,6 +51,14 @@ class _InternalPassedCoursesScreenState extends State<InternalPassedCoursesScree
     );
   }
 
+  Future<void> fetchAllInternalPassedCourses() async {
+    await Provider.of<InternalPassedCoursesProvider>(context, listen: false).fetchAllInternalPassedCourses();
+    setState(() {
+      internalPassedCourses = Provider.of<InternalPassedCoursesProvider>(context, listen: false).internalPassedCourses;
+      _isLoading = false;
+    });
+  }
+
   //---------------- UI -------------------
   @override
   Widget build(BuildContext context) {
@@ -63,7 +78,7 @@ class _InternalPassedCoursesScreenState extends State<InternalPassedCoursesScree
           IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: const InternalPassedCoursesInfo(),
+      body: _isLoading ? const Center(child: Spinner(size: 35)) : InternalPassedCoursesInfo(),
     );
   }
 }

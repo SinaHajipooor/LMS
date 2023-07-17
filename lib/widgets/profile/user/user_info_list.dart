@@ -12,7 +12,7 @@ import 'package:lms/screens/profile/teaching/university_taeching_history_screen.
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:lms/screens/profile/user/user_birth_certificate_form.dart';
 import 'package:lms/screens/profile/user/user_education_screen.dart';
-import 'package:lms/screens/profile/user/user_job_info_screen.dart';
+import 'package:lms/screens/profile/job/user_job_screen.dart';
 import 'package:provider/provider.dart';
 
 class UserInfoList extends StatefulWidget {
@@ -126,7 +126,7 @@ class _UserInfoListState extends State<UserInfoList> {
                   image: AssetImage('assets/images/icons/job.png'),
                 ),
               ),
-              onTap: () => Navigator.of(context).pushNamed(UserJobInfoScreen.routeName),
+              onTap: () => Navigator.of(context).pushNamed(UserJobScreen.routeName),
               title: Text(
                 'اطلاعات شغلی',
                 style: theme.textTheme.titleMedium,

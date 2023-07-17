@@ -1,25 +1,25 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
-import 'package:lms/widgets/profile/teaching/nonUniversity/non_university_teaching_modal.dart';
+import 'package:lms/widgets/profile/job/job_modal.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class NonUniversityTeachingInfo extends StatefulWidget {
-  final List<dynamic> nonUniversityTeachings;
-  final Function(int id, int index) deleteNonUniversityTeaching;
-  final Function() fetchAllNonUniversityTeachings;
-  const NonUniversityTeachingInfo({super.key, required this.nonUniversityTeachings, required this.deleteNonUniversityTeaching, required this.fetchAllNonUniversityTeachings});
+class JobInfo extends StatefulWidget {
+  final List jobs;
+  final Function() fetchAllJobs;
+  final Function(int jobId, int index) deleteJob;
+  const JobInfo({super.key, required this.jobs, required this.fetchAllJobs, required this.deleteJob});
 
   @override
-  State<NonUniversityTeachingInfo> createState() => _NonUniversityTeachingInfoState();
+  State<JobInfo> createState() => _JobInfoState();
 }
 
-class _NonUniversityTeachingInfoState extends State<NonUniversityTeachingInfo> {
-  // // --------------- methods -----------------
+class _JobInfoState extends State<JobInfo> {
+  // -------------- methods ---------------
 
-  _showNonUniversityTeachingModal(
+  _showJobModal(
     BuildContext context,
-    int nonUniversityTeachingId,
+    int jobId,
     int useCase,
   ) {
     showModalBottomSheet(
@@ -32,11 +32,11 @@ class _NonUniversityTeachingInfoState extends State<NonUniversityTeachingInfo> {
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return NonUniversityTeachingModal(
-          fetchAllNonUniversityTeachings: widget.fetchAllNonUniversityTeachings,
+        return JobModal(
+          fetchAllJobs: widget.fetchAllJobs,
           deviceHeight: MediaQuery.of(context).size.height,
-          title: useCase == 1 ? 'ویرایش سوابق تدریس غیر دانشگاهی' : 'جزئیات سوابق تدریس غیر دانشگاهی',
-          nonUniversityTeachingId: nonUniversityTeachingId,
+          title: useCase == 1 ? 'ویرایش اطلاعات شغلی' : 'جزئیات اطلاعات شغلی',
+          jobId: jobId,
           isEditing: useCase == 1,
           isShowing: useCase == 2,
           isCreating: false,
@@ -45,23 +45,14 @@ class _NonUniversityTeachingInfoState extends State<NonUniversityTeachingInfo> {
     );
   }
 
-  Future<void> _launchURL(String url) async {
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url));
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
-  // --------------- UI -----------------
-
+  // -------------- UI ---------------
   @override
   Widget build(BuildContext context) {
     final themeMode = Provider.of<MyThemeModel>(context).themeMode;
     final theme = Theme.of(context).textTheme;
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
-      itemCount: widget.nonUniversityTeachings.length,
+      itemCount: widget.jobs.length,
       itemBuilder: (context, index) {
         return Card(
           elevation: 0.5,
@@ -72,15 +63,15 @@ class _NonUniversityTeachingInfoState extends State<NonUniversityTeachingInfo> {
               child: Text((index + 1).toString()),
             ),
             title: Text(
-              widget.nonUniversityTeachings[index]['title'],
+              widget.jobs[index]['title'] ?? '',
               style: theme.bodyMedium!.copyWith(fontSize: 14),
             ),
-            subtitle: Text(widget.nonUniversityTeachings[index]['activity_description'], style: theme.bodySmall!.copyWith(fontSize: 11)),
+            subtitle: Text(widget.jobs[index]['position'] ?? '', style: theme.bodySmall!.copyWith(fontSize: 11)),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 InkWell(
-                  onTap: () => _showNonUniversityTeachingModal(context, widget.nonUniversityTeachings[index]['id'], 1),
+                  onTap: () => _showJobModal(context, widget.jobs[index]['id'], 1),
                   child: CircleAvatar(
                     backgroundColor: Colors.orange,
                     radius: 15,
@@ -94,7 +85,7 @@ class _NonUniversityTeachingInfoState extends State<NonUniversityTeachingInfo> {
                 ),
                 const SizedBox(width: 5),
                 InkWell(
-                  onTap: () => widget.deleteNonUniversityTeaching(widget.nonUniversityTeachings[index]['id'], index),
+                  onTap: () => widget.deleteJob(widget.jobs[index]['id'], index),
                   child: CircleAvatar(
                     radius: 15,
                     backgroundColor: Colors.red,

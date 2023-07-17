@@ -38,8 +38,8 @@ class _ActivitiesInfoScreenState extends State<ActivitiesInfoScreen> {
   Future<void> fetchAllActivities() async {
     await Provider.of<ActivityHistoryProvider>(context, listen: false).fetchAllActivities();
     setState(() {
-      _isLoading = false;
       activities = Provider.of<ActivityHistoryProvider>(context, listen: false).activities;
+      _isLoading = false;
     });
   }
 

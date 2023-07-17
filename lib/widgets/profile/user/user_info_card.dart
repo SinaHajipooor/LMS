@@ -5,7 +5,8 @@ import 'package:lms/widgets/elements/user_information_input.dart';
 import 'package:provider/provider.dart';
 
 class UserInfoCard extends StatefulWidget {
-  const UserInfoCard({super.key});
+  final Map<String, dynamic> userIdentityInfo;
+  const UserInfoCard({super.key, required this.userIdentityInfo});
 
   @override
   State<UserInfoCard> createState() => _UserInfoCardState();
@@ -25,15 +26,15 @@ class _UserInfoCardState extends State<UserInfoCard> {
           const SizedBox(height: 15),
           Row(
             children: [
-              Expanded(child: UserInformationInput(value: 'سینا', label: 'نام', onChanged: (value) {})),
-              Expanded(child: UserInformationInput(value: 'حاجی‌پور', label: 'نام خانوادگی', onChanged: (value) {})),
+              Expanded(child: UserInformationInput(value: widget.userIdentityInfo['first_name'] ?? '', label: 'نام', onChanged: (value) {})),
+              Expanded(child: UserInformationInput(value: widget.userIdentityInfo['last_name'] ?? '', label: 'نام خانوادگی', onChanged: (value) {})),
             ],
           ),
           const SizedBox(height: 15),
           Row(
             children: [
-              Expanded(child: UserInformationInput(value: '0640821324', label: 'کدملی', onChanged: (value) {})),
-              Expanded(child: UserInformationInput(value: '09155613393', label: 'شماره موبایل', onChanged: (value) {})),
+              Expanded(child: UserInformationInput(value: widget.userIdentityInfo['username'] ?? '', label: 'کدملی', onChanged: (value) {})),
+              Expanded(child: UserInformationInput(value: widget.userIdentityInfo['mobile'] ?? '', label: 'شماره موبایل', onChanged: (value) {})),
             ],
           ),
           const SizedBox(height: 15),
@@ -80,11 +81,29 @@ class _UserInfoCardState extends State<UserInfoCard> {
                       width: 90,
                       height: 90,
                       color: Colors.grey,
-                      child: Image.asset('assets/images/avatar.png', fit: BoxFit.cover),
+                      child: Image.network(
+                        widget.userIdentityInfo['avatar'] ?? '',
+                        errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                          return Image.asset(
+                            'assets/images/profile_placeholder.png',
+                          );
+                        },
+                        loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child; // Display the main image if it's already loaded
+                          }
+                          return Image.asset(
+                            'assets/images/profile_placeholder.png',
+                          );
+                        },
+                      ),
                     ),
                   ),
                   const SizedBox(height: 15),
-                  Text('سیناحاجی‌پور', style: theme.textTheme.titleLarge),
+                  Text(
+                    '${widget.userIdentityInfo['first_name']} ${widget.userIdentityInfo['last_name']}',
+                    style: theme.textTheme.titleLarge,
+                  ),
                   const SizedBox(height: 5),
                   const Text('فراگیر', style: TextStyle(fontSize: 14, color: Colors.grey)),
                 ],

@@ -49,7 +49,7 @@ class _UserPassLoginState extends State<UserPassLogin> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'به سیستم یادگیری الکترونیک خوش آمدید',
+                      'سامانه جامع آموزش مدیران و کارکنان دولت',
                       style: theme.bodyLarge,
                     ),
                     const SizedBox(height: 8),

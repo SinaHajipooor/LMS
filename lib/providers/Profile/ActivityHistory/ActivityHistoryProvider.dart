@@ -21,7 +21,7 @@ class ActivityHistoryProvider with ChangeNotifier {
     print(userId);
     try {
       final response = await http.get(
-        Uri.parse(_baseUrl + '?user_id=$userId'),
+        Uri.parse('$_baseUrl?user_id=$userId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to fetch all activities');
@@ -39,7 +39,7 @@ class ActivityHistoryProvider with ChangeNotifier {
     final userId = prefs.getString('userId');
     try {
       final response = await http.get(
-        Uri.parse(_baseUrl + '/show/$activityId?user_id=$userId'),
+        Uri.parse('$_baseUrl/show/$activityId?user_id=$userId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to fetch activity details');
@@ -54,7 +54,7 @@ class ActivityHistoryProvider with ChangeNotifier {
 
   Future<void> addActivity(Map<String, dynamic> activityInfo, File file) async {
     try {
-      var request = http.MultipartRequest('POST', Uri.parse(_baseUrl + '/store'));
+      var request = http.MultipartRequest('POST', Uri.parse('$_baseUrl/store'));
 
       request.fields['user_id'] = activityInfo['user_id'];
       request.fields['title'] = activityInfo['title'];
@@ -89,7 +89,7 @@ class ActivityHistoryProvider with ChangeNotifier {
 
   Future<void> editActivity(int activityId, Map<String, dynamic> activityInfo, File file) async {
     try {
-      var request = http.MultipartRequest('POST', Uri.parse(_baseUrl + '/update/$activityId'));
+      var request = http.MultipartRequest('POST', Uri.parse('$_baseUrl/update/$activityId'));
       request.fields['_method'] = 'put';
       request.fields['user_id'] = activityInfo['user_id'];
       request.fields['title'] = activityInfo['title'];
@@ -125,7 +125,7 @@ class ActivityHistoryProvider with ChangeNotifier {
   Future<void> deleteActivity(int activityId) async {
     try {
       final response = await http.delete(
-        Uri.parse(_baseUrl + '/destroy/$activityId'),
+        Uri.parse('$_baseUrl/destroy/$activityId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to delete activity ');

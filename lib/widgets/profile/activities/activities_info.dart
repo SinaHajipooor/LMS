@@ -65,7 +65,7 @@ class _ActivitiesInfoState extends State<ActivitiesInfo> {
           child: ListTile(
             leading: CircleAvatar(
               backgroundColor: themeMode == ThemeMode.dark ? Theme.of(context).scaffoldBackgroundColor : Colors.grey[300],
-              child: Text((index + 1).toString()), // Displaying index number in CircleAvatar
+              child: Text((index + 1).toString()),
             ),
             title: Text(
               widget.activities[index]['title'],
