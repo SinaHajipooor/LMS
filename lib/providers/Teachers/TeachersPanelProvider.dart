@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class TeachersPanelProvider with ChangeNotifier {
   // --------------- feilds ------------------
   static final _baseUrl = '${Api.instance.baseUrl}8081/api';
-  static final _teacherCurrentCoursesUrl = _baseUrl + '/lms/teacher/courses?teacher_id=';
+  static final _teacherCurrentCoursesUrl = '$_baseUrl/lms/teacher/courses?teacher_id=';
   static const _allTeacherCoursesUrl = '';
   List _teacherCurrentCourses = [];
   List _allTeacherCourses = [];
@@ -21,7 +21,7 @@ class TeachersPanelProvider with ChangeNotifier {
     final teacherId = prefs.getString('userId');
     try {
       final response = await http.get(
-        Uri.parse(_teacherCurrentCoursesUrl + '$teacherId'),
+        Uri.parse('$_teacherCurrentCoursesUrl$teacherId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('Failed to fetch all teacher current courses ');

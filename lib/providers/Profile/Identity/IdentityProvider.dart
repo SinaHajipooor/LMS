@@ -18,7 +18,7 @@ class IdentityProvider with ChangeNotifier {
       // final prefs = await SharedPreferences.getInstance();
       // final userId = prefs.getString('userId');
       final response = await http.get(
-        Uri.parse(_baseUrl + '?user_id=103'),
+        Uri.parse('$_baseUrl?user_id=103'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to fetch all identity info');

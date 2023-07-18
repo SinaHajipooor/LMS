@@ -76,9 +76,6 @@ class ActivityHistoryProvider with ChangeNotifier {
         print('activity added successfully');
         notifyListeners();
       } else {
-        print(response.statusCode);
-        print(response.stream.bytesToString());
-
         throw Exception('Failed to add activity');
       }
     } catch (error) {

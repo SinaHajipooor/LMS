@@ -20,7 +20,7 @@ class NonUniversityTeachingProvider with ChangeNotifier {
       final prefs = await SharedPreferences.getInstance();
       final userId = prefs.getString('userId');
       final respons = await http.get(
-        Uri.parse(_baseUrl + '?user_id=$userId'),
+        Uri.parse('$_baseUrl?user_id=$userId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (respons.statusCode != 200) throw Exception('failed to fetch all the non universuity teachings ');
@@ -36,7 +36,7 @@ class NonUniversityTeachingProvider with ChangeNotifier {
   Future<void> fetchNonUniversityTeachingDetails(int nonUniversityTeachingId) async {
     try {
       final response = await http.get(
-        Uri.parse(_baseUrl + '/show/$nonUniversityTeachingId'),
+        Uri.parse('$_baseUrl/show/$nonUniversityTeachingId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to fetch non university teaching details');
@@ -50,7 +50,7 @@ class NonUniversityTeachingProvider with ChangeNotifier {
   }
 
   Future<void> addNonUniversityTeaching(Map<String, dynamic> nonUniversityTeachingInfo, File file) async {
-    var request = http.MultipartRequest('POST', Uri.parse(_baseUrl + '/store'));
+    var request = http.MultipartRequest('POST', Uri.parse('$_baseUrl/store'));
     request.fields['user_id'] = nonUniversityTeachingInfo['user_id'];
     request.fields['title'] = nonUniversityTeachingInfo['title'];
     request.fields['start_date'] = nonUniversityTeachingInfo['start_date'];
@@ -72,7 +72,7 @@ class NonUniversityTeachingProvider with ChangeNotifier {
   }
 
   Future<void> editNonUniversityTeaching(int nonUniversityTeachingId, Map<String, dynamic> nonUniversityTeachingInfo, File file) async {
-    var request = http.MultipartRequest('POST', Uri.parse(_baseUrl + '/update/$nonUniversityTeachingId'));
+    var request = http.MultipartRequest('POST', Uri.parse('$_baseUrl/update/$nonUniversityTeachingId'));
     request.fields['_method'] = 'put';
     request.fields['user_id'] = nonUniversityTeachingInfo['user_id'];
     request.fields['title'] = nonUniversityTeachingInfo['title'];
@@ -97,7 +97,7 @@ class NonUniversityTeachingProvider with ChangeNotifier {
   Future<void> deleteNonUniversityTeaching(int nonUniversityTeachingId) async {
     try {
       final response = await http.delete(
-        Uri.parse(_baseUrl + '/destroy/$nonUniversityTeachingId'),
+        Uri.parse('$_baseUrl/destroy/$nonUniversityTeachingId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to delete non university teaching');

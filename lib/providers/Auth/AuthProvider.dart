@@ -70,7 +70,7 @@ class AuthProvider with ChangeNotifier {
     try {
       String confirmLoginUrl = AuthApi.instance.mobileConfirmUrl;
       final response = await http.post(
-        Uri.parse(confirmLoginUrl + '/' + _otpToken!),
+        Uri.parse('$confirmLoginUrl/$_otpToken'),
         headers: <String, String>{'Content-Type': 'application/json'},
         body: jsonEncode({'otp': '11111'}),
       );

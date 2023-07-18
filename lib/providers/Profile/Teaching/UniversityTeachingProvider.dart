@@ -21,7 +21,7 @@ class UniversityTeachingProvider with ChangeNotifier {
       final prefs = await SharedPreferences.getInstance();
       final userId = prefs.getString('userId');
       final response = await http.get(
-        Uri.parse(_baseUrl + '?user_id=$userId'),
+        Uri.parse('$_baseUrl?user_id=$userId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to fetch all university teachings');
@@ -37,7 +37,7 @@ class UniversityTeachingProvider with ChangeNotifier {
   Future<void> fetchUniversityTeachingDetails(int universityTeachingId) async {
     try {
       final response = await http.get(
-        Uri.parse(_baseUrl + '/show/$universityTeachingId'),
+        Uri.parse('$_baseUrl/show/$universityTeachingId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to fetch university twaching details');
@@ -51,7 +51,7 @@ class UniversityTeachingProvider with ChangeNotifier {
   }
 
   Future<void> addUniversityTeaching(Map<String, dynamic> universityTeachingInfo, File file) async {
-    var request = http.MultipartRequest('POST', Uri.parse(_baseUrl + '/store'));
+    var request = http.MultipartRequest('POST', Uri.parse('$_baseUrl/store'));
     request.fields['user_id'] = universityTeachingInfo['user_id'];
     request.fields['title'] = universityTeachingInfo['title'];
     request.fields['start_date'] = universityTeachingInfo['start_date'];
@@ -75,7 +75,7 @@ class UniversityTeachingProvider with ChangeNotifier {
 
   Future<void> editUniversityTeaching(int universityTeachingId, Map<String, dynamic> universityTeachingInfo, File file) async {
     try {
-      var request = http.MultipartRequest('POST', Uri.parse(_baseUrl + '/update/$universityTeachingId'));
+      var request = http.MultipartRequest('POST', Uri.parse('$_baseUrl/update/$universityTeachingId'));
       request.fields['_method'] = 'put';
       request.fields['user_id'] = universityTeachingInfo['user_id'];
       request.fields['title'] = universityTeachingInfo['title'];
@@ -105,7 +105,7 @@ class UniversityTeachingProvider with ChangeNotifier {
   Future<void> deleteUniversityTeaching(int universityTeachingId) async {
     try {
       final response = await http.delete(
-        Uri.parse(_baseUrl + '/destroy/$universityTeachingId'),
+        Uri.parse('$_baseUrl/destroy/$universityTeachingId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to delete university teaching');
