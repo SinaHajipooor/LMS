@@ -48,7 +48,7 @@ class ElectronicCourseProvider with ChangeNotifier {
   Future<void> fetchCourseDetails(int courseId) async {
     try {
       final response = await http.get(
-        Uri.parse(_courseDetailUrl + '/$courseId'),
+        Uri.parse('$_courseDetailUrl/$courseId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('Failed to get the course details');
@@ -80,7 +80,7 @@ class ElectronicCourseProvider with ChangeNotifier {
   Future<List<dynamic>> fetchElectronicCoursesByGroupId(int groupId) async {
     try {
       final response = await http.get(
-        Uri.parse(_baseUrl + '?group_id=$groupId'),
+        Uri.parse('$_baseUrl?group_id=$groupId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to fetch electronic courses by group id');
@@ -98,7 +98,7 @@ class ElectronicCourseProvider with ChangeNotifier {
     final userId = prefs.getString('userId');
     try {
       final response = await http.get(
-        Uri.parse(_courseShippingUrl + '/$courseId?student_id=' + userId!),
+        Uri.parse('$_courseShippingUrl/$courseId?student_id=$userId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to get the course shipping details');
@@ -115,7 +115,7 @@ class ElectronicCourseProvider with ChangeNotifier {
   Future<void> fetchCourseAssessmentDetails(int courseId) async {
     final prefs = await SharedPreferences.getInstance();
     final userId = prefs.getString('userId');
-    final courseAssessmentUrl = _courseDetailUrl + '/$courseId/survey/$userId';
+    final courseAssessmentUrl = '$_courseDetailUrl/$courseId/survey/$userId';
     try {
       final response = await http.get(
         Uri.parse(courseAssessmentUrl),

@@ -20,7 +20,7 @@ class ExternalPassedCoursesProvider with ChangeNotifier {
     final userId = prefs.getString('userId');
     try {
       final response = await http.get(
-        Uri.parse(_externalCoursesUrl + '?user_id=$userId'),
+        Uri.parse('$_externalCoursesUrl?user_id=$userId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to fetch the external passed courses index');
@@ -39,7 +39,7 @@ class ExternalPassedCoursesProvider with ChangeNotifier {
     final userId = prefs.getString('userId');
     try {
       final response = await http.get(
-        Uri.parse(_externalCoursesUrl + '/show/$id?user_id=$userId'),
+        Uri.parse('$_externalCoursesUrl/show/$id?user_id=$userId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to fetch external ccourse details');
@@ -55,7 +55,7 @@ class ExternalPassedCoursesProvider with ChangeNotifier {
 
   Future<void> addExternalCourse(Map<String, dynamic> externalCourseInfo, File file) async {
     try {
-      var request = http.MultipartRequest('POST', Uri.parse(_externalCoursesUrl + '/store'));
+      var request = http.MultipartRequest('POST', Uri.parse('$_externalCoursesUrl/store'));
 
       // Add other fields to the request if needed
       request.fields['user_id'] = externalCourseInfo['user_id'];
@@ -90,7 +90,7 @@ class ExternalPassedCoursesProvider with ChangeNotifier {
 
   Future<void> editExternalCourse(int id, Map<String, dynamic> externalCourseInfo, File file) async {
     try {
-      var request = http.MultipartRequest('POST', Uri.parse(_externalCoursesUrl + '/update/$id'));
+      var request = http.MultipartRequest('POST', Uri.parse('$_externalCoursesUrl/update/$id'));
       // Add other fields to the request if needed
       request.fields['_method'] = 'put';
       request.fields['user_id'] = externalCourseInfo['user_id'];
@@ -127,7 +127,7 @@ class ExternalPassedCoursesProvider with ChangeNotifier {
   Future<void> deleteExternalCourse(int id) async {
     try {
       final response = await http.delete(
-        Uri.parse(_externalCoursesUrl + '/destroy/$id'),
+        Uri.parse('$_externalCoursesUrl/destroy/$id'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to delete external course');

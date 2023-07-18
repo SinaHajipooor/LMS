@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:lms/http/Api.dart';
@@ -39,7 +38,7 @@ class SimpleCourseProvider with ChangeNotifier {
   Future<void> fetchSimpleCourseDetails(int courseId) async {
     try {
       final response = await http.get(
-        Uri.parse(_courseDetailUrl + '/$courseId'),
+        Uri.parse('$_courseDetailUrl/$courseId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to fetch simple course detail ');
@@ -57,7 +56,7 @@ class SimpleCourseProvider with ChangeNotifier {
     final userId = prefs.getString('userId');
     try {
       final response = await http.get(
-        Uri.parse(_courseShippingUrl + '/$courseId?student_id=' + userId!),
+        Uri.parse('$_courseShippingUrl/$courseId?student_id=$userId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to fetch simple course shipping details');
@@ -89,7 +88,7 @@ class SimpleCourseProvider with ChangeNotifier {
   Future<List<dynamic>> fetchSimpleCoursesByGroupId(int groupId) async {
     try {
       final response = await http.get(
-        Uri.parse(_basUrl + '?group_id=$groupId'),
+        Uri.parse('$_basUrl?group_id=$groupId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to fetch the simple courses by group');

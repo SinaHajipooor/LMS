@@ -22,7 +22,7 @@ class CompilationsProvider with ChangeNotifier {
       final userId = prefs.getString('userId');
 
       final response = await http.get(
-        Uri.parse(_baseUrl + '?user_id=$userId'),
+        Uri.parse('$_baseUrl?user_id=$userId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to fetch all compilations');
@@ -40,7 +40,7 @@ class CompilationsProvider with ChangeNotifier {
       final prefs = await SharedPreferences.getInstance();
       final userId = prefs.getString('userId');
       final response = await http.get(
-        Uri.parse(_baseUrl + '/show/$compilationId?user_id=$userId'),
+        Uri.parse('$_baseUrl/show/$compilationId?user_id=$userId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to fetch compilation details');
@@ -55,7 +55,7 @@ class CompilationsProvider with ChangeNotifier {
 
   Future<void> addCompilation(Map<String, dynamic> compilationInfo, File file) async {
     try {
-      var request = http.MultipartRequest('POST', Uri.parse(_baseUrl + '/store'));
+      var request = http.MultipartRequest('POST', Uri.parse('$_baseUrl/store'));
       request.fields['user_id'] = compilationInfo['user_id'];
       request.fields['compilation_type_id'] = compilationInfo['compilation_type_id'];
       request.fields['title'] = compilationInfo['title'];
@@ -83,7 +83,7 @@ class CompilationsProvider with ChangeNotifier {
 
   Future<void> editCompilation(int compilationId, Map<String, dynamic> compilationInfo, File file) async {
     try {
-      var request = http.MultipartRequest('POST', Uri.parse(_baseUrl + '/update/$compilationId'));
+      var request = http.MultipartRequest('POST', Uri.parse('$_baseUrl/update/$compilationId'));
       request.fields['_method'] = 'put';
       request.fields['user_id'] = compilationInfo['user_id'];
       request.fields['compilation_type_id'] = compilationInfo['compilation_type_id'];
@@ -114,7 +114,7 @@ class CompilationsProvider with ChangeNotifier {
   Future<void> deleteCompilation(int compilationId) async {
     try {
       final response = await http.delete(
-        Uri.parse(_baseUrl + '/destroy/$compilationId'),
+        Uri.parse('$_baseUrl/destroy/$compilationId'),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
       if (response.statusCode != 200) throw Exception('failed to delete compilation');
