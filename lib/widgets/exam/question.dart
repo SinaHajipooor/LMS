@@ -40,7 +40,7 @@ class Question extends StatelessWidget {
               const SizedBox(width: 10),
               Visibility(
                 visible: usecase == 1,
-                child: ImagePreview(imagePath: 'http://45.149.77.156:8080/portal-assets/img/team/team-1.jpg'),
+                child: const ImagePreview(imagePath: 'https://esanj.ir/mag/files/Intelligence%20Test%2023_question.jpg'),
               ),
             ],
           ),
