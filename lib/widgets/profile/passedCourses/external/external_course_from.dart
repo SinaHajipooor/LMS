@@ -196,7 +196,7 @@ class _ExternalCourseFormState extends State<ExternalCourseForm> {
                         children: [
                           Row(
                             children: [
-                              Expanded(child: TextInput(label: 'عنوان', keyboardType: TextInputType.text, controller: titleController, onChanged: (value) {}, editable: true)),
+                              Expanded(child: TextInput(label: 'عنوان', keyboardType: TextInputType.name, controller: titleController, onChanged: (value) {}, editable: true)),
                               Expanded(child: TextInput(label: 'نام موسسه', onChanged: (value) {}, controller: instituteController, keyboardType: TextInputType.name)),
                             ],
                           ),
