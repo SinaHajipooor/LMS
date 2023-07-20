@@ -194,7 +194,7 @@ class _UniversityTeachingFormState extends State<UniversityTeachingForm> {
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Expanded(child: TextInput(controller: titleController, label: 'عنوان', onChanged: (value) {}, keyboardType: TextInputType.number)),
+                              Expanded(child: TextInput(controller: titleController, label: 'عنوان', onChanged: (value) {}, keyboardType: TextInputType.name)),
                               Expanded(
                                 child: CustomDropdown(
                                   placeholder: 'مقطع تحصیلی',
