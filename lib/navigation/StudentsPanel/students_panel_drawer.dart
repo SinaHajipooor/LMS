@@ -15,6 +15,8 @@ class StudentsPanelDrawer extends StatefulWidget {
 }
 
 class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
+  // ----------------- methods ------------------
+
   void _showConfirmationAlert(BuildContext context) {
     AwesomeDialog(
       context: context,
@@ -37,6 +39,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
       },
     ).show();
   }
+  // ----------------- UI ------------------
 
   @override
   Widget build(BuildContext context) {
