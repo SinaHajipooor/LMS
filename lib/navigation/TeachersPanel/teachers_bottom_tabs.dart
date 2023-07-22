@@ -17,7 +17,7 @@ class _TeachersBottomTabsState extends State<TeachersBottomTabs> {
   int? _currentIndex;
   final List<Widget> _screens = [
     TeacherDashbordScreen(),
-    TeachingDocumentScreen(),
+    const TeachingDocumentScreen(),
   ];
   // ----------------- lifecycle ------------------
 
