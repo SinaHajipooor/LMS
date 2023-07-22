@@ -24,7 +24,7 @@ class _ExamScreenState extends State<ExamScreen> {
   int? courseId;
   int selectedQuestionIndex = 0;
 
-  List<String> _questions = [
+  final List<String> _questions = [
     "Question 1: What is Flutter?",
     "Question 1: What is Flutter?",
     "Question 1: What is Flutter?",
@@ -36,7 +36,7 @@ class _ExamScreenState extends State<ExamScreen> {
     "Question 4: What is hot reload?",
   ];
 
-  List<List<String>> _answers = [
+  final List<List<String>> _answers = [
     ["A) A new programming language", "B) A mobile development framework", "C) An IDE for Android Studio", "D) None of the above"],
     ["A) A new programming language", "B) A mobile development framework", "C) An IDE for Android Studio", "D) None of the above"],
     ["A) A visual element in a user interface", "B) A type of data structure", "C) A function in Dart", "D) A database query language"],
