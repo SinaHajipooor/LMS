@@ -78,7 +78,7 @@ class _InternalPassedCoursesScreenState extends State<InternalPassedCoursesScree
           IconButton(onPressed: () => _showJobinfoFormModal(context, deviceSize.height, 1), icon: Icon(Icons.add, color: themeMode == ThemeMode.light ? Colors.blue : Colors.white)),
         ],
       ),
-      body: _isLoading ? const Center(child: Spinner(size: 35)) : InternalPassedCoursesInfo(),
+      body: _isLoading ? const Center(child: Spinner(size: 35)) : const InternalPassedCoursesInfo(),
     );
   }
 }

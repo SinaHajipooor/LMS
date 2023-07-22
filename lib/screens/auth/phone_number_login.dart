@@ -16,7 +16,7 @@ class _PhoneNumberLoginState extends State<PhoneNumberLogin> {
   final _formKey = GlobalKey<FormState>();
 
   // 0 for phone number login and 1 for otp login
-  PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
   bool _isLoading = false;
   String? _mobile;
 //------------------------ methods ----------------------

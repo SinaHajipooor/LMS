@@ -99,7 +99,6 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
                       return NotificationListener<ScrollEndNotification>(
                         onNotification: (notification) {
                           setState(() {
-                            // Add bottom margin if user reached end of scrollable area
                             _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
                           });
                           return true;

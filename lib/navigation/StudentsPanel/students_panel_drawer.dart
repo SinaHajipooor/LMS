@@ -80,11 +80,11 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
                 top: 16.0,
                 left: 12.0,
                 child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 300), // Set the duration of the animation
+                  duration: const Duration(milliseconds: 300),
                   transitionBuilder: (Widget child, Animation<double> animation) {
                     final offsetAnimation = Tween<Offset>(
-                      begin: const Offset(1, 0), // Set the initial offset for the animation
-                      end: Offset.zero, // Set the final offset for the animation
+                      begin: const Offset(1, 0),
+                      end: Offset.zero,
                     ).animate(animation);
                     return SlideTransition(
                       position: offsetAnimation,
@@ -92,7 +92,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
                     );
                   },
                   child: InkWell(
-                    key: ValueKey(themeMode), // Update when the theme changes
+                    key: ValueKey(themeMode),
                     onTap: () {
                       Provider.of<MyThemeModel>(context, listen: false).toggleTheme();
                     },
@@ -134,7 +134,6 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
               title: Text('پنل مدرسان', style: theme.textTheme.titleSmall),
             ),
           ),
-
           InkWell(
             onTap: () {
               _showConfirmationAlert(context);
@@ -144,7 +143,6 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
               title: Text('خروج', style: theme.textTheme.titleSmall),
             ),
           ),
-          // Add more ListTile items as needed
         ],
       ),
     );
