@@ -19,7 +19,6 @@ class OtpLogin extends StatefulWidget {
 
 class _OtpLoginState extends State<OtpLogin> {
   // --------------- state ----------------
-  // OtpFieldController otpFieldController = OtpFieldController();
   final TextEditingController pinEditingController = TextEditingController();
   Timer? _timer;
   int _startSeconds = 90;

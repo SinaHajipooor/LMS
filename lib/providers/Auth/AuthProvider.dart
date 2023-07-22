@@ -36,7 +36,7 @@ class AuthProvider with ChangeNotifier {
       final Map<String, dynamic>? responseData = jsonDecode(response.body) as Map<String, dynamic>?;
       _token = responseData?['result']?['token'];
       _userId = responseData?['result']?['user']?['id'];
-      // store user data in device storage
+
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('token', _token!);
       prefs.setString('userId', _userId.toString());
@@ -78,7 +78,7 @@ class AuthProvider with ChangeNotifier {
       final Map<String, dynamic>? responseData = jsonDecode(response.body) as Map<String, dynamic>?;
       _token = responseData?['result']?['token'];
       _userId = responseData?['result']?['user']?['id'];
-// store the user data
+
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('token', _token!);
       prefs.setString('userId', _userId.toString());
