@@ -24,7 +24,7 @@ class _OtpLoginState extends State<OtpLogin> {
   int _startSeconds = 90;
   int _elapsedSeconds = 0;
   bool _isLoading = false;
-  String _otpCode = '';
+  final String _otpCode = '';
   // --------------- lifecycle ----------------
   @override
   void initState() {
