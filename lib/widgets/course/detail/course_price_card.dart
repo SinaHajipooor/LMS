@@ -53,12 +53,12 @@ class CoursePriceCard extends StatelessWidget {
                               children: [
                                 Text(
                                   amount,
-                                  style: TextStyle(decoration: TextDecoration.lineThrough, color: themeMode == ThemeMode.dark ? Colors.white24 : Colors.black, decorationColor: Colors.red[800], fontSize: 20),
+                                  style: TextStyle(decoration: TextDecoration.lineThrough, color: themeMode == ThemeMode.dark ? Colors.white24 : Colors.black, decorationColor: Colors.red[800], fontSize: 16),
                                 ),
                                 const SizedBox(width: 10),
                                 Text(
                                   '$finalAmount تومان',
-                                  style: const TextStyle(fontSize: 20, color: Colors.blue),
+                                  style: Theme.of(context).textTheme.titleMedium!.copyWith(color: Colors.blue, fontWeight: FontWeight.normal),
                                 ),
                               ],
                             ),
