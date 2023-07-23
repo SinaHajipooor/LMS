@@ -56,10 +56,10 @@ class CourseImage extends StatelessWidget {
               ],
             ),
             child: Text(
-              lessonName,
+              lessonName.isNotEmpty ? lessonName : 'نام درس مشخص نمی‌باشد !',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 16,
+                fontSize: lessonName.isNotEmpty ? 16 : 13,
                 fontWeight: FontWeight.bold,
                 shadows: [
                   Shadow(

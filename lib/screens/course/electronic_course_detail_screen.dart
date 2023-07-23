@@ -11,7 +11,6 @@ import '../../widgets/course/detail/course_detail_text.dart';
 import '../../widgets/course/detail/course_name.dart';
 import 'package:provider/provider.dart';
 import '../../providers/Course/ElectronicCourseProvider.dart';
-import '../root/home_screen.dart';
 import '../../widgets/elements/spinner.dart';
 import '../../widgets/course/detail/course_exams_list.dart';
 import '../../widgets/course/detail/course_description.dart';
@@ -99,7 +98,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
     final darkShadowColors = [theme.scaffoldBackgroundColor, theme.scaffoldBackgroundColor.withOpacity(0)];
     return WillPopScope(
       onWillPop: () async {
-        Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+        Navigator.of(context).pop();
         return false;
       },
       child: Scaffold(
@@ -137,17 +136,18 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                         delegate: SliverChildListDelegate.fixed(
                           [
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
-                              return CourseName(courseName: myProvider.courseDetails['title'] ?? '_');
+                              return CourseName(courseName: myProvider.courseDetails['title'] ?? '');
                             }),
-                            const SizedBox(height: 25),
-                            const CourseTeachersList(),
-                            const SizedBox(height: 35),
+                            const SizedBox(height: 15),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
                               return CourseImage(
                                 imageUrl: myProvider.courseDetails['main_image'],
-                                lessonName: myProvider.courseDetails['lesson_id'] ?? '_',
+                                lessonName: myProvider.courseDetails['lesson_id'] ?? '',
                               );
                             }),
+                            const SizedBox(height: 25),
+                            const CourseTeachersList(),
+                            const SizedBox(height: 25),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(32, 20, 32, 16),
                               child: Text(
@@ -156,7 +156,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                               ),
                             ),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
-                              return CourseDetailText(description: myProvider.courseDetails['description'] ?? 'توضیحی وجود ندارد !!');
+                              return CourseDetailText(description: myProvider.courseDetails['description'] ?? '');
                             }),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
                               return CourseDetailCards(

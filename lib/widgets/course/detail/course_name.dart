@@ -10,7 +10,7 @@ class CourseName extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(32, 16, 32, 16),
       child: Text(
-        courseName,
+        courseName.isEmpty ? 'نام دوره مشخص نمی‌باشد' : courseName,
         style: theme.textTheme.titleLarge,
         overflow: TextOverflow.ellipsis,
         maxLines: 2,

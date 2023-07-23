@@ -14,7 +14,7 @@ class CourseTeachersList extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: List.generate(
-                5,
+                2,
                 (index) => Padding(
                   padding: const EdgeInsets.only(right: 16),
                   child: Row(

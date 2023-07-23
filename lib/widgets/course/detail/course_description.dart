@@ -57,7 +57,7 @@ class _CourseDescriptionState extends State<CourseDescription> {
                             widget.description.isNotEmpty ? widget.title : 'برای این درس گواهینامه وجود ندارد ! ',
                             style: TextStyle(
                               color: _isExpanded ? Colors.blue : (themeMode == ThemeMode.dark ? Colors.white : Colors.black),
-                              fontSize: _isExpanded ? 16.0 : 15,
+                              fontSize: _isExpanded ? 16.0 : (widget.description.isNotEmpty ? 15 : 14),
                               fontWeight: _isExpanded ? FontWeight.bold : FontWeight.normal,
                             ),
                           ),
