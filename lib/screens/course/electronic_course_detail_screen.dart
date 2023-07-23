@@ -156,7 +156,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                               ),
                             ),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
-                              return CourseDetailText(description: myProvider.courseDetails['description'] ?? 'توضیحی وجود ندارد !!');
+                              return CourseDetailText(description: myProvider.courseDetails['description'] ?? '');
                             }),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
                               return CourseDetailCards(
