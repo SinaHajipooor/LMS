@@ -51,7 +51,7 @@ class _ElectronicCoursesListState extends State<ElectronicCoursesList> {
         coursePrice: electronicCourses[i]['final_amount'] ?? '_',
         courseTime: electronicCourses[i]['time'] ?? '_',
         courseImage: electronicCourses[i]['main_image'] ?? '',
-        teacherName: electronicCourses[i]['teacher']?['name'] ?? '_',
+        teacherName: electronicCourses[i]['teacher']?['name'] ?? 'مشخص نمی‌باشد',
         courseSessions: electronicCourses[i]['sessions'] ?? 0,
       ),
     );
