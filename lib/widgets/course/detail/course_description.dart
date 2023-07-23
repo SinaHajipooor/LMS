@@ -25,7 +25,7 @@ class _CourseDescriptionState extends State<CourseDescription> {
     return InkWell(
       onTap: () {
         setState(() {
-          _isExpanded = !_isExpanded;
+          widget.description.isNotEmpty ? _isExpanded = !_isExpanded : null;
         });
       },
       child: Card(
@@ -40,7 +40,7 @@ class _CourseDescriptionState extends State<CourseDescription> {
               return GestureDetector(
                 onTap: () {
                   setState(() {
-                    _isExpanded = !_isExpanded;
+                    widget.description.isNotEmpty ? _isExpanded = !_isExpanded : null;
                   });
                 },
                 child: Container(
@@ -54,7 +54,7 @@ class _CourseDescriptionState extends State<CourseDescription> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            widget.title,
+                            widget.description.isNotEmpty ? widget.title : 'برای این درس گواهینامه وجود ندارد ! ',
                             style: TextStyle(
                               color: _isExpanded ? Colors.blue : (themeMode == ThemeMode.dark ? Colors.white : Colors.black),
                               fontSize: _isExpanded ? 16.0 : 15,
@@ -65,16 +65,19 @@ class _CourseDescriptionState extends State<CourseDescription> {
                         ],
                       ),
                       const SizedBox(height: 16.0),
-                      Expanded(
-                        child: AnimatedOpacity(
-                          duration: const Duration(milliseconds: 500),
-                          opacity: _isExpanded ? 1.0 : 0.0,
-                          child: SingleChildScrollView(
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                widget.description,
-                                style: const TextStyle(fontSize: 12.0),
+                      Visibility(
+                        visible: widget.description.isNotEmpty,
+                        child: Expanded(
+                          child: AnimatedOpacity(
+                            duration: const Duration(milliseconds: 500),
+                            opacity: _isExpanded ? 1.0 : 0.0,
+                            child: SingleChildScrollView(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  widget.description,
+                                  style: const TextStyle(fontSize: 12.0),
+                                ),
                               ),
                             ),
                           ),

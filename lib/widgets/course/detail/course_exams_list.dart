@@ -53,7 +53,7 @@ class _CourseExamsListState extends State<CourseExamsList> {
     return InkWell(
       onTap: () {
         setState(() {
-          _isExpanded = !_isExpanded;
+          widget.exams.isNotEmpty ? _isExpanded = !_isExpanded : null;
         });
       },
       child: Card(
@@ -68,7 +68,7 @@ class _CourseExamsListState extends State<CourseExamsList> {
               return GestureDetector(
                 onTap: () {
                   setState(() {
-                    _isExpanded = !_isExpanded;
+                    widget.exams.isNotEmpty ? _isExpanded = !_isExpanded : null;
                   });
                 },
                 child: Container(
@@ -85,7 +85,7 @@ class _CourseExamsListState extends State<CourseExamsList> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Text(
-                              widget.title,
+                              widget.exams.isEmpty ? 'برای این درس آزمون وجود ندارد ! ' : widget.title,
                               style: TextStyle(
                                 color: _isExpanded ? Colors.blue : (themeMode == ThemeMode.dark ? Colors.white : Colors.black),
                                 fontSize: _isExpanded ? 16.0 : 15,
@@ -95,7 +95,7 @@ class _CourseExamsListState extends State<CourseExamsList> {
                             InkWell(
                               onTap: () {
                                 setState(() {
-                                  _isExpanded = !_isExpanded;
+                                  widget.exams.isNotEmpty ? _isExpanded = !_isExpanded : null;
                                 });
                               },
                               child: Icon(_isExpanded ? Icons.keyboard_arrow_down : Icons.keyboard_arrow_left, size: 25.0),
@@ -104,30 +104,33 @@ class _CourseExamsListState extends State<CourseExamsList> {
                         ),
                       ),
                       const SizedBox(height: 1.0),
-                      Expanded(
-                        child: AnimatedOpacity(
-                          duration: const Duration(milliseconds: 500),
-                          opacity: _isExpanded ? 1.0 : 0.0,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: widget.exams.length,
-                            itemBuilder: (ctx, i) => Container(
-                              decoration: widget.exams.length == i + 1
-                                  ? null
-                                  : const BoxDecoration(
-                                      border: Border(
-                                        bottom: BorderSide(
-                                          color: Colors.grey,
-                                          width: 0.5,
+                      Visibility(
+                        visible: widget.exams.isNotEmpty,
+                        child: Expanded(
+                          child: AnimatedOpacity(
+                            duration: const Duration(milliseconds: 500),
+                            opacity: _isExpanded ? 1.0 : 0.0,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: widget.exams.length,
+                              itemBuilder: (ctx, i) => Container(
+                                decoration: widget.exams.length == i + 1
+                                    ? null
+                                    : const BoxDecoration(
+                                        border: Border(
+                                          bottom: BorderSide(
+                                            color: Colors.grey,
+                                            width: 0.5,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                              child: ListTile(
-                                title: Text('${widget.exams[i]['type']['name']}', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
-                                subtitle: Text('تعداد سوالات : ${widget.exams[i]['question_count']}    مدت آزمون : ${widget.exams[i]['duration']} دقیقه', style: const TextStyle(fontSize: 11)),
-                                trailing: IconButton(
-                                  onPressed: () => _showConfirmationAlert(context, widget.exams[i]['id']),
-                                  icon: const Icon(Icons.play_arrow, color: Colors.green),
+                                child: ListTile(
+                                  title: Text('${widget.exams[i]['type']['name']}', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
+                                  subtitle: Text('تعداد سوالات : ${widget.exams[i]['question_count']}    مدت آزمون : ${widget.exams[i]['duration']} دقیقه', style: const TextStyle(fontSize: 11)),
+                                  trailing: IconButton(
+                                    onPressed: () => _showConfirmationAlert(context, widget.exams[i]['id']),
+                                    icon: const Icon(Icons.play_arrow, color: Colors.green),
+                                  ),
                                 ),
                               ),
                             ),
