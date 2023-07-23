@@ -137,7 +137,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                         delegate: SliverChildListDelegate.fixed(
                           [
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
-                              return CourseName(courseName: myProvider.courseDetails['title'] ?? '_');
+                              return CourseName(courseName: myProvider.courseDetails['title'] ?? '');
                             }),
                             const SizedBox(height: 25),
                             const CourseTeachersList(),
