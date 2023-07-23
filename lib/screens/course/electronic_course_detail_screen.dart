@@ -139,15 +139,16 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
                               return CourseName(courseName: myProvider.courseDetails['title'] ?? '');
                             }),
-                            const SizedBox(height: 25),
-                            const CourseTeachersList(),
-                            const SizedBox(height: 35),
+                            const SizedBox(height: 15),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
                               return CourseImage(
                                 imageUrl: myProvider.courseDetails['main_image'],
                                 lessonName: myProvider.courseDetails['lesson_id'] ?? '',
                               );
                             }),
+                            const SizedBox(height: 25),
+                            const CourseTeachersList(),
+                            const SizedBox(height: 25),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(32, 20, 32, 16),
                               child: Text(

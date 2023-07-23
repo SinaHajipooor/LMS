@@ -20,13 +20,14 @@ class CourseDetailText extends StatelessWidget {
           ),
         ),
         Visibility(
+            visible: description.isEmpty,
             child: Padding(
-          padding: const EdgeInsets.only(top: 15, bottom: 50),
-          child: Text(
-            'توضیحی برای این دوره وجود ندارد !',
-            style: theme.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.normal, fontSize: 13),
-          ),
-        ))
+              padding: const EdgeInsets.only(top: 15, bottom: 50),
+              child: Text(
+                'توضیحی برای این دوره وجود ندارد !',
+                style: theme.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.normal, fontSize: 13),
+              ),
+            ))
       ],
     );
   }
