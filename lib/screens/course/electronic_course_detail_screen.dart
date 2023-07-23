@@ -145,7 +145,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
                               return CourseImage(
                                 imageUrl: myProvider.courseDetails['main_image'],
-                                lessonName: myProvider.courseDetails['lesson_id'] ?? '_',
+                                lessonName: myProvider.courseDetails['lesson_id'] ?? '',
                               );
                             }),
                             Padding(
