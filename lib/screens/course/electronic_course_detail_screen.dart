@@ -193,7 +193,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                             }),
                             const SizedBox(height: 20),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
-                              return CourseDescription(title: 'گواهینامه', description: myProvider.courseDetails['description']);
+                              return CourseDescription(title: 'گواهینامه', description: myProvider.courseDetails['description'] ?? '');
                             }),
                             const SizedBox(height: 15),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
