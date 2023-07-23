@@ -4,7 +4,6 @@ import 'package:lms/helpers/InternetConnectivityHelper.dart';
 import 'package:lms/helpers/ThemeHelper.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/screens/course/course_shipping_screen.dart';
-import 'package:lms/screens/root/home_screen.dart';
 import 'package:lms/widgets/course/detail/course_comments_list.dart';
 import 'package:lms/widgets/course/detail/course_detail_cards.dart';
 import 'package:lms/widgets/course/detail/course_detail_text.dart';
@@ -94,7 +93,7 @@ class _SimpleCourseDetailScreenState extends State<SimpleCourseDetailScreen> {
     final darkShadowColors = [theme.scaffoldBackgroundColor, theme.scaffoldBackgroundColor.withOpacity(0)];
     return WillPopScope(
       onWillPop: () async {
-        Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+        Navigator.of(context).pop();
         return false;
       },
       child: Scaffold(
@@ -139,9 +138,7 @@ class _SimpleCourseDetailScreenState extends State<SimpleCourseDetailScreen> {
                             Consumer<SimpleCourseProvider>(builder: (context, myProvider, child) {
                               return CourseName(courseName: myProvider.courseDetails['title'] ?? '_');
                             }),
-                            const SizedBox(height: 25),
-                            const CourseTeachersList(),
-                            const SizedBox(height: 35),
+                            const SizedBox(height: 15),
                             Consumer<SimpleCourseProvider>(
                               builder: (context, myProvider, child) {
                                 return CourseImage(
@@ -150,6 +147,9 @@ class _SimpleCourseDetailScreenState extends State<SimpleCourseDetailScreen> {
                                 );
                               },
                             ),
+                            const SizedBox(height: 25),
+                            const CourseTeachersList(),
+                            const SizedBox(height: 25),
                             const Padding(
                               padding: EdgeInsets.fromLTRB(32, 20, 32, 16),
                               child: Text(
@@ -159,7 +159,7 @@ class _SimpleCourseDetailScreenState extends State<SimpleCourseDetailScreen> {
                             ),
                             Consumer<SimpleCourseProvider>(
                               builder: (context, myProvider, child) {
-                                return CourseDetailText(description: myProvider.courseDetails['description'] ?? 'نوضیحی وجود ندارد !');
+                                return CourseDetailText(description: myProvider.courseDetails['description'] ?? '');
                               },
                             ),
                             Consumer<SimpleCourseProvider>(builder: (context, myProvider, child) {

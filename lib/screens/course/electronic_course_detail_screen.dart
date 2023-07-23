@@ -11,7 +11,6 @@ import '../../widgets/course/detail/course_detail_text.dart';
 import '../../widgets/course/detail/course_name.dart';
 import 'package:provider/provider.dart';
 import '../../providers/Course/ElectronicCourseProvider.dart';
-import '../root/home_screen.dart';
 import '../../widgets/elements/spinner.dart';
 import '../../widgets/course/detail/course_exams_list.dart';
 import '../../widgets/course/detail/course_description.dart';
@@ -99,7 +98,7 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
     final darkShadowColors = [theme.scaffoldBackgroundColor, theme.scaffoldBackgroundColor.withOpacity(0)];
     return WillPopScope(
       onWillPop: () async {
-        Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+        Navigator.of(context).pop();
         return false;
       },
       child: Scaffold(
