@@ -30,12 +30,12 @@ class _PaymentGatewaysListState extends State<PaymentGatewaysList> {
           onTap: () => setSelectedPaymentGateways(paymentGateway['id']),
           child: ListTile(
             title: Text(
-              paymentGateway['type'],
+              paymentGateway['type'] ?? '',
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 13),
             ),
-            subtitle: Text(paymentGateway['name'], style: Theme.of(context).textTheme.bodySmall),
+            subtitle: Text(paymentGateway['name'] ?? '', style: Theme.of(context).textTheme.bodySmall),
             leading: CircleAvatar(
-              backgroundImage: NetworkImage(paymentGateway['logo']),
+              backgroundImage: NetworkImage(paymentGateway['logo'] ?? ''),
             ),
             trailing: Radio(
               value: paymentGateway['id'],
