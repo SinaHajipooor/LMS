@@ -16,7 +16,7 @@ class CourseMeetingDetails extends StatelessWidget {
           child: Row(
             children: [
               Text('ماهیت جلسه : ', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
-              Text(meeting['meeting_method'], style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
+              Text(meeting['meeting_method'] ?? '', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
             ],
           ),
         ),
@@ -25,7 +25,7 @@ class CourseMeetingDetails extends StatelessWidget {
           child: Row(
             children: [
               Text('نوع برگزاری : ', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
-              Text(meeting['hold_course']['name'], style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
+              Text(meeting['hold_course']['name'] ?? '', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
             ],
           ),
         ),
@@ -34,7 +34,7 @@ class CourseMeetingDetails extends StatelessWidget {
           child: Row(
             children: [
               Text('تلفن هماهنگی : ', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
-              Text(meeting['support_phone'], style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
+              Text(meeting['support_phone'] ?? '', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
             ],
           ),
         ),
@@ -46,7 +46,7 @@ class CourseMeetingDetails extends StatelessWidget {
               Text('آدرس : ', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
               Flexible(
                 child: Text(
-                  meeting['address'],
+                  meeting['address'] ?? '',
                   style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal),
                   softWrap: true,
                 ),
@@ -62,13 +62,13 @@ class CourseMeetingDetails extends StatelessWidget {
               Row(
                 children: [
                   Text('مدرس : ', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
-                  Text(meeting['teacher'], style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
+                  Text(meeting['teacher'] ?? '', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
                 ],
               ),
               Row(
                 children: [
                   Text('ناظر : ', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
-                  Text(meeting['supervisor'], style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
+                  Text(meeting['supervisor'] ?? '', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
                 ],
               ),
             ],
@@ -83,7 +83,7 @@ class CourseMeetingDetails extends StatelessWidget {
               Text('توضیحات : ', style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal)),
               Flexible(
                 child: Text(
-                  meeting['description'],
+                  meeting['description'] ?? 'توضیحی وجود ندارد',
                   style: theme.titleSmall!.copyWith(fontWeight: FontWeight.normal),
                   softWrap: true,
                 ),

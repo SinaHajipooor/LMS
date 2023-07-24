@@ -72,12 +72,12 @@ class _CourseShippingScreenState extends State<CourseShippingScreen> {
                 child: Column(
                   children: [
                     CoursePurchaseDetails(
-                      courseDiscount: courseInfo?['discount'],
-                      courseImageUrl: courseInfo?['main_image'],
-                      sessionsCount: courseInfo?['sessions_count'],
-                      coursePeriod: courseInfo?['time'],
-                      courseName: courseInfo?['title'],
-                      courseTotalAmount: courseInfo?['final_amount'],
+                      courseDiscount: courseInfo?['discount'] ?? '',
+                      courseImageUrl: courseInfo?['main_image'] ?? '',
+                      sessionsCount: courseInfo?['sessions_count'] ?? '',
+                      coursePeriod: courseInfo?['time'] ?? '',
+                      courseName: courseInfo?['title'] ?? '',
+                      courseTotalAmount: courseInfo?['final_amount'] ?? '',
                     ),
                     CoursePaymentApproachs(paymentGateways: Provider.of<ElectronicCourseProvider>(context).coursePaymentGateways),
                   ],
