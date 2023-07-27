@@ -126,11 +126,11 @@ class _TeachersBottomTabsState extends State<TeachersBottomTabs> {
       ),
     );
   }
+  List listOfStrings = ['داشبود', 'پرونده تدریس'];
 
   List listOfIcons = [
     Icons.home,
     Icons.edit_document,
   ];
 
-  List listOfStrings = ['داشبود', 'پرونده تدریس'];
 }
