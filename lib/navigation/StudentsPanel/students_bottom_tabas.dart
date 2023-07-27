@@ -150,17 +150,17 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
     );
   }
 
-  List listOfIcons = [
-    Icons.computer,
-    Icons.people_alt,
-    Icons.home,
-    Icons.collections_bookmark_sharp,
-  ];
-
   List listOfStrings = [
     'الکترونیک',
     'حضوری',
     'داشبورد',
     'آموزشی',
+  ];
+
+  List listOfIcons = [
+    Icons.computer,
+    Icons.people_alt,
+    Icons.home,
+    Icons.collections_bookmark_sharp,
   ];
 }
