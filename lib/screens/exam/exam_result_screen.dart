@@ -64,6 +64,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         title: Text('نتیجه آزمون', style: Theme.of(context).textTheme.titleMedium),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
