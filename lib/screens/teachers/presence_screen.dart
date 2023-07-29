@@ -59,10 +59,10 @@ class _PresenceScreenState extends State<PresenceScreen> {
       buttonsTextStyle: const TextStyle(fontSize: 15),
       btnCancelOnPress: () => Navigator.of(context).pop(),
       btnOkOnPress: () {
-        const snackBar = SnackBar(
+        var snackBar = SnackBar(
           backgroundColor: Colors.green,
-          content: Text('گزارش با موفقیت ثبت شد', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
-          duration: Duration(seconds: 3),
+          content: Text('گزارش با موفقیت ثبت شد', style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white, fontSize: 14)),
+          duration: const Duration(seconds: 3),
         );
         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const TeachersBottomTabs(defaultPageIndex: 0)));
         ScaffoldMessenger.of(context).showSnackBar(snackBar);

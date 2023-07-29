@@ -31,7 +31,7 @@ class _PresenceListState extends State<PresenceList> {
           margin: index == students.length - 1 ? const EdgeInsets.only(bottom: 180) : null,
           child: Card(
             elevation: 1,
-            margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 5),
+            margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
             child: Column(
               children: [
                 ListTile(

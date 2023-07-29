@@ -51,11 +51,11 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
                 width: MediaQuery.of(context).size.width,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Theme.of(context).appBarTheme.backgroundColor,
+                    color: themeMode == ThemeMode.dark ? const Color.fromARGB(255, 35, 40, 49) : Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: themeMode == ThemeMode.light ? Colors.black.withOpacity(.1) : Colors.blue.withOpacity(.1),
-                        blurRadius: 6,
+                        color: themeMode == ThemeMode.light ? Colors.black.withOpacity(.1) : Colors.blue.withOpacity(.0),
+                        blurRadius: 5,
                       ),
                     ],
                     borderRadius: BorderRadius.circular(20),
@@ -127,10 +127,11 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
                                       curve: Curves.fastLinearToSlowEaseIn,
                                       width: index == _currentIndex ? displayWidth * .03 : 20,
                                     ),
-                                    Icon(
-                                      listOfIcons[index],
-                                      size: displayWidth * .055,
+                                    Image(
+                                      width: 22,
+                                      height: 22,
                                       color: index == _currentIndex ? Colors.blueAccent : Colors.grey,
+                                      image: listofImageIcons[index],
                                     ),
                                   ],
                                 ),
@@ -157,10 +158,10 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
     'آموزشی',
   ];
 
-  List listOfIcons = [
-    Icons.computer,
-    Icons.people_alt,
-    Icons.home,
-    Icons.collections_bookmark_sharp,
+  List listofImageIcons = [
+    const AssetImage('assets/images/icons/computer.png'),
+    const AssetImage('assets/images/icons/non-university-teacher.png'),
+    const AssetImage('assets/images/icons/dashboard.png'),
+    const AssetImage('assets/images/icons/book.png'),
   ];
 }

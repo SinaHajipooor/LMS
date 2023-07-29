@@ -87,7 +87,7 @@ class _TmsSliderState extends State<TmsSlider> {
                         child: Text(
                           item['name'],
                           style: theme.textTheme.bodyMedium,
-                          maxLines: 2,
+                          maxLines: 1,
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                         ),

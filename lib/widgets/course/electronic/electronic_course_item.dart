@@ -28,7 +28,7 @@ class ElectronicCourseItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+      margin: const EdgeInsets.fromLTRB(6, 5, 6, 5),
       height: 130,
       child: Card(
         elevation: 1,
@@ -71,16 +71,16 @@ class ElectronicCourseItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 15, right: 7),
-                        child: Text(courseTitle, style: theme.textTheme.titleSmall!.apply(color: Colors.blue)),
+                        padding: const EdgeInsets.only(top: 10, right: 7),
+                        child: Text(courseTitle, style: theme.textTheme.titleSmall!.apply(color: Colors.blue), maxLines: 1, overflow: TextOverflow.ellipsis),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10, right: 7),
+                        child: Text('استاد دوره : $teacherName', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 11)),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 5, right: 7),
-                        child: Text('استاد دوره : $teacherName', style: theme.textTheme.bodyMedium),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5, right: 7),
-                        child: Text('قیمت : $coursePrice تومان', style: theme.textTheme.bodyMedium),
+                        child: Text('قیمت : $coursePrice تومان', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 11)),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 10, right: 7, bottom: 5),

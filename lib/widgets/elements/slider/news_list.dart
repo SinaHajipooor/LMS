@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:provider/provider.dart';
 import '../spinner.dart';
 
 class NewsList extends StatefulWidget {
@@ -92,6 +94,7 @@ class _NewsListState extends State<NewsList> with SingleTickerProviderStateMixin
   }
 
   Widget _buildNewsItem(dynamic newsItem) {
+    final themeMode = Provider.of<MyThemeModel>(context).themeMode;
     return FadeTransition(
       opacity: _animation,
       child: Container(
@@ -122,12 +125,20 @@ class _NewsListState extends State<NewsList> with SingleTickerProviderStateMixin
                     topLeft: Radius.circular(10),
                     bottomRight: Radius.circular(10),
                   ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: themeMode == ThemeMode.dark ? Colors.black.withOpacity(0.4) : Colors.white.withOpacity(0.4),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 2), // changes the position of the shadow
+                    ),
+                  ],
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 child: Text(
                   newsItem['name'],
                   style: Theme.of(context).textTheme.bodyLarge,
-                  maxLines: 2,
+                  maxLines: 1,
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                 ),
