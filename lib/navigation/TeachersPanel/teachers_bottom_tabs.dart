@@ -41,10 +41,10 @@ class _TeachersBottomTabsState extends State<TeachersBottomTabs> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 16, 16, 15),
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 15),
               child: SizedBox(
                 height: displayWidth * .155,
-                width: MediaQuery.of(context).size.width / 1.5,
+                width: MediaQuery.of(context).size.width / 1.6,
                 child: Container(
                   decoration: BoxDecoration(
                     color: Theme.of(context).scaffoldBackgroundColor,
@@ -60,61 +60,63 @@ class _TeachersBottomTabsState extends State<TeachersBottomTabs> {
                     itemCount: 2,
                     scrollDirection: Axis.horizontal,
                     padding: EdgeInsets.symmetric(horizontal: displayWidth * .01),
-                    itemBuilder: (context, index) => InkWell(
-                      onTap: () {
-                        setState(() {
-                          _currentIndex = index;
-                          HapticFeedback.lightImpact();
-                        });
-                      },
-                      splashColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      child: Stack(
-                        children: [
-                          AnimatedContainer(
-                            duration: const Duration(seconds: 1),
-                            curve: Curves.fastLinearToSlowEaseIn,
-                            width: displayWidth * .3,
-                            alignment: Alignment.center,
-                            child: AnimatedContainer(
+                    itemBuilder: (context, index) => Center(
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {
+                            _currentIndex = index;
+                            HapticFeedback.lightImpact();
+                          });
+                        },
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        child: Stack(
+                          children: [
+                            AnimatedContainer(
                               duration: const Duration(seconds: 1),
                               curve: Curves.fastLinearToSlowEaseIn,
-                              height: index == _currentIndex ? displayWidth * .13 : 0,
-                              width: displayWidth * .32,
-                              decoration: BoxDecoration(
-                                color: index == _currentIndex ? Colors.orange.withOpacity(.2) : Colors.transparent,
-                                borderRadius: BorderRadius.circular(25),
+                              width: displayWidth * .3,
+                              alignment: Alignment.center,
+                              child: AnimatedContainer(
+                                duration: const Duration(seconds: 1),
+                                curve: Curves.fastLinearToSlowEaseIn,
+                                height: index == _currentIndex ? displayWidth * .13 : 0,
+                                width: displayWidth * .38,
+                                decoration: BoxDecoration(
+                                  color: index == _currentIndex ? Colors.orange.withOpacity(.2) : Colors.transparent,
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
                               ),
                             ),
-                          ),
-                          Positioned.fill(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(width: displayWidth * .02),
-                                Icon(
-                                  listOfIcons[index],
-                                  size: displayWidth * .055,
-                                  color: index == _currentIndex ? Colors.orange : (themeMode == ThemeMode.dark ? Colors.grey : Colors.grey),
-                                ),
-                                SizedBox(width: displayWidth * .01),
-                                AnimatedOpacity(
-                                  opacity: 1,
-                                  duration: const Duration(seconds: 1),
-                                  curve: Curves.fastLinearToSlowEaseIn,
-                                  child: Text(
-                                    listOfStrings[index],
-                                    style: TextStyle(
-                                      color: index == _currentIndex ? Colors.orange : Colors.grey,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 12,
+                            Positioned.fill(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(width: displayWidth * .02),
+                                  Icon(
+                                    listOfIcons[index],
+                                    size: displayWidth * .055,
+                                    color: index == _currentIndex ? Colors.orange : (themeMode == ThemeMode.dark ? Colors.grey : Colors.grey),
+                                  ),
+                                  SizedBox(width: displayWidth * .01),
+                                  AnimatedOpacity(
+                                    opacity: 1,
+                                    duration: const Duration(seconds: 1),
+                                    curve: Curves.fastLinearToSlowEaseIn,
+                                    child: Text(
+                                      listOfStrings[index],
+                                      style: TextStyle(
+                                        color: index == _currentIndex ? Colors.orange : Colors.grey,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -126,11 +128,11 @@ class _TeachersBottomTabsState extends State<TeachersBottomTabs> {
       ),
     );
   }
+
   List listOfStrings = ['داشبود', 'پرونده تدریس'];
 
   List listOfIcons = [
     Icons.home,
     Icons.edit_document,
   ];
-
 }
