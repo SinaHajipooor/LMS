@@ -28,7 +28,7 @@ class SimpleCourseItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
       height: 130,
       child: Card(
         elevation: 1,

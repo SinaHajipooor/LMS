@@ -28,7 +28,7 @@ class ElectronicCourseItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+      margin: const EdgeInsets.fromLTRB(6, 5, 6, 5),
       height: 130,
       child: Card(
         elevation: 1,
