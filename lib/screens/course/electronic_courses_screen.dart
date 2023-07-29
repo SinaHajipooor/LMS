@@ -92,6 +92,7 @@ class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
           body: _isLoading
               ? const Center(child: Spinner(size: 40))
               : TabBarView(
+                  physics: const BouncingScrollPhysics(),
                   children: List.generate(
                     _courseGroups.length,
                     (index) {
