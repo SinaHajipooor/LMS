@@ -150,7 +150,7 @@ class _LandingScreenState extends State<LandingScreen> {
                                 ],
                               ),
                               const AmazingCoursesList(),
-                              const SizedBox(height: 15),
+                              const SizedBox(height: 65),
                             ],
                           ),
                         ),
