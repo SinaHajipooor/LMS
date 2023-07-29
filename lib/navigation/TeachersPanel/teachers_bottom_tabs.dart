@@ -47,11 +47,11 @@ class _TeachersBottomTabsState extends State<TeachersBottomTabs> {
                 width: MediaQuery.of(context).size.width / 1.6,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Theme.of(context).scaffoldBackgroundColor,
+                    color: themeMode == ThemeMode.dark ? const Color.fromARGB(255, 35, 40, 49) : Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: themeMode == ThemeMode.light ? Colors.black.withOpacity(.1) : Colors.blue.withOpacity(.1),
-                        blurRadius: 6,
+                        color: themeMode == ThemeMode.light ? Colors.black.withOpacity(.1) : Colors.blue.withOpacity(.0),
+                        blurRadius: 5,
                       ),
                     ],
                     borderRadius: BorderRadius.circular(20),
@@ -93,12 +93,13 @@ class _TeachersBottomTabsState extends State<TeachersBottomTabs> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(width: displayWidth * .02),
-                                  Icon(
-                                    listOfIcons[index],
-                                    size: displayWidth * .055,
-                                    color: index == _currentIndex ? Colors.orange : (themeMode == ThemeMode.dark ? Colors.grey : Colors.grey),
+                                  Image(
+                                    width: 20,
+                                    height: 20,
+                                    color: index == _currentIndex ? Colors.orange : Colors.grey,
+                                    image: listOfImageIcons[index],
                                   ),
-                                  SizedBox(width: displayWidth * .01),
+                                  SizedBox(width: displayWidth * .02),
                                   AnimatedOpacity(
                                     opacity: 1,
                                     duration: const Duration(seconds: 1),
@@ -131,8 +132,5 @@ class _TeachersBottomTabsState extends State<TeachersBottomTabs> {
 
   List listOfStrings = ['داشبود', 'پرونده تدریس'];
 
-  List listOfIcons = [
-    Icons.home,
-    Icons.edit_document,
-  ];
+  List listOfImageIcons = [const AssetImage('assets/images/icons/dashboard.png'), const AssetImage('assets/images/icons/teacher.png')];
 }
