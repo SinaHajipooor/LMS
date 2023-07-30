@@ -11,11 +11,9 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     ThemeHelper themeHelper = ThemeHelper();
-
     return MultiProvider(
       providers: appProviders,
       child: Consumer<MyThemeModel>(
@@ -30,10 +28,7 @@ class MyApp extends StatelessWidget {
               themeMode: myThemeModel.themeMode,
               theme: themeHelper.getLightTheme(),
               darkTheme: themeHelper.getDarkTheme(),
-              home: const Directionality(
-                textDirection: TextDirection.rtl,
-                child: SplashScreen(),
-              ),
+              home: const Directionality(textDirection: TextDirection.rtl, child: SplashScreen()),
               routes: appRoutes,
             );
           });
