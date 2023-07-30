@@ -45,7 +45,7 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 16, 16, 15),
+              padding: const EdgeInsets.fromLTRB(20, 16, 20, 15),
               child: SizedBox(
                 height: displayWidth * .155,
                 width: MediaQuery.of(context).size.width,
@@ -94,7 +94,7 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
                           AnimatedContainer(
                             duration: const Duration(seconds: 1),
                             curve: Curves.fastLinearToSlowEaseIn,
-                            width: index == _currentIndex ? displayWidth * .31 : displayWidth * .18,
+                            width: index == _currentIndex ? displayWidth * .32 : displayWidth * .18,
                             alignment: Alignment.center,
                             child: Stack(
                               children: [
@@ -153,7 +153,7 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
 
   List listOfStrings = [
     'الکترونیک',
-    'حضوری',
+    'کوتاه‌مدت',
     'داشبورد',
     'آموزشی',
   ];
