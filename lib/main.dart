@@ -27,6 +27,7 @@ import 'package:lms/screens/profile/user/user_education_screen.dart';
 import 'package:lms/screens/profile/job/user_job_screen.dart';
 import 'package:lms/screens/profile/user/user_profile_screen.dart';
 import 'package:lms/screens/root/splash_screen.dart';
+import 'package:lms/screens/students/support_screen.dart';
 import 'package:lms/screens/teachers/presence_screen.dart';
 import 'package:provider/provider.dart';
 import 'providers/Landing/LandingProvider.dart';
@@ -105,6 +106,7 @@ class MyApp extends StatelessWidget {
                 SimpleCoursesScreen.routeName: (ctx) => const SimpleCoursesScreen(),
                 SimpleCourseDetailScreen.routeName: (ctx) => const SimpleCourseDetailScreen(),
                 UserProfileScreen.routeName: (ctx) => const UserProfileScreen(),
+                SupportScreen.routeName: (ctx) => const SupportScreen(),
                 PresenceScreen.routeName: (ctx) => const PresenceScreen(),
                 CourseShippingScreen.routeName: (ctx) => const CourseShippingScreen(),
                 UserBirthCertificateScreen.routeName: (ctx) => const UserBirthCertificateScreen(),
