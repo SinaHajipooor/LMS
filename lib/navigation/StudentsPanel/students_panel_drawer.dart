@@ -136,6 +136,15 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
           ),
           InkWell(
             onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const TeachersBottomTabs(defaultPageIndex: 0)));
+            },
+            child: ListTile(
+              leading: Image.asset('assets/images/icons/support.png', width: 27, height: 27, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
+              title: Text('پشتیبانی', style: theme.textTheme.titleSmall),
+            ),
+          ),
+          InkWell(
+            onTap: () {
               _showConfirmationAlert(context);
             },
             child: ListTile(
