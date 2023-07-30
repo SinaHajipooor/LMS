@@ -1,8 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:lms/http/Api.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
+import 'package:lms/http/api.dart';
 import 'package:http/http.dart' as http;
 
 class IdentityProvider with ChangeNotifier {
@@ -15,8 +14,6 @@ class IdentityProvider with ChangeNotifier {
 
   Future<void> fetchAllIdentityInfo() async {
     try {
-      // final prefs = await SharedPreferences.getInstance();
-      // final userId = prefs.getString('userId');
       final response = await http.get(
         Uri.parse('$_baseUrl?user_id=103'),
         headers: <String, String>{'Content-Type': 'application/json'},

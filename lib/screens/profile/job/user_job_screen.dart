@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/InternetConnectivityHelper.dart';
-import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:lms/helpers/internet_connectivity_helper.dart';
+import 'package:lms/helpers/theme_helper.dart';
 import 'package:lms/providers/Profile/Job/JobProvider.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/profile/job/job_info.dart';

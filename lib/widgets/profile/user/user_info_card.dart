@@ -1,6 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:lms/helpers/theme_helper.dart';
 import 'package:lms/widgets/elements/user_information_input.dart';
 import 'package:provider/provider.dart';
 
@@ -66,7 +66,7 @@ class _UserInfoCardState extends State<UserInfoCard> {
     return SizedBox(
       height: 200,
       child: Card(
-        elevation: 2,
+        elevation: 1,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),

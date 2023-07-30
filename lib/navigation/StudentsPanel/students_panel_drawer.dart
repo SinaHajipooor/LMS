@@ -1,6 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:lms/helpers/theme_helper.dart';
 import 'package:lms/navigation/TeachersPanel/teachers_bottom_tabs.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/root/landing_screen.dart';
@@ -132,6 +132,15 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
             child: ListTile(
               leading: Image.asset('assets/images/icons/teacher.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
               title: Text('پنل مدرسان', style: theme.textTheme.titleSmall),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const TeachersBottomTabs(defaultPageIndex: 0)));
+            },
+            child: ListTile(
+              leading: Image.asset('assets/images/icons/support.png', width: 27, height: 27, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
+              title: Text('پشتیبانی', style: theme.textTheme.titleSmall),
             ),
           ),
           InkWell(

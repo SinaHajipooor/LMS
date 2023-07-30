@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/InternetConnectivityHelper.dart';
-import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:lms/helpers/internet_connectivity_helper.dart';
+import 'package:lms/helpers/theme_helper.dart';
 import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
 import 'package:lms/providers/Profile/Identity/IdentityProvider.dart';
 import 'package:lms/widgets/elements/spinner.dart';

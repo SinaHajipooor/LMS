@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:lms/helpers/theme_helper.dart';
 import 'package:provider/provider.dart';
 
 class CourseCommentsList extends StatelessWidget {
