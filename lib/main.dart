@@ -1,6 +1,7 @@
-import 'package:lms/app/AppProviders.dart';
-import 'package:lms/app/AppRoutes.dart';
-import 'app/AppImports.dart';
+import 'package:lms/app/app_localizations.dart';
+import 'package:lms/app/app_providers.dart';
+import 'package:lms/app/app_routes.dart';
+import 'app/app_imports.dart';
 
 void main() async {
   // ignore: unused_local_variable
@@ -22,15 +23,8 @@ class MyApp extends StatelessWidget {
           return Builder(builder: (context) {
             return MaterialApp(
               locale: const Locale('fa', 'IR'),
-              localizationsDelegates: const [
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: const [
-                Locale('fa'),
-                Locale('en', 'US'),
-              ],
+              localizationsDelegates: appLocalizations,
+              supportedLocales: appSupportedLocales,
               title: 'LMS',
               debugShowCheckedModeBanner: false,
               themeMode: myThemeModel.themeMode,

@@ -1,4 +1,4 @@
-import 'AppImports.dart';
+import 'app_imports.dart';
 
 final Map<String, WidgetBuilder> appRoutes = {
   SplashScreen.routeName: (ctx) => const SplashScreen(),

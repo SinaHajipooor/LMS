@@ -1,7 +1,7 @@
 export 'package:flutter/material.dart';
 export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:intl/date_symbol_data_local.dart';
-export 'package:lms/helpers/ThemeHelper.dart';
+export 'package:lms/helpers/theme_helper.dart';
 export 'package:lms/providers/Course/SimpleCourseProvider.dart';
 export 'package:lms/providers/Profile/ActivityHistory/ActivityHistoryProvider.dart';
 export 'package:lms/providers/Profile/Compilations/CompilationsProvider.dart';
@@ -13,6 +13,7 @@ export 'package:lms/providers/Profile/Teaching/NonUniversityTeachingProvider.dar
 export 'package:lms/providers/Profile/Teaching/UniversityTeachingProvider.dart';
 export 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
 export 'package:lms/screens/auth/auth_screen.dart';
+export 'package:provider/single_child_widget.dart';
 export 'package:lms/screens/course/course_shipping_screen.dart';
 export 'package:lms/screens/course/simple_course_detail_screen.dart';
 export 'package:lms/screens/exam/exam_result_screen.dart';

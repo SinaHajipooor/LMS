@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:lms/helpers/InternetConnectivityHelper.dart';
-import 'package:lms/helpers/ThemeHelper.dart';
+import 'package:lms/helpers/internet_connectivity_helper.dart';
+import 'package:lms/helpers/theme_helper.dart';
 import 'package:lms/screens/auth/auth_screen.dart';
 import 'package:lms/widgets/landing/amazing_courses_list.dart';
 import 'package:lms/widgets/landing/landing_appBar.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:lms/helpers/InternetConnectivityHelper.dart';
+import 'package:lms/helpers/internet_connectivity_helper.dart';
 import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
 import 'package:lms/widgets/dashbord/dashbord_info_cards.dart';
 import 'package:lms/widgets/elements/custom_appbar.dart';

@@ -1,6 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/InternetConnectivityHelper.dart';
+import 'package:lms/helpers/internet_connectivity_helper.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/exam/question.dart';
 import '../../widgets/course/assessment/course_assessment_answer.dart';

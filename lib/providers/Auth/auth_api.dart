@@ -1,4 +1,4 @@
-import 'package:lms/http/Api.dart';
+import 'package:lms/http/api.dart';
 
 class AuthApi {
   // ---------------- BASE URL ------------------
