@@ -135,21 +135,48 @@ class _ElectronicCourseDetailScreenState extends State<ElectronicCourseDetailScr
                       SliverList(
                         delegate: SliverChildListDelegate.fixed(
                           [
+                            const SizedBox(height: 10),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
                               return CourseName(courseName: myProvider.courseDetails['title'] ?? '');
                             }),
-                            const SizedBox(height: 15),
+                            const SizedBox(height: 30),
+                            Row(
+                              children: [
+                                const Expanded(child: CourseTeachersList()),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20, right: 30),
+                                  child: Row(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/icons/notification.png',
+                                        width: 25,
+                                        height: 22,
+                                        // color: themeMode == ThemeMode.dark ? Colors.white : Colors.grey,
+                                        color: Colors.blue,
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Image.asset(
+                                        'assets/images/icons/bookmark.png',
+                                        width: 25,
+                                        height: 22,
+                                        // color: themeMode == ThemeMode.dark ? Colors.white : Colors.grey,
+                                        color: Colors.blue,
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                            const SizedBox(height: 35),
                             Consumer<ElectronicCourseProvider>(builder: (context, myProvider, child) {
                               return CourseImage(
                                 imageUrl: myProvider.courseDetails['main_image'],
                                 lessonName: myProvider.courseDetails['lesson_id'] ?? '',
                               );
                             }),
-                            const SizedBox(height: 25),
-                            const CourseTeachersList(),
-                            const SizedBox(height: 25),
+                            const SizedBox(height: 10),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(32, 20, 32, 16),
+                              padding: const EdgeInsets.fromLTRB(32, 15, 32, 16),
                               child: Text(
                                 'توضیحات دوره',
                                 style: theme.textTheme.titleLarge!.apply(color: Colors.blue),

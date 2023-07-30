@@ -20,11 +20,11 @@ class CourseTeachersList extends StatelessWidget {
                   child: Row(
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(8),
                         child: Image.network(
                           'http://45.149.77.156:8080/portal-assets/img/team/team-1.jpg',
-                          width: 48,
-                          height: 48,
+                          width: 40,
+                          height: 44,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -34,8 +34,8 @@ class CourseTeachersList extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('سیناحاجی‌پور', style: theme.textTheme.bodyMedium, overflow: TextOverflow.ellipsis, maxLines: 2),
-                            Text('مدرس', style: theme.textTheme.bodySmall),
+                            Text('سیناحاجی‌پور', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 11), overflow: TextOverflow.ellipsis, maxLines: 2),
+                            Text('مدرس', style: theme.textTheme.bodySmall!.copyWith(fontSize: 10)),
                           ],
                         ),
                       )
