@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/internet_connectivity_helper.dart';
 import 'package:lms/screens/root/landing_screen.dart';
-import 'package:lms/widgets/course/simple/simple_courses_list.dart';
 import 'package:provider/provider.dart';
-import '../../widgets/elements/spinner.dart';
-import '../../providers/Course/SimpleCourseProvider.dart';
+import '../../../widgets/course/electronic/electronic_courses_list.dart';
+import '../../../providers/Course/ElectronicCourseProvider.dart';
+import '../../../widgets/elements/spinner.dart';
 
-class SimpleCoursesScreen extends StatefulWidget {
-  static const routeName = '/simple-courses-screen';
-  const SimpleCoursesScreen({super.key});
+enum FilterOptions { List, Item }
+
+class ElectronicCoursesScreen extends StatefulWidget {
+// --------------- feilds -----------------
+  static const routeName = '/electronic-courses-screen';
+
+  const ElectronicCoursesScreen({super.key});
 
   @override
-  State<SimpleCoursesScreen> createState() => _SimpleCoursesScreenState();
+  State<ElectronicCoursesScreen> createState() => _ElectronicCoursesScreenState();
 }
 
-class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
-  // --------------- state --------------
+class _ElectronicCoursesScreenState extends State<ElectronicCoursesScreen> {
+// --------------- state --------------
 
-  var _isLoading = true;
+  bool _isLoading = true;
   var _bottomPadding = 0.0;
   List<dynamic> _courseGroups = [];
 // --------------- lifecycle -----------------
@@ -36,19 +40,18 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
   }
 
 // --------------- methods -----------------
+  void _checkInternetConnectivity(BuildContext context) {
+    InternetConnectivityHelper.checkInternetConnectivity(context);
+  }
 
   Future<void> getAllCourseGroups() async {
-    await Provider.of<SimpleCourseProvider>(context, listen: false).fetchSimpleCourseGroups();
+    await Provider.of<ElectronicCourseProvider>(context, listen: false).fetchElectronicCourseGroups();
     if (mounted) {
       setState(() {
-        _courseGroups = Provider.of<SimpleCourseProvider>(context, listen: false).courseGroups;
+        _courseGroups = Provider.of<ElectronicCourseProvider>(context, listen: false).courseGroups;
         _isLoading = false;
       });
     }
-  }
-
-  void _checkInternetConnectivity(BuildContext context) {
-    InternetConnectivityHelper.checkInternetConnectivity(context);
   }
 
 // --------------- UI -----------------
@@ -56,7 +59,6 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
   Widget build(BuildContext context) {
     final margin = MediaQuery.of(context).size.width * .200;
     final theme = Theme.of(context);
-
     return DefaultTabController(
       length: _courseGroups.length,
       child: WillPopScope(
@@ -76,8 +78,8 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
               unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal, fontFamily: 'YekanBakh', fontSize: 12),
               labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'YekanBakh', fontSize: 14),
               isScrollable: true,
-              labelColor: Colors.blue,
               indicatorColor: Colors.blue,
+              labelColor: Colors.blue,
               labelPadding: const EdgeInsets.symmetric(horizontal: 25),
               tabs: List.generate(
                 _courseGroups.length,
@@ -88,7 +90,7 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
             ),
           ),
           body: _isLoading
-              ? const Center(child: Spinner(size: 40))
+              ? const Center(child: Spinner(size: 35))
               : TabBarView(
                   physics: const BouncingScrollPhysics(),
                   children: List.generate(
@@ -98,14 +100,13 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
                       return NotificationListener<ScrollEndNotification>(
                         onNotification: (notification) {
                           setState(() {
-                            // Add bottom margin if user reached end of scrollable area
                             _bottomPadding = notification.metrics.extentAfter == 0.0 ? margin : 0.0;
                           });
                           return true;
                         },
                         child: Padding(
                           padding: EdgeInsets.only(bottom: _bottomPadding),
-                          child: SimpleCoursesList(
+                          child: ElectronicCoursesList(
                             groupId: group['id'],
                           ),
                         ),

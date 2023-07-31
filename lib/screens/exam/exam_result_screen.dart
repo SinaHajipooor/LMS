@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/internet_connectivity_helper.dart';
-import 'package:lms/screens/course/electronic_course_detail_screen.dart';
+import 'package:lms/screens/course/electronic/electronic_course_detail_screen.dart';
 import 'package:lms/widgets/elements/circular_chart.dart';
 
 class ExamResultScreen extends StatefulWidget {

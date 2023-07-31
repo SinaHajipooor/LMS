@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/screens/course/simple_course_detail_screen.dart';
+import 'package:lms/screens/course/simple/simple_course_detail_screen.dart';
 
 class SimpleCourseItem extends StatelessWidget {
   //---------------- feilds -----------------
