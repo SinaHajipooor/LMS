@@ -42,33 +42,33 @@ class _AnnoucementSliderState extends State<AnnoucementSlider> {
             carouselController: _controller,
             options: CarouselOptions(
               autoPlayInterval: const Duration(seconds: 5),
-              height: 175,
+              height: 150,
               autoPlay: true,
-              padEnds: true,
+              padEnds: false,
               aspectRatio: 16 / 9,
               autoPlayCurve: Curves.fastOutSlowIn,
               enableInfiniteScroll: true,
               autoPlayAnimationDuration: const Duration(milliseconds: 600),
-              viewportFraction: 0.45,
+              viewportFraction: 0.5,
             ),
             items: widget.announcements.map((item) {
               return Builder(
                 builder: (BuildContext context) {
                   return Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 5),
+                    margin: const EdgeInsets.symmetric(horizontal: 0),
                     child: Column(
                       children: [
                         Expanded(
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.8,
-                            margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                            margin: const EdgeInsets.symmetric(horizontal: 5.0),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12.0),
                             ),
                             child: AspectRatio(
                               aspectRatio: 16 / 9,
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(12.0),
+                                borderRadius: BorderRadius.circular(10.0),
                                 child: Image.network(
                                   item["main_image"],
                                   fit: BoxFit.cover,

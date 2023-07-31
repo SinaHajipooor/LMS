@@ -13,9 +13,9 @@ class TeachersList extends StatelessWidget {
         Visibility(
           visible: teachers.isNotEmpty,
           child: SizedBox(
-            height: 200, // Adjust the height to fit two rows
+            height: 180, // Adjust the height to fit two rows
             child: GridView.builder(
-              physics: const BouncingScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 4, // Number of items per row
                 mainAxisSpacing: 5, // Vertical spacing between items
