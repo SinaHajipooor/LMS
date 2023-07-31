@@ -25,7 +25,7 @@ class _AnnoucementSliderState extends State<AnnoucementSlider> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              margin: const EdgeInsets.only(right: 20),
+              margin: const EdgeInsets.only(right: 25),
               child: Text('اطلاعیه های اخیر', style: theme.textTheme.titleMedium),
             ),
             IconButton(
@@ -42,33 +42,33 @@ class _AnnoucementSliderState extends State<AnnoucementSlider> {
             carouselController: _controller,
             options: CarouselOptions(
               autoPlayInterval: const Duration(seconds: 5),
-              height: 150,
+              height: 175,
               autoPlay: true,
-              padEnds: false,
+              padEnds: true,
               aspectRatio: 16 / 9,
               autoPlayCurve: Curves.fastOutSlowIn,
               enableInfiniteScroll: true,
               autoPlayAnimationDuration: const Duration(milliseconds: 600),
-              viewportFraction: 0.5,
+              viewportFraction: 0.52,
             ),
             items: widget.announcements.map((item) {
               return Builder(
                 builder: (BuildContext context) {
                   return Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 0),
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
                     child: Column(
                       children: [
                         Expanded(
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.8,
-                            margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                            margin: const EdgeInsets.symmetric(horizontal: 4.0),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12.0),
                             ),
                             child: AspectRatio(
                               aspectRatio: 16 / 9,
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10.0),
+                                borderRadius: BorderRadius.circular(12.0),
                                 child: Image.network(
                                   item["main_image"],
                                   fit: BoxFit.cover,

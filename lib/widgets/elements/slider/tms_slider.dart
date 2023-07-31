@@ -26,7 +26,7 @@ class _TmsSliderState extends State<TmsSlider> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              margin: const EdgeInsets.only(right: 12),
+              margin: const EdgeInsets.only(right: 25),
               child: Text('مراکز آموزشی', style: theme.textTheme.titleMedium),
             ),
             IconButton(
@@ -40,16 +40,26 @@ class _TmsSliderState extends State<TmsSlider> {
         const SizedBox(height: 30),
         Visibility(
           visible: widget.tmsList.isNotEmpty,
+          replacement: SizedBox(
+            height: 160,
+            child: Center(
+              child: Text(
+                'مرکز آموزشی وجود ندارد !',
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.normal),
+              ),
+            ),
+          ),
           child: CarouselSlider(
             carouselController: _controller,
             options: CarouselOptions(
-              height: 165,
+              height: 150,
               autoPlay: true,
+              padEnds: false,
               aspectRatio: 16 / 9,
               autoPlayCurve: Curves.fastOutSlowIn,
               enableInfiniteScroll: true,
               autoPlayAnimationDuration: const Duration(milliseconds: 600),
-              viewportFraction: 0.46,
+              viewportFraction: 0.35,
             ),
             items: widget.tmsList.map((item) {
               return Builder(
@@ -99,18 +109,6 @@ class _TmsSliderState extends State<TmsSlider> {
             }).toList(),
           ),
         ),
-        Visibility(
-          visible: widget.tmsList.isEmpty,
-          child: SizedBox(
-            height: 160,
-            child: Center(
-              child: Text(
-                'مرکز آموزشی وجود ندارد !',
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.normal),
-              ),
-            ),
-          ),
-        )
       ],
     );
   }
