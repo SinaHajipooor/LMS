@@ -42,14 +42,14 @@ class _AnnoucementSliderState extends State<AnnoucementSlider> {
             carouselController: _controller,
             options: CarouselOptions(
               autoPlayInterval: const Duration(seconds: 5),
-              height: 175,
+              height: 165,
               autoPlay: true,
               padEnds: true,
               aspectRatio: 16 / 9,
               autoPlayCurve: Curves.fastOutSlowIn,
               enableInfiniteScroll: true,
               autoPlayAnimationDuration: const Duration(milliseconds: 600),
-              viewportFraction: 0.52,
+              viewportFraction: 0.6,
             ),
             items: widget.announcements.map((item) {
               return Builder(

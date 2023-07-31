@@ -119,9 +119,9 @@ class _LandingScreenState extends State<LandingScreen> {
                             [
                               const SizedBox(height: 20),
                               NormalSlider(landingProvider.slides),
-                              const SizedBox(height: 30),
+                              const SizedBox(height: 20),
                               AnnoucementSlider(landingProvider.announcements),
-                              const SizedBox(height: 30),
+                              const SizedBox(height: 20),
                               Center(
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 15, bottom: 15),
