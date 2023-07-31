@@ -163,12 +163,13 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
                       Visibility(
                         visible: widget.calendarUsecase == 2,
                         child: SizedBox(
-                          height: 55,
+                          height: 70,
                           child: Row(
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(right: 5),
                                 child: SizedBox(
+                                  height: 45,
                                   width: MediaQuery.of(context).size.width / 3,
                                   child: ElevatedButton(
                                     onPressed: () => Navigator.of(context).pop(),
@@ -180,10 +181,13 @@ class _PersianFullCalendarState extends State<PersianFullCalendar> {
                               Expanded(
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 5),
-                                  child: ElevatedButton(
-                                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.orange[400]!)),
-                                    onPressed: () => Navigator.of(context).pushNamed(PresenceScreen.routeName),
-                                    child: const Text('لیست حضور غیاب'),
+                                  child: SizedBox(
+                                    height: 45,
+                                    child: ElevatedButton(
+                                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.orange[400]!)),
+                                      onPressed: () => Navigator.of(context).pushNamed(PresenceScreen.routeName),
+                                      child: const Text('لیست حضور غیاب'),
+                                    ),
                                   ),
                                 ),
                               ),
