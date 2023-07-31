@@ -4,20 +4,24 @@ import 'package:lms/widgets/elements/slider/teacher_item.dart';
 
 class TeachersList extends StatelessWidget {
   const TeachersList({super.key});
-
   @override
   Widget build(BuildContext context) {
     final teachers = AppDatabase.stories;
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Visibility(
           visible: teachers.isNotEmpty,
           child: SizedBox(
-            height: 110,
-            child: ListView.builder(
+            height: 250, // Adjust the height to fit two rows
+            child: GridView.builder(
               physics: const BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              itemCount: teachers.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 4, // Number of items per row
+                mainAxisSpacing: 5, // Vertical spacing between items
+                crossAxisSpacing: 10, // Horizontal spacing between items
+              ),
+              itemCount: teachers.length > 8 ? 8 : teachers.length,
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
               itemBuilder: (context, index) {
                 final teacher = teachers[index];

@@ -85,10 +85,7 @@ class _StudentsDashbordScreenState extends State<StudentsDashbordScreen> {
         child: Column(
           children: [
             const SizedBox(height: 5),
-            PersianFullCalendar(
-              calendarUsecase: 1,
-              key: UniqueKey(),
-            ),
+            PersianFullCalendar(calendarUsecase: 1, key: UniqueKey()),
             const DashbordInfoCards(),
           ],
         ),

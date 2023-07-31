@@ -9,15 +9,15 @@ class TeacherItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      margin: const EdgeInsets.fromLTRB(4, 12, 4, 0),
+      // margin: const EdgeInsets.fromLTRB(4, 12, 4, 0),
       child: Column(
         children: [
           Stack(
             children: [
               Container(
                 margin: const EdgeInsets.fromLTRB(4, 0, 4, 0),
-                width: 70,
-                height: 70,
+                width: 58,
+                height: 58,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(24),
                   gradient: const LinearGradient(begin: Alignment.topLeft, colors: [
@@ -46,7 +46,7 @@ class TeacherItem extends StatelessWidget {
           Text(
             teacher.name,
             style: theme.textTheme.bodyMedium,
-            maxLines: 2,
+            maxLines: 1,
             textAlign: TextAlign.center,
             overflow: TextOverflow.ellipsis,
           ),
