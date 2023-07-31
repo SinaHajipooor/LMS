@@ -66,7 +66,8 @@ class _UserInfoCardState extends State<UserInfoCard> {
     return SizedBox(
       height: 200,
       child: Card(
-        elevation: 1,
+        elevation: 5,
+        semanticContainer: true,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
@@ -81,22 +82,7 @@ class _UserInfoCardState extends State<UserInfoCard> {
                       width: 90,
                       height: 90,
                       color: Colors.grey,
-                      // child: Image.network(
-                      //   widget.userIdentityInfo['avatar'] ?? '',
-                      //   errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-                      //     return Image.asset(
-                      //       'assets/images/profile_placeholder.png',
-                      //     );
-                      //   },
-                      //   loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-                      //     if (loadingProgress == null) {
-                      //       return child; // Display the main image if it's already loaded
-                      //     }
-                      //     return Image.asset(
-                      //       'assets/images/profile_placeholder.png',
-                      //     );
-                      //   },
-                      // ),
+                      // bottom of the file
                       child: Image.asset('assets/images/avatar.png'),
                     ),
                   ),
@@ -129,3 +115,22 @@ class _UserInfoCardState extends State<UserInfoCard> {
     );
   }
 }
+
+
+
+      // child: Image.network(
+                      //   widget.userIdentityInfo['avatar'] ?? '',
+                      //   errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                      //     return Image.asset(
+                      //       'assets/images/profile_placeholder.png',
+                      //     );
+                      //   },
+                      //   loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                      //     if (loadingProgress == null) {
+                      //       return child; // Display the main image if it's already loaded
+                      //     }
+                      //     return Image.asset(
+                      //       'assets/images/profile_placeholder.png',
+                      //     );
+                      //   },
+                      // ),
