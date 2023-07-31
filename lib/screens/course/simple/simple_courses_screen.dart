@@ -88,7 +88,7 @@ class _SimpleCoursesScreenState extends State<SimpleCoursesScreen> {
             ),
           ),
           body: _isLoading
-              ? const Center(child: Spinner(size: 40))
+              ? const Center(child: Spinner(size: 35))
               : TabBarView(
                   physics: const BouncingScrollPhysics(),
                   children: List.generate(
