@@ -39,6 +39,8 @@ class AppDatabase {
       StoryData(id: 1006, name: 'Olivia', imageFileName: 'story_6.jpg', iconFileName: 'category_1.png', isViewed: false),
       StoryData(id: 1007, name: 'Amelia', imageFileName: 'story_7.jpg', iconFileName: 'category_4.png', isViewed: false),
       StoryData(id: 1008, name: 'Grace', imageFileName: 'story_2.jpg', iconFileName: 'category_3.png', isViewed: false),
+      StoryData(id: 1008, name: 'Grace', imageFileName: 'story_2.jpg', iconFileName: 'category_3.png', isViewed: false),
+      StoryData(id: 1008, name: 'Grace', imageFileName: 'story_2.jpg', iconFileName: 'category_3.png', isViewed: false),
     ];
   }
 

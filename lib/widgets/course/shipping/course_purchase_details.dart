@@ -66,7 +66,7 @@ class CoursePurchaseDetails extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 7, top: 22),
+                      padding: const EdgeInsets.only(right: 15, top: 22),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -75,7 +75,6 @@ class CoursePurchaseDetails extends StatelessWidget {
                             style: theme.textTheme.titleSmall,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
-                            softWrap: false,
                           ),
                           const SizedBox(height: 15),
                           Row(

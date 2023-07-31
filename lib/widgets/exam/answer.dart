@@ -39,7 +39,7 @@ class Answer extends StatelessWidget {
               children: [
                 Text(
                   answerText,
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 15),
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 4,
                 ),

@@ -30,7 +30,7 @@ class CourseAssessmentAnswer extends StatelessWidget {
               groupValue: selectedAnswers[questionId],
               onChanged: (value) => onSelectAnswer(questionId, value!),
             ),
-            Text(answerText, style: Theme.of(context).textTheme.bodyMedium),
+            Text(answerText, style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 10)),
           ],
         ),
       ),

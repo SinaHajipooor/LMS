@@ -113,7 +113,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
             },
             child: ListTile(
               leading: Image.asset('assets/images/icons/home.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
-              title: Text('صفحه‌اصلی', style: theme.textTheme.titleSmall),
+              title: Text('صفحه‌اصلی', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14)),
             ),
           ),
           InkWell(
@@ -122,7 +122,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
             },
             child: ListTile(
               leading: Image.asset('assets/images/icons/person.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
-              title: Text('پروفایل', style: theme.textTheme.titleSmall),
+              title: Text('پروفایل', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14)),
             ),
           ),
           InkWell(
@@ -131,7 +131,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
             },
             child: ListTile(
               leading: Image.asset('assets/images/icons/teacher.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
-              title: Text('پنل مدرسان', style: theme.textTheme.titleSmall),
+              title: Text('پنل مدرسان', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14)),
             ),
           ),
           InkWell(
@@ -140,7 +140,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
             },
             child: ListTile(
               leading: Image.asset('assets/images/icons/support.png', width: 27, height: 27, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
-              title: Text('پشتیبانی', style: theme.textTheme.titleSmall),
+              title: Text('پشتیبانی', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14)),
             ),
           ),
           InkWell(
@@ -149,7 +149,7 @@ class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
             },
             child: ListTile(
               leading: Image.asset('assets/images/icons/exit.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
-              title: Text('خروج', style: theme.textTheme.titleSmall),
+              title: Text('خروج', style: theme.textTheme.bodyMedium),
             ),
           ),
         ],

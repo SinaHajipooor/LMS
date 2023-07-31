@@ -119,17 +119,8 @@ class _LandingScreenState extends State<LandingScreen> {
                             [
                               const SizedBox(height: 20),
                               NormalSlider(landingProvider.slides),
-                              const SizedBox(height: 30),
+                              const SizedBox(height: 20),
                               AnnoucementSlider(landingProvider.announcements),
-                              const SizedBox(height: 40),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('مدرسان مجرب سازمان', style: theme.textTheme.titleMedium),
-                                ],
-                              ),
-                              const SizedBox(height: 15),
-                              const TeachersList(),
                               const SizedBox(height: 20),
                               Center(
                                 child: Padding(
@@ -138,6 +129,11 @@ class _LandingScreenState extends State<LandingScreen> {
                                 ),
                               ),
                               SizedBox(height: 280, child: NewsList(newsList: landingProvider.news)),
+                              const SizedBox(height: 30),
+                              Center(child: Text('مدرسان مجرب سازمان', style: theme.textTheme.titleMedium)),
+                              const SizedBox(height: 30),
+                              const TeachersList(),
+                              const SizedBox(height: 15),
                               TmsSlider(landingProvider.tms),
                               const SizedBox(height: 50),
                               Row(

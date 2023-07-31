@@ -110,8 +110,8 @@ class _TeachersPanelDrawerState extends State<TeachersPanelDrawer> {
               Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/home.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
-              title: Text('صفحه‌اصلی', style: theme.textTheme.titleSmall),
+              leading: Image.asset('assets/images/icons/home.png', width: 18, height: 18, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
+              title: Text('صفحه‌اصلی', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14)),
             ),
           ),
           InkWell(
@@ -119,8 +119,8 @@ class _TeachersPanelDrawerState extends State<TeachersPanelDrawer> {
               Navigator.of(context).pushReplacementNamed(UserProfileScreen.routeName);
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/person.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
-              title: Text('پروفایل', style: theme.textTheme.titleSmall),
+              leading: Image.asset('assets/images/icons/person.png', width: 18, height: 18, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
+              title: Text('پروفایل', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14)),
             ),
           ),
           InkWell(
@@ -128,8 +128,8 @@ class _TeachersPanelDrawerState extends State<TeachersPanelDrawer> {
               Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const StudentsBottomTabs(defaultPageIndex: 2)));
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/student.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
-              title: Text('پنل فراگیران', style: theme.textTheme.titleSmall),
+              leading: Image.asset('assets/images/icons/student.png', width: 18, height: 18, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
+              title: Text('پنل فراگیران', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14)),
             ),
           ),
 
@@ -138,8 +138,8 @@ class _TeachersPanelDrawerState extends State<TeachersPanelDrawer> {
               _showConfirmationAlert(context);
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/exit.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
-              title: Text('خروج', style: theme.textTheme.titleSmall),
+              leading: Image.asset('assets/images/icons/exit.png', width: 19, height: 19, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
+              title: Text('خروج', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14)),
             ),
           ),
           // Add more ListTile items as needed

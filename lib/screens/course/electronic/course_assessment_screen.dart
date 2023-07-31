@@ -140,15 +140,17 @@ class _CourseAssessmentScreenState extends State<CourseAssessmentScreen> {
                   String questionText = _questions[i]['name'];
                   int questionId = _questions[i]['id'];
                   return Container(
-                    margin: i == _questions.length - 1 ? const EdgeInsets.only(bottom: 70) : null,
+                    margin: i == _questions.length - 1 ? const EdgeInsets.only(bottom: 70) : const EdgeInsets.only(bottom: 5),
                     child: Column(
                       children: [
                         SizedBox(
                           width: double.infinity,
+                          height: 130,
                           child: Card(
                             elevation: 1,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(8),
