@@ -13,7 +13,7 @@ class TeachersList extends StatelessWidget {
         Visibility(
           visible: teachers.isNotEmpty,
           child: SizedBox(
-            height: 250, // Adjust the height to fit two rows
+            height: 200, // Adjust the height to fit two rows
             child: GridView.builder(
               physics: const BouncingScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
