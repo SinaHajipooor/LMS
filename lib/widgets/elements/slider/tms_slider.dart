@@ -83,7 +83,7 @@ class _TmsSliderState extends State<TmsSlider> {
                                 loadingBuilder: (context, child, progress) {
                                   if (progress == null) return child;
                                   return const Center(
-                                    child: Spinner(size: 30),
+                                    child: Spinner(size: 20),
                                   );
                                 },
                               ),
