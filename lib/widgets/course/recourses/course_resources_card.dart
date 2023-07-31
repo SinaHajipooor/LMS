@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../screens/course/course_resources_screen.dart';
+import '../../../screens/course/electronic/course_resources_screen.dart';
 
 class CourseResourcesCard extends StatelessWidget {
   // ------------------ feilds -------------------
