@@ -1,7 +1,7 @@
-import 'package:lms/app/app_localizations.dart';
+import 'package:lms/app/localizations/app_localizations.dart';
 import 'package:lms/app/app_providers.dart';
-import 'package:lms/app/app_routes.dart';
-import 'app/app_imports.dart';
+import 'package:lms/app/routes/app_routes.dart';
+import 'app/imports/app_imports.dart';
 
 void main() async {
   // ignore: unused_local_variable
