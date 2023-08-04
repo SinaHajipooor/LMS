@@ -18,7 +18,6 @@ class _TmsSliderState extends State<TmsSlider> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
     return Column(
       children: [
         const SizedBox(height: 30),
