@@ -1,4 +1,4 @@
-import 'imports/app_imports.dart';
+import '../imports/app_imports.dart';
 
 final List<SingleChildWidget> appProviders = [
   ChangeNotifierProvider(create: (_) => AuthProvider()),
