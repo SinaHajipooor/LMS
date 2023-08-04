@@ -1,4 +1,4 @@
-import 'app_imports.dart';
+import '../imports/app_imports.dart';
 
 const appLocalizations = [
   GlobalMaterialLocalizations.delegate,
