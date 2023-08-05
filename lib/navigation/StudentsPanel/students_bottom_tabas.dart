@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lms/helpers/Theme/theme_helper.dart';
+import 'package:lms/helpers/theme/theme_helper.dart';
 import 'package:lms/screens/course/electronic/electronic_courses_screen.dart';
 import 'package:lms/screens/course/simple/simple_courses_screen.dart';
 import 'package:lms/screens/students/students_dashbord_screen.dart';

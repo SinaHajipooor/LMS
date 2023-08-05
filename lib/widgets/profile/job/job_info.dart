@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/Theme/theme_helper.dart';
+import 'package:lms/helpers/theme/theme_helper.dart';
 import 'package:lms/widgets/profile/job/job_modal.dart';
 import 'package:provider/provider.dart';
 
