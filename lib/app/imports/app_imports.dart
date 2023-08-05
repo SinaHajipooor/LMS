@@ -41,3 +41,6 @@ export '../../screens/exam/exam_screen.dart';
 export '../../screens/course/electronic/course_assessment_screen.dart';
 export '../../screens/course/electronic/electronic_course_detail_screen.dart';
 export '../../screens/course/simple/simple_courses_screen.dart';
+export 'package:lms/app/providers/app_providers.dart';
+export 'package:lms/app/routes/app_routes.dart';
+export '../localization/app_localizations.dart';

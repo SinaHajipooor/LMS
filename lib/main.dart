@@ -1,6 +1,3 @@
-import 'package:lms/app/localizations/app_localizations.dart';
-import 'package:lms/app/providers/app_providers.dart';
-import 'package:lms/app/routes/app_routes.dart';
 import 'app/imports/app_imports.dart';
 
 void main() async {
