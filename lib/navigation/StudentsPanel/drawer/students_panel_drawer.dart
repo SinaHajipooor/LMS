@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/theme_helper.dart';
-import 'package:lms/navigation/TeachersPanel/teachers_bottom_tabs.dart';
+import 'package:lms/helpers/theme/theme_helper.dart';
+import 'package:lms/navigation/TeachersPanel/bottomTab/teachers_bottom_tabs.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:lms/screens/profile/user/user_profile_screen.dart';

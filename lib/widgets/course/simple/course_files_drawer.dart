@@ -1,6 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/theme_helper.dart';
+import 'package:lms/helpers/theme/theme_helper.dart';
 import 'package:lms/widgets/course/simple/student_files_form.dart';
 import 'package:provider/provider.dart';
 

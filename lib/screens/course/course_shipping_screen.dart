@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/internet_connectivity_helper.dart';
+import 'package:lms/helpers/connections/internet_connectivity_helper.dart';
 import 'package:lms/providers/Course/ElectronicCourseProvider.dart';
 import 'package:lms/widgets/course/shipping/course_payment_approachs.dart';
 import 'package:lms/widgets/course/shipping/course_purchase_details.dart';

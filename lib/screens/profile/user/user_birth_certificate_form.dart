@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/internet_connectivity_helper.dart';
+import 'package:lms/helpers/connections/internet_connectivity_helper.dart';
 import 'package:lms/providers/Profile/Identity/IdentityProvider.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:provider/provider.dart';

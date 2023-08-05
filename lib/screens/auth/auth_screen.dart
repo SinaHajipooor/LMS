@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/internet_connectivity_helper.dart';
-import 'package:lms/helpers/theme_helper.dart';
+import 'package:lms/helpers/connections/internet_connectivity_helper.dart';
+import 'package:lms/helpers/theme/theme_helper.dart';
 import 'package:lms/screens/auth/phone_number_login.dart';
 import 'package:lms/screens/auth/user_pass_login.dart';
 import 'package:provider/provider.dart';

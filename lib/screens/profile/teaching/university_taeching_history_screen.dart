@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/internet_connectivity_helper.dart';
-import 'package:lms/helpers/theme_helper.dart';
+import 'package:lms/helpers/connections/internet_connectivity_helper.dart';
+import 'package:lms/helpers/theme/theme_helper.dart';
 import 'package:lms/providers/Profile/Teaching/UniversityTeachingProvider.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/profile/teaching/university/university_teaching_info.dart';

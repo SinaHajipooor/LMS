@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/internet_connectivity_helper.dart';
-import 'package:lms/helpers/theme_helper.dart';
+import 'package:lms/helpers/connections/internet_connectivity_helper.dart';
+import 'package:lms/helpers/theme/theme_helper.dart';
 import 'package:lms/widgets/profile/user/job_info_form_modal.dart';
 import 'package:provider/provider.dart';
 

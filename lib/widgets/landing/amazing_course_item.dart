@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/data/data.dart';
-import 'package:lms/helpers/theme_helper.dart';
+import 'package:lms/helpers/theme/theme_helper.dart';
 import 'package:provider/provider.dart';
 
 class AmazingCourseItem extends StatelessWidget {

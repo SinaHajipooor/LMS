@@ -1,8 +1,8 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:lms/helpers/internet_connectivity_helper.dart';
-import 'package:lms/navigation/TeachersPanel/teachers_bottom_tabs.dart';
+import 'package:lms/helpers/connections/internet_connectivity_helper.dart';
+import 'package:lms/navigation/TeachersPanel/bottomTab/teachers_bottom_tabs.dart';
 import 'package:lms/widgets/elements/custom_appbar.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/teachersPanel/presence_list.dart';
