@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/internet_connectivity_helper.dart';
+import 'package:lms/helpers/connections/internet_connectivity_helper.dart';
 import 'package:lms/navigation/StudentsPanel/students_panel_drawer.dart';
 import 'package:lms/screens/profile/user/user_profile_screen.dart';
 import 'package:lms/widgets/dashbord/calender.dart';

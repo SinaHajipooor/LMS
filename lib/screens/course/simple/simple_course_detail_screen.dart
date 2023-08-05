@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:lms/helpers/internet_connectivity_helper.dart';
-import 'package:lms/helpers/theme_helper.dart';
+import 'package:lms/helpers/connections/internet_connectivity_helper.dart';
+import 'package:lms/helpers/Theme/theme_helper.dart';
 import 'package:lms/providers/Course/SimpleCourseProvider.dart';
 import 'package:lms/screens/course/course_shipping_screen.dart';
 import 'package:lms/widgets/course/detail/course_comments_list.dart';

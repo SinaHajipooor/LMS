@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/internet_connectivity_helper.dart';
+import 'package:lms/helpers/connections/internet_connectivity_helper.dart';
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:provider/provider.dart';
 import '../../../widgets/course/electronic/electronic_courses_list.dart';

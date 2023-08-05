@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/internet_connectivity_helper.dart';
-import 'package:lms/helpers/theme_helper.dart';
+import 'package:lms/helpers/connections/internet_connectivity_helper.dart';
+import 'package:lms/helpers/Theme/theme_helper.dart';
 import 'package:lms/providers/Profile/Compilations/CompilationsProvider.dart';
 import 'package:lms/widgets/elements/spinner.dart';
 import 'package:lms/widgets/profile/compilations/compilations_info.dart';

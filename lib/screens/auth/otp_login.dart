@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:lms/helpers/theme_helper.dart';
+import 'package:lms/helpers/Theme/theme_helper.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/root/home_screen.dart';
 import 'package:lms/widgets/elements/spinner.dart';

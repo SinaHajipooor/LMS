@@ -1,7 +1,7 @@
 export 'package:flutter/material.dart';
 export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:intl/date_symbol_data_local.dart';
-export 'package:lms/helpers/theme_helper.dart';
+export 'package:lms/helpers/Theme/theme_helper.dart';
 export 'package:lms/providers/Course/SimpleCourseProvider.dart';
 export 'package:lms/providers/Profile/ActivityHistory/ActivityHistoryProvider.dart';
 export 'package:lms/providers/Profile/Compilations/CompilationsProvider.dart';
