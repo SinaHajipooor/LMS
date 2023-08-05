@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lms/helpers/connections/internet_connectivity_helper.dart';
-import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
-import 'package:lms/navigation/TeachersPanel/teachers_panel_drawer.dart';
+import 'package:lms/navigation/StudentsPanel/bottomTab/students_bottom_tabas.dart';
+import 'package:lms/navigation/TeachersPanel/drawer/teachers_panel_drawer.dart';
 import 'package:lms/providers/Teachers/TeachersPanelProvider.dart';
 import 'package:lms/screens/profile/user/user_profile_screen.dart';
 import 'package:lms/widgets/dashbord/calender.dart';

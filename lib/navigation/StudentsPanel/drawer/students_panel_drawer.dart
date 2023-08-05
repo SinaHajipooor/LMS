@@ -1,20 +1,22 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:lms/helpers/theme/theme_helper.dart';
-import 'package:lms/navigation/StudentsPanel/students_bottom_tabas.dart';
+import 'package:lms/navigation/TeachersPanel/bottomTab/teachers_bottom_tabs.dart';
 import 'package:lms/providers/Auth/AuthProvider.dart';
 import 'package:lms/screens/root/landing_screen.dart';
 import 'package:lms/screens/profile/user/user_profile_screen.dart';
 import 'package:provider/provider.dart';
 
-class TeachersPanelDrawer extends StatefulWidget {
-  const TeachersPanelDrawer({super.key});
+class StudentsPanelDrawer extends StatefulWidget {
+  const StudentsPanelDrawer({super.key});
 
   @override
-  State<TeachersPanelDrawer> createState() => _TeachersPanelDrawerState();
+  State<StudentsPanelDrawer> createState() => _StudentsPanelDrawerState();
 }
 
-class _TeachersPanelDrawerState extends State<TeachersPanelDrawer> {
+class _StudentsPanelDrawerState extends State<StudentsPanelDrawer> {
+  // ----------------- methods ------------------
+
   void _showConfirmationAlert(BuildContext context) {
     AwesomeDialog(
       context: context,
@@ -37,12 +39,12 @@ class _TeachersPanelDrawerState extends State<TeachersPanelDrawer> {
       },
     ).show();
   }
+  // ----------------- UI ------------------
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final themeMode = Provider.of<MyThemeModel>(context).themeMode;
-
     return Drawer(
       backgroundColor: themeMode == ThemeMode.dark ? theme.cardTheme.color : Colors.white,
       child: ListView(
@@ -51,7 +53,7 @@ class _TeachersPanelDrawerState extends State<TeachersPanelDrawer> {
             children: [
               UserAccountsDrawerHeader(
                 onDetailsPressed: () => Navigator.of(context).pushReplacementNamed(UserProfileScreen.routeName),
-                decoration: BoxDecoration(color: themeMode == ThemeMode.dark ? Color.fromARGB(255, 41, 46, 54) : Colors.orange[300]),
+                decoration: BoxDecoration(color: themeMode == ThemeMode.dark ? const Color.fromARGB(255, 41, 46, 54) : Colors.lightBlue),
                 accountName: Padding(
                   padding: const EdgeInsets.only(top: 15.0),
                   child: Text(
@@ -110,7 +112,7 @@ class _TeachersPanelDrawerState extends State<TeachersPanelDrawer> {
               Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/home.png', width: 18, height: 18, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
+              leading: Image.asset('assets/images/icons/home.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
               title: Text('صفحه‌اصلی', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14)),
             ),
           ),
@@ -119,30 +121,37 @@ class _TeachersPanelDrawerState extends State<TeachersPanelDrawer> {
               Navigator.of(context).pushReplacementNamed(UserProfileScreen.routeName);
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/person.png', width: 18, height: 18, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
+              leading: Image.asset('assets/images/icons/person.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
               title: Text('پروفایل', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14)),
             ),
           ),
           InkWell(
             onTap: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const StudentsBottomTabs(defaultPageIndex: 2)));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const TeachersBottomTabs(defaultPageIndex: 0)));
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/student.png', width: 18, height: 18, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
-              title: Text('پنل فراگیران', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14)),
+              leading: Image.asset('assets/images/icons/teacher.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
+              title: Text('پنل مدرسان', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14)),
             ),
           ),
-
+          InkWell(
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const TeachersBottomTabs(defaultPageIndex: 0)));
+            },
+            child: ListTile(
+              leading: Image.asset('assets/images/icons/support.png', width: 27, height: 27, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
+              title: Text('پشتیبانی', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14)),
+            ),
+          ),
           InkWell(
             onTap: () {
               _showConfirmationAlert(context);
             },
             child: ListTile(
-              leading: Image.asset('assets/images/icons/exit.png', width: 19, height: 19, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
-              title: Text('خروج', style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14)),
+              leading: Image.asset('assets/images/icons/exit.png', width: 20, height: 20, color: themeMode == ThemeMode.dark ? Colors.white : const Color.fromARGB(255, 92, 92, 92)),
+              title: Text('خروج', style: theme.textTheme.bodyMedium),
             ),
           ),
-          // Add more ListTile items as needed
         ],
       ),
     );
