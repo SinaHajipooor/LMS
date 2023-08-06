@@ -1,8 +1,6 @@
 import 'app/imports/app_imports.dart';
 
 void main() async {
-  // ignore: unused_local_variable
-  final config = await initializeDateFormatting('fa_IR', null);
   runApp(const MyApp());
 }
 
