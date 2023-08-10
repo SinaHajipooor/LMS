@@ -151,17 +151,17 @@ class _StudentsBottomTabsState extends State<StudentsBottomTabs> {
     );
   }
 
-  List listOfStrings = [
-    'الکترونیک',
-    'کوتاه‌مدت',
-    'داشبورد',
-    'آموزشی',
-  ];
-
   List listofImageIcons = [
     const AssetImage('assets/images/icons/computer.png'),
     const AssetImage('assets/images/icons/non-university-teacher.png'),
     const AssetImage('assets/images/icons/dashboard.png'),
     const AssetImage('assets/images/icons/book.png'),
+  ];
+
+  List listOfStrings = [
+    'الکترونیک',
+    'کوتاه‌مدت',
+    'داشبورد',
+    'آموزشی',
   ];
 }
