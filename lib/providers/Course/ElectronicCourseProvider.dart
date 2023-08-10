@@ -40,7 +40,6 @@ class ElectronicCourseProvider with ChangeNotifier {
       _allCourses = responseData?['result']['courses']['data'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -56,7 +55,6 @@ class ElectronicCourseProvider with ChangeNotifier {
       _courseDetails = responseData?['result']?['course'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -72,7 +70,6 @@ class ElectronicCourseProvider with ChangeNotifier {
       _courseGroups = responseData?['result']['course_groups'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -88,7 +85,6 @@ class ElectronicCourseProvider with ChangeNotifier {
       notifyListeners();
       return responseData?['result']['courses']['data'];
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -107,7 +103,6 @@ class ElectronicCourseProvider with ChangeNotifier {
       _coursePaymentGateways = responseData?['result']?['gateways'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -127,7 +122,6 @@ class ElectronicCourseProvider with ChangeNotifier {
       _courseAssessmentAnswers = responseData?['result']['answers'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }

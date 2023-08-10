@@ -30,7 +30,6 @@ class SimpleCourseProvider with ChangeNotifier {
       _allSimpleCourses = responseData?['result']['courses']['data'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -46,7 +45,6 @@ class SimpleCourseProvider with ChangeNotifier {
       _courseDetails = responseData?['result']?['course'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -64,7 +62,6 @@ class SimpleCourseProvider with ChangeNotifier {
       _courseShippingDetails = responseData?['result']['course'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -80,7 +77,6 @@ class SimpleCourseProvider with ChangeNotifier {
       _courseGroup = responseData?['result']['course_groups'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -96,7 +92,6 @@ class SimpleCourseProvider with ChangeNotifier {
       notifyListeners();
       return responseData?['result']['courses']['data'];
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
