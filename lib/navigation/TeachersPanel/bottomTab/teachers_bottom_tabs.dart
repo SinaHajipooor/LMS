@@ -130,7 +130,6 @@ class _TeachersBottomTabsState extends State<TeachersBottomTabs> {
     );
   }
 
-  List listOfStrings = ['داشبود', 'پرونده تدریس'];
-
   List listOfImageIcons = [const AssetImage('assets/images/icons/dashboard.png'), const AssetImage('assets/images/icons/teacher.png')];
+  List listOfStrings = ['داشبود', 'پرونده تدریس'];
 }
