@@ -44,20 +44,20 @@ class AppDatabase {
     ];
   }
 
-  static List<Category> get categories {
-    return [
-      Category(
-        id: 101,
-        title: 'Technology',
-        imageFileName: 'large_post_1.jpg',
-      ),
-      Category(id: 102, title: 'Cinema', imageFileName: 'large_post_2.jpg'),
-      Category(id: 103, title: 'Transportation', imageFileName: 'large_post_3.jpg'),
-      Category(id: 104, title: 'Adventure', imageFileName: 'large_post_4.jpg'),
-      Category(id: 105, title: 'Artificial Intelligence', imageFileName: 'large_post_5.jpg'),
-      Category(id: 106, title: 'Economy', imageFileName: 'large_post_6.jpg'),
-    ];
-  }
+//   static List<Category> get categories {
+//     return [
+//       Category(
+//         id: 101,
+//         title: 'Technology',
+//         imageFileName: 'large_post_1.jpg',
+//       ),
+//       Category(id: 102, title: 'Cinema', imageFileName: 'large_post_2.jpg'),
+//       Category(id: 103, title: 'Transportation', imageFileName: 'large_post_3.jpg'),
+//       Category(id: 104, title: 'Adventure', imageFileName: 'large_post_4.jpg'),
+//       Category(id: 105, title: 'Artificial Intelligence', imageFileName: 'large_post_5.jpg'),
+//       Category(id: 106, title: 'Economy', imageFileName: 'large_post_6.jpg'),
+//     ];
+//   }
 
   static List<PostData> get posts {
     return [
@@ -66,21 +66,21 @@ class AppDatabase {
       PostData(id: 2, title: 'Step design sprint for UX beginner', caption: 'Ux Design', isBookmarked: true, likes: '2k', time: '41hr ago', imageFileName: 'small_post_3.jpg'),
     ];
   }
-
-  static List<OnBoardingItem> get onBoardingItems {
-    List<OnBoardingItem> items = [];
-    for (var i = 0; i < 4; i++) {
-      items.add(
-        OnBoardingItem(title: 'Read the article you want instantly', description: 'description descriptiondescription descriptiondescriptiondescriptiondescription description'),
-      );
-    }
-    return items;
-  }
 }
+//   static List<OnBoardingItem> get onBoardingItems {
+//     List<OnBoardingItem> items = [];
+//     for (var i = 0; i < 4; i++) {
+//       items.add(
+//         OnBoardingItem(title: 'Read the article you want instantly', description: 'description descriptiondescription descriptiondescriptiondescriptiondescription description'),
+//       );
+//     }
+//     return items;
+//   }
+// }
 
-class OnBoardingItem {
-  final String title;
-  final String description;
+// class OnBoardingItem {
+//   final String title;
+//   final String description;
 
-  OnBoardingItem({required this.title, required this.description});
-}
+//   OnBoardingItem({required this.title, required this.description});
+// }
