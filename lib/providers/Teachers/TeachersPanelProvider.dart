@@ -29,7 +29,6 @@ class TeachersPanelProvider with ChangeNotifier {
       _teacherCurrentCourses = responseData?['result']['courses']['simples'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -45,7 +44,6 @@ class TeachersPanelProvider with ChangeNotifier {
       _allTeacherCourses = responseData?['result']['courses']['data'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
