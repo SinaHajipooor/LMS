@@ -24,7 +24,6 @@ class InternalPassedCoursesProvider with ChangeNotifier {
       _internalPassedCourses = responseData?['result']['data'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }

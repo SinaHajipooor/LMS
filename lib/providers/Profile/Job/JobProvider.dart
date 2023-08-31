@@ -27,7 +27,6 @@ class JobProvider with ChangeNotifier {
       _jobs = responseData?['result']?['data'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -41,7 +40,6 @@ class JobProvider with ChangeNotifier {
       if (response.statusCode != 200) throw Exception('failed to delete job');
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }

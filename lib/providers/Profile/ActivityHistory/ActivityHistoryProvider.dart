@@ -18,7 +18,6 @@ class ActivityHistoryProvider with ChangeNotifier {
   Future<void> fetchAllActivities() async {
     final prefs = await SharedPreferences.getInstance();
     final userId = prefs.getString('userId');
-    print(userId);
     try {
       final response = await http.get(
         Uri.parse('$_baseUrl?user_id=$userId'),
@@ -29,7 +28,6 @@ class ActivityHistoryProvider with ChangeNotifier {
       _activities = responseData?['result']['data'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -47,7 +45,6 @@ class ActivityHistoryProvider with ChangeNotifier {
       _activityDetails = responseData?['result'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -79,7 +76,6 @@ class ActivityHistoryProvider with ChangeNotifier {
         throw Exception('Failed to add activity');
       }
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -106,11 +102,10 @@ class ActivityHistoryProvider with ChangeNotifier {
 
       // Get the response
       if (response.statusCode == 200) {
-        print('activity edited successfully');
         notifyListeners();
       } else {
-        print(response.statusCode);
-        print(response.stream.bytesToString());
+        // print(response.statusCode);
+        // print(response.stream.bytesToString());
         throw Exception('Failed to edit external course');
       }
     } catch (error) {
@@ -128,7 +123,6 @@ class ActivityHistoryProvider with ChangeNotifier {
       if (response.statusCode != 200) throw Exception('failed to delete activity ');
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }

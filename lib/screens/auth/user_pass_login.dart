@@ -13,12 +13,11 @@ class UserPassLogin extends StatefulWidget {
 
 class _UserPassLoginState extends State<UserPassLogin> {
   // ------------------------ state ------------------------
+  final _formKey = GlobalKey<FormState>();
   String? _username;
   String? _password;
-
   bool _isLoading = false;
   bool _isObscure = true;
-  final _formKey = GlobalKey<FormState>();
 
   // ------------------------ methods ------------------------
 

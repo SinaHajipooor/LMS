@@ -30,7 +30,6 @@ class CompilationsProvider with ChangeNotifier {
       _compilations = responseData?['result']['data'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -48,7 +47,6 @@ class CompilationsProvider with ChangeNotifier {
       _compilationDetails = responseData?['result'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -70,13 +68,11 @@ class CompilationsProvider with ChangeNotifier {
       var response = await request.send();
       // Get the response
       if (response.statusCode == 200) {
-        print('compilation added successfully');
         notifyListeners();
       } else {
         throw Exception('Failed to add compilation course');
       }
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -100,13 +96,11 @@ class CompilationsProvider with ChangeNotifier {
       var response = await request.send();
       // Get the response
       if (response.statusCode == 200) {
-        print('compilation added successfully');
         notifyListeners();
       } else {
         throw Exception('Failed to add compilation course');
       }
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -120,7 +114,6 @@ class CompilationsProvider with ChangeNotifier {
       if (response.statusCode != 200) throw Exception('failed to delete compilation');
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }

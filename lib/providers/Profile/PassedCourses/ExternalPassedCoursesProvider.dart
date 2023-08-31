@@ -29,7 +29,6 @@ class ExternalPassedCoursesProvider with ChangeNotifier {
 
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -45,10 +44,8 @@ class ExternalPassedCoursesProvider with ChangeNotifier {
       if (response.statusCode != 200) throw Exception('failed to fetch external ccourse details');
       final Map<String, dynamic>? responseData = jsonDecode(response.body) as Map<String, dynamic>?;
       _externalCourseDetails = responseData?['result'];
-      print('external course detail id : ${_externalCourseDetails?['id']}');
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -77,13 +74,11 @@ class ExternalPassedCoursesProvider with ChangeNotifier {
 
       // Get the response
       if (response.statusCode == 200) {
-        print('External course added successfully');
         notifyListeners();
       } else {
         throw Exception('Failed to add external course');
       }
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -109,17 +104,14 @@ class ExternalPassedCoursesProvider with ChangeNotifier {
       var response = await request.send();
       // Get the response
       if (response.statusCode == 200) {
-        print('External course edited successfully');
         notifyListeners();
       } else {
         // throw Exception('Failed to edit external course');
 
-        print(response.statusCode);
-        print(await response.stream.bytesToString());
+        // print(response.statusCode);
+        // print(await response.stream.bytesToString());
       }
     } catch (error) {
-      print(error);
-
       rethrow;
     }
   }
@@ -133,7 +125,6 @@ class ExternalPassedCoursesProvider with ChangeNotifier {
       if (response.statusCode != 200) throw Exception('failed to delete external course');
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
