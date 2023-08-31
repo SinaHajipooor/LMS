@@ -22,7 +22,6 @@ class IdentityProvider with ChangeNotifier {
       final Map<String, dynamic>? responseData = jsonDecode(response.body) as Map<String, dynamic>?;
       _identityInfo = responseData?['result'];
     } catch (error) {
-      print(error);
       rethrow;
     }
   }

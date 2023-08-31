@@ -28,7 +28,6 @@ class NonUniversityTeachingProvider with ChangeNotifier {
       _nonUniversityTeachings = responseData?['result']['data'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -44,7 +43,6 @@ class NonUniversityTeachingProvider with ChangeNotifier {
       _nonUniversityTeachingDetails = responseData?['result'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -64,7 +62,6 @@ class NonUniversityTeachingProvider with ChangeNotifier {
     var response = await request.send();
     // Get the response
     if (response.statusCode == 200) {
-      print('non university teaching added successfully');
       notifyListeners();
     } else {
       throw Exception('Failed to add non university teaching');
@@ -87,7 +84,6 @@ class NonUniversityTeachingProvider with ChangeNotifier {
     var response = await request.send();
     // Get the response
     if (response.statusCode == 200) {
-      print('non university teaching edited successfully');
       notifyListeners();
     } else {
       throw Exception('Failed to edit non university teaching');
@@ -103,7 +99,6 @@ class NonUniversityTeachingProvider with ChangeNotifier {
       if (response.statusCode != 200) throw Exception('failed to delete non university teaching');
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }

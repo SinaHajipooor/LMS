@@ -29,7 +29,6 @@ class UniversityTeachingProvider with ChangeNotifier {
       _universityTeachings = responseData?['result']['data'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -45,7 +44,6 @@ class UniversityTeachingProvider with ChangeNotifier {
       _universityTeachingDetails = responseData?['result'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -66,7 +64,6 @@ class UniversityTeachingProvider with ChangeNotifier {
     var response = await request.send();
     // Get the response
     if (response.statusCode == 200) {
-      print('university teaching added successfully');
       notifyListeners();
     } else {
       throw Exception('Failed to add university teaching');
@@ -91,13 +88,11 @@ class UniversityTeachingProvider with ChangeNotifier {
       var response = await request.send();
       // Get the response
       if (response.statusCode == 200) {
-        print('university teaching0 added successfully');
         notifyListeners();
       } else {
         throw Exception('Failed to add university teaching');
       }
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -111,7 +106,6 @@ class UniversityTeachingProvider with ChangeNotifier {
       if (response.statusCode != 200) throw Exception('failed to delete university teaching');
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }

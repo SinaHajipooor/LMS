@@ -27,7 +27,6 @@ class EducationProvider with ChangeNotifier {
       _educations = responseData?['result']?['data'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -45,7 +44,6 @@ class EducationProvider with ChangeNotifier {
       _educationDetails = responseData?['result'];
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
@@ -59,7 +57,6 @@ class EducationProvider with ChangeNotifier {
       if (response.statusCode != 200) throw Exception('failed to delete education');
       notifyListeners();
     } catch (error) {
-      print(error);
       rethrow;
     }
   }
